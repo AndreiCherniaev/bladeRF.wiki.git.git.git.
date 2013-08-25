@@ -10,6 +10,9 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Get CLI using async interface
 - Create and simulate HDL models
 - Create IQ correction block for HDL
+- Move FX3 firmware from USB interfaces to USB configurations
+- Read calibration/SN during device open and cache locally
+- Write calibration after FPGA load
 
 ### Future Items ###
 - Create signal generator block for HDL
