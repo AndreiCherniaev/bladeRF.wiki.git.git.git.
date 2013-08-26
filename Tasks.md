@@ -18,3 +18,4 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Create signal generator block for HDL
 - Create impulse latency RTT mode for HDL
 - Create counter mode for HDL
+- Store and load default FPGA image in SPI flash
