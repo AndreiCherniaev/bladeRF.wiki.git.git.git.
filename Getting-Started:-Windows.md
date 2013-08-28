@@ -33,6 +33,6 @@ For more information, see the [mysysgit](https://github.com/msysgit/msysgit/wiki
 9. If needed, fill out the correct location for ```LIBUSB_PATH```
 10. Re-run Configuration. It should now succeed.
 11. Click on the Generate button.
-12. A visual studio solution should now be available, ```Project.sln``` _(Anyone know how to get CMake to rename this?)_
+12. A visual studio solution should now be available, ```bladeRF.sln``` 
 
 
