@@ -1,7 +1,6 @@
 This is a revolving list of tasks that we need to do.  Priorities change constantly.
 
 ### Current Items ###
-- Pull CLI directory expansion changes from dragorn
 - Get Visual Studio building libbladeRF
 - Get gr-osmosdr using async interface
 - Get CLI using async interface
