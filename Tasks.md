@@ -4,6 +4,8 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Get Visual Studio building libbladeRF
 - Get gr-osmosdr using async interface
 - Get CLI using async interface
+- Si5338 MIMO/Expansion clock settings
+- Si5338 fractional clock rate generation
 - Create and simulate HDL models
 - Create IQ correction block for HDL
 - Write calibration after FPGA load
