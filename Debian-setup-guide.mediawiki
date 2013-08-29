@@ -1,0 +1,66 @@
+= Debian based Distro setup guide =
+
+This guide was written using Ubuntu 13.04.  So may have some issues on other flavors. But should be close enough to figure out..
+
+* Build Process Overview
+# Build libusb tools and libraries from Nuand GIT Master
+# Building GNURADIO from GIT
+# Build for gr-osmosdr
+# Simple test applications to verify device operation
+
+== Build libusb tools and libraries from Nuand GIT Master ==
+* Clone the libusb support branch to your system
+<pre>git clone https://github.com/Nuand/bladeRF.git bladeRF -b dev-libusb_support</pre>
+
+* Install dependent packages for the build
+<pre>sudo apt-get install libusb-1.0-0-dev libusb-1.0-0 build-essential cmake libncurses5-dev</pre>
+
+* building the libusb stuff
+<pre>
+cd <git_base_dir>/hosts/
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=debug -DINSTALL_UDEV_RULES=ON -DCMAKE_INSTALL_PREFIX=/opt/bladeRF/ ../
+make
+sudo make install
+</pre>
+
+* Update library paths
+sudo vi /etc/ld.so.conf.d/bladeRF.conf
+<pre>/opt/bladeRF/lib/</pre>
+now run "sudo ldconfig" to update library paths
+
+* Initial firmware loading & fpga loading procedure
+Assuming you added /opt/bladeRF/bin to your path or system path. (not covered here, just google it.. )
+See if you can detect your bladeRF:
+<pre>bladerf-cli -p</pre>
+Should return something that looks like:
+<pre>
+    Backend: libusb
+    Serial: <Not yet supported> or < SN Number >  Depends on FPGA image.
+    USB Bus: 6
+    USB Address: 4
+</pre>
+
+Then load the FX3 firmware.  Note: you only need to do this once.. It's stored in flash, and survives power cycling.  The FPGA image, needs to be loaded every time.
+<pre>bladerf-cli -f <firmware.img></pre>
+Load FPGA
+<pre>bladerf-cli -l <fpga.rbf></pre>
+
+Recommended firmware and FPGA images to use<br>
+FX3 Image: [http://nuand.com/fx3/latest.img]<br>
+FPGA: [http://nuand.com/fpga]<br>
+
+The BladeRF at this point should be ready to go..  Now you just need something to talk to it..  GNURadio is a good candidate..
+
+
+== Building GNURADIO from GIT ==
+
+
+== Build for gr-osmosdr ==
+
+
+== Simple test applications to verify device operation ==
+
+
+
