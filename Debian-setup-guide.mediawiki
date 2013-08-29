@@ -91,7 +91,8 @@ if [ $PYTHONPATH ]; then
 else
         export PYTHONPATH=/opt/gnuradio-3.7.1git/lib/python2.7/dist-packages
 fi</pre>
-update path above if you deviated from gnuradio-3.7.1git
+'''note: update path above if you deviated from gnuradio-3.7.1git'''
+
 '''note: If your on some non-debian based distro, you might need to replace "dist-packages" with "site-packages".'''
 
 Again, with your favorite text editor, create a new file call /etc/ld.so.conf.d/gnuradio.conf
@@ -133,7 +134,7 @@ you will now need to logout and log back in for the profile.d settings to take e
 Once you have logged back in to your desktop, you should be able to run gnuradio-companion.
 If you get a pop up about PYTHONPATH or LD_LIBRARY_PATH, check env to see if the python path or ldconfig returns the correct libraries.
 
-== build for gr-osmosdr ==
+== Build for gr-osmosdr ==
 * Pull the git version of gr-osmosdr, build, install
 <pre>$ cd ~/sandbox
 $ git clone git://git.osmocom.org/gr-osmosdr ./gr-osmosdr
@@ -143,11 +144,14 @@ $ cmake -DLIBBLADERF_PKG_INCLUDE_DIRS=/opt/bladeRF/include/ -DLIBBLADERF_PKG_LIB
 $ make
 $ sudo make install</pre>
 
-
-== Build for gr-osmosdr ==
-
-
 == Simple test applications to verify device operation ==
+*Using osmocom stand-alone applictions:
+Test Receive: (446 MHz)
+<pre>osomocom_fft -s 8000000 -f 446000000 -g 60</pre>
+Test Transmit: (446 MHz + 25 KHz )
+<pre>osmocom_siggen -s 8000000 -f 446000000 -g 4 --sine -x 25000</pre>
+
+{ MORE TO COME }
 
 
 
