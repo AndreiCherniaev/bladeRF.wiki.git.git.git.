@@ -7,7 +7,7 @@ This wiki will serve as a place to create some community-based documentation. Pl
 
 
 # Getting Started Guides #
-* Linux: See [kb3gtn's guide on the forums](http://nuand.com/forums/viewtopic.php?f=9&t=2992)
+* [[Linux|Linux-Startup]]
 * [[Windows|Getting-Started:-Windows]]
 
 # Development #
