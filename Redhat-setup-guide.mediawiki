@@ -13,7 +13,7 @@
 <pre>git clone https://github.com/Nuand/bladeRF.git bladeRF -b dev-libusb_support</pre>
 
 * Install dependent packages for the build
-<pre>sudo yum install <libusb-1.0-0 with dev, copmilers tools, cmake, libncurses5 with dev> </pre>
+<pre>sudo yum install <libusb-1.0-0 with dev, compiler tools, cmake, libncurses5 with dev> </pre>
 
 * building the libusb stuff
 <pre>
