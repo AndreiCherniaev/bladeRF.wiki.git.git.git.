@@ -87,13 +87,11 @@ Put the following into it:
 export PATH=$PATH:/opt/gnuradio-3.7.1git/bin:/opt/bladeRF/
 # add gnuradio python libraries to python search path
 if [ $PYTHONPATH ]; then
-        export PYTHONPATH=$PYTHONPATH:/opt/gnuradio-3.7.1git/lib/python2.7/dist-packages
+        export PYTHONPATH=$PYTHONPATH:/opt/gnuradio-3.7.1git/lib/python2.7/site-packages
 else
-        export PYTHONPATH=/opt/gnuradio-3.7.1git/lib/python2.7/dist-packages
+        export PYTHONPATH=/opt/gnuradio-3.7.1git/lib/python2.7/site-packages
 fi</pre>
 '''note: update path above if you deviated from gnuradio-3.7.1git'''
-
-'''note: If your on some non-debian based distro, you might need to replace "dist-packages" with "site-packages".'''
 
 Again, with your favorite text editor, create a new file call /etc/ld.so.conf.d/gnuradio.conf
 you will need sudo for this again.. (one line file)
