@@ -10,7 +10,7 @@
 
 == Build libusb tools and libraries from Nuand GIT Master ==
 * Clone the libusb support branch to your system
-<pre>git clone https://github.com/Nuand/bladeRF.git bladeRF -b dev-libusb_support</pre>
+<pre>git clone https://github.com/Nuand/bladeRF.git ./bladeRF</pre>
 
 * Install dependent packages for the build
 <pre>sudo yum install <libusb-1.0-0 with dev, compiler tools, cmake, libncurses5 with dev> </pre>
