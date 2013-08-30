@@ -13,7 +13,8 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - In-band scheduling support
 
 ### Future Items ###
-- Create signal generator block for HDL
-- Create impulse latency RTT mode for HDL
-- Create counter mode for HDL
+- Create signal generator block for FPGA
+- Create impulse latency RTT mode for FPGA
+- Create counter mode for RX stream
+- TX -> RX Loopback mode in HDL
 - Store and load default FPGA image in SPI flash
