@@ -6,6 +6,7 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Get CLI using async interface
 - Si5338 MIMO/Expansion clock settings
 - Si5338 fractional clock rate generation
+- Flash recovery for bad flashes from CLI
 - Create and simulate HDL models
 - Create IQ correction block for HDL
 - Write calibration after FPGA load
