@@ -20,7 +20,7 @@ This guide was written using Ubuntu 13.04.  So may have some issues on other fla
 cd <git_base_dir>/hosts/
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=debug -DINSTALL_UDEV_RULES=ON -DCMAKE_INSTALL_PREFIX=/opt/bladeRF/ ../
+cmake -DCMAKE_BUILD_TYPE=Debug -DINSTALL_UDEV_RULES=ON -DCMAKE_INSTALL_PREFIX=/opt/bladeRF/ ../
 make
 sudo make install
 </pre>
