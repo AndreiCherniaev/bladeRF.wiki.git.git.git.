@@ -47,6 +47,8 @@ Then load the FX3 firmware.  Note: you only need to do this once.. It's stored i
 Load FPGA
 <pre>bladerf-cli -l <fpga.rbf></pre>
 
+<strong>NOTE</strong>: For the FPGA image, there are 2 different sizes.  The 40kLE FPGA image will only work with the x40 and the 115kLE FPGA image will only work with the x115.  If you see the number `40` or `115` on the large Altera FPGA, you know which FPGA you have.  If you have doubts and the FPGA times out during loading, try the other image.
+
 Recommended firmware and FPGA images to use<br>
 FX3 Image: [http://nuand.com/fx3/latest.img]<br>
 FPGA: [http://nuand.com/fpga]<br>
@@ -150,6 +152,5 @@ Test Transmit: (446 MHz + 25 KHz )
 <pre>osmocom_siggen -s 8000000 -f 446000000 -g 4 --sine -x 25000</pre>
 
 { MORE TO COME }
-
 
 
