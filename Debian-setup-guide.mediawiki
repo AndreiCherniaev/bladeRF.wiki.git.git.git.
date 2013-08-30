@@ -13,7 +13,7 @@ This guide was written using Ubuntu 13.04.  So may have some issues on other fla
 <pre>git clone https://github.com/Nuand/bladeRF.git ./bladeRF</pre>
 
 * Install dependent packages for the build
-<pre>sudo apt-get install libusb-1.0-0-dev libusb-1.0-0 build-essential cmake libncurses5-dev</pre>
+<pre>sudo apt-get install libusb-1.0-0-dev libusb-1.0-0 build-essential cmake libncurses5-dev libtecla1 libtecla1-dev</pre>
 
 * building the libusb stuff
 <pre>
