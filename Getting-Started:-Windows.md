@@ -15,7 +15,8 @@ For more information, see the [mysysgit](https://github.com/msysgit/msysgit/wiki
 5. Go to Device->Create New Device. 
 6. Type a device name (i.e., "bladeRF") in the text box. In the driver spinbox, select libusbK. Specify the VID/PID (`1d50`/`6066`) in the USB ID fields.
 7. Plug the device into the computer and open Device Manager.  A new device called `bladeRF` should show up with a yellow bang next to it in device manager.
-9. Right-click on the `bladeRF` entry and select "Update Driver Software...".  Choose "Browse my computer for driver software", then "Let me pick from a list of device drivers on my computer".  Click "Have Disk..." and point it to the location that Zadig installed the driver to (C:\usb_driver).  Select "bladeRF" and continue through the wizard.
+8. Right-click on the `bladeRF` entry and select "Update Driver Software...".  Choose "Browse my computer for driver software", then "Let me pick from a list of device drivers on my computer".  Click "Have Disk..." and point it to the location that Zadig installed the driver to (C:\usb_driver).  Select "bladeRF" and continue through the wizard.
+9. Device Manager should now show `bladeRF` under `libusbK USB Devices`.
 
 # Visual Studio #
 **_TO DO_**
