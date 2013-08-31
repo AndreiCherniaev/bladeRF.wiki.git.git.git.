@@ -15,7 +15,7 @@ For more information, see the [mysysgit](https://github.com/msysgit/msysgit/wiki
 5. Go to Device->Create New Device. 
 6. Type a device name (i.e., "bladeRF") in the text box. In the driver spinbox, select libusbK. Specify the VID/PID in the USB ID fields. 
 7. In the button dropdown, select "Install Driver". Click on the "Install Driver" button. Drivers should be deployed to C:\usb_drivers.
-8. To replace the Windows USB Composite Device driver, go to device manager and right-click on the bladeRF USB Composite Device (it will likely be the only one under "Universal Serial Bus Controllers" with a bang icon on it; otherwise, look for a USB device with the expected VID/PID by inspecting the detailed properties). _(Is this still required with the latest firmware changes?)_ 
+8. To replace the Windows USB Composite Device driver, go to device manager and right-click on the bladeRF USB Composite Device (it will likely be the only one under "Universal Serial Bus Controllers" with a bang icon on it; otherwise, look for a USB device with the expected VID/PID (`1d50`/`6066`) by inspecting the detailed properties). _(Is this still required with the latest firmware changes?)_ 
 9. Select "Update Driver Software...". Choose "Browse my computer for driver software", then "Let me pick from a list of device drivers on my computer". The following screen should display both the "bladeRF" driver created by Zadig and the "USB Composite Device" driver provided by Windows (and currently in use by the device). Select "bladeRF" and continue through the wizard.
 
 # Visual Studio #
