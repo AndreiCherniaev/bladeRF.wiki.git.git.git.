@@ -6,6 +6,12 @@ _This is a work in progress -- below are just some initial notes_
 
 For more information, see the [mysysgit](https://github.com/msysgit/msysgit/wiki/InstallMSysGit) and [tortoisegit](http://code.google.com/p/tortoisegit/wiki/SetupHowTo) wiki pages about their install procedures.
 
+# Installing Visual Studio 2012 Express Desktop #
+1. Download [Visual Studio 2012 Express Desktop](http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-windows-desktop) from Microsoft.
+2. Follow the installation instructions, including any post-install updates.
+
+**NOTE**: Visual Studio 2012 Express Desktop corresponds to Visual Studio 11 in CMake.
+
 # Installing libusbx #
 
 1. Download the latest Windows binary release of libusbx, which also include development headers: https://sourceforge.net/projects/libusbx/files/releases/1.0.16/binaries/
