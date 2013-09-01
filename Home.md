@@ -9,6 +9,7 @@ This wiki will serve as a place to create some community-based documentation. Pl
 # Getting Started Guides #
 * [[Linux|Linux-Startup]]
 * [[Windows|Getting-Started:-Windows]]
+* [[Known Issues|Known-Issues]]
 
 # Development #
 
