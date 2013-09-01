@@ -24,6 +24,13 @@ For more information, see the [mysysgit](https://github.com/msysgit/msysgit/wiki
 8. Right-click on the `bladeRF` entry and select "Update Driver Software...".  Choose "Browse my computer for driver software", then "Let me pick from a list of device drivers on my computer".  Click "Have Disk..." and point it to the location that Zadig installed the driver to (C:\usb_driver).  Select "bladeRF" and continue through the wizard.
 9. Device Manager should now show `bladeRF` under `libusbK USB Devices`.
 
+# Installing pthreads-win32 #
+The pthreads library is required to build a few tests and utilities. A few steps are required to install this pthreads implementation. See [the pthreads-win32 website](http://www.sourceware.org/pthreads-win32/) for more information.
+
+1. Download the latest release. Currently this is [version 2.9.1](ftp://sourceware.org/pub/pthreads-win32/pthreads-w32-2-9-1-release.zip).
+2. Extract the contents of the release zip.
+3. Copy the contents of the _Pre-built.2_ directory to _C:\Program Files (x86)\pthreads-win32_
+
 # CMake #
 1. Download and install CMake for Windows: http://www.cmake.org/cmake/resources/software.html
 2. Run the CMake GUI utility. 
