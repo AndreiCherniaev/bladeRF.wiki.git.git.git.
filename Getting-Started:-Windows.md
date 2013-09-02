@@ -37,13 +37,10 @@ The pthreads library is required to build a few tests and utilities. A few steps
 3. Under "Where is the source code", browse to ```some_dir/bladeRF/host```. 
 4. Create a new directory, ```some_dir/bladeRF/host/build```. 
 5. Under "Where to build the binaries", browse to the newly created /bladeRF/host/build. Click the Configure button. 
-6. Select your appropriate version of Visual Studio.  Current development is done using "Visual Studio 11" as the generator (Visual Studio 2012).  Select "Use default native compilers", then click "Finish". 
-7. The configuration will fail due to the lack of libtecla and an possibly libusb. 
-8. Uncheck ENABLE_INTERACTIVE_TECLA 
-9. If needed, fill out the correct location for `LIBUSB_PATH`
-10. Re-run Configuration. It should now succeed.
-11. Click on the Generate button.
-12. A visual studio solution should now be available, ```bladeRF.sln``` 
+6. Select your appropriate version of Visual Studio.  Current development is done using "Visual Studio 11" or "Visual Studio 11 Win64" as the generator (Visual Studio 2012).  Select "Use default native compilers", then click "Finish". 
+7. If the configuration fails, double check the values for `LIBUSB_PATH` and `LIBPTHREADSWIN32_PATH`, and re-run the configuration.
+8. Click on the Generate button.
+9. A visual studio solution should now be available, ```bladeRF.sln``` 
 
 # Visual Studio #
 1. CMake has created a `bladeRF.sln` file.  Open Visual Studio, and open this file.
