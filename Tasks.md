@@ -1,6 +1,7 @@
 This is a revolving list of tasks that we need to do.  Priorities change constantly.
 
 ### Current Items ###
+- Address serial number issue -- put serial in USB device descriptors?
 - Async repeater test/example
 - Get gr-osmosdr using async interface
 - Get CLI using async interface
