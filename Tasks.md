@@ -12,6 +12,7 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Create IQ correction block for HDL
 - Write calibration after FPGA load
 - In-band scheduling support
+- FPGA version number
 
 ### Future Items ###
 - Create signal generator block for FPGA
