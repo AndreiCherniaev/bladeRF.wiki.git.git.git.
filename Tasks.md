@@ -1,7 +1,7 @@
 This is a revolving list of tasks that we need to do.  Priorities change constantly.
 
 ### Current Items ###
-- Get Visual Studio building libbladeRF
+- Async repeater test/example
 - Get gr-osmosdr using async interface
 - Get CLI using async interface
 - Si5338 MIMO/Expansion clock settings
