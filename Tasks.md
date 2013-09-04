@@ -13,6 +13,7 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Create and simulate HDL models
 - Create IQ correction block for HDL
 - In-band scheduling support
+- extio.dll support for Windows
 
 ### Future Items ###
 - Create signal generator block for FPGA
