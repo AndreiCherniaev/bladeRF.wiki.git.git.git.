@@ -4,6 +4,7 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Async repeater test/example
 - Get gr-osmosdr using async interface
 - Get CLI using async interface
+- Library caching for already opened devices
 - Flash recovery for bad flashes from CLI
 - CRC check FX3 firmware before running it, fallback to USB bootloader
 - Write calibration after FPGA load
