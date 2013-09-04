@@ -5,6 +5,7 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Get gr-osmosdr using async interface
 - Get CLI using async interface
 - Flash recovery for bad flashes from CLI
+- CRC check FX3 firmware before running it, fallback to USB bootloader
 - Write calibration after FPGA load
 - FPGA version number
 - Si5338 MIMO/Expansion clock settings
