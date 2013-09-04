@@ -62,8 +62,8 @@ cd ~/sandbox
 mkdir gnuradio-builds
 cd gnuradio-builds
 wget http://www.sbrac.org/files/build-gnuradio
-chmod +x ./build-gnuradio.sh
-./build-gnuradio.sh -m prereqs gitfetch
+chmod +x ./build-gnuradio
+./build-gnuradio -m prereqs gitfetch
 </pre>
 This takes a while...  check top, seems like it sits a long time on checking pre-requisits with no output.
 
