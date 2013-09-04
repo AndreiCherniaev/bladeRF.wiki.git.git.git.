@@ -1,7 +1,7 @@
 _This is a work in progress -- below are just some initial notes_
  
 # Obtaining git for Windows #
-1. Download and install [msysgit](http://code.google.com/p/msysgit/downloads/list?can=2&q=%22Full+installer+for+official+Git+for+Windows%22)
+1. Download and install [msysgit](http://code.google.com/p/msysgit/downloads/list?can=2&q=%22Full+installer+for+official+Git+for+Windows%22) If you plan to submit patches to the bladeRF project, please select the _Checkout as-is, commit Unix-style line endings_ option in the installer.
 2. Download and install [tortoisegit](http://code.google.com/p/tortoisegit/wiki/Download)
 
 For more information, see the [mysysgit](https://github.com/msysgit/msysgit/wiki/InstallMSysGit) and [tortoisegit](http://code.google.com/p/tortoisegit/wiki/SetupHowTo) wiki pages about their install procedures.
