@@ -147,7 +147,7 @@ $ sudo make install</pre>
 == Simple test applications to verify device operation ==
 *Using osmocom stand-alone applictions:
 Test Receive: (446 MHz)
-<pre>osomocom_fft -s 8000000 -f 446000000 -g 60</pre>
+<pre>osmocom_fft -s 8000000 -f 446000000 -g 60</pre>
 Test Transmit: (446 MHz + 25 KHz )
 <pre>osmocom_siggen -s 8000000 -f 446000000 -g 4 --sine -x 25000</pre>
 
