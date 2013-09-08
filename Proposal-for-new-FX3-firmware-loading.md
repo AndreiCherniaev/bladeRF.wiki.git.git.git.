@@ -8,7 +8,7 @@ Given the above reasoning, I propose we change the FX3 firmware loading strategy
 
 # Basic idea
 
-The core idea is that the new loading process will only require that the bladeRF host tools match the version of FX3 firmware.  Instead of developers needing to test that the new bladeRF host tools can flash all version, they only need to test that the bladeRF host tools can flash the paired FX3 firmware and that the host tools can return the bladeRF to the FX3 bootloader.
+The core idea is that the new loading process will only require that the bladeRF host tools to match the version of the FX3 firmware.  Instead of developers needing to test that the new bladeRF host tools can flash all version, they only need to test that the bladeRF host tools can flash the paired FX3 firmware and that the host tools can return the bladeRF to the FX3 bootloader.
 
 This idea will be accomplished by having the flashing process always get to the FX3 bootloader.  Once there, the bladeRF tools can rely on the FX3 bootloader to load the latest FX3 firmware into RAM.  At that point the bladeRF is loaded with a FX3 firmware that matches the bladeRF tools by definition.
 
