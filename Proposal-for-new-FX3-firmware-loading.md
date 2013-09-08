@@ -44,4 +44,4 @@ If the flasher detects a bladeRF instead of the FX3 bootloader, it will take the
 
 # Conclusion
 
-By making an extremely narrow requirement on the FX3 firmware starting beyond 1.3 to have JUMP_TO_BOOTLOADER, the bladeRF host tools no longer need to support older FX3 firmwares beyond the 0.3-1.3 sets explicitly.  This should limit the required testing for FX3 firmware change to just between a paired set of the bladeRF host tools and FX3 firmware.  This will allow FX3 firmware development to make incompatible changes to the rest of the USB protocol without worrying about inability to flash forward or backwards.
+By making an extremely narrow requirement on the FX3 firmware starting beyond 1.3 to have JUMP_TO_BOOTLOADER, the bladeRF host tools no longer need to support older FX3 firmwares beyond the 0.3-1.3 sets explicitly.  This should limit the required testing for FX3 firmware changes to just between a paired set of the bladeRF host tools and FX3 firmware.  This will allow FX3 firmware development to make incompatible changes to the rest of the USB protocol without worrying about inability to flash forward or backwards.
