@@ -31,13 +31,13 @@ This will require two changes.
 
 For firmware's at version 1.1 or less, either having the user force the bladeRF into FX3 bootloader or erasing the first part of the FX3 firmware is probably the best approaches.  The user will need to manually reset bladeRF once the first part of the FX3 firmware is erased.
 For the version 1.2 and 1.3, erasing the first part of the FX3 firmware followed by a reset.
-For versions beyond 1.4, I propose we add a JUMP_TO_BOOTLOADER opcode, takes no arguments returns no data, and works in all alturnate selections.
+For versions beyond 1.4, I propose we add a JUMP_TO_BOOTLOADER vendor request, takes no arguments returns no data, and works in all alturnate selections.
 
 ## Flasher protocol
 
 If the flasher detects a bladeRF instead of the FX3 bootloader, it will take the following actions:
 
-1. Attempt to issue the JUMP_TO_BOOTLOADER opcode.  
+1. Attempt to issue the JUMP_TO_BOOTLOADER vendor request.  
 1. If this has no effect, attempt to erase using the version 1.2/1.3 steps
 1. If this has no effect, attempt to erase using the version 1.1 or earlier steps
 1. If this has no effect, provide instructions to the user on how to force the FX3 bootloader
