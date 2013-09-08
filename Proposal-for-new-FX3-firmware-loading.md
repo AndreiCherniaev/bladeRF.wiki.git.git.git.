@@ -4,7 +4,7 @@ The current FX3 firmware loading design has the bladeRF host tools talking direc
 
 Already the master bladeRF host tools as of Sept 8th 2013 can no longer flash the factory firmware due to regressions in the bladeRF host tools.  Also issues like https://github.com/Nuand/bladeRF/issues/87 are best fixed will incompatible changes to the USB protocol.
 
-Given the above reasoning, I propose we can the FX3 firmware loading strategy to maximally decouple the different versions of the bladeRF host tools and FX3 firmware from each other.
+Given the above reasoning, I propose we change the FX3 firmware loading strategy to maximally decouple the different versions of the bladeRF host tools and FX3 firmware from each other.
 
 # Basic idea
 
