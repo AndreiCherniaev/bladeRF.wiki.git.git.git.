@@ -1,5 +1,4 @@
 
-
 ### FPGA Fails to load ###
 There are a few different reasons for this.  One might be that the wrong size FPGA image is being used for the FPGA on your board.  Check to make sure you are using the 40kLE FPGA for x40 and the 115kLE FPGA for x115.
 
@@ -22,3 +21,7 @@ WARNING - [$SOME_PATH/libusb.c:818] FPGA currently does not have a version numbe
 ```
 
 The FPGA currently does not implement a version number, so 0's are returned. This is a TO DO item.
+
+### Mac OSX Superspeed libusb does ns not show correct speed/crashes ###
+
+If you've used ports to get libusb installed, there is a high likelihood that it is version 1.0.9.  Unfortunately, libusb didn't add superspeed support until version 1.0.15 for OSX.  We've had reports that the absolute latest version of libusb, 1.0.17, works on OSX.  Please update accordingly.
