@@ -17,7 +17,7 @@ This guide was written using Ubuntu 13.04.  So may have some issues on other fla
 
 * building the libusb stuff
 <pre>
-cd <git_base_dir>/hosts/
+cd <git_base_dir>/host/
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Debug -DINSTALL_UDEV_RULES=ON -DCMAKE_INSTALL_PREFIX=/opt/bladeRF/ ../
@@ -149,7 +149,7 @@ $ sudo make install</pre>
 == Simple test applications to verify device operation ==
 *Using osmocom stand-alone applictions:
 Test Receive: (446 MHz)
-<pre>osomocom_fft -s 8000000 -f 446000000 -g 60</pre>
+<pre>osmocom_fft -s 8000000 -f 446000000 -g 60</pre>
 Test Transmit: (446 MHz + 25 KHz )
 <pre>osmocom_siggen -s 8000000 -f 446000000 -g 4 --sine -x 25000</pre>
 
