@@ -7,7 +7,6 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Library caching for already opened devices
 - Flash recovery for bad flashes from CLI
 - CRC check FX3 firmware before running it, fallback to USB bootloader
-- Write calibration after FPGA load
 - FPGA version number
 - Si5338 MIMO/Expansion clock settings
 - Si5338 fractional clock rate generation
