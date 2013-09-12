@@ -31,3 +31,9 @@ The FPGA currently does not implement a version number, so 0's are returned. Thi
 ### Mac OSX Superspeed libusb does ns not show correct speed/crashes ###
 
 If you've used ports to get libusb installed, there is a high likelihood that it is version 1.0.9.  Unfortunately, libusb didn't add superspeed support until version 1.0.15 for OSX.  We've had reports that the absolute latest version of libusb, 1.0.17, works on OSX.  Please update accordingly.
+
+### GNU Radio doesn't work with both source and sink in the same flowgraph ###
+
+Currently, both the source and sink try to open the device.  Unfortunately, only one can open it at a time.  The workaround is to understand the other block is trying to open an already opened device, and pass the already opened handle to the block instead of trying to open it again.
+
+Work is under way to cache the opened handles and search through those first before trying to re-open the device.
