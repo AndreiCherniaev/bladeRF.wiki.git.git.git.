@@ -1,6 +1,7 @@
 This is a revolving list of tasks that we need to do.  Priorities change constantly.
 
 ### Current Items ###
+- Figure out why linux has a bandwidth allocation issue after a ^c from a program
 - Async repeater test/example
 - Get gr-osmosdr using async interface
 - Get CLI using async interface
