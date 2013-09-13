@@ -5,6 +5,7 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Get gr-osmosdr using async interface
 - Get CLI using async interface
 - Library caching for already opened devices
+- Verify operation with GQRX
 - Flash recovery for bad flashes from CLI (https://github.com/Nuand/bladeRF/pull/96)
 - CRC check FX3 firmware before running it, fallback to USB bootloader
 - FPGA version number
