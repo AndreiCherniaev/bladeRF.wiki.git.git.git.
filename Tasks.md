@@ -2,10 +2,9 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 
 ### Current Items ###
 - Figure out why linux has a bandwidth allocation issue after a ^c from a program
-- Async repeater test/example
 - Get gr-osmosdr using async interface
 - Get CLI using async interface
-- Library caching for already opened devices
+- Add device caching to bladeRF src/sink gr-osmosdr to allow for full-duplex support
 - Verify operation with GQRX
 - Flash recovery for bad flashes from CLI (https://github.com/Nuand/bladeRF/pull/96)
 - CRC check FX3 firmware before running it, fallback to USB bootloader
