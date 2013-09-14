@@ -6,6 +6,7 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Add some hotkey support to test_repeater to allow the user to adjust RX/TX gains
 - Add device caching to bladeRF src/sink gr-osmosdr to allow for full-duplex support
 - Get CLI using async interface
+- Fix udev rule's group, per gpaliot's suggestion
 - Verify operation with GQRX
 - Flash recovery for bad flashes from CLI (https://github.com/Nuand/bladeRF/pull/96)
 - FPGA version number
