@@ -10,7 +10,6 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Flash recovery for bad flashes from CLI (https://github.com/Nuand/bladeRF/pull/96)
 - FPGA version number
 - Si5338 MIMO/Expansion clock settings
-- Si5338 fractional clock rate generation
 - Create and simulate HDL models
 - Create IQ correction block for HDL
 - In-band scheduling support
