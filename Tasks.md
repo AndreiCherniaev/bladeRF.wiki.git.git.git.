@@ -2,7 +2,7 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 
 ### Current Items ###
 - Figure out why linux has a bandwidth allocation issue after a ^c from a program
-- Get gr-osmosdr using async interface
+- Get gr-osmosdr using async interface (In progress, touch base with horizon)
 - Get CLI using async interface
 - Add device caching to bladeRF src/sink gr-osmosdr to allow for full-duplex support
 - Verify operation with GQRX
