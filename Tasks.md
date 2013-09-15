@@ -7,7 +7,6 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Add device caching to bladeRF src/sink gr-osmosdr to allow for full-duplex support
 - Get CLI using async interface
 - Fix udev rule's group, per gpaliot's suggestion
-- Flash recovery for bad flashes from CLI (https://github.com/Nuand/bladeRF/pull/96)
 - FPGA version number
 - Si5338 MIMO/Expansion clock settings
 - Create and simulate HDL models
