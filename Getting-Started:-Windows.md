@@ -15,7 +15,7 @@ For more information, see the [mysysgit](https://github.com/msysgit/msysgit/wiki
 # Installing libusbx #
 
 1. Download the latest Windows binary release of libusbx, which also include development headers: https://sourceforge.net/projects/libusbx/files/releases/1.0.16/binaries/
-2. Extract the contents to a location of your choice. Make note of this location so that you can later provide it to CMake. The default configuration assumes that files will be in ```C:/Program Files (x86)/libusbx-1.0.16```
+2. Extract the contents to a location of your choice. Make note of this location so that you can later provide it to CMake. The default configuration assumes that files will be in ```C:/Program Files (x86)/libusbx-1.0.16``` If you wish to change the directory, edit ```\host\cmake\modules\FindLibUSB.cmake```
 3. Get the device driver installer (zadig): http://sourceforge.net/projects/libwdi/files/zadig/
 4. Open Zadig. 
 5. Go to Device->Create New Device. 
