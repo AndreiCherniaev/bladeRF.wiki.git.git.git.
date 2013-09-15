@@ -6,4 +6,4 @@ Testing required for new FX3 firmware:
     * bladeRF-flash -f <file>
     * bladeRF-flash -r -l -f <file>
 * Run both USB20CV and USB30CV in compliance testing mode to ensure there are no regressions
-* Verify booting the FPGA on Windows, Linux, and OS X on USB 2.0 and USB 3.0
+* Verify booting the FPGA via USB on Windows, Linux, and OS X on USB 2.0 and USB 3.0
