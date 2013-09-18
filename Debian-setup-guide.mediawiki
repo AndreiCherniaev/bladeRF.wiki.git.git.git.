@@ -65,11 +65,11 @@ wget http://www.sbrac.org/files/build-gnuradio
 chmod +x ./build-gnuradio
 ./build-gnuradio -m prereqs gitfetch
 </pre>
-This takes a while...  check top, seems like it sits a long time on checking pre-requisits with no output.
+This takes a while...  check top, seems like it sits a long time on checking pre-requisites with no output.
 
 * Compile GNU Radio
 <pre>
-cd ~/sandobx/gnuradio-builds/gnuradio/
+cd ~/sandbox/gnuradio-builds/gnuradio/
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git  ../ (based on git release, change as needed)
