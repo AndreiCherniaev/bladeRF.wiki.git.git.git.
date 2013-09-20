@@ -9,7 +9,7 @@ There are several deficiencies in the FX3 firmware that should be resolved.  At 
  - Fatal errors in the FX3 firmware result in lockup.  Better to some how report to host problem occured.
  - bladeRF.c is large in terms of line count.  Refactor into modules.
  - Implement suspend/resume (low priority)
- - Added git rev to fx3 firmware build
+ - Add git rev to fx3 firmware build
 
 Open questions:
  - Order of shutting down EPs and DMAs.  Should halt EP then DMA, or DMA then EP.  Or either works?
