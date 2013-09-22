@@ -9,6 +9,11 @@ This guide was written using Ubuntu 13.04.  So may have some issues on other fla
 # Simple test applications to verify device operation
 
 == Build libusb tools and libraries from Nuand GIT Master ==
+
+* NOTE: If you are installing libusb-1.0-0-dev on any version of Ubuntu that is less than 13.10 you will have to manually install libusb-1.0-0-dev from Ubuntu 13.10 packages. The two packages http://packages.ubuntu.com/saucy/libusb-1.0-0 and http://packages.ubuntu.com/saucy/libusb-1.0-0-dev can be installed by running:
+<pre>wget http://de.archive.ubuntu.com/ubuntu/pool/main/libu/libusbx/libusb-1.0-0_1.0.16-3_amd64.deb ; dpkg -i libusb-1.0-0_1.0.16-3_amd64.deb
+wget http://de.archive.ubuntu.com/ubuntu/pool/main/libu/libusbx/libusb-1.0-0-dev_1.0.16-3_amd64.deb ; dpkg -i libusb-1.0-0-dev_1.0.16-3_amd64.deb</pre>
+
 * Clone the libusb support branch to your system
 <pre>git clone https://github.com/Nuand/bladeRF.git ./bladeRF</pre>
 
@@ -154,6 +159,5 @@ Test Transmit: (446 MHz + 25 KHz )
 <pre>osmocom_siggen -s 8000000 -f 446000000 -g 4 --sine -x 25000</pre>
 
 { MORE TO COME }
-
 
 
