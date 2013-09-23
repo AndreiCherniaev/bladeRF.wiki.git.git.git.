@@ -10,6 +10,7 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - FPGA version number
 - Si5338 MIMO/Expansion clock settings
 - Create and simulate HDL models
+- Automatic IQ Calibration
 - Create IQ correction block for HDL
 - In-band scheduling support
 - extio.dll support for Windows
