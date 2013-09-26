@@ -37,3 +37,9 @@ If you've used ports to get libusb installed, there is a high likelihood that it
 Currently, both the source and sink try to open the device.  Unfortunately, only one can open it at a time.  The workaround is to understand the other block is trying to open an already opened device, and pass the already opened handle to the block instead of trying to open it again.
 
 Work is under way to cache the opened handles and search through those first before trying to re-open the device.
+
+### CLI gives a legacy mode warning ###
+
+This warning comes up if you have a [firmware](FX3-Firmware) that is considered out-of-date and requires flashing.  Please update to the [latest firmware][latest] using the `bladeRF-flash` or `bladeRF-cli` tool.
+
+[latest]: http://nuand.com/fx3/latest.img
