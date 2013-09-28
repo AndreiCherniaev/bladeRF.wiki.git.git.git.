@@ -3,7 +3,7 @@
 1. Download Coverity Scan from https://scan.coverity.com/download
 2. Extract and add the Coverity Scan tools to the path
 3. Added the FX3 compiler to the Coverity configuration
- - cov-configure --comptype gcc --compiler /opt/cypress/fx3_sdk/arm-2011.03/bin/arm-none-eabi-gcc
+ - `cov-configure --comptype gcc --compiler /opt/cypress/fx3_sdk/arm-2011.03/bin/arm-none-eabi-gcc`
  - Replace /opt/cypress/fx3_sdk/arm-2011.03/bin/arm-none-eabi-gcc with wherever your FX3 SDK is installed
 
 # Performing a build
