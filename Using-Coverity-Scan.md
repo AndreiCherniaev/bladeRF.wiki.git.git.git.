@@ -23,5 +23,5 @@ Always use the root level CMakeLists.txt to do a build, not the one in host.  If
 4. `cov-build --dir cov-int make`
 5. `tar -czvf bladeRF.tgz cov-int/`
 6. The tarball can be manually submitted to the website, or you can automatically submit it via 
- - `curl --form project=bladeRF --form token=PUT_YOUR_API_TOKEN_HERE--form email=PUT_YOU_EMAIL@HERE --form file=@bladeRF.tgz --form version=0.4.0 --form description=Description http://scan5.coverity.com/cgi-bin/upload.py`
+ - curl --form project=bladeRF --form token=PUT_YOUR_API_TOKEN_HERE--form email=PUT_YOU_EMAIL@HERE --form file=@bladeRF.tgz --form version=0.4.0 --form description=Description http://scan5.coverity.com/cgi-bin/upload.py
 
