@@ -11,7 +11,7 @@ Upgrading from v1.0 is a little trickier than upgrading from more recent firmwar
 2. Try forcing into Cypress Bootloader (see below for instructions) and use bladeRF-flash to upgrade the device.
 
 # Upgrading on Windows #
-**Coming soon: Youtube video**
+[YouTube video HOWTO explaining how to force bladeRF into the Cypress FX3 bootloader](http://youtu.be/oolb9e_9qTc)
 
 Pre-compiled bladeRF utilities can be installed from http://nuand.com/downloads/bladerf_win_installer.exe
 or they can built from source following the instructions at https://github.com/Nuand/bladeRF/wiki/Getting-Started%3A-Windows .
