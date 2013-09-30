@@ -3,9 +3,11 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 ### Current Items ###
 - Get CLI using async interface
 - Add device caching to bladeRF src/sink gr-osmosdr to allow for full-duplex support
+- Audit library messages being printed out to make sure they are of the appropriate type (debug, info, etc)
 - Figure out why linux has a bandwidth allocation issue after a ^c from a program
 - Add some hotkey support to test_repeater to allow the user to adjust RX/TX gains
 - Get FPGA building with Quartus 13.0sp1
+    - Seems to work out of the box with warnings from Qsys regarding versioning of components
 - FPGA version number
 - In-band scheduling support
 - Fix or remove FS USB descriptors.
