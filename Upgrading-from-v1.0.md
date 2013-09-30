@@ -1,3 +1,4 @@
+Upgrading from v1.0 is a little trickier than upgrading from more recent firmware images. If you received your unit before September 10th you might encounter some issues; the troubleshooting ideas below should provide enough methods to flash any v1.0 bladeRF.
 # Upgrading on Linux #
 
 1. Download and install all of the bladeRF libraries and utilities as described here, https://github.com/Nuand/bladeRF/wiki/Linux-startup
@@ -22,11 +23,14 @@ or they can built from source following the instructions at https://github.com/N
 3. Unplug and plug the bladeRF
 
 ### Method #2 : bladerf_winflasher ###
+bladerf_winflasher uses CyUSB so the unsigned driver is required for it to work. The flasher can run during the installer, but it can be run directly from <pre>C:\Program Files (x86)\bladeRF\bladerf_winflasher.exe</pre>.
+
 1. Optionally plug the bladeRF into a USB2.0 port. In case only USB3.0 ports exist, use a USB2.0 micro cable.
 2. Download and run http://nuand.com/downloads/bladerf_win_installer.exe
 3. Check the "Yes, upgrade bladeRF firmware" checkbox<pre>![Yes, upgrade bladeRF firmware](http://nuand.com/upgrade.png)</pre>
 4. Finish running the installer
 5. Unplug and plug the bladeRF
+
 
 ### Troubleshooting ideas for Windows ###
 
