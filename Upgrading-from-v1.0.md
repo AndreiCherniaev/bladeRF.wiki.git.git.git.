@@ -1,4 +1,4 @@
-Upgrading from v1.0 is a little trickier than upgrading from more recent firmware images. If you received your unit before September 10th you might encounter some issues; the troubleshooting ideas below should provide enough methods to flash any v1.0 bladeRF.
+Upgrading from v1.0 is a little trickier than upgrading from more recent firmware images. If you received your unit before September 10th you might encounter some issues on Windows; the troubleshooting ideas below should provide enough methods to flash any v1.0 bladeRF.
 # Upgrading on Linux #
 
 1. Download and install all of the bladeRF libraries and utilities as described here, https://github.com/Nuand/bladeRF/wiki/Linux-startup
