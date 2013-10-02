@@ -7,7 +7,7 @@ There are several deficiencies in the FX3 firmware that should be resolved.  At 
  - It would be really nice to have logging support in the FX3 firmware.
  - Fatal errors in the FX3 firmware result in lockup.  Better to some how report to host problem occured.
  - Implement suspend/resume (low priority)
- - Add git rev to fx3 firmware build
+ - Add git rev to fx3 firmware build (https://github.com/Nuand/bladeRF/tree/dev-fx3_version_string)
 
 Open questions:
  - Order of shutting down EPs and DMAs.  Should halt EP then DMA, or DMA then EP.  Or either works?
