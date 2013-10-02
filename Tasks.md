@@ -8,6 +8,8 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Add some hotkey support to test_repeater to allow the user to adjust RX/TX gains
 - Get FPGA building with Quartus 13.0sp1
     - Seems to work out of the box with warnings from Qsys regarding versioning of components
+- Make UART run at 4608000 baud rate instead of 115200
+    - Make the NIOS run at 16*4608000 clock rate and set the divisor appropriately
 - FPGA version number
 - In-band scheduling support
 - Fix or remove FS USB descriptors.
