@@ -1,4 +1,7 @@
 = How to Build Gnuradio 3.7.1 from Git =
+<pre style="color: red">
+( WORK IN PROGRESS )
+</pre>
 
 This is a walkthrough of how to build gnuradio v3.7.1.
 
