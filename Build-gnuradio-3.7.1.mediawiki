@@ -1,0 +1,33 @@
+= How to Build Gnuradio 3.7.1 from Git =
+
+This is a walkthrough of how to build gnuradio v3.7.1.
+
+== Install GNURadio package dependencies.. ==
+
+On Debian based Distros:
+( TODO )
+
+On Redhat based Distros:
+( TODO )
+
+== GIT CLONE gnuradio repo ==
+<pre>
+mkdir ~/sandbox
+cd ~/sandbox
+git clone https://github.com/gnuradio/gnuradio.git ./gnuradio
+</pre>
+
+== checkout version v3.7.1 release ==
+<pre>
+cd gnuradio
+git checkout tags/v3.7.1
+</pre>
+
+== build GNURadio ==
+<pre>
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1
+make
+sudo make install
+</pre>
