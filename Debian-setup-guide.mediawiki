@@ -61,6 +61,11 @@ FPGA: [http://nuand.com/fpga]<br>
 The BladeRF at this point should be ready to go..  Now you just need something to talk to it..  GNURadio is a good candidate..
 
 == Building GNURADIO from GIT ==
+
+update: [[Build gnuradio-3.7.1 | Better gnuradio build guide ]]
+
+The following below builds the latest release from git.. (The bleeding edge) And could be broken from time to time.
+
 * Use gnuradio-build to pull and check dependencies
 <pre>
 cd ~/sandbox
