@@ -29,7 +29,7 @@ git checkout tags/v3.7.1
 <pre>
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1
+cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1 ../
 make
 sudo make install
 </pre>
