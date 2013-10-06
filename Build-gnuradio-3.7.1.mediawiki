@@ -18,7 +18,7 @@ libqt4-opengl-dev libqwt5-qt4-dev libfontconfig1-dev libxrender-dev
 On Redhat based Distros:
 ( TODO )
 
-== GIT CLONE gnuradio repo ==
+== git clone gnuradio repo ==
 <pre>
 mkdir ~/sandbox
 cd ~/sandbox
@@ -31,7 +31,7 @@ cd gnuradio
 git checkout tags/v3.7.1
 </pre>
 
-== build GNURadio ==
+== build gnuradio ==
 <pre>
 mkdir build
 cd build
