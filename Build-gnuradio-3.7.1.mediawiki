@@ -13,7 +13,7 @@ pkg-config libfftw3-dev libboost1.53-all-dev libcppunit-dev libgsl0-dev \
 libusb-dev sdcc libsdl1.2-dev python-wxgtk2.8 python-numpy \
 python-cheetah python-lxml doxygen python-qt4 python-qwt5-qt4 libxi-dev \
 libqt4-opengl-dev libqwt5-qt4-dev libfontconfig1-dev libxrender-dev \
-python-gtk2 python-gtk2-dev zeroc-ice34
+python-gtk2 python-gtk2-dev
 </pre>
 
 On Redhat based Distros:
