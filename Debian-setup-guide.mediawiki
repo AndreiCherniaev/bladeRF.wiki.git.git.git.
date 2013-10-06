@@ -80,6 +80,7 @@ Load FPGA
 Recommended firmware and FPGA images to use<br>
 FX3 Image: [http://nuand.com/fx3/latest.img]<br>
 FPGA: [http://nuand.com/fpga]<br>
+bleeding edge FPGA images see http://hoopycat.com/bladerf_builds/
 
 The BladeRF at this point should be ready to go..  Now you just need something to talk to it..  GNURadio is a good candidate..
 
