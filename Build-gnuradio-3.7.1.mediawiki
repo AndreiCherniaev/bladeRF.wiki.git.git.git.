@@ -57,6 +57,15 @@ if [ $PYTHONPATH ]; then
 else
         export PYTHONPATH=/opt/gnuradio-3.7.1lib/python2.7/dist-packages
 fi
+</pre
+* now add gnuradio libraries to library search path
+create a new file in /etc/ld.so.conf.d/gnuradio.conf
+<pre>
+sudo vi /etc/ld.so.conf.d/gnuradio.conf
+</pre>
+put the following line in it:
+<pre>
+/opt/gnuradio-3.7.1/lib
 </pre>
 
 == Build gr-osmosdr sink/source ==
