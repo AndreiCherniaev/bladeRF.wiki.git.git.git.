@@ -30,6 +30,32 @@ make
 sudo make install
 </pre>
 
+* add bladeRF bins/scripts to search path
+== Added bladeRF to path ==
+Add a profile.d script to globaly set add bladeRF to system search path
+Create a profile.d script for bladeRF
+<pre>
+sudo vi /etc/profile.d/bladeRF.sh
+<pre>
+Put this in it
+<pre>
+#!/bin/bash
+
+#add bladeRF binaries & scripts to path
+export PATH=$PATH:/opt/bladeRF/bin
+export BLADERF_DIR=/opt/bladeRF/
+</pre>
+
+== Add /opt/bladeRF/lib to library search path ==
+Create a new file /etc/ld.so.conf.d/bladeRF.conf
+<pre>
+sudo vi /etc/ld.so.conf.d/bladeRF.conf
+</pre>
+Put the following line in it:
+<pre>
+/opt/bladeRF/lib/
+</pre>
+
 * Update library paths
 sudo vi /etc/ld.so.conf.d/bladeRF.conf
 <pre>/opt/bladeRF/lib/</pre>
