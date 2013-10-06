@@ -69,7 +69,7 @@ git clone git://git.osmocom.org/gr-osmosdr ./gr-osmosdr
 <pre>
 mkdir ~/sandbox/gr-osmosdr/build
 cd ~/sandbox/gr-osmosdr/build
-cmake -DLIBBLADERF_PKG_INCLUDE_DIRS=/opt/bladeRF/include/ -DLIBBLADERF_PKG_LIBRARY_DIRS=/opt/bladeRF/lib/ -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git ../  (change as needed)
+cmake -DLIBBLADERF_PKG_INCLUDE_DIRS=/opt/bladeRF/include/ -DLIBBLADERF_PKG_LIBRARY_DIRS=/opt/bladeRF/lib/ -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1 ../
 make
 sudo make install
 </pre>
