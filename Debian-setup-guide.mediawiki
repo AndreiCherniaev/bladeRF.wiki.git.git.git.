@@ -35,7 +35,7 @@ Add a profile.d script to globaly set add bladeRF to system search path
 Create a profile.d script for bladeRF
 <pre>
 sudo vi /etc/profile.d/bladeRF.sh
-<pre>
+</pre>
 Put this in it
 <pre>
 #!/bin/bash
