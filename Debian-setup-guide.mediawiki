@@ -177,7 +177,8 @@ $ mkdir ~/sandbox/gr-osmosdr/build
 $ cd ~/sandbox/gr-osmosdr/build
 $ cmake -DLIBBLADERF_PKG_INCLUDE_DIRS=/opt/bladeRF/include/ -DLIBBLADERF_PKG_LIBRARY_DIRS=/opt/bladeRF/lib/ -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git ../  (change as needed)
 $ make
-$ sudo make install</pre>
+$ sudo make install
+</pre>
 
 == Simple test applications to verify device operation ==
 *Using osmocom stand-alone applictions:
