@@ -31,7 +31,6 @@ sudo make install
 </pre>
 
 * add bladeRF bins/scripts to search path
-== Added bladeRF to path ==
 Add a profile.d script to globaly set add bladeRF to system search path
 Create a profile.d script for bladeRF
 <pre>
@@ -46,7 +45,7 @@ export PATH=$PATH:/opt/bladeRF/bin
 export BLADERF_DIR=/opt/bladeRF/
 </pre>
 
-== Add /opt/bladeRF/lib to library search path ==
+* Add /opt/bladeRF/lib to library search path
 Create a new file /etc/ld.so.conf.d/bladeRF.conf
 <pre>
 sudo vi /etc/ld.so.conf.d/bladeRF.conf
@@ -56,10 +55,8 @@ Put the following line in it:
 /opt/bladeRF/lib/
 </pre>
 
-* Update library paths
-sudo vi /etc/ld.so.conf.d/bladeRF.conf
-<pre>/opt/bladeRF/lib/</pre>
 now run "sudo ldconfig" to update library paths
+now run "source /etc/profile.d/bladeRF.sh" to add the new environment variables to your working shell.
 
 * Initial firmware loading & fpga loading procedure
 Assuming you added /opt/bladeRF/bin to your path or system path. (not covered here, just google it.. )
