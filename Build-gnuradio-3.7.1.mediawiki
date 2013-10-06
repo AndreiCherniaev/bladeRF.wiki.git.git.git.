@@ -59,6 +59,13 @@ if [ $PYTHONPATH ]; then
 else
         export PYTHONPATH=/opt/gnuradio-3.7.1/lib/python2.7/dist-packages
 fi
+
+# Add gnuradio to pkg_config path
+if [ $PKG_CONFIG_PATH ]; then
+        export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/gnuradio-3.7.1//lib/pkgconfig/
+else
+        export PKG_CONFIG_PATH=/opt/gnuradio-3.7.1//lib/pkgconfig/
+fi
 </pre>
 
 * now add gnuradio libraries to library search path
