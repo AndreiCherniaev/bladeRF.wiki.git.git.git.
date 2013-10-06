@@ -58,3 +58,11 @@ else
         export PYTHONPATH=/opt/gnuradio-3.7.1lib/python2.7/dist-packages
 fi
 </pre>
+
+== Build gr-osmosdr sink/source ==
+clone the gr-osmosdr git repo to sandbox
+<pre>
+git clone git://git.osmocom.org/gr-osmosdr ./gr-osmosdr
+</pre>
+
+build unit.
