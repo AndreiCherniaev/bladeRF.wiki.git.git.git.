@@ -57,7 +57,7 @@ export PATH=$PATH:/opt/gnuradio-3.7.1/bin
 if [ $PYTHONPATH ]; then
         export PYTHONPATH=$PYTHONPATH:/opt/gnuradio-3.7.1/lib/python2.7/dist-packages
 else
-        export PYTHONPATH=/opt/gnuradio-3.7.1lib/python2.7/dist-packages
+        export PYTHONPATH=/opt/gnuradio-3.7.1/lib/python2.7/dist-packages
 fi
 </pre>
 
