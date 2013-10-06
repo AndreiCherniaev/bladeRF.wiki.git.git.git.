@@ -62,7 +62,17 @@ fi
 == Build gr-osmosdr sink/source ==
 clone the gr-osmosdr git repo to sandbox
 <pre>
+cd ~/sandbox
 git clone git://git.osmocom.org/gr-osmosdr ./gr-osmosdr
 </pre>
 
-build unit.
+<pre>
+mkdir ~/sandbox/gr-osmosdr/build
+cd ~/sandbox/gr-osmosdr/build
+cmake -DLIBBLADERF_PKG_INCLUDE_DIRS=/opt/bladeRF/include/ -DLIBBLADERF_PKG_LIBRARY_DIRS=/opt/bladeRF/lib/ -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git ../  (change as needed)
+make
+sudo make install
+</pre>
+
+Then run "sudo ldconfig -v | grep osmo" to update library cache.
+
