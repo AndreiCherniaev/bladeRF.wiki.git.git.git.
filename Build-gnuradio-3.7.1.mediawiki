@@ -89,3 +89,11 @@ sudo make install
 
 Then run "sudo ldconfig -v | grep osmo" to update library cache.
 
+* give osmocom_fft a test run and see if all good
+<pre>
+osmocom_fft -a bladerf=0,fpga=/opt/bladeRF/fpga/hostedx40.rbf -s 8000000 -f 915000000
+</pre>
+note: I store my fpga images in /opt/bladeRF/fpga/  ( I use hoopycat's bladeRF build bot outputs )
+{ http://hoopycat.com/bladerf_builds/ }
+
+note: you can also add a fw=/opt/bladeRF/firmware/latest.bin to load an updated firmware if needed
