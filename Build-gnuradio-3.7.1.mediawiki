@@ -41,6 +41,7 @@ sudo make install
 </pre>
 
 == add gnuradio to path and library search ==
+
 <pre>
 sudo vi /etc/profile.d/gnuradio.sh
 </pre>
@@ -57,7 +58,8 @@ if [ $PYTHONPATH ]; then
 else
         export PYTHONPATH=/opt/gnuradio-3.7.1lib/python2.7/dist-packages
 fi
-</pre
+</pre>
+
 * now add gnuradio libraries to library search path
 create a new file in /etc/ld.so.conf.d/gnuradio.conf
 <pre>
