@@ -70,6 +70,8 @@ put the following line in it:
 /opt/gnuradio-3.7.1/lib
 </pre>
 
+update library cache by running "sudo ldconfig"
+
 == Build gr-osmosdr sink/source ==
 clone the gr-osmosdr git repo to sandbox
 <pre>
