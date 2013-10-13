@@ -176,7 +176,7 @@ If you get a pop up about PYTHONPATH or LD_LIBRARY_PATH, check env to see if the
 $ git clone git://git.osmocom.org/gr-osmosdr ./gr-osmosdr
 $ mkdir ~/sandbox/gr-osmosdr/build
 $ cd ~/sandbox/gr-osmosdr/build
-$ cmake -DLIBBLADERF_PKG_INCLUDE_DIRS=/opt/bladeRF/include/ -DLIBBLADERF_PKG_LIBRARY_DIRS=/opt/bladeRF/lib/ -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git ../  (change as needed)
+$ cmake -DLIBBLADERF_INCLUDE_DIRS=/opt/bladeRF/include/ -DLIBBLADERF_LIBRARIES=/opt/bladeRF/lib/ -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git ../  (change as needed)
 $ make
 $ sudo make install
 </pre>
@@ -189,4 +189,3 @@ Test Transmit: (446 MHz + 25 KHz )
 <pre>osmocom_siggen -a bladerf=0,fpga=/opt/bladeRF/fpga/hostedx40.rbf -s 8000000 -f 446000000 -g 4 --sine -x 25000</pre>
 
 { MORE TO COME }
-
