@@ -2,8 +2,11 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 
 ### Current Items ###
 - Clean up defects detected by Coverity scan of dev-cli_async merge
-- Add device caching to bladeRF src/sink gr-osmosdr to allow for full-duplex support
+- Merge version caching and fix for empty FPGA version number in bladeRF-cli (dev-version_fix_and_cache)
+- Add device caching to bladeRF src/sink gr-osmosdr to allow for full-duplex support (dxld is currently working on this)
 - Audit library messages being printed out to make sure they are of the appropriate type (debug, info, etc)
+- Clean up lms.c (return values, style, etc.)
+- Complete CLI scripting
 - Figure out why linux has a bandwidth allocation issue after a ^c from a program
 - Get a Windows 8 machine and see why accesses fail
 - Add some hotkey support to test_repeater to allow the user to adjust RX/TX gains
