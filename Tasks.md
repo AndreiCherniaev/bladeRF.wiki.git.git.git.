@@ -1,7 +1,7 @@
 This is a revolving list of tasks that we need to do.  Priorities change constantly.
 
 ### Current Items ###
-- Get CLI using async interface
+- Clean up defects detected by Coverity scan of dev-cli_async merge
 - Add device caching to bladeRF src/sink gr-osmosdr to allow for full-duplex support
 - Audit library messages being printed out to make sure they are of the appropriate type (debug, info, etc)
 - Figure out why linux has a bandwidth allocation issue after a ^c from a program
