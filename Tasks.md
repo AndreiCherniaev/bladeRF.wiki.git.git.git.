@@ -1,8 +1,6 @@
 This is a revolving list of tasks that we need to do.  Priorities change constantly.
 
 ### Current Items ###
-- Clean up defects detected by Coverity scan of dev-cli_async merge
-- Merge version caching and fix for empty FPGA version number in bladeRF-cli (dev-version_fix_and_cache)
 - Add device caching to bladeRF src/sink gr-osmosdr to allow for full-duplex support (dxld is currently working on this)
 - Audit library messages being printed out to make sure they are of the appropriate type (debug, info, etc)
 - Clean up lms.c (return values, style, etc.)
