@@ -1,65 +1,106 @@
 = Debian based Distro setup guide =
 
-This guide was written using Ubuntu 13.04.  So may have some issues on other flavors. But should be close enough to figure out..
+This guide is for Ubuntu 13.04, but the same general process applies to other recent Debian-based distributions. It is recommended that users of Ubuntu of 12.04 and earlier upgrade to a more recent version.
 
-* Build Process Overview
-# Build libusb tools and libraries from Nuand GIT Master
-# Building GNURADIO from GIT
-# Build for gr-osmosdr
-# Simple test applications to verify device operation
+== Dependencies ==
 
-== Build libusb tools and libraries from Nuand GIT Master ==
+* Install dependent packages for the build
+<pre>sudo apt-get install libusb-1.0-0-dev libusb-1.0-0 build-essential cmake libncurses5-dev libtecla1 libtecla1-dev pkg-config git</pre>
 
-* NOTE: If you are installing libusb-1.0-0-dev on any version of Ubuntu that is less than 13.10 you will have to manually install libusb-1.0-0-dev from Ubuntu 13.10 packages. The two packages http://packages.ubuntu.com/saucy/libusb-1.0-0 and http://packages.ubuntu.com/saucy/libusb-1.0-0-dev can be installed by running:
+
+* '''NOTE:''' If you are installing libusb-1.0-0-dev on any version of Ubuntu that is less than 13.10 you will have to manually install libusb-1.0-0-dev from Ubuntu 13.10 packages. The two packages http://packages.ubuntu.com/saucy/libusb-1.0-0 and http://packages.ubuntu.com/saucy/libusb-1.0-0-dev can be installed by running:
 <pre>wget http://de.archive.ubuntu.com/ubuntu/pool/main/libu/libusbx/libusb-1.0-0_1.0.16-3_amd64.deb ; dpkg -i libusb-1.0-0_1.0.16-3_amd64.deb
 wget http://de.archive.ubuntu.com/ubuntu/pool/main/libu/libusbx/libusb-1.0-0-dev_1.0.16-3_amd64.deb ; dpkg -i libusb-1.0-0-dev_1.0.16-3_amd64.deb</pre>
 
-* Clone the libusb support branch to your system
+While it is possible to use >= libusb-1.0.12, the bladeRF-flash utility will not be available due to hotplug support not being added until libusb-1.0.16. Versions earlier than libusb-1.0.12 are not supported.
+
+== Building from source ==
+
+=== Clone the bladeRF git repository ===
+
+To obtain the latest source code for the first time, clone the Nuand git repository via:
 <pre>git clone https://github.com/Nuand/bladeRF.git ./bladeRF</pre>
 
-* Install dependent packages for the build
-<pre>sudo apt-get install libusb-1.0-0-dev libusb-1.0-0 build-essential cmake libncurses5-dev libtecla1 libtecla1-dev pkg-config</pre>
+In the future, you can update the repository via:
+<pre>
+cd ./bladeRF
+git pull
+</pre>
 
-* building the libusb stuff
+=== Configure the build ===
+
+First enter the directory containing the host source. Then create and enter a directory to perform the build in. By working out of the a 'build' directory, it's easy to later clean up, by simply removing 'build/'.
+
 <pre>
 cd <git_base_dir>/host/
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Debug -DINSTALL_UDEV_RULES=ON -DCMAKE_INSTALL_PREFIX=/opt/bladeRF/ ../
+</pre>
+
+
+Next, configure the build. In the below example, we:
+* Set up a Debug build
+* Enable the installation of udev rules
+* Specify that files should be installed into /opt/nuand/bladeRF
+
+<pre>
+cmake -DCMAKE_BUILD_TYPE=Debug -DINSTALL_UDEV_RULES=ON -DCMAKE_INSTALL_PREFIX=/opt/nuand/bladeRF/ ../
+</pre>
+
+=== Perform the build and installation ===
+<pre>
 make
 sudo make install
 </pre>
 
-* add bladeRF bins/scripts to search path
-Add a profile.d script to globaly set add bladeRF to system search path
-Create a profile.d script for bladeRF
+=== Add bladeRF tools to your search path ===
+
+==== Add bladeRF binaries to your user's path ====
+If you'd like the bladeRF tools to be in your current user's search path only, follow this subsection.  Otherwise, skip to the next subsection.
+
+For bash and zsh users, add the following to your '.bashrc' or '.zshrc', respectively:
+<pre>
+export PATH=$PATH:/opt/nuand/bladeRF/bin
+export BLADERF_DIR=/opt/nuand/bladeRF
+</pre>
+
+For csh users, add the following to your .cshrc:
+<pre>
+setenv PATH $PATH:/opt/nuand/bladeRF/bin
+setenv BLADERF_DIR opt/nuand/bladeRF
+</pre>
+
+==== Add bladeRF binaries to the global search path ====
+If you prefer that the bladeRF binaries be added to the search path for all users, follow this subsection. Otherwise, skip to the next section.
+
+* Add a profile.d script to globaly set add bladeRF to system search path. Frist create a profile.d script for bladeRF items.
 <pre>
 sudo vi /etc/profile.d/bladeRF.sh
 </pre>
-Put this in it
+Add the following contents:
 <pre>
 #!/bin/bash
-
-#add bladeRF binaries & scripts to path
-export PATH=$PATH:/opt/bladeRF/bin
-export BLADERF_DIR=/opt/bladeRF/
+export PATH=$PATH:/opt/nuand/bladeRF/bin
+export BLADERF_DIR=/opt/nuand/bladeRF
 </pre>
 
-* Add /opt/bladeRF/lib to library search path
-Create a new file /etc/ld.so.conf.d/bladeRF.conf
+=== Add bladeRF libraries to the search path ===
+Create a new file, '/etc/ld.so.conf.d/bladeRF.conf'
 <pre>
 sudo vi /etc/ld.so.conf.d/bladeRF.conf
 </pre>
 Put the following line in it:
 <pre>
-/opt/bladeRF/lib/
+/opt/nuand/bladeRF/lib/
 </pre>
 
-now run "sudo ldconfig" to update library paths
-now run "source /etc/profile.d/bladeRF.sh" to add the new environment variables to your working shell.
+* Run the following to update library search paths:
+<pre>sudo ldconfig</pre> 
 
-* Initial firmware loading & fpga loading procedure
-Assuming you added /opt/bladeRF/bin to your path or system path. (not covered here, just google it.. )
+== Detecting the device ==
+
+From here on, it is assumed that the bladeRF tools are in your PATH.
+
 See if you can detect your bladeRF:
 <pre>bladeRF-cli -p</pre>
 Should return something that looks like:
