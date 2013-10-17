@@ -99,17 +99,25 @@ Put the following line in it:
 
 == Detecting the device ==
 
-From here on, it is assumed that the bladeRF tools are in your PATH.
+From here on, it is assumed that the bladeRF tools are in your '''$PATH'''.
 
-See if you can detect your bladeRF:
+First, use the bladeRF-cli to probe for devices attached to the system.
 <pre>bladeRF-cli -p</pre>
-Should return something that looks like:
+
+If a device is plugged in, you should see something similar to the following:
 <pre>
-    Backend: libusb
-    Serial: <Not yet supported> or < SN Number >  Depends on FPGA image.
-    USB Bus: 6
-    USB Address: 4
+    Backend:        libusb
+    Serial:         f12ce1037830a1b27f3ceeba1f521413
+    USB Bus:        4
+    USB Address:    8
 </pre>
+
+If you do not see any device listed:
+ * Verify that your user is in the ''plugdev'' group, as specified in '/etc/udev/rules.d/88-nuand.rules'
+ * Double check ''dmesg'' and ''lsusb'' output
+ ** The bladeRF's VID=1d50 and PID=6066
+ ** If you see a Cypress device with VID=04b4 PID=00f3, then the bladeRF is running in the bootloader mode. No worries! Follow the instructions at: (Coming soon)
+ * See the Troubleshooting page (Coming soon) before continuing.
 
 Then load the FX3 firmware.  Note: you only need to do this once.. It's stored in flash, and survives power cycling.  The FPGA image, needs to be loaded every time.
 <pre>bladeRF-cli -f <firmware.img></pre>
