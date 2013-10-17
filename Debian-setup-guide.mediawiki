@@ -161,7 +161,7 @@ you will need sudo for this.
 Put the following into it:
 <pre>#!/bin/bash
 # add gnuradio and bladerf stuff to path
-export PATH=$PATH:/opt/gnuradio-3.7.1git/bin:/opt/bladeRF/
+export PATH=$PATH:/opt/gnuradio-3.7.1git/bin:/opt/nuand/bladeRF/
 # add gnuradio python libraries to python search path
 if [ $PYTHONPATH ]; then
         export PYTHONPATH=$PYTHONPATH:/opt/gnuradio-3.7.1git/lib/python2.7/dist-packages
@@ -217,7 +217,7 @@ If you get a pop up about PYTHONPATH or LD_LIBRARY_PATH, check env to see if the
 $ git clone git://git.osmocom.org/gr-osmosdr ./gr-osmosdr
 $ mkdir ~/sandbox/gr-osmosdr/build
 $ cd ~/sandbox/gr-osmosdr/build
-$ cmake -DLIBBLADERF_INCLUDE_DIRS=/opt/bladeRF/include/ -DLIBBLADERF_LIBRARIES=/opt/bladeRF/lib/ -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git ../  (change as needed)
+$ cmake -DLIBBLADERF_INCLUDE_DIRS=/opt/nuand/bladeRF/include/ -DLIBBLADERF_LIBRARIES=/opt/nuand/bladeRF/lib/ -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git ../  (change as needed)
 $ make
 $ sudo make install
 </pre>
@@ -225,8 +225,8 @@ $ sudo make install
 == Simple test applications to verify device operation ==
 *Using osmocom stand-alone applications:
 Test Receive: (446 MHz)
-<pre>osmocom_fft -a bladerf=0,fpga=/opt/bladeRF/fpga/hostedx40.rbf -s 8000000 -f 446000000</pre>
+<pre>osmocom_fft -a bladerf=0,fpga=/opt/nuand/bladeRF/fpga/hostedx40.rbf -s 8000000 -f 446000000</pre>
 Test Transmit: (446 MHz + 25 KHz )
-<pre>osmocom_siggen -a bladerf=0,fpga=/opt/bladeRF/fpga/hostedx40.rbf -s 8000000 -f 446000000 -g 4 --sine -x 25000</pre>
+<pre>osmocom_siggen -a bladerf=0,fpga=/opt/nuand/bladeRF/fpga/hostedx40.rbf -s 8000000 -f 446000000 -g 4 --sine -x 25000</pre>
 
 { MORE TO COME }
