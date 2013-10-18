@@ -31,7 +31,12 @@ To obtain the latest source code for the first time, clone the Nuand git reposit
 <pre>
 git clone https://github.com/Nuand/bladeRF.git ./bladeRF
 cd ./bladeRF
-ls  # You'll see something similar to the following:
+ls  
+</pre>
+
+
+The directory contents will look something like this:
+<pre>
 CMakeLists.txt  COPYING          fx3_firmware  host
 CONTRIBUTORS    firmware_common  hdl           README.md
 </pre>
