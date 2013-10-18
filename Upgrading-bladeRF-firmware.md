@@ -1,9 +1,12 @@
-Upgrading from v1.0 is a little trickier than upgrading from more recent firmware images. If you received your unit before September 10th you might encounter some issues on Windows; the troubleshooting ideas below should provide enough methods to flash any v1.0 bladeRF.
+This page describes how to update the firmware on the bladeRF.
+
+Upgrading from v1.0 is a little trickier than upgrading from more recent firmware images. If you received your unit before September 10th, you might encounter some issues on Windows; the troubleshooting ideas below should provide enough methods to flash any v1.0 bladeRF.
+
 # Upgrading on Linux #
 
 1. Ensure you've installed all libraries and utilities, per the ''Getting Started'' guides
 2. Download the latest FX3 image and flash it:
-<pre>wget http://nuand.com/fx3/latest.img ; bladeRF -f latest.img</pre>
+<pre>wget http://nuand.com/fx3/latest.img && bladeRF -f latest.img</pre>
 
 ### Troubleshooting ideas for Linux ###
 
@@ -39,11 +42,11 @@ bladerf_winflasher uses CyUSB so the unsigned driver is required for it to work.
 2. Follow the "Force Cypress Bootloader" instruction below. Once the jumper is removed you can use the Cypress USB control center utility from the SDK to SPI flash the device. The FX3 SDK that installs with the Cypress USB control center can be downloaded from http://www.cypress.com/?rID=57990 .
 
 # Force Cypress Bootloader #
-This is the foolproof way of flashing your bladeRF on Windows by forcing the unit to boot to the Cypress bootloader.
+This is the foolproof way of flashing your bladeRF by forcing the unit to boot to the Cypress bootloader.
 
 1. First you have to take one of the power jumpers, it doesn't matter which, and short the two outer pins on J64 (shown below). This causes the FX3 to not see the SPI flash and boot into the cypress bootloader.
 ![J64](http://nuand.com/J64.png)
 
 2. Plug the device in at this point.
 
-3. **IMPORTANT:** Once the device is plugged in, and recognized as a Cypress bootloader remove the jumper from J64.
+3. **IMPORTANT:** Once the device is plugged in, and recognized as a Cypress bootloader remove the jumper from J64. If you forget to remove the jumper, the device will not be able to write to the SPI flash.
