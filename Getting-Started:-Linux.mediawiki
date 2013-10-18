@@ -174,13 +174,13 @@ bladeRF> load fpga <path/to/fpga/file>
 
 At this point, you're ready to start using your device!
 
-== Building GNU Radio using build-gnuradio ==
+== Building GNU Radio and gr-osmosdr ==
 
 update: [[Build gnuradio-3.7.1 | Better gnuradio build guide ]]
 
 The following below builds the latest release from git. Note that this is "bleeding edge" and my be broken from time to time.
 
-== Using gnuradio-build to pull and check dependencies ==
+=== Using gnuradio-build to pull and check dependencies ===
 <pre>
 cd ~/sandbox
 mkdir gnuradio-builds
@@ -191,7 +191,7 @@ chmod +x ./build-gnuradio
 </pre>
 This takes a while...  check top, seems like it sits a long time on checking prerequisites with no output.
 
-== Compile GNU Radio ==
+=== Compile GNU Radio ===
 <pre>
 cd ~/sandbox/gnuradio-builds/gnuradio/
 mkdir build
@@ -202,7 +202,7 @@ make
 ( This is a large build and will take some time..  good time to take a break..)
 <pre>sudo make install</pre>
 
-== Add GNU Radio to linker path and executable path ==
+=== Add GNU Radio to linker path and executable path ===
 create a new file call /etc/profile.d/gnuradio.sh
 you will need sudo for this.
 <pre>sudo vi /etc/profile.d/gnuradio.sh</pre>
@@ -261,7 +261,7 @@ You will now need to logout and log back in for the profile.d settings to take e
 Once you have logged back in to your desktop, you should be able to run gnuradio-companion.
 If you get a pop up about PYTHONPATH or LD_LIBRARY_PATH, check env to see if the python path or ldconfig returns the correct libraries.
 
-== Build for gr-osmosdr ==
+=== Fetch and build gr-osmosdr ===
 * Pull the git version of gr-osmosdr, build, install
 <pre>$ cd ~/sandbox
 $ git clone git://git.osmocom.org/gr-osmosdr ./gr-osmosdr
@@ -272,7 +272,7 @@ $ make
 $ sudo make install
 </pre>
 
-== Simple test applications to verify device operation ==
+==- Simple test applications to verify device operation ==-
 *Using osmocom stand-alone applications:
 Test Receive: (446 MHz)
 <pre>osmocom_fft -a bladerf=0,fpga=/opt/nuand/bladeRF/fpga/hostedx40.rbf -s 8000000 -f 446000000</pre>
