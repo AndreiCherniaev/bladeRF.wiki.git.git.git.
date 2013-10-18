@@ -54,7 +54,7 @@ cd build
 
 Next, configure the build. In the below example, we:
 * Set up a Debug build
-* Enable the installation of udev rules
+* Enable the installation of udev rules, which grant members of the ''plugdev'' group read-write access to bladeRF devices.
 * Specify that files should be installed into /usr/local
 ** You can install into a different location via the ''-DCMAKE_INSTALL_PREFIX=/some/desired/path'' option. Note that you'll need to need to configure binary and library search paths if you install elsewhere.
 
@@ -63,7 +63,7 @@ cmake -DCMAKE_BUILD_TYPE=Debug -DINSTALL_UDEV_RULES=ON -DCMAKE_INSTALL_PREFIX=/o
 </pre>
 
 
-The current udev rules that are install grant read-write permission the the bladeRF device to users in the ''plugdev'' group.  Verify that your user is in this group by checking that you see ''plugdev'' in the output for the ''groups'' command.  If you do not, follow the instructions [shown here](http://oreilly.com/openbook/debian/book/ch07_01.html) to add yourself to this group, first creating the group if it doesn't already exist. (Generally, this group already exists and desktop users in it.)
+Verify that your user is in the ''plugdev'' group by checking that you see ''plugdev'' in the output for the ''groups'' command.  If you do not, follow the instructions [http://oreilly.com/openbook/debian/book/ch07_01.html shown here] to add yourself to this group, first creating the group if it doesn't already exist. (Generally, this group already exists and desktop users in it.)
 
 === Perform the build and installation ===
 <pre>
@@ -71,36 +71,10 @@ make
 sudo make install
 </pre>
 
-=== Add bladeRF tools to your search path ===
+=== Uninstall ===
+Note that from this same directory, you can run ''sudo make uninstall'' to uninstall the files place on your sustem in the previous step.  
 
-==== Add bladeRF binaries to your user's path ====
-If you'd like the bladeRF tools to be in your current user's search path only, follow this subsection.  Otherwise, skip to the next subsection.
-
-For bash and zsh users, add the following to your '.bashrc' or '.zshrc', respectively:
-<pre>
-export PATH=$PATH:/opt/nuand/bladeRF/bin
-export BLADERF_DIR=/opt/nuand/bladeRF
-</pre>
-
-For csh users, add the following to your .cshrc:
-<pre>
-setenv PATH $PATH:/opt/nuand/bladeRF/bin
-setenv BLADERF_DIR opt/nuand/bladeRF
-</pre>
-
-==== Add bladeRF binaries to the global search path ====
-If you prefer that the bladeRF binaries be added to the search path for all users, follow this subsection. Otherwise, skip to the next section.
-
-* Add a profile.d script to globaly set add bladeRF to system search path. Frist create a profile.d script for bladeRF items.
-<pre>
-sudo vi /etc/profile.d/bladeRF.sh
-</pre>
-Add the following contents:
-<pre>
-#!/bin/bash
-export PATH=$PATH:/opt/nuand/bladeRF/bin
-export BLADERF_DIR=/opt/nuand/bladeRF
-</pre>
+The ''install_manifest.txt'' file, created after running previous step successfully, lists all the files installed.  It is a good idea to back up this file if you plan on removing this build directory later.
 
 === Add bladeRF libraries to the search path ===
 Create a new file, '/etc/ld.so.conf.d/bladeRF.conf'
