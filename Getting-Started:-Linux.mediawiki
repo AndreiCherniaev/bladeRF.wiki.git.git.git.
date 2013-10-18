@@ -1,6 +1,6 @@
 This guide describes the process of building and installing the bladeRF host libraries and tool for a Linux system, and quickly getting a device up and running using pre-built firmware and FPGA images.
 
-== Dependencies ==
+== Installing dependencies ==
 
 Install dependent packages for the build:
 <pre>$ sudo apt-get install libusb-1.0-0-dev libusb-1.0-0 build-essential cmake libncurses5-dev libtecla1 libtecla1-dev pkg-config git</pre>
@@ -20,9 +20,9 @@ $ dpkg -s libusb-1.0-0 libusb-1.0-0-dev
 $ wget http://de.archive.ubuntu.com/ubuntu/pool/main/libu/libusbx/libusb-1.0-0-dev_1.0.16-3_amd64.deb && sudo dpkg -i libusb-1.0-0-dev_1.0.16-3_amd64.deb</pre>
 
 
-=== Building bladeRF libraries and tools from source ===
+== Building bladeRF libraries and tools from source ==
 
-==== Clone the bladeRF git repository ====
+=== Clone the bladeRF git repository ===
 
 To obtain the latest source code for the first time, clone the Nuand git repository via:
 <pre>
@@ -43,7 +43,7 @@ In the future, you can update the repository via:
 $ git pull
 </pre>
 
-==== Configure the build ====
+=== Configure the build ===
 
 First enter the directory containing the host source. Then create and enter a directory to perform the build in. By working out of the a 'build' directory, it's easy to later clean up, by simply removing 'build/'.
 
@@ -67,7 +67,7 @@ $ cmake -DCMAKE_BUILD_TYPE=Debug -DINSTALL_UDEV_RULES=ON ../
 
 Verify that your user is in the ''plugdev'' group by running '''groups''' command.  If you do not see ''plugdev'' listed, follow the instructions [http://oreilly.com/openbook/debian/book/ch07_01.html shown here] to add yourself to this group, first creating the group if it doesn't already exist. (Generally, this is unnecessary as most distos create this group and put desktop users in it.)
 
-==== Perform the build and installation ====
+=== Perform the build and installation ===
 
 The following commands:
 # Perform the build
@@ -80,14 +80,14 @@ $ sudo make install
 $ sudo ldconfig
 </pre>
 
-==== Uninstalling later ====
-Note that from this same directory, you can run ''sudo make uninstall'' to uninstall the files place on your sustem in the previous step.  
+=== Uninstalling later ===
+Note that from this same directory, you can run ''sudo make uninstall'' to uninstall the files place on your system in the previous step.  
 
 The ''install_manifest.txt'' file, created after running previous step successfully, lists all the files installed.  It is a good idea to back up this file if you plan on removing this build directory later.
 
-=== Checking basic device operation ===
+== Checking basic device operation ==
 
-=== Detecting the bladeRF ===
+== Detecting the bladeRF ==
 With the libraries and tools installed, we can now use the ''bladeRF-cli'' (command line interface) to probe for devices attached to the system.
 
 First, take a look at the command-line options:
@@ -112,7 +112,7 @@ If you do not see any device listed:
 ** If you see a Cypress device with VID=04b4 PID=00f3, then the bladeRF is running in the bootloader mode. No worries! Follow the instructions at: (Coming soon)
 * See the Troubleshooting page (Coming soon) before continuing.
 
-=== Viewing additional device information ===
+== Viewing additional device information ==
 
 More information about the attached device can be viewed while running ''bladeRF-cli'' in interactive mode. Enter this mode and issue the '''help''' command to see a list of available command.  Use the '''info''' command to print information about the device, and '''version''' to view version information, most notably, the firmware:
 
@@ -155,7 +155,7 @@ Here we see the device's serial number, DAC calibration, FPGA information, and U
 ********************************************************************************
 </pre>
 
-=== Loading the FPGA ===
+== Loading the FPGA ==
 Support for loading the FPGA from flash automatically is currently supported and undergoing further testing. For simplicity, this guide shows how to load the FPGA without storing it into flash for autoloading. (As a result, you'll have to load the FPGA each time the device is reset or plugged in.)
 
 FPGA images can be obtained from [http://www.nuand.com/fpga|the Nuand website] or from a [http://hoopycat.com/bladerf_builds/|nightly build of "bleeding edge" images].
