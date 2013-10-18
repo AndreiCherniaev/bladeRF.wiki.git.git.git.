@@ -182,36 +182,35 @@ The following below builds the latest release from git. Note that this is "bleed
 
 === Using gnuradio-build to pull and check dependencies ===
 <pre>
-cd ~/sandbox
-mkdir gnuradio-builds
-cd gnuradio-builds
-wget http://www.sbrac.org/files/build-gnuradio
-chmod +x ./build-gnuradio
-./build-gnuradio -m prereqs gitfetch
+$ cd ~/sandbox
+$ mkdir gnuradio-builds
+$ cd gnuradio-builds
+$ wget http://www.sbrac.org/files/build-gnuradio
+$ chmod +x ./build-gnuradio
+$ ./build-gnuradio -m prereqs gitfetch
 </pre>
 This takes a while...  check top, seems like it sits a long time on checking prerequisites with no output.
 
 === Compile GNU Radio ===
 <pre>
-cd ~/sandbox/gnuradio-builds/gnuradio/
-mkdir build
-cd build
-cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git  ../ (based on git release, change as needed)
-make
+$ cd ~/sandbox/gnuradio-builds/gnuradio/
+$ mkdir build
+$ cd build
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git  ../ (based on git release, change as needed)
+$ make
 </pre>
 ( This is a large build and will take some time..  good time to take a break..)
-<pre>sudo make install</pre>
+<pre>$ sudo make install</pre>
 
 === Add GNU Radio to linker path and executable path ===
-create a new file call /etc/profile.d/gnuradio.sh
-you will need sudo for this.
+Create a new file called /etc/profile.d/gnuradio.sh
 <pre>sudo vi /etc/profile.d/gnuradio.sh</pre>
 
 Put the following into it:
 <pre>#!/bin/bash
-# add gnuradio and bladerf stuff to path
+# Add GNU Radio binaries to the search path
 export PATH=$PATH:/opt/gnuradio-3.7.1git/bin
-# add gnuradio python libraries to python search path
+# Add GNU Radio python libraries to python search path
 if [ $PYTHONPATH ]; then
         export PYTHONPATH=$PYTHONPATH:/opt/gnuradio-3.7.1git/lib/python2.7/dist-packages
 else
@@ -229,7 +228,7 @@ Put this in the new file:
 '''(note:) on some 64 bit systems, you might need a lib64 directory in this file as well?'''
 
 * now update your library cache
-<pre> sudo ldconfig -v | grep gnuradio</pre>
+<pre>$ sudo ldconfig -v | grep gnuradio</pre>
 
 You should see something akin to the following:
 <pre>/opt/gnuradio-3.7.1git/lib:
