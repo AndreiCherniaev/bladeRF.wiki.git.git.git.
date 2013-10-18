@@ -73,9 +73,9 @@ Verify that your user is in the ''plugdev'' group by running '''groups''' comman
 ==== Perform the build and installation ====
 
 The following commands:
-1. Perform the build
-2. Install files to /usr/local or the location specified by ''DCMAKE_INSTALL_PREFIX''
-3. Updated share library paths, so that libbladeRF can be found
+# Perform the build
+# Install files to /usr/local or the location specified by ''DCMAKE_INSTALL_PREFIX''
+# Updated share library paths, so that libbladeRF can be found
 
 <pre>
 $ make
@@ -90,7 +90,7 @@ The ''install_manifest.txt'' file, created after running previous step successfu
 
 
 
-=== Detecting the device ===
+=== Detecting and Inspecting the device ===
 With the libraries and tools installed, we can now use the ''bladeRF-cli'' (command line interface) to probe for devices attached to the system.
 
 First, take a look at the command-line options:
@@ -109,11 +109,11 @@ $ bladeRF-cli -p
 </pre>
 
 If you do not see any device listed:
- * Verify that your user is in the ''plugdev'' group
- * Double check ''dmesg'' and ''lsusb'' output
- ** The bladeRF's VID=1d50 and PID=6066
- ** If you see a Cypress device with VID=04b4 PID=00f3, then the bladeRF is running in the bootloader mode. No worries! Follow the instructions at: (Coming soon)
- * See the Troubleshooting page (Coming soon) before continuing.
+* Verify that your user is in the ''plugdev'' group
+* Double check ''dmesg'' and ''lsusb'' output
+** The bladeRF's VID=1d50 and PID=6066
+** If you see a Cypress device with VID=04b4 PID=00f3, then the bladeRF is running in the bootloader mode. No worries! Follow the instructions at: (Coming soon)
+* See the Troubleshooting page (Coming soon) before continuing.
 
 
 
