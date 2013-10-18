@@ -50,3 +50,7 @@ This is the foolproof way of flashing your bladeRF by forcing the unit to boot t
 2. Plug the device in at this point.
 
 3. **IMPORTANT:** Once the device is plugged in, and recognized as a Cypress bootloader remove the jumper from J64. If you forget to remove the jumper, the device will not be able to write to the SPI flash.
+
+
+# Getting further help
+If you're stuck in the bootloader or having trouble flashing the image, don't fret! Join the #bladerf channel on Freenode or visit the [http://nuand.com/forums/viewforum.php?f=4 Nuand troubleshooting forum]. There's generally a number of folks around who have experience with flashing the device.
