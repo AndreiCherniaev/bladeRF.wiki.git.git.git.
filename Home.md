@@ -15,6 +15,7 @@ This wiki will serve as a place to create some community-based documentation. Pl
 # Development #
 
 * Current and planned development [[tasks|Tasks]]
+* [[Testing|Release-testing]]
 * [[Coverity scans|Using-Coverity-Scan]]
 
 # Tutorials and Related Reading #
