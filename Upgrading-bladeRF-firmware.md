@@ -8,7 +8,7 @@ Upgrading from v1.0 is a little trickier than upgrading from more recent firmwar
 2. Download the latest FX3 image and flash it:
 <pre>wget http://nuand.com/fx3/latest.img && bladeRF -f latest.img</pre>
 
-### Troubleshooting ideas for Linux ###
+## Troubleshooting ideas for Linux ##
 
 1. Some xHCIs have problems identifying bladeRFs running older firmware versions. Repeating the upgrade instructions with the bladeRF plugged into a USB2.0 port should make it visible to the OS.
 2. Try forcing into Cypress Bootloader (see below for instructions) and use bladeRF-flash to upgrade the device.
@@ -19,13 +19,13 @@ Upgrading from v1.0 is a little trickier than upgrading from more recent firmwar
 Pre-compiled bladeRF utilities can be installed from http://nuand.com/downloads/bladerf_win_installer.exe
 or they can built from source following the instructions at https://github.com/Nuand/bladeRF/wiki/Getting-Started%3A-Windows .
 
-### Method #1: bladeRF-cli ###
+## Method #1: bladeRF-cli ##
 1. Acquire bladeRF-cli and bladeRF libraries either from the installer or source code (see previous paragraph)
 2. Download the latest FX3 image and flash it:
 <pre>wget http://nuand.com/fx3/latest.img ; bladeRF -f latest.img</pre>
 3. Unplug and plug the bladeRF
 
-### Method #2 : bladerf_winflasher ###
+## Method #2 : bladerf_winflasher ##
 bladerf_winflasher uses CyUSB so the unsigned driver is required for it to work. The flasher can run during the installer, but it can be run directly from <pre>C:\Program Files (x86)\bladeRF\bladerf_winflasher.exe</pre>.
 
 1. Optionally plug the bladeRF into a USB2.0 port. In case only USB3.0 ports exist, use a USB2.0 micro cable.
@@ -35,7 +35,7 @@ bladerf_winflasher uses CyUSB so the unsigned driver is required for it to work.
 5. Unplug and plug the bladeRF
 
 
-### Troubleshooting ideas for Windows ###
+## Troubleshooting ideas for Windows ##
 
 1. Some xHCIs have problems identifying bladeRFs running older firmware versions. Repeating the upgrade instructions with the bladeRF plugged into a USB2.0 port should make it visible to the OS.
 
