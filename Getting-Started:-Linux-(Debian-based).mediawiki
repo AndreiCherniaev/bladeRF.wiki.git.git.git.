@@ -161,7 +161,7 @@ Here we see the device's serial number, DAC calibration, FPGA information, and U
 === Loading the FPGA ===
 Support for loading the FPGA from flash automatically is currently supported and undergoing further testing. For simplicity, this guide shows how to load the FPGA without storing it into flash for autoloading. (As a result, you'll have to load the FPGA each time the device is reset or plugged in.)
 
-FPGA images can be obtained from [[http://www.nuand.com/fpga|the Nuand website]] or from a [[http://hoopycat.com/bladerf_builds/|nightly build of "bleeding edge" images]].
+FPGA images can be obtained from [http://www.nuand.com/fpga|the Nuand website] or from a [http://hoopycat.com/bladerf_builds/|nightly build of "bleeding edge" images].
 
 To load an image from the command line.
 <pre>
