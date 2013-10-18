@@ -115,7 +115,7 @@ If you do not see any device listed:
 ** If you see a Cypress device with VID=04b4 PID=00f3, then the bladeRF is running in the bootloader mode. No worries! Follow the instructions at: (Coming soon)
 * See the Troubleshooting page (Coming soon) before continuing.
 
-=== Gathering additional information  ===
+=== Viewing additional device information ===
 
 More information about the attached device can be viewed while running ''bladeRF-cli'' in interactive mode. Enter this mode and issue the '''help''' command to see a list of available command.  Use the '''info''' command to print information about the device, and '''version''' to view version information, most notably, the firmware:
 
@@ -150,7 +150,7 @@ bladeRF> version
 Here we see the device's serial number, DAC calibration, FPGA information, and USB connection information.  Take note of the FPGA size, as this will help determine which FPGA file to load.
 
 
-'''Note:''' If you see the following message, it is required that you update the firmware before continuing to the next section.  See [[this wiki page|Upgrading-bladeRF-firmware]] for more information on updating your firmware.
+'''Note:''' If you see the following message, it is required that you update the firmware before continuing to the next section.  See [[Upgrading-bladeRF-firmware|this wiki page]] for more information on updating your firmware.
 <pre>
 ********************************************************************************
 * ENTERING LEGACY MODE, PLEASE UPGRADE TO THE LATEST FIRMWARE BY RUNNING:
