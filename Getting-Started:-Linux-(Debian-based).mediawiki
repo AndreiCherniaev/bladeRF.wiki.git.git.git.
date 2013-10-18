@@ -159,19 +159,21 @@ Here we see the device's serial number, DAC calibration, FPGA information, and U
 </pre>
 
 === Loading the FPGA ===
-Support for loading the FPGA from flash automatically is currently supported and undergoing further testing.  For the time being, you can load the FPGA 
+Support for loading the FPGA from flash automatically is currently supported and undergoing further testing. For simplicity, this guide shows how to load the FPGA without storing it into flash for autoloading. (As a result, you'll have to load the FPGA each time the device is reset or plugged in.)
 
+FPGA images can be obtained from [[http://www.nuand.com/fpga|the Nuand website]] or from a [[http://hoopycat.com/bladerf_builds/|nightly build of "bleeding edge" images]].
+
+To load an image from the command line.
 <pre>
+$ bladeRF-cli -l <path/to/fpga/file>
 </pre>
 
-<strong>NOTE</strong>: For the FPGA image, there are 2 different sizes.  The 40kLE FPGA image will only work with the x40 and the 115kLE FPGA image will only work with the x115.  If you see the number `40` or `115` on the large Altera FPGA, you know which FPGA you have.  If you have doubts and the FPGA times out during loading, try the other image.youkno
+Or to load an image while in interactive mode:
+<pre>
+bladeRF> load fpga <path/to/fpga/file>
+</pre>
 
-Recommended firmware and FPGA images to use<br>
-FX3 Image: [http://nuand.com/fx3/latest.img]<br>
-FPGA: [http://nuand.com/fpga]<br>
-bleeding edge FPGA images see http://hoopycat.com/bladerf_builds/
-
-The BladeRF at this point should be ready to go..  Now you just need something to talk to it..  GNURadio is a good candidate..
+At this point, you're ready to start using your device!
 
 == Building GNU Radio using build-gnuradio ==
 
