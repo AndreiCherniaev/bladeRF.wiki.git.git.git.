@@ -1,7 +1,7 @@
 Upgrading from v1.0 is a little trickier than upgrading from more recent firmware images. If you received your unit before September 10th you might encounter some issues on Windows; the troubleshooting ideas below should provide enough methods to flash any v1.0 bladeRF.
 # Upgrading on Linux #
 
-1. Download and install all of the bladeRF libraries and utilities as described here, https://github.com/Nuand/bladeRF/wiki/Linux-startup
+1. Ensure you've installed all libraries and utilities, per the ''Getting Started'' guides
 2. Download the latest FX3 image and flash it:
 <pre>wget http://nuand.com/fx3/latest.img ; bladeRF -f latest.img</pre>
 
