@@ -1,7 +1,4 @@
-This guide describes the process of building and installing the bladeRF host libraries and tool for a Debian-based Linux system, and quickly getting a device up and running using pre-built firmware and FPGA images.
-
-Although this guide was written based upon an Ubuntu 13.04 system, but the same general process applies to other recent Debian-based distributions. It is recommended that users of Ubuntu of 12.04 and earlier upgrade to a more recent version.
-
+This guide describes the process of building and installing the bladeRF host libraries and tool for a Linux system, and quickly getting a device up and running using pre-built firmware and FPGA images.
 
 == Dependencies ==
 
