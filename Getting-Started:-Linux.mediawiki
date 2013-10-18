@@ -178,9 +178,9 @@ At this point, you're ready to start using your device!
 
 update: [[Build gnuradio-3.7.1 | Better gnuradio build guide ]]
 
-The following below builds the latest release from git.. (The bleeding edge) And could be broken from time to time.
+The following below builds the latest release from git. Note that this is "bleeding edge" and my be broken from time to time.
 
-* Use gnuradio-build to pull and check dependencies
+== Using gnuradio-build to pull and check dependencies ==
 <pre>
 cd ~/sandbox
 mkdir gnuradio-builds
@@ -191,7 +191,7 @@ chmod +x ./build-gnuradio
 </pre>
 This takes a while...  check top, seems like it sits a long time on checking prerequisites with no output.
 
-* Compile GNU Radio
+== Compile GNU Radio ==
 <pre>
 cd ~/sandbox/gnuradio-builds/gnuradio/
 mkdir build
@@ -202,7 +202,7 @@ make
 ( This is a large build and will take some time..  good time to take a break..)
 <pre>sudo make install</pre>
 
-* Add GNU Radio to linker path and executable path
+== Add GNU Radio to linker path and executable path ==
 create a new file call /etc/profile.d/gnuradio.sh
 you will need sudo for this.
 <pre>sudo vi /etc/profile.d/gnuradio.sh</pre>
@@ -210,16 +210,16 @@ you will need sudo for this.
 Put the following into it:
 <pre>#!/bin/bash
 # add gnuradio and bladerf stuff to path
-export PATH=$PATH:/opt/gnuradio-3.7.1git/bin:/opt/nuand/bladeRF/
+export PATH=$PATH:/opt/gnuradio-3.7.1git/bin
 # add gnuradio python libraries to python search path
 if [ $PYTHONPATH ]; then
         export PYTHONPATH=$PYTHONPATH:/opt/gnuradio-3.7.1git/lib/python2.7/dist-packages
 else
         export PYTHONPATH=/opt/gnuradio-3.7.1git/lib/python2.7/dist-packages
 fi</pre>
-'''note: update path above if you deviated from gnuradio-3.7.1git'''
+'''Note: update the path above if you deviated from gnuradio-3.7.1git'''
 
-'''note: If your on some non-debian based distro, you might need to replace "dist-packages" with "site-packages".'''
+'''Note: If you're on some non-debian based distro, you might need to replace "dist-packages" with "site-packages".'''
 
 Again, with your favorite text editor, create a new file call /etc/ld.so.conf.d/gnuradio.conf
 you will need sudo for this again.. (one line file)
@@ -231,7 +231,7 @@ Put this in the new file:
 * now update your library cache
 <pre> sudo ldconfig -v | grep gnuradio</pre>
 
-should see this or something similar.. 
+You should see something akin to the following:
 <pre>/opt/gnuradio-3.7.1git/lib:
         libgnuradio-atsc-3.7.1git.so.0.0.0 -> libgnuradio-atsc.so
         libgnuradio-trellis-3.7.1git.so.0.0.0 -> libgnuradio-trellis.so
@@ -254,9 +254,10 @@ should see this or something similar..
         libgnuradio-runtime-3.7.1git.so.0.0.0 -> libgnuradio-runtime.so
         libgnuradio-audio-3.7.1git.so.0.0.0 -> libgnuradio-audio.so
 </pre>
-If so..  All is good. 
 
-you will now need to logout and log back in for the profile.d settings to take effect.
+If so, you're all set!
+
+You will now need to logout and log back in for the profile.d settings to take effect.
 Once you have logged back in to your desktop, you should be able to run gnuradio-companion.
 If you get a pop up about PYTHONPATH or LD_LIBRARY_PATH, check env to see if the python path or ldconfig returns the correct libraries.
 
@@ -266,7 +267,7 @@ If you get a pop up about PYTHONPATH or LD_LIBRARY_PATH, check env to see if the
 $ git clone git://git.osmocom.org/gr-osmosdr ./gr-osmosdr
 $ mkdir ~/sandbox/gr-osmosdr/build
 $ cd ~/sandbox/gr-osmosdr/build
-$ cmake -DLIBBLADERF_INCLUDE_DIRS=/opt/nuand/bladeRF/include/ -DLIBBLADERF_LIBRARIES=/opt/nuand/bladeRF/lib/ -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git ../  (change as needed)
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git ../
 $ make
 $ sudo make install
 </pre>
@@ -277,5 +278,3 @@ Test Receive: (446 MHz)
 <pre>osmocom_fft -a bladerf=0,fpga=/opt/nuand/bladeRF/fpga/hostedx40.rbf -s 8000000 -f 446000000</pre>
 Test Transmit: (446 MHz + 25 KHz )
 <pre>osmocom_siggen -a bladerf=0,fpga=/opt/nuand/bladeRF/fpga/hostedx40.rbf -s 8000000 -f 446000000 -g 4 --sine -x 25000</pre>
-
-{ MORE TO COME }
