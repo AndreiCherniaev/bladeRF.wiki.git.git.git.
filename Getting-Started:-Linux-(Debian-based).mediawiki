@@ -88,9 +88,9 @@ Note that from this same directory, you can run ''sudo make uninstall'' to unins
 
 The ''install_manifest.txt'' file, created after running previous step successfully, lists all the files installed.  It is a good idea to back up this file if you plan on removing this build directory later.
 
+=== Checking basic device operation ===
 
-
-=== Detecting and Inspecting the device ===
+=== Detecting the bladeRF ===
 With the libraries and tools installed, we can now use the ''bladeRF-cli'' (command line interface) to probe for devices attached to the system.
 
 First, take a look at the command-line options:
@@ -115,9 +115,54 @@ If you do not see any device listed:
 ** If you see a Cypress device with VID=04b4 PID=00f3, then the bladeRF is running in the bootloader mode. No worries! Follow the instructions at: (Coming soon)
 * See the Troubleshooting page (Coming soon) before continuing.
 
+=== Gathering additional information  ===
+
+More information about the attached device can be viewed while running ''bladeRF-cli'''s interactive mode. Enter this mode and issue the '''help''' command to see a list of available command.  Use the '''info''' command to print information about the device, and '''version''' to view version information, most notably, the firmware:
+
+<pre>
+bladeRF> help
+
+... (Help text shown here ) ...
+
+bladeRF> info
+
+  Serial #:                 f12ce1037830a1b27f3ceeba1f521413                          
+  VCTCXO DAC calibration:   0x894e
+  FPGA size:                40 KLE
+  FPGA loaded:              no
+  USB bus:                  2
+  USB address:              3
+  USB speed:                Hi-Speed
+  Backend:                  libusb
+  Instance:                 0
+
+bladeRF> version
+  bladeRF-cli version:        0.6.0-git-f1f1c25
+  libbladeRF version:         0.7.0-git-f1f1c25
+
+  Firmware version:           1.0.0
+  FPGA version:               Unknown (FPGA not loaded)
+
+</pre>
+
+Here we see the device's serial number, DAC calibration, FPGA information, and USB connection information.  Take note of the FPGA size, as this will help determine which FPGA file to load.
 
 
-<strong>NOTE</strong>: For the FPGA image, there are 2 different sizes.  The 40kLE FPGA image will only work with the x40 and the 115kLE FPGA image will only work with the x115.  If you see the number `40` or `115` on the large Altera FPGA, you know which FPGA you have.  If you have doubts and the FPGA times out during loading, try the other image.
+'''Note:''' If you see the following message, it is required that you update the firmware before continuing: 
+<pre>
+********************************************************************************
+* ENTERING LEGACY MODE, PLEASE UPGRADE TO THE LATEST FIRMWARE BY RUNNING:
+* wget http://nuand.com/fx3/latest.img ; bladeRF-cli -f latest.img
+********************************************************************************
+</pre>
+
+=== Loading the FPGA ===
+Support for loading the FPGA from flash automatically is currently supported and undergoing further testing.  For the time being, you can load the FPGA 
+
+<pre>
+</pre>
+
+<strong>NOTE</strong>: For the FPGA image, there are 2 different sizes.  The 40kLE FPGA image will only work with the x40 and the 115kLE FPGA image will only work with the x115.  If you see the number `40` or `115` on the large Altera FPGA, you know which FPGA you have.  If you have doubts and the FPGA times out during loading, try the other image.youkno
 
 Recommended firmware and FPGA images to use<br>
 FX3 Image: [http://nuand.com/fx3/latest.img]<br>
