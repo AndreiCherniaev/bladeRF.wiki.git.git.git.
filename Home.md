@@ -8,7 +8,8 @@ This wiki will serve as a place to create some community-based documentation. Pl
 
 # Getting Started Guides #
 * [[Upgrading the bladeRF|Upgrading-from-v1.0]]
-* [[Linux|Linux-Startup]]
+* [[Linux (Debian-based distros)|Getting-Started:-Linux-(Debian-based)]]
+* [[Linux (Redhat-based distros)|Getting-Started:-Linux-(Redhat-based)]]
 * [[Windows|Getting-Started:-Windows]]
 * [[Known Issues|Known-Issues]]
 
