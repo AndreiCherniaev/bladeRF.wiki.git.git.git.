@@ -53,4 +53,4 @@ This is the foolproof way of flashing your bladeRF by forcing the unit to boot t
 
 
 # Getting further help
-If you're stuck in the bootloader or having trouble flashing the image, don't fret! Join the #bladerf channel on Freenode or visit the [http://nuand.com/forums/viewforum.php?f=4 Nuand troubleshooting forum]. There's generally a number of folks around who have experience with flashing the device.
+If you're stuck in the bootloader or having trouble flashing the image, don't fret! Join the #bladerf channel on Freenode or visit the [Nuand troubleshooting forum](http://nuand.com/forums/viewforum.php?f=4). There's generally a number of folks around who have experience with flashing the device.
