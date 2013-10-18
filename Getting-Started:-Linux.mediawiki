@@ -90,7 +90,7 @@ $ sudo ldconfig
 === Uninstalling later ===
 Note that from this same directory, you can run the following to uninstall the files place on your system in the previous step. <pre>sudo make uninstall</pre> 
 
-The ''install_manifest.txt'' file, created after running previous step successfully, lists all the files installed.  It is a good idea to back up this file if you plan on removing this build directory later.
+The ''install_manifest.txt'' file, created after running the install step successfully, lists all the files installed.  It is a good idea to back up this file if you plan on removing this build directory later.
 
 == Checking basic device operation ==
 
