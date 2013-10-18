@@ -9,7 +9,7 @@ This wiki will serve as a place to create some community-based documentation. Pl
 * [[Linux (Debian-based distros)|Getting-Started:-Linux-(Debian-based)]]
 * [[Linux (Redhat-based distros)|Getting-Started:-Linux-(Redhat-based)]]
 * [[Windows|Getting-Started:-Windows]]
-* [[Upgrading the bladeRF|Upgrading-from-v1.0]]
+* [[Upgrading the bladeRF firmware|Upgrading-bladeRF-firmware]]
 * [[Known Issues|Known-Issues]]
 
 # Development #
