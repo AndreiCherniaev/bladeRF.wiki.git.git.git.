@@ -1,4 +1,6 @@
-This guide was written based upon an Ubuntu 13.04 system, but the same general process applies to other recent Debian-based distributions. It is recommended that users of Ubuntu of 12.04 and earlier upgrade to a more recent version.
+This guide describes the process of building and installing the bladeRF host libraries and tool for a Debian-based Linux system, and quickly getting a device up and running using pre-built firmware and FPGA images.
+
+Although this guide was written based upon an Ubuntu 13.04 system, but the same general process applies to other recent Debian-based distributions. It is recommended that users of Ubuntu of 12.04 and earlier upgrade to a more recent version.
 
 
 == Dependencies ==
@@ -26,11 +28,16 @@ wget http://de.archive.ubuntu.com/ubuntu/pool/main/libu/libusbx/libusb-1.0-0-dev
 === Clone the bladeRF git repository ===
 
 To obtain the latest source code for the first time, clone the Nuand git repository via:
-<pre>git clone https://github.com/Nuand/bladeRF.git ./bladeRF</pre>
+<pre>
+git clone https://github.com/Nuand/bladeRF.git ./bladeRF
+cd ./bladeRF
+ls  # You'll see something similar to the following:
+CMakeLists.txt  COPYING          fx3_firmware  host
+CONTRIBUTORS    firmware_common  hdl           README.md
+</pre>
 
 In the future, you can update the repository via:
 <pre>
-cd ./bladeRF
 git pull
 </pre>
 
@@ -39,7 +46,7 @@ git pull
 First enter the directory containing the host source. Then create and enter a directory to perform the build in. By working out of the a 'build' directory, it's easy to later clean up, by simply removing 'build/'.
 
 <pre>
-cd <git_base_dir>/host/
+cd host/
 mkdir build
 cd build
 </pre>
@@ -48,11 +55,15 @@ cd build
 Next, configure the build. In the below example, we:
 * Set up a Debug build
 * Enable the installation of udev rules
-* Specify that files should be installed into /opt/nuand/bladeRF
+* Specify that files should be installed into /usr/local
+** You can install into a different location via the ''-DCMAKE_INSTALL_PREFIX=/some/desired/path'' option. Note that you'll need to need to configure binary and library search paths if you install elsewhere.
 
 <pre>
 cmake -DCMAKE_BUILD_TYPE=Debug -DINSTALL_UDEV_RULES=ON -DCMAKE_INSTALL_PREFIX=/opt/nuand/bladeRF/ ../
 </pre>
+
+
+The current udev rules that are install grant read-write permission the the bladeRF device to users in the ''plugdev'' group.  Verify that your user is in this group by checking that you see ''plugdev'' in the output for the ''groups'' command.  If you do not, follow the instructions [shown here](http://oreilly.com/openbook/debian/book/ch07_01.html) to add yourself to this group, first creating the group if it doesn't already exist. (Generally, this group already exists and desktop users in it.)
 
 === Perform the build and installation ===
 <pre>
