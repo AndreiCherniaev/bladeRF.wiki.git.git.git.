@@ -72,7 +72,7 @@ $ cmake -DCMAKE_BUILD_TYPE=Debug -DINSTALL_UDEV_RULES=ON ../
 </pre>
 
 
-Verify that your user is in the ''plugdev'' group by running '''groups''' command.  If you do not see ''plugdev'' listed, follow the instructions [http://oreilly.com/openbook/debian/book/ch07_01.html shown here] to add yourself to this group, first creating the group if it doesn't already exist. (Generally, this is unnecessary as most distos create this group and put desktop users in it.)
+Verify that your user is in the ''plugdev'' group by running `groups` command.  If you do not see ''plugdev'' listed, follow the instructions [http://oreilly.com/openbook/debian/book/ch07_01.html shown here] to add yourself to this group, first creating the group if it doesn't already exist. (Generally, this is unnecessary as most distros create this group and put desktop users in it.)
 
 === Perform the build and installation ===
 
@@ -88,7 +88,7 @@ $ sudo ldconfig
 </pre>
 
 === Uninstalling later ===
-Note that from this same directory, you can run ''sudo make uninstall'' to uninstall the files place on your system in the previous step.  
+Note that from this same directory, you can run `sudo make uninstall` to uninstall the files place on your system in the previous step.  
 
 The ''install_manifest.txt'' file, created after running previous step successfully, lists all the files installed.  It is a good idea to back up this file if you plan on removing this build directory later.
 
