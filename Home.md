@@ -6,8 +6,7 @@ This wiki will serve as a place to create some community-based documentation. Pl
 ***
 
 # Getting Started Guides #
-* [[Linux (Debian-based distros)|Getting-Started:-Linux-(Debian-based)]]
-* [[Linux (Redhat-based distros)|Getting-Started:-Linux-(Redhat-based)]]
+* [[Linux |Getting-Started:-Linux]]
 * [[Windows|Getting-Started:-Windows]]
 * [[Upgrading the bladeRF firmware|Upgrading-bladeRF-firmware]]
 * [[Known Issues|Known-Issues]]
