@@ -1,30 +1,30 @@
 = Tools and Dependencies =
 == Obtaining git for Windows ==
-1. Download and install [http://code.google.com/p/msysgit/downloads/list?can=2&q=%22Full+installer+for+official+Git+for+Windows%22 msysgit] If you plan to submit patches to the bladeRF project, please select the _Checkout as-is, commit Unix-style line endings_ option in the installer.
-2. Download and install [tortoisegit](http://code.google.com/p/tortoisegit/wiki/Download)
+# Download and install [http://code.google.com/p/msysgit/downloads/list?can=2&q=%22Full+installer+for+official+Git+for+Windows%22 msysgit] If you plan to submit patches to the bladeRF project, please select the _Checkout as-is, commit Unix-style line endings_ option in the installer.
+# Download and install [http://code.google.com/p/tortoisegit/wiki/Download tortoisegit]
 
 For more information, see the [https://github.com/msysgit/msysgit/wiki/InstallMSysGit mysysgit] and [http://code.google.com/p/tortoisegit/wiki/SetupHowTo tortoisegit] wiki pages about their install procedures.
 
- Installing Visual Studio 2012 Express Desktop #
-1. Download [Visual Studio 2012 Express Desktop](http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-windows-desktop) from Microsoft.
-2. Follow the installation instructions, including any post-install updates.
+# Installing Visual Studio 2012 Express Desktop #
+# Download [http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-windows-desktop Visual Studio 2012 Express Desktop] from Microsoft.
+# Follow the installation instructions, including any post-install updates.
 
 **NOTE**: Visual Studio 2012 Express Desktop corresponds to Visual Studio 11 in CMake.
 
 == Installing libusbx ==
 
-1. Download the latest Windows binary release of libusbx, which also include development headers: https://sourceforge.net/projects/libusbx/files/releases/1.0.16/binaries/
-2. Extract the contents to a location of your choice. Make note of this location so that you can later provide it to CMake. The default configuration assumes that files will be in ```C:/Program Files (x86)/libusbx-1.0.16``` If you wish to change the directory, edit ```\host\cmake\modules\FindLibUSB.cmake```
-3. Get the device driver installer (zadig): http://sourceforge.net/projects/libwdi/files/zadig/
-4. Open Zadig. 
-5. Go to Device->Create New Device. 
-6. Type a device name (i.e., "bladeRF") in the text box. In the driver spinbox, select libusbK. Specify the VID/PID (`1d50`/`6066`) in the USB ID fields.
-7. Plug the device into the computer and open Device Manager.  A new device called `bladeRF` should show up with a yellow bang next to it in device manager.
-8. Right-click on the `bladeRF` entry and select "Update Driver Software...".  Choose "Browse my computer for driver software", then "Let me pick from a list of device drivers on my computer".  Click "Have Disk..." and point it to the location that Zadig installed the driver to (C:\usb_driver).  Select "bladeRF" and continue through the wizard.
-9. Device Manager should now show `bladeRF` under `libusbK USB Devices`.
+# Download the latest Windows binary release of libusbx, which also include development headers: https://sourceforge.net/projects/libusbx/files/releases/1.0.16/binaries/
+# Extract the contents to a location of your choice. Make note of this location so that you can later provide it to CMake. The default configuration assumes that files will be in ```C:/Program Files (x86)/libusbx-1.0.16``` If you wish to change the directory, edit ```\host\cmake\modules\FindLibUSB.cmake```
+# Get the device driver installer (zadig): http://sourceforge.net/projects/libwdi/files/zadig/
+# Open Zadig. 
+# Go to Device->Create New Device. 
+# Type a device name (i.e., "bladeRF") in the text box. In the driver spinbox, select libusbK. Specify the VID/PID (`1d50`/`6066`) in the USB ID fields.
+# Plug the device into the computer and open Device Manager.  A new device called `bladeRF` should show up with a yellow bang next to it in device manager.
+# Right-click on the `bladeRF` entry and select "Update Driver Software...".  Choose "Browse my computer for driver software", then "Let me pick from a list of device drivers on my computer".  Click "Have Disk..." and point it to the location that Zadig installed the driver to (C:\usb_driver).  Select "bladeRF" and continue through the wizard.
+# Device Manager should now show `bladeRF` under `libusbK USB Devices`.
 
 == Installing pthreads-win32 ==
-The pthreads library is required to build a few tests and utilities. A few steps are required to install this pthreads implementation. See [the pthreads-win32 website](http://www.sourceware.org/pthreads-win32/) for more information.
+The pthreads library is required to build a few tests and utilities. A few steps are required to install this pthreads implementation. See [http://www.sourceware.org/pthreads-win32/ the pthreads-win32 website] for more information.
 
 1. Download the latest release. Currently this is [version 2.9.1](ftp://sourceware.org/pub/pthreads-win32/pthreads-w32-2-9-1-release.zip).
 2. Extract the contents of the release zip.
@@ -44,13 +44,13 @@ The pthreads library is required to build a few tests and utilities. A few steps
 = Compiling bladeRF libraries and tools with Visual Studio =
 1. CMake has created a `bladeRF.sln` file.  Open Visual Studio, and open this file.
 2. The following projects should show up in the Solution Explorer.
-    - ALL_BUILD
-    - bladeRF-cli
-    - INSTALL
-    - libbladerf_shared
-    - libbladerf_test_async
-    - libbladerf_test_repeater
-    - uninstall
-    - win_postbuild
-    - ZERO_CHECK
+* ALL_BUILD
+* bladeRF-cli
+* INSTALL
+* libbladerf_shared
+* libbladerf_test_async
+* libbladerf_test_repeater
+* uninstall
+* win_postbuild
+* ZERO_CHECK
 3. Run <code>Build -> Build Solution</code>
