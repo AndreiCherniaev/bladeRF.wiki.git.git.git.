@@ -63,7 +63,7 @@ http://www.cmake.org/cmake/resources/software.html
 ## win_postbuild
 ## ZERO_CHECK
 # Run <code>Build -> Build Solution</code>
-# After the build completes, you should see an '''host\output'' directory in the build directory, containing either a Debug or Release subdirectory. These directories will contain generated executables, libraries, and will contain copies of the required DLLs.
+# After the build completes, you should see an '''host\output''' directory in the build directory, containing either a Debug or Release subdirectory. These directories will contain generated executables, libraries, and will contain copies of the required DLLs.
 
 = Verifying basic functionality =
 Open up a '''cmd.exe''' window and navigate to the output directory associated with your build. 
