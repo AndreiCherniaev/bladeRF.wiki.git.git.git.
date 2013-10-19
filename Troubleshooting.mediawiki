@@ -5,7 +5,9 @@ If you run across an issue not listed here and find a solution, please feel free
 = Failing to see or connect to the device =
 
 == Device's VID and PID ==
-Under normal operation, the bladeRF should appear with VID=1d50 and PID=6066.  If you see a Cypress device with VID=04b4 and PID=00f3, your bladeRF's FX3 may be in its bootloader mode. See the [[Upgrading-bladeRF-firmware|firmware upgrade]] wiki page for information on flashing the device.
+Under normal operation, the bladeRF should appear with VID=1d50 and PID=6066.  
+
+If you see a Cypress device with VID=04b4 and PID=00f3, your bladeRF's FX3 may be in its bootloader mode. In this case, you may see a message in the bladeRF-cli program that notes a potential bladeRF running in bootloader mode. See the [[Upgrading-bladeRF-firmware|firmware upgrade]] wiki page for information on flashing the device.
 
 == Virtual Machines ==
 If you are using a Virtual Machine, there have been issues reported when changing the interfaces or claiming different interfaces.  The level of success has been varied depending on the type of port (XHCI or EHCI) and the VM software used.  
