@@ -57,7 +57,6 @@ Currently, the FX3 runs the GPIF in 32-bit mode which only leaves the I2S and UA
 # Open tasks #
 There are several issues in the FX3 firmware that should be resolved. 
 
- - [FX3 firmware does not always check error codes from Cy API](https://github.com/Nuand/bladeRF/issues/88)
  - UART errors are not detected (framing/overflow)
  - SPI errors are not detected (underflow/overflow)
  - Once UART errors are detected, no way to report counters.  Need to develop diagnostic data interface.
