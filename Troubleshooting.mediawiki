@@ -1,3 +1,7 @@
+This page provides some quick tips on troubleshooting problems.
+
+If you run across an issue not listed here and find a solution, please feel free to post it here!
+
 = FPGA Fails to load =
 There are a few different reasons for this.  One might be that the wrong size FPGA image is being used for the FPGA on your board.  Check to make sure you are using the 40kLE FPGA for x40 and the 115kLE FPGA for x115.
 
@@ -21,3 +25,15 @@ If you've used ports to get libusb installed, there is a high likelihood that it
 = CLI gives a legacy mode warning =
 
 This warning comes up if you have a [firmware](FX3-Firmware) that is considered out-of-date and requires flashing.  Please update to the [http://nuand.com/fx3/latest.img latest firmware] using the `bladeRF-flash` or `bladeRF-cli` tool.
+
+= Getting help =
+If you're really stuck, join the #bladeRF channel on [http://webchat.freenode.net/ Freenode] or post to the [http://nuand.com/forums/viewforum.php?f=4 Nuand Troubleshooting forum].
+
+Before asking questions, please ensure you have the following information available.  This will help expedite the process.
+* Your hardware
+** Are you running on a 32-bit or 64-bit processor
+** What is your USB controller? Given that USB3 is still moderately new, some controllers have found to perform significantly better (or worse) than others.
+** Is this a tablet or smartphone?
+* The OS you're using
+** For Linux, know your kernel version and distribution.
+* If you're ah
