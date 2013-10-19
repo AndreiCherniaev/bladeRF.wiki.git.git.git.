@@ -126,7 +126,7 @@ $ bladeRF-cli --help
 
 * If you receive error about not being able to find libbladeRF.so.0, then we must create an ldconfig entry to ensure that library path in which libbladeRF was installed is searched. Follow the next few steps.
 ** As root (i.e., use sudo) create an /etc/ld.so.conf.d/bladeRF.conf and open it with your favorite editor
-** Add a single line containing <code>/usr/local/lib</code> to the file.  If specified something other than /usr/local for ''CMAKE_INSTALL_PREFIX'' (the default), adjust this line accordingly.
+** Add a single line containing <code>/usr/local/lib</code> to the file.  If you specified something other than /usr/local for ''CMAKE_INSTALL_PREFIX'' (the default), adjust this line accordingly.
 ** Run <code>sudo ldconfig</code> and then try running <code>bladeRF-cli --help</code> again. The library search issue should now be resolved.
 
 
