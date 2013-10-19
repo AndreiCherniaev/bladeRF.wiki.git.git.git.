@@ -17,12 +17,14 @@ If possible, try testing the device on both USB 2.0 and USB 3.0 ports, as well a
 
 Below is a list of configurations that people have reported success on. Feel free to add to this list. (Please try to keep it reasonably organized.)
 {| class="wikitable"
+| Configuration Name
 | CPU/Device
+| Controller or Chipset
 | Operating System(s)
-| Controller
 |-
+| jynik's Desktop
 | Intel i7
-| XHCI 
+| Intel XHCI, [http://www.rocketfishproducts.com/products/computer-accessories/RF-P2USB3.html NEC/Renesas]
 | Windows 7, Ubuntu 12.10, 13.04, 13.10
 |-
 |}
