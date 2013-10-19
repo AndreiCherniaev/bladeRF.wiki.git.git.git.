@@ -234,11 +234,10 @@ $ git checkout -b git-v3.7.1 v3.7.1
 $ mkdir build
 $ cd build
 $ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git  ../
-$ make   # This build will take some time. Now's a great time to hop onto #bladerf on Freenode and say hello!
+$ make
 $ sudo make install
 </pre>
 
-<pre>$ </pre>
 
 === Add GNU Radio to linker path and executable path ===
 Create a new file called /etc/profile.d/gnuradio.sh
@@ -263,9 +262,9 @@ you will need sudo for this again.. (one line file)
 <pre>sudo vi /etc/ld.so.conf.d/gnuradio.conf</pre>
 Put this in the new file:
 <pre>/opt/gnuradio-3.7.1git/lib</pre>
-'''(note:) on some 64 bit systems, you might need a lib64 directory in this file as well?'''
+'''Note: on some 64 bit systems, you might need a lib64 directory in this file as well.'''
 
-* now update your library cache
+* Update your library cache again
 <pre>$ sudo ldconfig -v | grep gnuradio</pre>
 
 You should see something akin to the following:
@@ -296,7 +295,8 @@ If so, you're all set!
 
 You will now need to logout and log back in for the profile.d settings to take effect.
 Once you have logged back in to your desktop, you should be able to run gnuradio-companion.
-If you get a pop up about PYTHONPATH or LD_LIBRARY_PATH, check env to see if the python path or ldconfig returns the correct libraries.
+
+If you get a pop-up with errors about ''PYTHONPATH'' or ''LD_LIBRARY_PATH'', check the output of the <code>env</code> command to see how these environment variables are currently set.
 
 === Fetch and build gr-osmosdr ===
 * Pull the git version of gr-osmosdr, build, install
