@@ -304,7 +304,7 @@ If so, you're all set!
 
 For the profile.d changes to take effect, either:
 * Log out and log back in
-* Run <code>$ source /etc/profile.d/gnuradio.sh</code> to update the environment in your current terimnal
+* Run <code>$ source /etc/profile.d/gnuradio.sh</code> to update the environment in your current termunal
 Once you have logged back in to your desktop, you should be able to run gnuradio-companion.
 
 
