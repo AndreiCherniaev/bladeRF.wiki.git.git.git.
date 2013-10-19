@@ -1,2 +1,2 @@
 = Hardware =
-* [[Board Layout Improvement Requests|Improvement-Requests-for-Board-Layout]]
+* [[Improvement-Requests-for-Board-Layout|Board Layout Improvement Requests]]
