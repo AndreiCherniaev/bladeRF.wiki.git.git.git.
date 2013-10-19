@@ -1,3 +1,5 @@
+_This proposal is now dated, as firmware loading has been addressed in the v1.4.0 firmware. However, this is kept here for reference._
+
 # Motivation
 
 The current FX3 firmware loading design has the bladeRF host tools talking directly with the FX3 firmware being replaced.  This means that as the bladeRF host tools and FX3 firmware develop, there is a need to ensure that the bladeRF host tools can load firmware on older FX3 firmwares.  This puts a large testing burden on bladeRF developers to need to maintain backwards compatibility.  However the current maturity of the bladeRF tools and FX3 firmware is low, so that backwards compatibility requirement is onerous.
