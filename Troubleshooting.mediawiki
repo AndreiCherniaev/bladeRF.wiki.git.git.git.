@@ -5,7 +5,9 @@ If you run across an issue not listed here and find a solution, please feel free
 = Failing to see or connect to the device =
 
 == Virtual Machines ==
-If you are using a Virtual Machine, there have been issues reported when changing the interfaces or claiming different interfaces.  The level of success has been varied depending on the type of port (XHCI or EHCI) and the VM software used.  We are currently working on native Windows support to help remedy the VM situation.
+If you are using a Virtual Machine, there have been issues reported when changing the interfaces or claiming different interfaces.  The level of success has been varied depending on the type of port (XHCI or EHCI) and the VM software used.  
+
+Via libusb, the bladeRF host code is intended to support Linux, Windows, and Mac OSX. Therefore, running a VM should not be necessary. If you suspect that a defect in the code has been introduced that affects support for one of these operating systems, please [https://github.com/Nuand/bladeRF/issues?direction=desc&sort=created&state=open file a bug report].
 
 = FPGA fails to load =
 In many cases, load failures have been the result of trying to load the wrong size FPGA image for the board in question. Check to make sure you are using the 40kLE FPGA for x40 and the 115kLE FPGA for x115.
