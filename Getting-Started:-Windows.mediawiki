@@ -172,5 +172,5 @@ Or to load an image while in interactive mode:
 bladeRF> load fpga <path/to/fpga/file>
 </pre>
 
-At this point, you're ready to start using your device!
+You should see LEDs begin blinking after the FPGA load completes. At this point, you're ready to start using your device!
 
