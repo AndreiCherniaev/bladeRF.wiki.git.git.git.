@@ -31,13 +31,14 @@ The pthreads library is required to build a few tests and utilities. A few steps
 # Extract the contents of the release zip.
 # Copy the contents of the _Pre-built.2_ directory to _C:\Program Files (x86)\pthreads-win32
 
-== CMake ==
-# Download and install CMake for Windows: http://www.cmake.org/cmake/resources/software.html
-# Run the CMake GUI utility. 
+== Download CMake ==
+Download and install CMake for Windows: 
+http://www.cmake.org/cmake/resources/software.html
 
 = Building with CMake and VS2012 =
 
 == Configuring with CMake ==
+# Run the CMake GUI utility. 
 # Under "Where is the source code", browse to ```some_dir/bladeRF/host```. 
 # Create a new directory, ```some_dir/bladeRF/host/build```. 
 # Under "Where to build the binaries", browse to the newly created /bladeRF/host/build. Click the Configure button. 
