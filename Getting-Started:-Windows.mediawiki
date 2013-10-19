@@ -1,4 +1,5 @@
 = Tools and Dependencies =
+
 == Obtaining git for Windows ==
 # Download and install [http://code.google.com/p/msysgit/downloads/list?can=2&q=%22Full+installer+for+official+Git+for+Windows%22 msysgit] If you plan to submit patches to the bladeRF project, please select the _Checkout as-is, commit Unix-style line endings_ option in the installer.
 # Download and install [http://code.google.com/p/tortoisegit/wiki/Download tortoisegit]
@@ -26,31 +27,31 @@ For more information, see the [https://github.com/msysgit/msysgit/wiki/InstallMS
 == Installing pthreads-win32 ==
 The pthreads library is required to build a few tests and utilities. A few steps are required to install this pthreads implementation. See [http://www.sourceware.org/pthreads-win32/ the pthreads-win32 website] for more information.
 
-1. Download the latest release. Currently this is [ftp://sourceware.org/pub/pthreads-win32/pthreads-w32-2-9-1-release.zip the pthreads-win32 website].
-2. Extract the contents of the release zip.
-3. Copy the contents of the _Pre-built.2_ directory to _C:\Program Files (x86)\pthreads-win32
+# Download the latest release. Currently this is [ftp://sourceware.org/pub/pthreads-win32/pthreads-w32-2-9-1-release.zip the pthreads-win32 website].
+# Extract the contents of the release zip.
+# Copy the contents of the _Pre-built.2_ directory to _C:\Program Files (x86)\pthreads-win32
 
 == CMake ==
-1. Download and install CMake for Windows: http://www.cmake.org/cmake/resources/software.html
-2. Run the CMake GUI utility. 
-3. Under "Where is the source code", browse to ```some_dir/bladeRF/host```. 
-4. Create a new directory, ```some_dir/bladeRF/host/build```. 
-5. Under "Where to build the binaries", browse to the newly created /bladeRF/host/build. Click the Configure button. 
-6. Select your appropriate version of Visual Studio.  Current development is done using "Visual Studio 11" or "Visual Studio 11 Win64" as the generator (Visual Studio 2012).  Select "Use default native compilers", then click "Finish". 
-7. If the configuration fails, double check the values for `LIBUSB_PATH` and `LIBPTHREADSWIN32_PATH`, and re-run the configuration.
-8. Click on the Generate button.
-9. A visual studio solution should now be available, ```bladeRF.sln``` 
+# Download and install CMake for Windows: http://www.cmake.org/cmake/resources/software.html
+# Run the CMake GUI utility. 
+# Under "Where is the source code", browse to ```some_dir/bladeRF/host```. 
+# Create a new directory, ```some_dir/bladeRF/host/build```. 
+# Under "Where to build the binaries", browse to the newly created /bladeRF/host/build. Click the Configure button. 
+# Select your appropriate version of Visual Studio.  Current development is done using "Visual Studio 11" or "Visual Studio 11 Win64" as the generator (Visual Studio 2012).  Select "Use default native compilers", then click "Finish". 
+# If the configuration fails, double check the values for `LIBUSB_PATH` and `LIBPTHREADSWIN32_PATH`, and re-run the configuration.
+# Click on the Generate button.
+# A visual studio solution should now be available, ```bladeRF.sln``` 
 
 = Compiling bladeRF libraries and tools with Visual Studio =
-1. CMake has created a `bladeRF.sln` file.  Open Visual Studio, and open this file.
-2. The following projects should show up in the Solution Explorer.
-* ALL_BUILD
-* bladeRF-cli
-* INSTALL
-* libbladerf_shared
-* libbladerf_test_async
-* libbladerf_test_repeater
-* uninstall
-* win_postbuild
-* ZERO_CHECK
-3. Run <code>Build -> Build Solution</code>
+# CMake has created a `bladeRF.sln` file.  Open Visual Studio, and open this file.
+# The following projects should show up in the Solution Explorer.
+## ALL_BUILD
+## bladeRF-cli
+## INSTALL
+## libbladerf_shared
+## libbladerf_test_async
+## libbladerf_test_repeater
+## uninstall
+## win_postbuild
+## ZERO_CHECK
+# Run <code>Build -> Build Solution</code>
