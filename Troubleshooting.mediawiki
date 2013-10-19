@@ -4,6 +4,9 @@ If you run across an issue not listed here and find a solution, please feel free
 
 = Failing to see or connect to the device =
 
+== Device's VID and PID ==
+Under normal operation, the bladeRF should appear with VID=1d50 and PID=6066.  If you see a device 
+
 == Virtual Machines ==
 If you are using a Virtual Machine, there have been issues reported when changing the interfaces or claiming different interfaces.  The level of success has been varied depending on the type of port (XHCI or EHCI) and the VM software used.  
 
@@ -28,11 +31,6 @@ Below is a list of configurations that people have reported success on. Feel fre
 | Windows 7, Ubuntu 12.10, 13.04, 13.10
 |-
 |}
-
-== Device's VID and PID ==
-Under normal operation
-
-Via libusb, the bladeRF host code is intended to support Linux, Windows, and Mac OSX. Therefore, running a VM should not be necessary. If you suspect that a defect in the code has been introduced that affects support for one of these operating systems, please [https://github.com/Nuand/bladeRF/issues?direction=desc&sort=created&state=open file a bug report].
 
 = FPGA fails to load =
 In many cases, load failures have been the result of trying to load the wrong size FPGA image for the board in question. Check to make sure you are using the 40kLE FPGA for x40 and the 115kLE FPGA for x115.
