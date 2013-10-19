@@ -47,9 +47,11 @@ If you're unsure which FPGA size is on your board, identify the the Altera Cyclo
 
 If you've used ports to get libusb installed, there is a high likelihood that it is version 1.0.9.  Unfortunately, libusb didn't add superspeed support until version 1.0.15 for OSX.  We've had reports that the absolute latest version of libusb, 1.0.17, works on OSX.  Please update accordingly.
 
-= CLI gives a legacy mode warning =
+= Legacy mode warning =
 
-This warning comes up if you have a [firmware](FX3-Firmware) that is considered out-of-date and requires flashing.  Please update to the [http://nuand.com/fx3/latest.img latest firmware] using the `bladeRF-flash` or `bladeRF-cli` tool.
+This warning comes up if you have a that is considered out-of-date and requires flashing.  
+
+Please update to the [http://nuand.com/fx3/latest.img latest firmware], per the instructions in [[Upgrading-bladeRF-firmware|this wiki page.]]
 
 = Getting help =
 If you're really stuck, join the #bladeRF channel on [http://webchat.freenode.net/ Freenode] or post to the [http://nuand.com/forums/viewforum.php?f=4 Nuand Troubleshooting forum].
