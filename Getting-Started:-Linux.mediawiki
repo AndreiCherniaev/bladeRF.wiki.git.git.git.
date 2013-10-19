@@ -313,4 +313,4 @@ Test Receive: (446 MHz)
 <pre>osmocom_fft -a bladerf=0,fpga=<your FPGA image> -s 8000000 -f 446000000</pre>
 
 Test Transmit: (446 MHz + 25 KHz )
-<pre>osmocom_siggen -a bladerf=0,fpga=<our FPGA image> -s 8000000 -f 446000000 -g 4 --sine -x 25000</pre>
+<pre>osmocom_siggen -a bladerf=0,fpga=<your FPGA image> -s 8000000 -f 446000000 -g 4 --sine -x 25000</pre>
