@@ -1,3 +1,7 @@
+This page contains information pertaining to FX3 firmware development
+
+# Version Summary #
+
 The FX3 firmware has undergone some extensive development in the last two months and has rapidly progressed.  While the development continues, this should help to serve as a progress report of history and give a preview for future direction.
 
 | Version | MD5                                |Description |
