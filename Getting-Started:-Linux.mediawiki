@@ -155,8 +155,8 @@ If you do not see any device listed:
 * Verify that your user is in the ''plugdev'' group
 * Double check ''dmesg'' and ''lsusb'' output
 ** The bladeRF's VID=1d50 and PID=6066
-** If you see a Cypress device with VID=04b4 PID=00f3, then the bladeRF is running in the bootloader mode. No worries! Follow the instructions at: (Coming soon)
-* See the Troubleshooting page (Coming soon) before continuing.
+** If you see a Cypress device with VID=04b4 PID=00f3, then the bladeRF is running in the bootloader mode. No worries! Follow the instructions at [[Upgrading-bladeRF-firmware|this page]] to reflash your device.
+* See the [[Troubleshooting]] page before continuing.
 
 === Viewing additional device information ===
 
