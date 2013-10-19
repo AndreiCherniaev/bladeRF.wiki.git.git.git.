@@ -205,11 +205,11 @@ At this point, you're ready to start using your device!
 
 == Building GNU Radio and gr-osmosdr ==
 
-update: [[Build gnuradio-3.7.1 | Better gnuradio build guide ]]
-
-The following below builds the latest release from git. Note that this is "bleeding edge" and my be broken from time to time.
+The following procedure uses gnuradio-build to fetch dependencies and checkout some useful tools. However, it only covers installing GNU Radio and gr-osmosdr.  A similar procedure maybe used to install the other tools (such as gr-iqbal).
 
 === Using gnuradio-build to pull and check dependencies ===
+Below, a "sandbox" directory will be used to do the build. Change this to whatever your preferred build directory is.
+
 <pre>
 $ cd ~/sandbox
 $ mkdir gnuradio-builds
@@ -218,7 +218,7 @@ $ wget http://www.sbrac.org/files/build-gnuradio
 $ chmod +x ./build-gnuradio
 $ ./build-gnuradio -m prereqs gitfetch
 </pre>
-This takes a while...  check top, seems like it sits a long time on checking prerequisites with no output.
+Note that this takes quite a bit of time, depending on how many dependencies you need to have installed. Check **top** periodically to see what's currently being installed.
 
 === Compile GNU Radio ===
 <pre>
