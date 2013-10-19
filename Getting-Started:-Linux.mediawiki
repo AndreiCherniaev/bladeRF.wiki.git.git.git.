@@ -100,7 +100,7 @@ jon wheel plugdev
 
 The following commands:
 # Perform the build
-# Install files to /usr/local or the location specified by ''DCMAKE_INSTALL_PREFIX''
+# Install files to /usr/local or the location specified by ''CMAKE_INSTALL_PREFIX''
 # Updated share library paths, so that libbladeRF can be found
 
 <pre>
