@@ -37,13 +37,11 @@ In many cases, load failures have been the result of trying to load the wrong si
 
 If you're unsure which FPGA size is on your board, identify the the Altera Cyclone IV package on the top of the bladeRF. You should see text on the package that reads ''EP4CExxxF23C8N'', where ''xxx'' is the size -- either 40 or 115.
 
-= libbladeRF does not compile =
-If you see:
+= Compilation Issues =
 
-    backend/libusb.c:263:5: warning: implicit declaration of function ‘libusb_get_version’ [-Wimplicit-function-declaration]
-    backend/libusb.c:264:5: error: dereferencing pointer to incomplete type
+== libbladeRF ==
 
-during compilation you have an old version of libusb and should probably upgrade! Get the latest version from http://libusbx.org/
+* If you see an error about being unable to find the <code>libusb_get_version</code> function, the version of libusb installed on your machine needs to be updated. Updating to >= 1.0.12 for Linux is required, but >= 1.0.16 is suggested.
 
 = Mac OSX Superspeed issues =
 
