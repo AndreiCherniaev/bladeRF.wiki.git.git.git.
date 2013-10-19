@@ -291,8 +291,11 @@ You should see something akin to the following:
 
 If so, you're all set!
 
-You will now need to logout and log back in for the profile.d settings to take effect.
+For the profile.d changes to take effect, either:
+* Log out and log back in
+* Run <code>$ source /etc/profile.d/gnuradio.sh</code> to update the environment in your current terimnal
 Once you have logged back in to your desktop, you should be able to run gnuradio-companion.
+
 
 If you get a pop-up with errors about ''PYTHONPATH'' or ''LD_LIBRARY_PATH'', check the output of the <code>env</code> command to see how these environment variables are currently set.
 
