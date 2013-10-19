@@ -21,13 +21,13 @@ If possible, try testing the device on both USB 2.0 and USB 3.0 ports, as well a
 Below is a list of configurations that people have reported success on. Feel free to add to this list. (Please try to keep it reasonably organized.)
 {| class="wikitable"
 | Configuration Name
-| CPU/Device
+| Device/Motherboard/CPU
 | Controller or Chipset
 | Operating System(s)
 |-
 | jynik's Desktop
-| Intel i7
-| [http://www.evga.com/support/manuals/files/132-GT-E768.pdf EVGA x58 FTW3] onboard NEC/Renesas and [http://www.rocketfishproducts.com/products/computer-accessories/RF-P2USB3.html 2-Port PCIe card] NEC/Renesas
+| [http://www.evga.com/support/manuals/files/132-GT-E768.pdf EVGA x58 FTW3], Intel i7
+|  Onboard NEC/Renesas controller and [http://www.rocketfishproducts.com/products/computer-accessories/RF-P2USB3.html 2-Port PCIe card] NEC/Renesas
 | Windows 7, Ubuntu 12.10, 13.04, 13.10
 |-
 |}
