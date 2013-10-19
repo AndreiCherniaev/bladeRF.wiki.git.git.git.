@@ -55,3 +55,4 @@ The pthreads library is required to build a few tests and utilities. A few steps
 ## win_postbuild
 ## ZERO_CHECK
 # Run <code>Build -> Build Solution</code>
+# After the build completes, you should see an <code>output</code> directory in the build directory, containing either a Debug or Release subdirectory. These directories will contain generated executables, libraries, and will contain copies of the required DLLs.
