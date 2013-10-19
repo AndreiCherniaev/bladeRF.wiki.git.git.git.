@@ -29,7 +29,7 @@ This warning comes up if you have a [firmware](FX3-Firmware) that is considered 
 = Getting help =
 If you're really stuck, join the #bladeRF channel on [http://webchat.freenode.net/ Freenode] or post to the [http://nuand.com/forums/viewforum.php?f=4 Nuand Troubleshooting forum].
 
-Before asking questions, please try to have as much of following information available as you can. Providing this information up front can help folks get to the bottom of things much quicker.
+Folks in the community are generally very happy to help. However, to make the most of everyone's time, please try to have as much of following information available as you can. Providing this information up front can help folks get to the bottom of things much quicker.
 
 * Information about the target host machine
 ** Are you running on a 32-bit or 64-bit processor?
