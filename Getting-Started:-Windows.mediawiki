@@ -34,6 +34,10 @@ The pthreads library is required to build a few tests and utilities. A few steps
 == CMake ==
 # Download and install CMake for Windows: http://www.cmake.org/cmake/resources/software.html
 # Run the CMake GUI utility. 
+
+= Building with CMake and VS2012 =
+
+== Configuring with CMake ==
 # Under "Where is the source code", browse to ```some_dir/bladeRF/host```. 
 # Create a new directory, ```some_dir/bladeRF/host/build```. 
 # Under "Where to build the binaries", browse to the newly created /bladeRF/host/build. Click the Configure button. 
@@ -42,7 +46,7 @@ The pthreads library is required to build a few tests and utilities. A few steps
 # Click on the Generate button.
 # A visual studio solution should now be available, ```bladeRF.sln``` 
 
-= Compiling bladeRF libraries and tools with Visual Studio =
+= Compiling =
 # CMake has created a `bladeRF.sln` file.  Open Visual Studio, and open this file.
 # The following projects should show up in the Solution Explorer.
 ## ALL_BUILD
