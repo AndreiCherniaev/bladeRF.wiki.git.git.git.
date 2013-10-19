@@ -9,7 +9,7 @@ For more information, see the [https://github.com/msysgit/msysgit/wiki/InstallMS
 # Download [http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-windows-desktop Visual Studio 2012 Express Desktop] from Microsoft.
 # Follow the installation instructions, including any post-install updates.
 
-**NOTE**: Visual Studio 2012 Express Desktop corresponds to Visual Studio 11 in CMake.
+''Note:'' Visual Studio 2012 Express Desktop corresponds to Visual Studio 11 in CMake.
 
 == Installing libusbx ==
 
