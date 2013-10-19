@@ -17,6 +17,7 @@ This wiki will serve as a place to create some community-based documentation. Pl
 * [[Testing|Release-testing]]
 * [[Coverity scans|Using-Coverity-Scan]]
 * [[Proposals and Requests]]
+* [[FX3 Firmware Development | FX3-Firmware]]
 
 # Tutorials and Related Reading #
 * [[Signals and IQ Data]]
