@@ -24,7 +24,7 @@ Below is a list of configurations that people have reported success on. Feel fre
 |-
 | jynik's Desktop
 | Intel i7
-| Intel XHCI, [http://www.rocketfishproducts.com/products/computer-accessories/RF-P2USB3.html NEC/Renesas]
+| [http://www.evga.com/support/manuals/files/132-GT-E768.pdf EVGA x58 FTW3] onboard NEC/Renesas and [http://www.rocketfishproducts.com/products/computer-accessories/RF-P2USB3.html NEC/Renesas]
 | Windows 7, Ubuntu 12.10, 13.04, 13.10
 |-
 |}
