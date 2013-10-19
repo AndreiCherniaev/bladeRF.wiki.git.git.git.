@@ -43,7 +43,10 @@ If you're unsure which FPGA size is on your board, identify the the Altera Cyclo
 
 == libbladeRF ==
 
-* If you see an error about being unable to find the <code>libusb_get_version</code> function, the version of libusb installed on your machine needs to be updated. Updating to >= 1.0.12 for Linux is required, but >= 1.0.16 is suggested.
+=== libusb_get_version ===
+If you see an error about being unable to find the <code>libusb_get_version</code> function, the version of libusb installed on your machine needs to be updated. Updating to >= 1.0.12 for Linux is required, but >= 1.0.16 is suggested.
+
+There is [https://github.com/Nuand/bladeRF/issues/130 an open action item] to change the CMake configuration to detect and complain about this, prior to compilation.
 
 = Mac OSX Superspeed issues =
 
