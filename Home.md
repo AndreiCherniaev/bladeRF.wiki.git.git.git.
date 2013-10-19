@@ -19,5 +19,5 @@ This wiki will serve as a place to create some community-based documentation. Pl
 * [[Proposals and Requests]]
 
 # Tutorials and Related Reading #
-* [[Signals IQ Theory Training | Signals---I-Q-Theory-Training]]
+* [[Signals and IQ Data]]
 * [[Github Essentials | github-essentials]]
