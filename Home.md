@@ -16,6 +16,7 @@ This wiki will serve as a place to create some community-based documentation. Pl
 * Current and planned development [[tasks|Tasks]]
 * [[Testing|Release-testing]]
 * [[Coverity scans|Using-Coverity-Scan]]
+* [[Proposals and Requests]]
 
 # Tutorials and Related Reading #
 * [[Signals IQ Theory Training | Signals---I-Q-Theory-Training]]
