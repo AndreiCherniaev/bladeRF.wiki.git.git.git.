@@ -218,7 +218,7 @@ Or to load an image while in interactive mode:
 bladeRF> load fpga <path/to/fpga/file>
 </pre>
 
-After the FPGA loads, you should see LEDs on the board begin blinkin. At this point, you're ready to start using your device!
+After the FPGA loads, you should see LEDs on the board begin blinking. At this point, you're ready to start using your device!
 
 == Building GNU Radio and gr-osmosdr ==
 
