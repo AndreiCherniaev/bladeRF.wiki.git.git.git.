@@ -63,7 +63,7 @@ $ cd build
 
 Next, configure the build. In the below example, we:
 * Set up a Debug build
-* Enable the installation of udev rules, which grant members of the ''plugdev'' group read-write access to bladeRF devices.
+* Enable the installation of udev rules. By default, this grant members of the ''plugdev'' group read-write access to bladeRF devices.  This group can can be changed via -DBLADERF_GROUP. The remainder of this guide assumes the default.
 * Specify that files should be installed into /usr/local
 ** You can install into a different location via the ''-DCMAKE_INSTALL_PREFIX=/some/desired/path'' option. Note that you'll need to need to configure binary and library search paths if you install elsewhere. If you're unsure how to do this, simply follow the steps below to use the default install location.
 
@@ -72,7 +72,19 @@ $ cmake -DCMAKE_BUILD_TYPE=Debug -DINSTALL_UDEV_RULES=ON ../
 </pre>
 
 
-Verify that your user is in the ''plugdev'' group by running:<pre>$ groups</pre>  If you do not see ''plugdev'' listed in the output, follow the instructions [http://oreilly.com/openbook/debian/book/ch07_01.html shown here] to add yourself to this group, first creating the group if it doesn't already exist. (Generally, this is unnecessary as most distros create this group and put desktop users in it.)
+By default, the installued udev rule aVerify that your user is in the ''plugdev'' group.
+
+On an Ubuntu system, you'll see that a user is already in various groups. If you see ''plugdev'' listed, skip ahead to the next subsystem.
+<pre>
+$ groups                                                       ~
+jon adm cdrom sudo dip plugdev lpadmin sambashare
+</pre>
+
+
+On other systems, such as Fedora 19, the ''plugdev'' group isn't part of the default set of groups. Create the group, add your user to it, and then log out and back in:
+<pre>
+
+</pre>
 
 === Perform the build and installation ===
 
