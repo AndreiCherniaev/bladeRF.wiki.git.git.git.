@@ -211,10 +211,11 @@ At this point, you're ready to start using your device!
 
 == Building GNU Radio and gr-osmosdr ==
 
-The following procedure uses gnuradio-build to fetch dependencies and checkout some useful tools. However, it only covers installing GNU Radio and gr-osmosdr.  A similar procedure maybe used to install the other tools (such as gr-iqbal).
+The following procedure uses gnuradio-build to fetch dependencies and checkout some useful tools. However, it only covers installing GNU Radio and gr-osmosdr.  A similar procedure maybe used to install the other tools (such as gr-iqbal). 
 
-=== Using gnuradio-build to pull and check dependencies ===
-Below, a "sandbox" directory will be used to do the build. Change this to whatever your preferred build directory is.
+A "sandbox" directory will be used to do the build. Change this to whatever your preferred build directory is in the relevant commands.
+
+=== Using gnuradio-build to fetch dependencies and checkout source via Git ===
 
 <pre>
 $ cd ~/sandbox
@@ -229,13 +230,15 @@ Note that this takes quite a bit of time, depending on how many dependencies you
 === Compile GNU Radio ===
 <pre>
 $ cd ~/sandbox/gnuradio-builds/gnuradio/
+$ git checkout -b git-v3.7.1 v3.7.1
 $ mkdir build
 $ cd build
-$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git  ../ (based on git release, change as needed)
-$ make
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git  ../
+$ make   # This build will take some time. Now's a great time to hop onto #bladerf on Freenode and say hello!
+$ sudo make install
 </pre>
-( This is a large build and will take some time..  good time to take a break..)
-<pre>$ sudo make install</pre>
+
+<pre>$ </pre>
 
 === Add GNU Radio to linker path and executable path ===
 Create a new file called /etc/profile.d/gnuradio.sh
