@@ -48,7 +48,7 @@ http://www.cmake.org/cmake/resources/software.html
 # Select your appropriate version of Visual Studio.  Current development is done using "Visual Studio 11" or "Visual Studio 11 Win64" as the generator (Visual Studio 2012).  Select "Use default native compilers", then click "Finish". 
 # If the configuration fails, double check the values for ''LIBUSB_PATH'' and ''LIBPTHREADSWIN32_PATH'', and re-run the configuration.
 # Click on the Generate button.
-# A visual studio solution should now be available, '''bladeRF.sln'''
+# A visual studio solution should now be available, '''build/host/bladeRF.sln'''
 
 == Compiling ==
 # CMake has created a ''bladeRF.sln'' file.  Open Visual Studio, and open this file.
