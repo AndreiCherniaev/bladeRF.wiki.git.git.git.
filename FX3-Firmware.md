@@ -6,6 +6,7 @@ The FX3 firmware has undergone some extensive development in the last two months
 
 | Version | MD5                                |Description |
 | :-----: | :--------------------------------: |:---------- |
+| [1.5.3] | `384bbdb1929c949e7511ec7f5d508b1a` | Version numbering updated to major.minor.patch and preliminary FPGA auto-loading (from SPI flash) introduced |
 | [1.4]   | `44d169733c623dd0ffe6ad9c2b74b2db` | Changed the alternate interface settings such that altsetting 0 is now a NULL interface and the FPGA config altsetting is now altsetting 3. |
 | [1.3]   | `6f5e42e52c84f7c237aebc5ae6138a55` | Refactored the SPI flash code and give back return codes on success or failure so host side debugging of failures is easier. |
 | [1.2]   | `92406eb0905510f590769d0d063e76a6` | Moved from 3 separate interfaces to a single interface with 3 altsettings where altsetting 0 is FPGA config, altsetting 1 is RF Link and altsetting 2 is SPI flash writing. |
@@ -15,7 +16,7 @@ The FX3 firmware has undergone some extensive development in the last two months
 The most up-to-date firmware is always a convenient [latest] URL.
 
 [latest]: http://nuand.com/fx3/latest.img
-
+[1.5.3]: http://nuand.com/fx3/1.5.3.img
 [1.4]: http://nuand.com/fx3/1.4.img
 [1.3]: http://nuand.com/fx3/1.3.img
 [1.2]: http://nuand.com/fx3/1.2.img
