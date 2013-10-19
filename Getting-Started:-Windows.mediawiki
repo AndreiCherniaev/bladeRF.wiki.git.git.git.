@@ -46,7 +46,7 @@ The pthreads library is required to build a few tests and utilities. A few steps
 # Click on the Generate button.
 # A visual studio solution should now be available, ```bladeRF.sln``` 
 
-= Compiling =
+== Compiling ==
 # CMake has created a `bladeRF.sln` file.  Open Visual Studio, and open this file.
 # The following projects should show up in the Solution Explorer.
 ## ALL_BUILD
