@@ -29,7 +29,7 @@ This warning comes up if you have a [firmware](FX3-Firmware) that is considered 
 = Getting help =
 If you're really stuck, join the #bladeRF channel on [http://webchat.freenode.net/ Freenode] or post to the [http://nuand.com/forums/viewforum.php?f=4 Nuand Troubleshooting forum].
 
-Folks in the community are generally very happy to help. However, to make the most of everyone's time, please try to have as much of following information available as you can. Providing this information up front can help folks get to the bottom of things much quicker.
+Folks in the community are generally very happy to help. However, to make the most of everyone's time, please try to have as much of following information available as you can. Providing this information up front can help you get to the bottom of things much quicker.
 
 * Information about the target host machine
 ** Are you running on a 32-bit or 64-bit processor?
@@ -42,4 +42,7 @@ Folks in the community are generally very happy to help. However, to make the mo
 ** When running the bladeRF-cli in interactive mode (<code>bladeRF-cli -i</code>), the <code>version</code> command may be used to display information for both host items and the attached device. This is generally helpful in identifying if a problem you're seeing has been fixed in more recent versions.
 * Any relevant error messages or warnings.
 ** Run the bladeRF-cli with <code>-v verbose</code> to enable all output
-** Check the output of dmesg and lsusb
+** (Linux users) Check the output of dmesg and lsusb
+** For GNU Radio and gr-osmosdr issues, note the versions of these you're running.
+* Have you followed the steps in the [[Home#getting-started-guides|Getting Started]] guides?
+** If you're currently in the process of following these guides, which steps have you already performed, and at which step are you encountering problems with?
