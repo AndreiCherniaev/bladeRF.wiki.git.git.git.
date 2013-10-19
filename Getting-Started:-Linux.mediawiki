@@ -302,15 +302,15 @@ If you get a pop-up with errors about ''PYTHONPATH'' or ''LD_LIBRARY_PATH'', che
 
 <pre>
 $ cd ~/sandbox/gnuradio-builds/gr-osmosdr
-$ git checkout master
 $ cmake ../
-$ make
-$ sudo make install && sudo ldconfig
+$ make && sudo make install && sudo ldconfig
 </pre>
 
 === Simple test applications to verify device operation ===
-*Using osmocom stand-alone applications:
+The osmocom programs may be used to quickly view an FFT and generate a tone:
+
 Test Receive: (446 MHz)
 <pre>osmocom_fft -a bladerf=0,fpga=<your FPGA image> -s 8000000 -f 446000000</pre>
+
 Test Transmit: (446 MHz + 25 KHz )
 <pre>osmocom_siggen -a bladerf=0,fpga=<our FPGA image> -s 8000000 -f 446000000 -g 4 --sine -x 25000</pre>
