@@ -21,7 +21,7 @@ If your distribution does not provide a [[libtecla|http://www.astro.caltech.edu/
 
 === Debian-based distros (e.g., Ubuntu) ===
 Install dependent packages for the build:
-<pre>$ sudo apt-get install libusb-1.0-0-dev libusb-1.0-0 build-essential cmake libncurses5-dev libtecla1 libtecla1-dev pkg-config git</pre>
+<pre>$ sudo apt-get install libusb-1.0-0-dev libusb-1.0-0 build-essential cmake libncurses5-dev libtecla1 libtecla1-dev pkg-config git wget</pre>
 
 You can check the libusb and libusb-dev versions installed on your system via:
 <pre>
@@ -35,7 +35,7 @@ $ wget http://de.archive.ubuntu.com/ubuntu/pool/main/libu/libusbx/libusb-1.0-0-d
 === Redhat-based distros (e.g., Fedora, CentOS) ===
 <pre>
 $ sudo yum groupinstall "Development Tools" "Development Libraries"
-$ sudo yum install libusbx libusbx-devel cmake
+$ sudo yum install libusbx libusbx-devel cmake wget
 </pre>
 
 == Building bladeRF libraries and tools from source ==
