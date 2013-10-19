@@ -306,7 +306,7 @@ If you get a pop-up with errors about ''PYTHONPATH'' or ''LD_LIBRARY_PATH'', che
 $ cd ~/sandbox/gnuradio-builds/gr-osmosdr
 $ mkdir build
 $ cd build
-$ cmake ../
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git ../
 $ make && sudo make install && sudo ldconfig
 </pre>
 
