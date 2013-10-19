@@ -30,7 +30,12 @@ Below is a list of configurations that people have reported success on. Feel fre
 | jynik's Desktop
 | [http://www.evga.com/support/manuals/files/132-GT-E768.pdf EVGA x58 FTW3], Intel i7
 |  Onboard NEC/Renesas controller and [http://www.rocketfishproducts.com/products/computer-accessories/RF-P2USB3.html 2-Port PCIe card] NEC/Renesas
-| Windows 7, Ubuntu 12.10, 13.04, 13.10
+| Windows 7, XUbuntu 12.10, 13.04, 13.10  (All 64-bit)
+|-
+| jynik's Laptop
+| Thinkpad W530, Intel i7-3630QM
+| Intel 7 Series/C210 Series xHCI (VID=8086, PID=1e31)
+| Windows 7, XUbuntu 13.04 (All 64-bit)
 |-
 |}
 
