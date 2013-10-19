@@ -53,8 +53,3 @@ The pthreads library is required to build a few tests and utilities. A few steps
     - uninstall
     - ZERO_CHECK
 3. ...
-
-# Verifying USB Functionality #
-Using the [SuperSpeed USB Hardware/Software tools][ssusbtools].
-
-[ssusbtools]: http://www.usb.org/developers/ssusb/ssusbtools/
