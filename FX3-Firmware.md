@@ -54,6 +54,12 @@ There has always been a desire to run the device in a headless mode so all that 
 
 Currently, the FX3 runs the GPIF in 32-bit mode which only leaves the I2S and UART peripherals readily available to be used.  Without getting in the way of samples and using the GPIF to communicate back and forth with the FPGA, the UART was used as a side channel to the sample flow.  Unfortunately this limits us to a maximum of 4Mbps for the connection speed.  Since it is mainly configuration or setup of registers internal to the FPGA or to peripherals hanging off the FPGA, it isn't necessary to go very fast.  As of now, the UART is only running at 115.2kbps instead of the maximum 4Mbps.
 
+
+# Verifying USB Functionality #
+* [SuperSpeed USB Hardware/Software tools][ssusbtools].
+
+[ssusbtools]: http://www.usb.org/developers/ssusb/ssusbtools/
+
 # Open tasks #
 There are several issues in the FX3 firmware that should be resolved. 
 
