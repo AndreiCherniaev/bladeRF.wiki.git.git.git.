@@ -9,7 +9,7 @@ To activate this PPA,
 $ apt-get update
 $ apt-get install bladerf</pre>
 
-Then, skip down to the "Checking basic device operation" section, bypassing the compilation steps.
+Then, skip down to the [[Getting-Started:-Linux#wiki-Checking_basic_device_operation|Checking basic device operation]] section, bypassing the compilation steps.
 
 == Installing dependencies ==
 
