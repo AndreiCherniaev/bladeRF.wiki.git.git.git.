@@ -1,0 +1,2 @@
+* [http://whiteboard.ping.se/SDR/IQ I/Q Data for Dummies]
+* [http://www.ieee.li/pdf/essay/quadrature_signals.pdf Quadrature Signals: Complex, But Not Complicated]
