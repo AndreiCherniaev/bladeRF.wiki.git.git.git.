@@ -29,11 +29,17 @@ This warning comes up if you have a [firmware](FX3-Firmware) that is considered 
 = Getting help =
 If you're really stuck, join the #bladeRF channel on [http://webchat.freenode.net/ Freenode] or post to the [http://nuand.com/forums/viewforum.php?f=4 Nuand Troubleshooting forum].
 
-Before asking questions, please ensure you have the following information available.  This will help expedite the process.
-* Your hardware
-** Are you running on a 32-bit or 64-bit processor
+Before asking questions, please try to have as much of following information available as you can. Providing this information up front can help folks get to the bottom of things much quicker.
+
+* Information about the target host machine
+** Are you running on a 32-bit or 64-bit processor?
 ** What is your USB controller? Given that USB3 is still moderately new, some controllers have found to perform significantly better (or worse) than others.
+** Are you connecting your device to a 2.0 or 3.0 port? If a 3.0 port, is it connecting 
 ** Is this a tablet or smartphone?
 * The OS you're using
-** For Linux, know your kernel version and distribution.
-* If you're ah
+** For Linux, please note your distribution (and that distribution's version), as well as kernel version
+* Version information for the items you're having issues with
+** When running the bladeRF-cli in interactive mode (<code>bladeRF-cli -i</code>), the <code>version</code> command may be used to display information for both host items and the attached device. This is generally helpful in identifying if a problem you're seeing has been fixed in more recent versions.
+* Any relevant error messages or warnings.
+** Run the bladeRF-cli with <code>-v verbose</code> to enable all output
+** Check the output of dmesg and lsusb
