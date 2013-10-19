@@ -312,8 +312,13 @@ $ make && sudo make install && sudo ldconfig
 
 === Simple test applications to verify device operation ===
 The osmocom programs may be used to quickly view an FFT and generate a tone. 
+
 Test Receive: (446 MHz)
 <pre>osmocom_fft -a bladerf=0,fpga=<your FPGA image> -s 8000000 -f 446000000</pre>
 
 Test Transmit: (446 MHz + 25 KHz )
 <pre>osmocom_siggen -a bladerf=0,fpga=<your FPGA image> -s 8000000 -f 446000000 -g 4 --sine -x 25000</pre>
+
+Note that only one program can have the bladeRF opened at a time. 
+
+If you'd like to run a quick test in a full-duplex configuration, consider creating a GRC flowgraph.  ''Do not connect the bladeRF TX output to the RX input without an attenuator.''
