@@ -218,9 +218,8 @@ A "sandbox" directory will be used to do the build. Change this to whatever your
 === Using gnuradio-build to fetch dependencies and checkout source via Git ===
 
 <pre>
-$ cd ~/sandbox
-$ mkdir gnuradio-builds
-$ cd gnuradio-builds
+$ mkdir -p ~/sandbox/gnuradio-builds
+$ cd ~/sandbox/gnuradio-builds
 $ wget http://www.sbrac.org/files/build-gnuradio
 $ chmod +x ./build-gnuradio
 $ ./build-gnuradio -m prereqs gitfetch
@@ -255,7 +254,7 @@ else
 fi</pre>
 '''Note: update the path above if you deviated from gnuradio-3.7.1git'''
 
-'''Note: If you're on some non-debian based distro, you might need to replace "dist-packages" with "site-packages".'''
+'''Note: If you're on a non-Debian based distro, you might need to replace "dist-packages" with "site-packages".'''
 
 Again, with your favorite text editor, create a new file call /etc/ld.so.conf.d/gnuradio.conf
 you will need sudo for this again.. (one line file)
@@ -298,15 +297,15 @@ Once you have logged back in to your desktop, you should be able to run gnuradio
 
 If you get a pop-up with errors about ''PYTHONPATH'' or ''LD_LIBRARY_PATH'', check the output of the <code>env</code> command to see how these environment variables are currently set.
 
-=== Fetch and build gr-osmosdr ===
-* Pull the git version of gr-osmosdr, build, install
-<pre>$ cd ~/sandbox
-$ git clone git://git.osmocom.org/gr-osmosdr ./gr-osmosdr
-$ mkdir ~/sandbox/gr-osmosdr/build
-$ cd ~/sandbox/gr-osmosdr/build
-$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git ../
+=== Build and install gr-osmosdr ===
+[http://sdr.osmocom.org/trac/wiki/GrOsmoSDR gr-osmosdr] was checked out during the build-gnuradio execution. This provides GNU Radio support for a number of devices, including the bladeRF.
+
+<pre>
+$ cd ~/sandbox/gnuradio-builds/gr-osmosdr
+$ git checkout master
+$ cmake ../
 $ make
-$ sudo make install
+$ sudo make install && sudo ldconfig
 </pre>
 
 === Simple test applications to verify device operation ===
