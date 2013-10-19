@@ -104,9 +104,7 @@ The following commands:
 # Updated share library paths, so that libbladeRF can be found
 
 <pre>
-$ make
-$ sudo make install
-$ sudo ldconfig
+$ make && sudo make install && sudo ldconfig
 </pre>
 
 === Uninstalling later ===
@@ -123,6 +121,14 @@ First, take a look at the command-line options:
 <pre>
 $ bladeRF-cli --help
 </pre>
+
+* If you see the help text, you can skip ahead to the invocation with the ''-p'' option.
+
+* If you receive and error similar to the following, then we must create an ldconfig entry to ensure the library path in which libbladeRF was installed. Follow the next few steps.
+** As root (i.e., use sudo) create an /etc/ld.so.conf.d/bladeRF.conf and open it with your favorite editor
+** Add a single line containing <code>/usr/local/lib</code> to the file.  If specified something other than /usr/local for ''CMAKE_INSTALL_PREFIX'' (the default), adjust this line accordingly.
+** Run <code>sudo ldconfig</code> and then try running <code>bladeRF-cli --help</code> again. The library search issue should now be resolved.
+
 
 Note that the ''-p'' option may be used to probe for device. Plug in your device, and run the following command. You should see similar output.
 
