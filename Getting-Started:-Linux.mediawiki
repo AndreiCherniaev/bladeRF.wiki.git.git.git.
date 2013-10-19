@@ -1,5 +1,16 @@
 This guide describes the process of building and installing the bladeRF host libraries and tool for a Linux system, and quickly getting a device up and running using pre-built firmware and FPGA images.
 
+== Easy installation for Ubuntu 13.10 ==
+If you're running Ubuntu 13.10 ([[Saucy Salamander|http://releases.ubuntu.com/saucy/]]), a PPA is available at [[ppa:rtucker/bladerf-daily|https://launchpad.net/~rtucker/+archive/bladerf-daily/+packages]].  New builds will appear occasionally, built from the master.
+
+To activate this PPA,
+
+<pre>$ sudo apt-add-repository ppa:rtucker/bladerf-daily
+$ apt-get update
+$ apt-get install bladerf</pre>
+
+Then, skip down to the "Checking basic device operation" section, bypassing the compilation steps.
+
 == Installing dependencies ==
 
 '''NOTE:''' If your distribution provides libusb-1.0 packages earlier than 1.0.16, you may want to consider to manually installing libusb >= 1.0.16, either from source or from upstream packages.
