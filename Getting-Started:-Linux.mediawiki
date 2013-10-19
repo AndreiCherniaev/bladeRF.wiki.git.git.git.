@@ -311,7 +311,7 @@ $ make && sudo make install && sudo ldconfig
 </pre>
 
 === Simple test applications to verify device operation ===
-The osmocom programs may be used to quickly view an FFT and generate a tone:
+The osmocom programs may be used to quickly view an FFT and generate a tone. Do not connect the bladeRF TX output to the RX input without an attenuator.
 
 Test Receive: (446 MHz)
 <pre>osmocom_fft -a bladerf=0,fpga=<your FPGA image> -s 8000000 -f 446000000</pre>
