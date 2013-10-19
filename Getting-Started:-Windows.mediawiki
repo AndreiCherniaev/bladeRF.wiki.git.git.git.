@@ -26,9 +26,9 @@ For more information, see the [https://github.com/msysgit/msysgit/wiki/InstallMS
 == Installing pthreads-win32 ==
 The pthreads library is required to build a few tests and utilities. A few steps are required to install this pthreads implementation. See [http://www.sourceware.org/pthreads-win32/ the pthreads-win32 website] for more information.
 
-1. Download the latest release. Currently this is [version 2.9.1](ftp://sourceware.org/pub/pthreads-win32/pthreads-w32-2-9-1-release.zip).
+1. Download the latest release. Currently this is [ftp://sourceware.org/pub/pthreads-win32/pthreads-w32-2-9-1-release.zip the pthreads-win32 website].
 2. Extract the contents of the release zip.
-3. Copy the contents of the _Pre-built.2_ directory to _C:\Program Files (x86)\pthreads-win32_
+3. Copy the contents of the _Pre-built.2_ directory to _C:\Program Files (x86)\pthreads-win32
 
 == CMake ==
 1. Download and install CMake for Windows: http://www.cmake.org/cmake/resources/software.html
