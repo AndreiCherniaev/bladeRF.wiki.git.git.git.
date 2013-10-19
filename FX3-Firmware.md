@@ -23,11 +23,11 @@ The most up-to-date firmware is always a convenient [latest] URL.
 [1.1]: http://nuand.com/fx3/1.1.img
 [1.0]: http://nuand.com/fx3/1.0.img
 
-## How to flash ##
+# Flashing Firmware #
 
 Please see the `bladeRF-flash` tool or the `bladeRF-cli` on how to flash a new image of the firmware to your device.
 
-## Current Architecture ##
+# Current Architecture #
 
 The FX3 is the main connection between the host PC and the bladeRF device itself.  This connection handles:
 
@@ -45,7 +45,7 @@ This is handled by using alternate interface settings in the FX3 firmware.  Each
 | 2                      | SPI flash | Used for updating and writing the firmware of the device. |
 | 3                      | FPGA Config | Used for sending down an FPGA RBF file and loading the FPGA. |
 
-## Future Direction ##
+# Future Direction #
 
 There has always been a desire to run the device in a headless mode so all that is required is power and the device loads the FX3 firmware from SPI, then loads the FPGA from SPI, and is fully autonomous.  To achieve this, a few things have to happen:
 
@@ -53,3 +53,20 @@ There has always been a desire to run the device in a headless mode so all that 
 - Headless FPGA image
 
 Currently, the FX3 runs the GPIF in 32-bit mode which only leaves the I2S and UART peripherals readily available to be used.  Without getting in the way of samples and using the GPIF to communicate back and forth with the FPGA, the UART was used as a side channel to the sample flow.  Unfortunately this limits us to a maximum of 4Mbps for the connection speed.  Since it is mainly configuration or setup of registers internal to the FPGA or to peripherals hanging off the FPGA, it isn't necessary to go very fast.  As of now, the UART is only running at 115.2kbps instead of the maximum 4Mbps.
+
+# Open tasks #
+There are several issues in the FX3 firmware that should be resolved. 
+
+ - [FX3 firmware does not always check error codes from Cy API](https://github.com/Nuand/bladeRF/issues/88)
+ - UART errors are not detected (framing/overflow)
+ - SPI errors are not detected (underflow/overflow)
+ - Once UART errors are detected, no way to report counters.  Need to develop diagnostic data interface.
+ - It would be really nice to have logging support in the FX3 firmware.
+ - Fatal errors in the FX3 firmware result in lockup.  Better to some how report to host problem occured.
+ - Implement suspend/resume (low priority)
+ - Add git rev to fx3 firmware build (https://github.com/Nuand/bladeRF/tree/dev-fx3_version_string)
+
+Open questions:
+ - Order of shutting down EPs and DMAs.  Should halt EP then DMA, or DMA then EP.  Or either works?
+ - DMA for RF data is byte oriented.  Should be symbol oriented?
+ - Unclear if endpoint halt feature is implemented correctly.
