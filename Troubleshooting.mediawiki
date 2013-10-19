@@ -3,6 +3,8 @@ This page provides some quick tips on troubleshooting problems.
 If you run across an issue not listed here and find a solution, please feel free to post it here!
 
 = Failing to see or connect to the device =
+
+== Virtual Machines ==
 If you are using a Virtual Machine, there have been issues reported when changing the interfaces or claiming different interfaces.  The level of success has been varied depending on the type of port (XHCI or EHCI) and the VM software used.  We are currently working on native Windows support to help remedy the VM situation.
 
 = FPGA fails to load =
