@@ -5,7 +5,7 @@
 
 For more information, see the [https://github.com/msysgit/msysgit/wiki/InstallMSysGit mysysgit] and [http://code.google.com/p/tortoisegit/wiki/SetupHowTo tortoisegit] wiki pages about their install procedures.
 
-# Installing Visual Studio 2012 Express Desktop #
+== Installing Visual Studio 2012 Express Desktop ==
 # Download [http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-windows-desktop Visual Studio 2012 Express Desktop] from Microsoft.
 # Follow the installation instructions, including any post-install updates.
 
