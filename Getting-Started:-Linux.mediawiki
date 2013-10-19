@@ -233,8 +233,7 @@ $ git checkout -b git-v3.7.1 v3.7.1
 $ mkdir build
 $ cd build
 $ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.1git  ../
-$ make
-$ sudo make install
+$ make && sudo make install
 </pre>
 
 
