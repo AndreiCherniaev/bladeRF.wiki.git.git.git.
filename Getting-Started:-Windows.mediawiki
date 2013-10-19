@@ -31,7 +31,7 @@ The pthreads library is required to build a few tests and utilities. A few steps
 # Extract the contents of the release zip.
 # Copy the contents of the _Pre-built.2_ directory to _C:\Program Files (x86)\pthreads-win32
 
-== Download CMake ==
+== Installing CMake ==
 Download and install CMake for Windows: 
 http://www.cmake.org/cmake/resources/software.html
 
