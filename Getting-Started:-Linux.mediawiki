@@ -72,7 +72,7 @@ $ cmake -DCMAKE_BUILD_TYPE=Debug -DINSTALL_UDEV_RULES=ON ../
 </pre>
 
 
-Verify that your user is in the ''plugdev'' group by running:<pre>$ groups</pre>.  If you do not see ''plugdev'' listed in the output, follow the instructions [http://oreilly.com/openbook/debian/book/ch07_01.html shown here] to add yourself to this group, first creating the group if it doesn't already exist. (Generally, this is unnecessary as most distros create this group and put desktop users in it.)
+Verify that your user is in the ''plugdev'' group by running:<pre>$ groups</pre>  If you do not see ''plugdev'' listed in the output, follow the instructions [http://oreilly.com/openbook/debian/book/ch07_01.html shown here] to add yourself to this group, first creating the group if it doesn't already exist. (Generally, this is unnecessary as most distros create this group and put desktop users in it.)
 
 === Perform the build and installation ===
 
@@ -163,7 +163,9 @@ Here we see the device's serial number, DAC calibration, FPGA information, and U
 </pre>
 
 == Loading the FPGA ==
-Support for loading the FPGA from flash automatically is currently supported and undergoing further testing. For simplicity, this guide shows how to load the FPGA without storing it into flash for autoloading. (As a result, you'll have to load the FPGA each time the device is reset or plugged in.)
+Support for loading the FPGA from flash automatically is currently supported and undergoing further testing. See the bladeRF-cli ''--help'' text for information on how to write an FPGA image to flash for autoloading.
+
+For simplicity, this guide shows how to load the FPGA without storing it into flash for autoloading. (As a result, you'll have to load the FPGA each time the device is reset or plugged in.)
 
 FPGA images can be obtained from [http://www.nuand.com/fpga|the Nuand website] or from a [http://hoopycat.com/bladerf_builds/|nightly build of "bleeding edge" images].
 
