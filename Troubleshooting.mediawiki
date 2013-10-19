@@ -2,13 +2,13 @@ This page provides some quick tips on troubleshooting problems.
 
 If you run across an issue not listed here and find a solution, please feel free to post it here!
 
-= FPGA Fails to load =
-There are a few different reasons for this.  One might be that the wrong size FPGA image is being used for the FPGA on your board.  Check to make sure you are using the 40kLE FPGA for x40 and the 115kLE FPGA for x115.
-
-If you compile your library as Debug, and see it is still timing out, check `dmesg` to see if there is anything out of the ordinary - like no room on an ep ring.  This is a known issue in Ubuntu 12.04 with a 3.2 linux kernel.  The only known solution, so far, is to update to a newer kernel either through a distribution update or `sudo apt-get install linux-image-generic-lts-quantal`.
-
+= Failing to see or connect to the device =
 If you are using a Virtual Machine, there have been issues reported when changing the interfaces or claiming different interfaces.  The level of success has been varied depending on the type of port (XHCI or EHCI) and the VM software used.  We are currently working on native Windows support to help remedy the VM situation.
 
+= FPGA fails to load =
+In many cases, load failures have been the result of trying to load the wrong size FPGA image for the board in question. Check to make sure you are using the 40kLE FPGA for x40 and the 115kLE FPGA for x115.
+
+If you're unsure which FPGA size is on your board, identify the the Altera Cyclone IV package on the top of the bladeRF. You should see text on the package that reads ''EP4CExxxF23C8N'', where ''xxx'' is the size -- either 40 or 115.
 
 = libbladeRF does not compile =
 If you see:
