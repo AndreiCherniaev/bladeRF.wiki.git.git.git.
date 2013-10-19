@@ -6,8 +6,8 @@ This wiki will serve as a place to create some community-based documentation. Pl
 ***
 
 # General Help #
-* [[Linux |Getting-Started:-Linux]]
-* [[Windows|Getting-Started:-Windows]]
+* [[Getting-Started:-Linux]]
+* [[Getting-Started:-Windows]]
 * [[Troubleshooting]]
 * [[Upgrading the bladeRF firmware|Upgrading-bladeRF-firmware]]
 
