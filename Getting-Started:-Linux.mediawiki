@@ -35,7 +35,7 @@ $ wget http://de.archive.ubuntu.com/ubuntu/pool/main/libu/libusbx/libusb-1.0-0-d
 === Redhat-based distros (e.g., Fedora, CentOS) ===
 <pre>
 $ sudo yum groupinstall "Development Tools" "Development Libraries"
-$ sudo yum install libusbx libusbx-devel cmake wget
+$ sudo yum install libusbx libusbx-devel cmake wget gcc-c++
 </pre>
 
 == Building bladeRF libraries and tools from source ==
