@@ -206,7 +206,7 @@ Support for loading the FPGA from flash automatically is currently supported and
 
 For simplicity, this guide shows how to load the FPGA without storing it into flash for autoloading. (As a result, you'll have to load the FPGA each time the device is reset or plugged in.)
 
-FPGA images can be obtained from [http://www.nuand.com/fpga|the Nuand website] or from a [http://hoopycat.com/bladerf_builds/|nightly build of "bleeding edge" images].
+FPGA images can be obtained from [[the Nuand website|http://www.nuand.com/fpga]] or from a [[nightly build of "bleeding edge" images|http://hoopycat.com/bladerf_builds/]].
 
 To load an image from the command line.
 <pre>
