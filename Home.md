@@ -8,6 +8,7 @@ This wiki will serve as a place to create some community-based documentation. Pl
 # General Help #
 * [[Getting Started: Linux]]
 * [[Getting Started: Windows]]
+* [[Getting Started: Mac OSX]
 * [[Troubleshooting]]
 * [[Upgrading the bladeRF firmware|Upgrading-bladeRF-firmware]]
 
