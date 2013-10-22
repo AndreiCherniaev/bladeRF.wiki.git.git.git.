@@ -1,3 +1,159 @@
-This guide needs to be written. 
+This guide describes the process of building and installing the bladeRF host libraries and tool for a Mac OSX system, and quickly getting a device up and running using pre-built firmware and FPGA images.
 
-Mac users, feel free to add instructions here, following the layout of the other guides.
+== Installing Dependencies
+
+Install XCode from Apple, as you will need a compiler. (Available in the App Store)
+
+Next, install a package management system, such as [[MacPorts|http://www.macports.org/]] (there is also Brew and some others).
+
+This command installs uhd with libusb support.
+
+<pre>sudo port install libusb</pre>
+
+== Building bladeRF libraries and tools from source ==
+
+=== Clone the bladeRF git repository ===
+
+To obtain the latest source code for the first time, clone the Nuand git repository via:
+<pre>
+$ git clone https://github.com/Nuand/bladeRF.git
+$ cd ./bladeRF
+</pre>
+
+In the future, you can update the repository via:
+<pre>
+$ git pull
+</pre>
+
+=== Configure the build ===
+
+First enter the directory containing the host source. Then create and enter a directory to perform the build in. By working out of the a 'build' directory, it's easy to later clean up, by simply removing 'build/'.
+
+<pre>
+$ cd host/
+$ mkdir build; cd build
+</pre>
+
+
+Next, configure the build. In the below example, we:
+* Set up a Debug build
+* Specify that files should be installed into /usr/local
+** You can install into a different location via the ''-DCMAKE_INSTALL_PREFIX=/some/desired/path'' option. Note that you'll need to need to configure binary and library search paths if you install elsewhere. If you're unsure how to do this, simply follow the steps below to use the default install location.
+
+<pre>
+$ cmake -DCMAKE_BUILD_TYPE=Debug ../
+</pre>
+
+=== Perform the build and installation ===
+
+The following commands:
+# Perform the build
+# Install files to /usr/local or the location specified by ''CMAKE_INSTALL_PREFIX''
+# Updated share library paths, so that libbladeRF can be found
+
+<pre>
+$ make && sudo make install && sudo ldconfig
+</pre>
+
+=== Uninstalling later ===
+Note that from this same directory, you can run the following to uninstall the files place on your system in the previous step. <pre>sudo make uninstall</pre> 
+
+The ''install_manifest.txt'' file, created after running the install step successfully, lists all the files installed.  It is a good idea to back up this file if you plan on removing this build directory later.
+
+== Checking basic device operation ==
+
+=== Detecting the bladeRF ===
+With the libraries and tools installed, we can now use the ''bladeRF-cli'' (command line interface) to probe for devices attached to the system.
+
+First, take a look at the command-line options:
+<pre>
+$ bladeRF-cli --help
+</pre>
+
+* If you see the help text, you can skip ahead to the invocation with the ''-p'' option.
+
+Note that the ''-p'' option may be used to probe for device. Plug in your device, and run the following command. You should see similar output.
+
+<pre>
+$ bladeRF-cli -p
+    Backend:        libusb
+    Serial:         f12ce1037830a1b27f3ceeba1f521413
+    USB Bus:        253
+    USB Address:    5
+</pre>
+
+If you do not see any device listed:
+* Something is wrong. Try looking in Command-Space 'System Information' to see your USB devices.
+
+=== Viewing additional device information ===
+
+More information about the attached device can be viewed while running ''bladeRF-cli'' in interactive mode. Enter this mode and issue the '''help''' command to see a list of available command.  Use the '''info''' command to print information about the device, and '''version''' to view version information, most notably, the firmware:
+
+<pre>
+$ bladeRF-cli -i
+
+bladeRF> help
+
+... (Help text shown here ) ...
+
+bladeRF> info
+
+  Serial #:                 f12ce1037830a1b27f3ceeba1f521413                          
+  VCTCXO DAC calibration:   0x9857
+  FPGA size:                115 KLE
+  FPGA loaded:              yes
+  USB bus:                  253
+  USB address:              5
+  USB speed:                Hi-Speed
+  Backend:                  libusb
+  Instance:                 0
+
+bladeRF> version
+  bladeRF-cli version:        0.7.0-git-74980ad-dirty
+  libbladeRF version:         0.9.0-git-74980ad-dirty
+
+  Firmware version:           1.4.0
+  FPGA version:               0.0.0
+
+</pre>
+
+Here we see the device's serial number, DAC calibration, FPGA information, and USB connection information.  Take note of the FPGA size, as this will help determine which FPGA file to load.
+=== Loading the FPGA ===
+Support for loading the FPGA from flash automatically is currently supported and undergoing further testing. See the <code>bladeRF-cli --help</code> text for information on how to write an FPGA image to flash for autoloading.
+
+For simplicity, this guide shows how to load the FPGA without storing it into flash for autoloading. (As a result, you'll have to load the FPGA each time the device is reset or plugged in.)
+
+FPGA images can be obtained from [[the Nuand website|http://www.nuand.com/fpga]] or from a [[nightly build of "bleeding edge" images|http://hoopycat.com/bladerf_builds/]].
+
+To load an image from the command line.
+<pre>
+$ bladeRF-cli -l <path/to/fpga/file>
+</pre>
+
+Or to load an image while in interactive mode:
+<pre>
+bladeRF> load fpga <path/to/fpga/file>
+</pre>
+
+After the FPGA loads, you should see LEDs on the board begin blinking. At this point, you're ready to start using your device!
+
+== Building GNU Radio and gr-osmosdr ==
+
+The following procedure uses gnuradio-build to fetch dependencies and checkout some useful tools. However, it only covers installing GNU Radio and gr-osmosdr.  A similar procedure maybe used to install the other tools (such as gr-iqbal). 
+
+  1. Install sdcc `sudo port install sdcc`
+  2. Install the UHD driver for the USRP, including libusb and Python 2.7:
+      `sudo port install uhd +libusb +python27`
+    When you do this, Boost 1.53 will also be installed, which doesn’t seem to give any problems.
+
+  3. Install GNU Radio, with UHD support, GRC (the Companion), the WX and QT GUIs (just in case):
+`sudo port install gnuradio +uhd +grc +swig +wxgui +qtgui +python27`
+
+After installed can run `gnuradio-companion`.
+
+gr-osmosdr isn't available in macports and needs to be built separately.
+
+== More Information ==
+
+Refer to the other guides to see how to send, receive samples.
+
