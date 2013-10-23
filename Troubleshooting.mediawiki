@@ -12,6 +12,8 @@ If you see a Cypress device with VID=04b4 and PID=00f3, your bladeRF's FX3 may b
 == Virtual Machines ==
 If you are using a Virtual Machine, there have been issues reported when changing the interfaces or claiming different interfaces.  The level of success has been varied depending on the type of port (XHCI or EHCI) and the VM software used.  
 
+It has been reported that some VM software does not fully support USB 3.0. Verify the speed that the VM detects the device at, and try falling back to 2.0 if 3.0 does not work.
+
 == Windows ==
 To see the device in Windows, ensure you have the appropriate <code>inf</code> installed so that Windows associated the bladeRF with a libusbK driver. Verify that you've followed [[Getting-Started:-Windows#installing-libusbx|these steps]] in the Getting Started guide for Windows.
 
@@ -69,6 +71,7 @@ If you're really stuck, join the #bladeRF channel on [http://webchat.freenode.ne
 Folks in the community are generally very happy to help. However, to make the most of everyone's time, please try to have as much of following information available as you can. Providing this information up front can help you get to the bottom of things much quicker.
 
 * Information about the target host machine
+** Are you in a VM? See the [[Troubleshooting#Virtual-Machines|Virtual Machines]] section for some known problems.
 ** Are you running on a 32-bit or 64-bit processor?
 ** What is your USB controller? Given that USB3 is still moderately new, some controllers have found to perform significantly better (or worse) than others.
 ** Are you connecting your device to a 2.0 or 3.0 port? If a 3.0 port, is it connecting 
