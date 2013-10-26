@@ -1,4 +1,4 @@
-This page contains information pertaining to [FX3 firmware](http://www.nuand.com/fx3) development
+This page contains information pertaining to FX3 firmware development.  See http://www.nuand.com/fx3 for available images and a brief summary of each image.
 
 # Current Architecture #
 
