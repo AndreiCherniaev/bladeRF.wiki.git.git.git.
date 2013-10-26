@@ -13,7 +13,7 @@ The FX3 firmware has undergone some extensive development in the last two months
 | [1.1]   | `d26d1b1d4bc212c407107c4c6e7740d8` | Added calibration and OTP SPI flash reading. |
 | [1.0]   | `5b8b60eaf3fff3f7d1a446ac07ec75c3` | Initial shipping code.  This code setup 3 separate interfaces - interface 0 being the FPGA config, interface 1 being the RF link and interface 2 being SPI flash writing. |
 
-The most up-to-date firmware is always available as at [latest.img] URL.
+The most up-to-date firmware is always available at [latest.img].
 
 [latest.img]: http://nuand.com/fx3/latest.img
 [1.5.3]: http://nuand.com/fx3/1.5.3.img
