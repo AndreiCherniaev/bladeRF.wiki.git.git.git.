@@ -10,6 +10,10 @@ This command installs uhd with libusb support.
 
 <pre>sudo port install libusb</pre>
 
+If you're using homebrew, make sure to install libusbx instead of libusb which is old and doesn't support USB 3.0.
+
+<pre>brew install libusbx</pre>
+
 == Building bladeRF libraries and tools from source ==
 
 === Clone the bladeRF git repository ===
@@ -83,7 +87,14 @@ $ bladeRF-cli -p
 </pre>
 
 If you do not see any device listed:
-* Something is wrong. Try looking in Command-Space 'System Information' to see your USB devices.
+* Something is wrong.
+* Try looking in Command-Space 'System Information' to see your USB devices.
+* It's there? Make sure you have libusb 1.0.17
+* You do? Has it been sitting on your desk and you've never bothered to plug it in? Upgrade your firmware:
+
+<pre> curl http://nuand.com/fx3/latest.img -o latest.img ; bladeRF-cli -f latest.img </pre>
+
+* Seriously, the firmware upgrade worked for me even though '''bladeRF-cli -p''' thought there was no bladeRF
 
 === Viewing additional device information ===
 
