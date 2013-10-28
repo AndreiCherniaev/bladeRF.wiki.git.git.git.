@@ -7,6 +7,7 @@ The hardware consists of:
 * Si5338 clock generator for arbitrary sample rate generation
 * Lime Microsystems LMS6002D 
 * Altera Cyclone IV E (40kLE or 115kLE) FPGA for signal processing and control
+* Cypress FX3 USB 3.0 Superspeed Microcontroller
 
 = Software =
 This is where we describe the software architecture.
