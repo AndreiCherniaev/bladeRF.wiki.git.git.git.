@@ -1,0 +1,51 @@
+= Hardware =
+This is where we describe the hardware architecture.
+
+== Block Diagram ==
+The hardware consists of:
+
+* Si5338 clock generator for arbitrary sample rate generation
+* Lime Microsystems LMS6002D 
+* Altera Cyclone IV E (40kLE or 115kLE) FPGA for signal processing and control
+
+= Software =
+This is where we describe the software architecture.
+
+== Host ==
+This is where we describe the host side software architecture.
+
+=== libbladeRF ===
+Talk about the library.
+
+=== Utilities ===
+Talk about the host side utilities which include the CLI, and simple RX/TX.
+
+== Cypress FX3 ==
+The FX3 firmware basically has 3 separate modes of operation:
+
+* FPGA Loading
+* RF Link
+* SPI flashing
+
+The reason for the changes in the operating modes is due to having to reconfigure the GPIF.  This design choice was made to alleviate the need for a very complex GPIF state machine in favor of more complexity on the host side software.
+
+== Altera Cyclone IV E FPGA ==
+Software in the FPGA consists of two major pieces:
+
+* Hardware Description Language (HDL) for the logic/signal processing
+* C code in a NIOS II processor for control of the LMS6002D, VCTCXO trim DAC and Si5338 PLL
+
+The FX3 loads the FPGA in Fast Parallel Programming (FPP) mode either from an image stored in the SPI flash or over USB.  Once this is done, communication with the FPGA happens over two main interfaces:
+
+* GPIF for RF samples (both TX and RX)
+* UART for command/control information
+
+The UART communicates with a NIOS II processor running inside the FPGA which does simple reads and writes over either SPI, I2C, or internal register writes for some config GPIO in the Qsys system.
+
+The HDL for the FPGA focuses on a clock domain transfer FIFO between the 100MHz clock domain of the FX3, and the arbitrary sample clock of the LMS6002D ADC/DAC.  The sample rate clock is running at 2x the sample rate due to the way the LMS6002D interface works.  All samples go through a dual-clock FIFO.
+
+The GPIF is a simple DMA state machine.  For RX, when there are enough samples in the FIFO, the logic checks to make sure that samples are indeed being requested by the host and that a DMA into the FX3 is currently being requested.
+
+Conversely, for TX, the logic first checks to make sure there is room in a FIFO for new samples to get pushed.  It then checks to ensure transmit samples are being pushed to the FX3 and that a DMA transfer is being requested.
+
+Each DMA transfer over the GPIF is 512 or 256 samples worth of data depending if the USB is in high or superspeed mode.
