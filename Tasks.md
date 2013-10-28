@@ -17,7 +17,6 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - FPGA version number
 - In-band scheduling support
 - Fix or remove FS USB descriptors.
-- Fix udev rule's group, per gpaliot's suggestion
 - extio.dll support for Windows
 
 ### Future Items ###
