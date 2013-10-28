@@ -1,7 +1,6 @@
 This is a revolving list of tasks that we need to do.  Priorities change constantly.
 
 ### Current Items ###
-- Add device caching to bladeRF src/sink gr-osmosdr to allow for full-duplex support (dxld is currently working on this)
 - Audit library messages being printed out to make sure they are of the appropriate type (debug, info, etc)
 - Clean up lms.c (return values, style, etc.)
 - Complete CLI scripting
