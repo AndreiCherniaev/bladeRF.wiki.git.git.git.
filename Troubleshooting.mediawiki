@@ -49,6 +49,11 @@ Below is a list of configurations that people have reported success on. Feel fre
 | Intel 7 Series/C210 Series xHCI (VID=8086, PID=1e31)
 | Windows 7, XUbuntu 13.04 (All 64-bit). '''Note''': The XHCI issues mentioned above applies to the Linux configuration here.
 |-
+| drmpeg's Desktop
+| Dell T3600, Intel E5-1607
+| Onboard NEC uPD720200 xHCI
+| Ubuntu 13.04 (32-bit just to run old XView stuff). Able to process 36 Msps in osmocom_fft without overruns.
+|-
 |}
 
 = FPGA fails to load =
