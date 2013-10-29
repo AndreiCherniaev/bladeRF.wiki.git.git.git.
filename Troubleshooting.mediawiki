@@ -31,7 +31,7 @@ To avoid this issue, ensure that programs using the device are closed cleanly:
 
 As always, any help into investigating this issue is appreciated!
 
-=== Working confiugrations ===
+=== Working configurations ===
 Below is a list of configurations that people have reported success on. Feel free to add to this list. (Please try to keep it reasonably organized.)
 {| class="wikitable"
 | Configuration Name
