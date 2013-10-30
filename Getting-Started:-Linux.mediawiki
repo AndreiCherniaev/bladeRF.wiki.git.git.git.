@@ -1,7 +1,7 @@
 This guide describes the process of building and installing the bladeRF host libraries and tool for a Linux system, and quickly getting a device up and running using pre-built firmware and FPGA images.
 
-== Easy installation for Ubuntu 13.10 ==
-If you're running Ubuntu 13.10 ([[Saucy Salamander|http://releases.ubuntu.com/saucy/]]), a PPA is available at [[ppa:rtucker/bladerf-daily|https://launchpad.net/~rtucker/+archive/bladerf-daily/+packages]].  New builds will appear occasionally, built from the master.
+== Easy installation for Ubuntu 13.04 and later ==
+If you're running Ubuntu 13.04 ([[Raring Ringtail|http://releases.ubuntu.com/raring/]]) or later, a PPA is available at [[ppa:rtucker/bladerf-daily|https://launchpad.net/~rtucker/+archive/bladerf-daily/+packages]].  New builds will appear occasionally, built from the master.
 
 To activate this PPA,
 
@@ -10,6 +10,8 @@ $ apt-get update
 $ apt-get install bladerf</pre>
 
 Then, skip down to the [[Getting-Started:-Linux#wiki-Checking_basic_device_operation|Checking basic device operation]] section, bypassing the compilation steps.
+
+Note: This PPA will be moved to a new location soon, and some of the binary packages may be renamed at the same time.  Check back here if the PPA disappears and you get errors during system updates.
 
 == Installing dependencies ==
 
