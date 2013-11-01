@@ -22,7 +22,7 @@ or they can built from source following the instructions at https://github.com/N
 ## Method #1: bladeRF-cli ##
 1. Acquire bladeRF-cli and bladeRF libraries either from the installer or source code (see previous paragraph)
 2. Download the latest FX3 image and flash it:
-<pre>wget http://nuand.com/fx3/latest.img ; bladeRF -f latest.img</pre>
+<pre>wget http://nuand.com/fx3/latest.img ; bladeRF-cli -f latest.img</pre>
 3. Unplug and plug the bladeRF
 
 ## Method #2 : bladerf_winflasher ##
