@@ -56,7 +56,7 @@ The following commands:
 # Updated share library paths, so that libbladeRF can be found
 
 <pre>
-$ make && sudo make install && sudo ldconfig
+$ make && sudo make install
 </pre>
 
 === Uninstalling later ===
