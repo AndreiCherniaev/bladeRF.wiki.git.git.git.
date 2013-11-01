@@ -6,7 +6,7 @@ Upgrading from v1.0 is a little trickier than upgrading from more recent firmwar
 
 1. Ensure you've installed all libraries and utilities, per the ''Getting Started'' guides
 2. Download the latest FX3 image and flash it:
-<pre>wget http://nuand.com/fx3/latest.img && bladeRF -f latest.img</pre>
+<pre>wget http://nuand.com/fx3/latest.img && bladeRF-cli -f latest.img</pre>
 
 ## Troubleshooting ideas for Linux ##
 
