@@ -6,15 +6,17 @@ Install XCode from Apple, as you will need a compiler. (Available in the App Sto
 
 Next, install a package management system, such as [[MacPorts|http://www.macports.org/]] (another option is [[HomeBrew|http://brew.sh/]]).
 
-We need libusb (with USB 3.0 support)
+We need libusb (with USB 3.0 support), and cmake
 
-With Macports, you can install it with:
+With Macports, you can install these with:
 
-<pre>sudo port install libusb</pre>
+<pre>sudo port install libusb pkgconfig cmake</pre>
 
 If you're using homebrew, to get the USB 3.0 you use the libusbx package:
 
 <pre>brew install libusbx</pre>
+
+(and possibly brew install pkgconfig cmake)
 
 == Building bladeRF libraries and tools from source ==
 
@@ -91,7 +93,7 @@ $ bladeRF-cli -p
 If you do not see any device listed:
 * Something is wrong.
 * Try looking in Command-Space 'System Information' to see your USB devices.
-* It's there? Make sure you have libusb 1.0.17
+* It's there? Make sure you have libusb 1.0.17 (check with 'port installed | grep libusb')
 * You do? Has it been sitting on your desk and you've never bothered to plug it in? Upgrade your firmware:
 
 <pre> curl http://nuand.com/fx3/latest.img -o latest.img ; bladeRF-cli -f latest.img </pre>
