@@ -4,13 +4,15 @@ This guide describes the process of building and installing the bladeRF host lib
 
 Install XCode from Apple, as you will need a compiler. (Available in the App Store)
 
-Next, install a package management system, such as [[MacPorts|http://www.macports.org/]] (there is also Brew and some others).
+Next, install a package management system, such as [[MacPorts|http://www.macports.org/]] (another option is [[HomeBrew|http://brew.sh/]]).
 
-This command installs uhd with libusb support.
+We need libusb (with USB 3.0 support)
+
+With Macports, you can install it with:
 
 <pre>sudo port install libusb</pre>
 
-If you're using homebrew, make sure to install libusbx instead of libusb which is old and doesn't support USB 3.0.
+If you're using homebrew, to get the USB 3.0 you use the libusbx package:
 
 <pre>brew install libusbx</pre>
 
