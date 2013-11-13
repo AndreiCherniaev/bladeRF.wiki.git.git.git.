@@ -17,6 +17,10 @@ It has been reported that some VM software does not fully support USB 3.0. Verif
 == Windows ==
 To see the device in Windows, ensure you have the appropriate <code>inf</code> installed so that Windows associated the bladeRF with a libusbK driver. Verify that you've followed [[Getting-Started:-Windows#installing-libusbx|these steps]] in the Getting Started guide for Windows.
 
+Windows driver signing enforcement may cause driver installation problems. Try using the latest Zadig on the computer you want to install the driver on. Zadig will self-sign the driver package and install the corresponding certificate.
+
+In Windows 8, Libusbx may incorrectly report USB 3.0 SuperSpeed connection as Hi-Speed.
+
 == Host or Device-specific Issues ==
 As USB 3.0 is still relatively new, we've heard reports of some controller working great, and others not working at all. Ensure you have the latest drivers (and firmware, if needed) for your USB controller.
 
