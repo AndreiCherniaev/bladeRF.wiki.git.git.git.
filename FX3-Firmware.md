@@ -18,6 +18,27 @@ This is handled by using alternate interface settings in the FX3 firmware.  Each
 | 2                      | SPI flash | Used for updating and writing the firmware of the device. |
 | 3                      | FPGA Config | Used for sending down an FPGA RBF file and loading the FPGA. |
 
+## SPI Flash Layout ##
+The FX3 is booted from a 32 Mbit [MX25U3235EM2I](http://www.macronix.com/QuickPlace/hq/PageLibrary4825740B00298A3B.nsf/h_Index/3F21BAC2E121E17848257639003A3146/$File/MX25U3235F,%201.8V,%2032Mb,%20v1.1.pdf) 1.8V SPI flash, with 4KB sectors. This flash also stores the device's serial number, calibration, and (optionally) an FPGA bitstream.
+
+Below is a map of SPI flash layout. Note that while the offsets are in bytes, regions are sector-aligned.
+(_The following table is still an incomplete draft, and may contain errors_)
+
+| Offset (bytes) | Offset (pages) | Length (bytes)   | Description                          |
+| :------------: | :------------- | :--------------- | :----------------------------------- |
+| 0x00000000     |  0             | 0x300000         | FX3 Firmware                         |
+| 0x00300000     |  768           | 0x100            | Calibration Data                     |
+| 0x00300100     |  768           | 0xF00            | Reserved for future calibration data |
+| 0x00301000     |  769           | 0xFF000          | Reserverd                            |
+| 0x00400000     |  1024          | 0x100            | FPGA autoload metadata               |
+|  |  |  |
+
+### TODO Calibration Data layout ###
+
+### TODO Flash autoload metadata layout ###
+
+### TODO OTP Section layout ###
+
 # Future Direction #
 
 There has always been a desire to run the device in a headless mode so all that is required is power and the device loads the FX3 firmware from SPI, then loads the FPGA from SPI, and is fully autonomous.  To achieve this, a few things have to happen:
