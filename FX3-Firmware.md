@@ -24,13 +24,13 @@ The FX3 is booted from a 32 Mbit [MX25U3235EM2I](http://www.macronix.com/QuickPl
 Below is a map of SPI flash layout. Note that while the offsets are in bytes, regions are sector-aligned.
 (_The following table is still an incomplete draft, and may contain errors_)
 
-| Offset (bytes) | Offset (pages) | Length (bytes)   | Description                          |
-| :------------: | :------------- | :--------------- | :----------------------------------- |
-| 0x00000000     |  0             | 0x300000         | FX3 Firmware                         |
-| 0x00300000     |  768           | 0x100            | Calibration Data                     |
-| 0x00300100     |  768           | 0xF00            | Reserved for future calibration data |
-| 0x00301000     |  769           | 0xFF000          | Reserverd                            |
-| 0x00400000     |  1024          | 0x100            | FPGA autoload metadata               |
+| Offset (bytes) | Offset (sectors) | Length (bytes)   | Description                          |
+| :------------: | :--------------- | :--------------- | :----------------------------------- |
+| 0x00000000     |  0               | 0x300000         | FX3 Firmware                         |
+| 0x00300000     |  768             | 0x100            | Calibration Data                     |
+| 0x00300100     |  768             | 0xF00            | Reserved for future calibration data |
+| 0x00301000     |  769             | 0xFF000          | Reserved                            |
+| 0x00400000     |  1024            | 0x100            | FPGA autoload metadata               |
 |  |  |  |
 
 ### TODO Calibration Data layout ###
