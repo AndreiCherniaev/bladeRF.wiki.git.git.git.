@@ -40,6 +40,7 @@ Below is a map of SPI flash layout.
 ### TODO Flash autoload metadata layout ###
 
 ### TODO OTP Section layout ###
+An additional 4KiB one-time programmable (OTP) section is provided by the device. This is used to store the device's serial number/unique ID.
 
 # Future Direction #
 
