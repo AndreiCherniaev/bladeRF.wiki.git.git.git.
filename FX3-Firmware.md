@@ -19,21 +19,21 @@ This is handled by using alternate interface settings in the FX3 firmware.  Each
 | 3                      | FPGA Config | Used for sending down an FPGA RBF file and loading the FPGA. |
 
 ## SPI Flash Layout ##
-The FX3 is booted from a 32 Mbit [MX25U3235EM2I](http://www.macronix.com/QuickPlace/hq/PageLibrary4825740B00298A3B.nsf/h_Index/3F21BAC2E121E17848257639003A3146/$File/MX25U3235F,%201.8V,%2032Mb,%20v1.1.pdf) 1.8V SPI flash, with 64KiB and 32KiB blocks, 4KiB sectors, and 256 byte pages. This flash also stores the device's serial number, calibration, and (optionally) an FPGA bitstream. Below is a list of the 
+The FX3 is booted from a 32 Mbit [MX25U3235EM2I](http://www.macronix.com/QuickPlace/hq/PageLibrary4825740B00298A3B.nsf/h_Index/3F21BAC2E121E17848257639003A3146/$File/MX25U3235F,%201.8V,%2032Mb,%20v1.1.pdf) 1.8V SPI flash, with 64KiB and 32KiB blocks, 4KiB sectors, and 256 byte pages. This flash also stores the device's serial number, calibration, and (optionally) an FPGA bitstream. 
 
+_Note: Currently [the source contains some mixups between the terms "sector" and "erase block".](https://github.com/Nuand/bladeRF/issues/176) This will be addressed soon._
 
+Below is a map of SPI flash layout.
+(_The following table is still a draft, and may contain errors_)
 
-Below is a map of SPI flash layout. Note that while the offsets are in bytes, regions are sector-aligned.
-(_The following table is still an incomplete draft, and may contain errors_)
-
-| Offset (bytes) | Offset (sectors) | Length (bytes)   | Description                          |
-| :------------: | :--------------- | :--------------- | :----------------------------------- |
-| 0x00000000     |  0               | 0x300000         | FX3 Firmware                         |
-| 0x00300000     |  768             | 0x100            | Calibration Data                     |
-| 0x00300100     |  768             | 0xF00            | Reserved for future calibration data |
-| 0x00301000     |  769             | 0xFF000          | Reserved                            |
-| 0x00400000     |  1024            | 0x100            | FPGA autoload metadata               |
-|  |  |  |
+| Offset (bytes) | Offset (page) | Offset (sector) | Offset (64KiB EB) | Length (bytes) | Description                          |
+| :------------: | :------------ | :-------------- | :---------------- | :------------- | :----------------------------------- |
+| 0x00000000     | 0             | 0               | 0                 | 0xC0000        | FX3 Firmware                         |
+| 0x00030000     | 768           | 48              | 3                 | 0x100          | Calibration Data                     |
+| 0x00030100     | 769           | 48              | 3                 | 0xF00          | Reserved for future calibration data |
+| 0x00031000     | 784           | 49              | 3                 | 0xF000         | Reserved                             |
+| 0x00040000     | 1024          | 64              | 4                 | 0x100          | FPGA autoload metadata               |
+| 0x00040100     | 1025          | 64              | 4                 | 0x3C0000       | FPGA bitstream                       |
 
 ### TODO Calibration Data layout ###
 
