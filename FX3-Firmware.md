@@ -19,7 +19,9 @@ This is handled by using alternate interface settings in the FX3 firmware.  Each
 | 3                      | FPGA Config | Used for sending down an FPGA RBF file and loading the FPGA. |
 
 ## SPI Flash Layout ##
-The FX3 is booted from a 32 Mbit [MX25U3235EM2I](http://www.macronix.com/QuickPlace/hq/PageLibrary4825740B00298A3B.nsf/h_Index/3F21BAC2E121E17848257639003A3146/$File/MX25U3235F,%201.8V,%2032Mb,%20v1.1.pdf) 1.8V SPI flash, with 4KB sectors and 256-byte pages. This flash also stores the device's serial number, calibration, and (optionally) an FPGA bitstream.
+The FX3 is booted from a 32 Mbit [MX25U3235EM2I](http://www.macronix.com/QuickPlace/hq/PageLibrary4825740B00298A3B.nsf/h_Index/3F21BAC2E121E17848257639003A3146/$File/MX25U3235F,%201.8V,%2032Mb,%20v1.1.pdf) 1.8V SPI flash, with 64KiB and 32KiB blocks, 4KiB pages, and 256 byte pages. This flash also stores the device's serial number, calibration, and (optionally) an FPGA bitstream. Below is a list of the 
+
+
 
 Below is a map of SPI flash layout. Note that while the offsets are in bytes, regions are sector-aligned.
 (_The following table is still an incomplete draft, and may contain errors_)
