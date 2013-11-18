@@ -33,7 +33,7 @@ Below is a map of SPI flash layout.
 | 0x00030100     | 769           | 48              | 3                 | 0xF00          | Reserved for future calibration data |
 | 0x00031000     | 784           | 49              | 3                 | 0xF000         | Reserved                             |
 | 0x00040000     | 1024          | 64              | 4                 | 0x100          | FPGA autoload metadata               |
-| 0x00040100     | 1025          | 64              | 4                 | 0x3C0000       | FPGA bitstream                       |
+| 0x00040100     | 1025          | 64              | 4                 | 0x3BFF00       | FPGA bitstream                       |
 
 ### TODO Calibration Data layout ###
 
