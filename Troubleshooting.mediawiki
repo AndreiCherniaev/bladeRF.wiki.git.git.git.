@@ -58,6 +58,11 @@ Below is a list of configurations that people have reported success on. Feel fre
 | Onboard NEC uPD720200 xHCI
 | Ubuntu 13.04 (32-bit just to run old XView stuff). Able to process 36 Msps in osmocom_fft without overruns.
 |-
+|tnt's laptop
+|Apple Mac Book Pro Late 2008 (MacBookPro5,1)
+|ExpressCard ASM1042 (VID=1b21, PID=1042)
+|Gentoo (3.8.10-gentoo x86_64)
+|-
 |}
 
 = FPGA fails to load =
