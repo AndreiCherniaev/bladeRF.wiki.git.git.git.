@@ -72,6 +72,16 @@ If you're unsure which FPGA size is on your board, identify the the Altera Cyclo
 
 = Compilation Issues =
 
+== Build fails due to a warning being treated as an error ==
+By default, builds use ''-Werror'' or ''/WX'' to treat warnings as errors, with the intent of forcing developers to address any warnings.
+
+Occasionally, we've seen different compiler versions throw errors that were not seen on developers' machines, breaking master for users.
+
+Master is intended to always build. If you suspect a build is broken due to a warning being treated as an error, please report it via IRC or the issue tracker, and run the following from your build directory as a temporary workaround:
+```
+cmake -DTREAT_WARNINGS_AS_ERRORS=No ../
+```
+
 == libbladeRF ==
 
 === libusb_get_version ===
