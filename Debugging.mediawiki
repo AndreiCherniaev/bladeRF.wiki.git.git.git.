@@ -1,4 +1,4 @@
-This page provides tips on debugging various portions of the bladeRF code base. If you suspect you've encountered a bug and 
+This page provides tips on debugging various portions of the bladeRF code base. If you suspect you've encountered a bug that hasn't been reported yet, it is generally very helpful to include results of some preliminary debugging to an [https://github.com/Nuand/bladeRF/issues?direction=desc&sort=created&state=open issue tracker] item, [http://nuand.com/forums/ forum] post, or question on IRC. 
 
 = Host-side tools and libraries =
 
@@ -11,7 +11,10 @@ GCC/GDB users will likely want to include as much debug information as possible.
 
 <code>$ cmake -DCMAKE_BUILD_TYPE=Debug -DENABLE_GDB_EXTENSIONS=Yes ../</code>
 
+
 == Memory-related bugs ==
+
+=== Valgrind ===
 
 = FX3 Firmware =
 
