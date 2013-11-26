@@ -1,4 +1,6 @@
-This page provides tips on debugging various portions of the bladeRF code base. If you suspect you've encountered a bug that hasn't been reported yet, it is generally very helpful to include results of some preliminary debugging to an [https://github.com/Nuand/bladeRF/issues?direction=desc&sort=created&state=open issue tracker] item, [http://nuand.com/forums/ forum] post, or question on IRC. 
+This page provides tips on debugging various portions of the bladeRF code base. 
+
+If you suspect you've encountered a bug that hasn't been reported yet, it is generally very helpful to include results of some preliminary debugging to an [https://github.com/Nuand/bladeRF/issues?direction=desc&sort=created&state=open issue tracker] item, [http://nuand.com/forums/ forum] post, or question on IRC. When reporting bugs, developers and community members may ask you to provide additional information, using some of the techniques described here.
 
 = Host-side tools and libraries =
 
@@ -11,10 +13,25 @@ GCC/GDB users will likely want to include as much debug information as possible.
 
 <code>$ cmake -DCMAKE_BUILD_TYPE=Debug -DENABLE_GDB_EXTENSIONS=Yes ../</code>
 
+== Crashes ==
+When dealing with a crashing application, one generally wants to identify:
+# The state of the application at the time the failure occurred, including what the program was currently executing, and the state of relevant variables.
+# The origin of any incorrect values, such as when a pointer was assigned a NULL value.
 
-== Memory-related bugs ==
+== Getting a backtrace in GDB ==
+To quote the [http://sourceware.org/gdb/onlinedocs/gdb/Backtrace.html GDB documentation], <i>A backtrace is a summary of how your program got to where it is.<i>  Backtraces in GDB show the current stack frame followed by the calling stack frames.
 
-=== Valgrind ===
+The below examples shows a snippet from a backtrace of the bladeRF-cli, where an invalid loop bound defect was introduced to result in a segfault:
+
+<code>
+$ gdb --args bladeRF-cli -p   # --args is required to indicate that the arguments following the program name are arguments to that program, not gdb
+</code>
+
+
+
+== Memory corruption and leaks ==
+
+
 
 = FX3 Firmware =
 
