@@ -27,7 +27,7 @@ When dealing with a crashing application, one generally wants to identify:
 # The origin of any incorrect values, such as when a pointer was assigned a NULL value.
 
 === A note on debugging with GNU Radio === 
-When possible, try to reproduce failures with the bladeRF-cli or a simple test applications to remove some degree of complexity from the situation, as well as narrow the scope of where defects reside.
+When possible, try to reproduce failures with the bladeRF-cli or a simple test applications to remove some degree of complexity from the situation, as well as to narrow the scope of where the defects may reside.
 
 If this is not possible, or the failure appears to be associated with the gr-osmosdr bladeRF support, it is recommended that you review the [http://gnuradio.org/redmine/projects/gnuradio/wiki/TutorialsDebugging#Tutorial-Using-gdb-with-Pythonic-GR-applications GNU Radio documentation on debugging with gdb] first.
 
