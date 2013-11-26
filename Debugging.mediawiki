@@ -26,9 +26,7 @@ If this is not possible, or the failure appears to be associated with the gr-osm
 == Getting a backtrace in GDB ==
 To quote the [http://sourceware.org/gdb/onlinedocs/gdb/Backtrace.html GDB documentation], <i>A backtrace is a summary of how your program got to where it is.</i>  Backtraces in GDB show the current stack frame followed by the calling stack frames.
 
-The below examples shows a snippet from a backtrace of the bladeRF-cli, where an invalid loop bound defect was introduced to result in a segfault.  
-
-Note that the <b>backtrace</b> or <b>bt</b> command may be used to display the currently executing function and its callers.  The <b>frame</b> command may be used to switch between the various stack frames, in order to inspect the state of the the program in each frame.
+The below examples shows a snippet from a simple debug session of the bladeRF-cli, where an invalid loop bound defect was introduced to result in a segfault. In this example, we collect a backtrace and inspect the state of a function 2 stack frames prior to location where the segfault occurred. 
 
 We first start by running the program (bladeRF-cli, in this case) in GDB.  Note that we tell GDB to interpret the arguments following the program name as arguments to that program, rather than to gdb, via <b>--args</b>.
 
@@ -53,7 +51,9 @@ Program received signal SIGSEGV, Segmentation fault.
 
 Upon running the program, we see it terminate (crash) with a segmentation fault. Note that the location and name of the function that the crash occurred in is shown here -- this is an important piece of information to include an your findings.  
 
-If the function that the program has crashed in is called from many places in the code, one many not be able to glean much from this information.
+If the function that the program has crashed in is called from many places in the code, one many not be able to glean much from this information. 
+
+The <b>backtrace</b> or <b>bt</b> command may be used to display the currently executing function and its callers. Here we can see the path of function calls taken, as well as the arguments to each function call, with line numbers.
 
 <pre>
 (gdb) bt
@@ -76,6 +76,38 @@ If the function that the program has crashed in is called from many places in th
 (gdb) 
 </pre>
 
+From the above backtrace, we can see how we got to the <i>libusb_get_device_descriptor()</i>.  Note that in frame #1, <i>lusb_device_is_bladerf()</i> was called with a NULL argument, which is suspicious.  To figure out why a NULL pointer was passed to this function, we'll need to inspect the state of the program in stack frame #2, inside <i>lusb_probe()</i>
+
+The <b>frame</b> or <b>f</b> command may be used to select and print a stack frame:
+
+<pre>
+(gdb) frame 2
+#2  0x00007ffff7bd349c in lusb_probe (info_list=0x7fffffffe210)
+    at /home/jon/projects/bladeRF/host/libraries/libbladeRF/src/backend/libusb.c:2003
+2003            if( lusb_device_is_bladerf(list[i]) ) {
+</pre>
+
+Now we can take a look at the state of the local variables in this function, and print out some additional information:
+
+<pre>
+(gdb) info local
+status = 0
+i = 13
+n = 0
+count = 13
+list = 0x618ef0
+info = {backend = BLADERF_BACKEND_LIBUSB, 
+  serial = "0000000004BE", '\000' <repeats 16 times>, "\320\341\377\377\377", 
+  usb_bus = 2 '\002', usb_addr = 4 '\004', instance = 4156353024}
+context = 0x618840
+(gdb) print list[13]
+$2 = (libusb_device *) 0x0
+(gdb) print list[12]
+$3 = (libusb_device *) 0x61a1c0
+(gdb) 
+</pre>
+
+In this code, we see that a <i>count</i> local variable is 13. This is <i>supposed</i> to be used as an upper bound of a loop. However, we see that the variable <i>i</i> is 13, causing us to access an invalid list element. (The valid elements are in list[0] through list[12]).
 
 = FX3 Firmware =
 
