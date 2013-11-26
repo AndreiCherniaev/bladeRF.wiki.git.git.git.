@@ -4,7 +4,8 @@ If you suspect you've encountered a bug that hasn't been reported yet, it is gen
 
 = Host-side tools and libraries =
 
-== Configuring a Debug Build ==
+== Enable Additional Information ==
+=== Configuring a Debug Build ===
 In most cases, one will want to ensure debug symbols are enabled while debugging. This can be enabled by setting the CMake <i>CMAKE_BUILD_TYPE</i> variable to <b>Debug</b>: 
 
 <code>$ cmake -DCMAKE_BUILD_TYPE=Debug ../</code>
@@ -13,7 +14,7 @@ GCC/GDB users will likely want to include as much debug information as possible.
 
 <code>$ cmake -DCMAKE_BUILD_TYPE=Debug -DENABLE_GDB_EXTENSIONS=Yes ../</code>
 
-== Increasing libbladeRF's verbosity ==
+=== Increasing libbladeRF's verbosity ===
 To increase the verbosity of libbladeRF's output, add <code>bladerf_log_set_verbosity(BLADERF_LOG_LEVEL_VERBOSE)</code> early in your program.  See the <i>bladerf_log_level</i> enumeration for other possible log levels.
 
 == Crashes and Memory-related Failures ==
