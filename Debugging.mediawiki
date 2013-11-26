@@ -21,7 +21,9 @@ When dealing with a crashing application, one generally wants to identify:
 == Getting a backtrace in GDB ==
 To quote the [http://sourceware.org/gdb/onlinedocs/gdb/Backtrace.html GDB documentation], <i>A backtrace is a summary of how your program got to where it is.</i>  Backtraces in GDB show the current stack frame followed by the calling stack frames.
 
-The below examples shows a snippet from a backtrace of the bladeRF-cli, where an invalid loop bound defect was introduced to result in a segfault:
+The below examples shows a snippet from a backtrace of the bladeRF-cli, where an invalid loop bound defect was introduced to result in a segfault.  
+
+Note that the <b>backtrace</b> or <b>bt</b> command may be used to display the currently executing function and its callers.  The <b>frame</b> command may be used to switch between the various stack frames, in order to inspect the state of the the program in each frame.
 
 <pre>
 # --args is required to indicate that the arguments following the 
