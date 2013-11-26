@@ -1,6 +1,10 @@
 This page provides tips on debugging various portions of the bladeRF code base. 
 
-If you suspect you've encountered a bug that hasn't been reported yet, it is generally very helpful to include results of some preliminary debugging to an [https://github.com/Nuand/bladeRF/issues?direction=desc&sort=created&state=open issue tracker] item, [http://nuand.com/forums/ forum] post, or question on IRC. When reporting bugs, developers and community members may ask you to provide additional information, using some of the techniques described here.
+If you suspect you've encountered a bug that hasn't been reported yet, it is generally very helpful to include results of some preliminary debugging to an [https://github.com/Nuand/bladeRF/issues?direction=desc&sort=created&state=open issue tracker] item, [http://nuand.com/forums/ forum] post, or question on IRC. 
+
+When reporting bugs, developers and community members may ask you to provide additional information, using some of the techniques described here.
+
+Please remember to use a website such as [http://pastebin.com/] or [http://pastie.org/] when sharing debug logs on IRC.
 
 = Host-side tools and libraries =
 
@@ -117,13 +121,66 @@ In this code, we see that a <i>count</i> local variable is 13. This is <i>suppos
 
 This section builds upon segfault example from the [[Debugging##wiki-A_note_on_debugging_with_GNU_Radio|previous section]].
 
-Sometimes an invalid access may not cause a program to immediately (and conveniently) crash and burn. Instead, the problem many manifest itself as an intermittent issues where data is occasionally corrupted.
+Sometimes an invalid access may not cause a program to immediately (and conveniently) crash and burn. Instead, the problem many manifest itself as an intermittent issue where data is occasionally corrupted.
 
 [http://valgrind.org/ Valgrind] tends to come in handy in this type of situation.  [http://www.drmemory.org/ Dr. Memory] is a similar tool, which also supports 32-bit Windows applications.
 
 Running the bladeRF-cli through valgrind on yields similar results to what we obtained with gdb in the previous section.  However, it appears that list[13] didn't contain a value of 0x0 (it is likely that gdb had zeroed out memory for us), but rather a value of 0x68.
 
-<
+The <b>--track-origins=yes</b> argument is often handy for determining where an uninitialized value came from.
+
+<pre>
+$ valgrind --track-origins=yes bladeRF-cli 
+==4920== Memcheck, a memory error detector
+==4920== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==4920== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==4920== Command: bladeRF-cli -p
+==4920== 
+[INFO] Found FX3 bootloader device on bus=2 addr=4. This may be a bladeRF.
+[INFO] Use bladeRF-cli command "recover 2 4 <FX3 firmware>" to boot the bladeRF firmware.
+==4920== Invalid read of size 8
+==4920==    at 0x5490B28: libusb_get_device_descriptor (in /lib/x86_64-linux-gnu/libusb-1.0.so.0.1.0)
+==4920==    by 0x4E3EDD8: lusb_device_is_bladerf (libusb.c:265)
+==4920==    by 0x4E4249B: lusb_probe (libusb.c:2003)
+==4920==    by 0x4E37025: backend_probe (backend.c:97)
+==4920==    by 0x4E370BE: bladerf_get_device_list (bladerf.c:49)
+==4920==    by 0x40916F: cmd_probe (probe.c:41)
+==4920==    by 0x4066A8: cmd_handle (cmd.c:640)
+==4920==    by 0x405403: main (main.c:360)
+==4920==  Address 0x68 is not stack'd, malloc'd or (recently) free'd
+==4920== 
+==4920== 
+==4920== Process terminating with default action of signal 11 (SIGSEGV)
+==4920==  Access not within mapped region at address 0x68
+==4920==    at 0x5490B28: libusb_get_device_descriptor (in /lib/x86_64-linux-gnu/libusb-1.0.so.0.1.0)
+==4920==    by 0x4E3EDD8: lusb_device_is_bladerf (libusb.c:265)
+==4920==    by 0x4E4249B: lusb_probe (libusb.c:2003)
+==4920==    by 0x4E37025: backend_probe (backend.c:97)
+==4920==    by 0x4E370BE: bladerf_get_device_list (bladerf.c:49)
+==4920==    by 0x40916F: cmd_probe (probe.c:41)
+==4920==    by 0x4066A8: cmd_handle (cmd.c:640)
+==4920==    by 0x405403: main (main.c:360)
+==4920==  If you believe this happened as a result of a stack
+==4920==  overflow in your program's main thread (unlikely but
+==4920==  possible), you can try to increase the size of the
+==4920==  main thread stack using the --main-stacksize= flag.
+==4920==  The main thread stack size used in this run was 8388608.
+==4920== 
+==4920== HEAP SUMMARY:
+==4920==     in use at exit: 18,927 bytes in 59 blocks
+==4920==   total heap usage: 1,268 allocs, 1,209 frees, 286,783 bytes allocated
+==4920== 
+==4920== LEAK SUMMARY:
+==4920==    definitely lost: 0 bytes in 0 blocks
+==4920==    indirectly lost: 0 bytes in 0 blocks
+==4920==      possibly lost: 888 bytes in 6 blocks
+==4920==    still reachable: 18,039 bytes in 53 blocks
+==4920==         suppressed: 0 bytes in 0 blocks
+==4920== Rerun with --leak-check=full to see details of leaked memory
+==4920== 
+==4920== For counts of detected and suppressed errors, rerun with: -v
+==4920== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 2 from 2)
+</pre>
 
 ==== Saving the Output of Valgrind ====
 When trouble is aplenty,
