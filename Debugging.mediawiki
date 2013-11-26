@@ -13,6 +13,9 @@ GCC/GDB users will likely want to include as much debug information as possible.
 
 <code>$ cmake -DCMAKE_BUILD_TYPE=Debug -DENABLE_GDB_EXTENSIONS=Yes ../</code>
 
+== Increasing libbladeRF's verbosity ==
+To increase the verbosity of libbladeRF's output, add <code>bladerf_log_set_verbosity(BLADERF_LOG_LEVEL_VERBOSE)</code> early in your program.  See the <i>bladerf_log_level</i> enumeration for other possible log levels.
+
 == Crashes and Memory-related Failures ==
 When dealing with a crashing application, one generally wants to identify:
 # The state of the application at the time the failure occurred, including what the program was currently executing, and the state of relevant variables.
@@ -23,7 +26,7 @@ When possible, try to reproduce failures with the bladeRF-cli or a simple test a
 
 If this is not possible, or the failure appears to be associated with the gr-osmosdr bladeRF support, it is recommended that you review the [http://gnuradio.org/redmine/projects/gnuradio/wiki/TutorialsDebugging#Tutorial-Using-gdb-with-Pythonic-GR-applications GNU Radio documentation on debugging with gdb] first.
 
-== Getting a backtrace in GDB ==
+=== Obtaining a Backtrace in GDB ===
 To quote the [http://sourceware.org/gdb/onlinedocs/gdb/Backtrace.html GDB documentation], <i>A backtrace is a summary of how your program got to where it is.</i>  Backtraces in GDB show the current stack frame followed by the calling stack frames.
 
 The below examples shows a snippet from a simple debug session of the bladeRF-cli, where an invalid loop bound defect was introduced to result in a segfault. In this example, we collect a backtrace and inspect the state of a function 2 stack frames prior to location where the segfault occurred. 
@@ -107,7 +110,27 @@ $3 = (libusb_device *) 0x61a1c0
 (gdb) 
 </pre>
 
-In this code, we see that a <i>count</i> local variable is 13. This is <i>supposed</i> to be used as an upper bound of a loop. However, we see that the variable <i>i</i> is 13, causing us to access an invalid list element. (The valid elements are in list[0] through list[12]).
+In this code, we see that a <i>count</i> local variable is 13. This is <i>supposed</i> to be used as an upper bound of a loop. However, we see that the variable <i>i</i> is 13, causing us to access an invalid list element and attempt to dereference a NULL pointer. (The valid elements are in list[0] through list[12]). 
+
+=== Using Valgrind to Identify Invalid Accesses ===
+
+This section builds upon segfault example from the [[Debugging##wiki-A_note_on_debugging_with_GNU_Radio|previous section]].
+
+Sometimes an invalid access may not cause a program to immediately (and conveniently) crash and burn. Instead, the problem many manifest itself as an intermittent issues where data is occasionally corrupted.
+
+[http://valgrind.org/ Valgrind] tends to come in handy in this type of situation.  [http://www.drmemory.org/ Dr. Memory] is a similar tool, which also supports 32-bit Windows applications.
+
+Running the bladeRF-cli through valgrind on yields similar results to what we obtained with gdb in the previous section.  However, it appears that list[13] didn't contain a value of 0x0 (it is likely that gdb had zeroed out memory for us), but rather a value of 0x68.
+
+<
+
+==== Saving the Output of Valgrind ====
+When trouble is aplenty,
+
+==== Using Valgrind and GDB simultaneously ====
+It is possible to break in gdb at the first sign of trouble, using Valgrind's <i>vgdb</i> argument, which enables an embedded gdbserver.
+
+To do... Finish this section
 
 = FX3 Firmware =
 
