@@ -193,7 +193,7 @@ To save both <i>stderr</i> and <i>stdout</i> to a log:
 
 <code>valgrind osmocom_fft -a bladerf=0 -s 2M -f 446M 1> valgrind_log.txt 2>&1</code>
 
-To save both <i>stderr</i> and <i>stdout</i> to a log, <b>and</b> continue to show the output on the terminal, use <b>tee</b>:
+To save both <i>stderr</i> and <i>stdout</i> to a log, and continue to show the output on the terminal, use <b>tee</b>:
 
 <code>valgrind osmocom_fft -a bladerf=0 -s 2M -f 446M  2>&1 | tee valgrind.log</code>
 
