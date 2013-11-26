@@ -183,7 +183,21 @@ $ valgrind --track-origins=yes bladeRF-cli
 </pre>
 
 ==== Saving the Output of Valgrind ====
-When trouble is aplenty,
+When trouble is aplenty, valgrind output can become quite voluminous, especially when running valgrind on python (e.g., in attempt to debug issues occurring with GNU Radio support). 
+
+Valgrind output is printed to <i>stderr</i>. To save <i>stderr</i> output to a file:
+
+<code>valgrind osmocom_fft -a bladerf=0 -s 2M -f 446M 2> valgrind_log.txt</code>
+
+To save both <i>stderr</i> and <i>stdout</i> to a log:
+
+<code>valgrind osmocom_fft -a bladerf=0 -s 2M -f 446M 1> valgrind_log.txt 2>&1</code>
+
+To save both <i>stderr</i> and <i>stdout</i> to a log, <b>and</b> continue to show the output on the terminal, use <b>tee</b>:
+
+<code>valgrind osmocom_fft -a bladerf=0 -s 2M -f 446M  2>&1 | tee valgrind.log</code>
+
+In the above examples, you'll see quite a bit of "noise" from python. Grep for "blade" to track down issues directly pertaining to bladeRF code.
 
 ==== Using Valgrind and GDB simultaneously ====
 It is possible to break in gdb at the first sign of trouble, using Valgrind's <i>vgdb</i> argument, which enables an embedded gdbserver.
