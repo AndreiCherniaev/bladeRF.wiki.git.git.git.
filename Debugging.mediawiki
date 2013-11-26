@@ -32,7 +32,7 @@ When possible, try to reproduce failures with the bladeRF-cli or a simple test a
 If this is not possible, or the failure appears to be associated with the gr-osmosdr bladeRF support, it is recommended that you review the [http://gnuradio.org/redmine/projects/gnuradio/wiki/TutorialsDebugging#Tutorial-Using-gdb-with-Pythonic-GR-applications GNU Radio documentation on debugging with gdb] first.
 
 === Obtaining a Backtrace in GDB ===
-To quote the [http://sourceware.org/gdb/onlinedocs/gdb/Backtrace.html GDB documentation], <i>A backtrace is a summary of how your program got to where it is.</i>  Backtraces in GDB show the current stack frame followed by the calling stack frames.
+To quote the [http://sourceware.org/gdb/onlinedocs/gdb/Backtrace.html GDB documentation], <i>"[a] backtrace is a summary of how your program got to where it is."</i>  Backtraces in GDB show the current stack frame followed by the calling stack frames.
 
 The below examples shows a snippet from a simple debug session of the bladeRF-cli, where an invalid loop bound defect was introduced to result in a segfault. In this example, we collect a backtrace and inspect the state of a function 2 stack frames prior to location where the segfault occurred. 
 
