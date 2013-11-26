@@ -1,0 +1,22 @@
+This page provides tips on debugging various portions of the bladeRF code base. If you suspect you've encountered a bug and 
+
+= Host-side tools and libraries =
+
+== Configuring a Debug Build ==
+In most cases, one will want to ensure debug symbols are enabled while debugging. This can be enabled by setting the CMake <i>CMAKE_BUILD_TYPE</i> variable to <b>Debug</b>: 
+
+<code>$ cmake -DCMAKE_BUILD_TYPE=Debug ../</code>
+
+GCC/GDB users will likely want to include as much debug information as possible. Use <i>ENABLE_GDB_EXTENSIONS</i> to compile with <b>-ggdb3</b>: 
+
+<code>$ cmake -DCMAKE_BUILD_TYPE=Debug -DENABLE_GDB_EXTENSIONS=Yes ../</code>
+
+== Memory-related bugs ==
+
+= FX3 Firmware =
+
+To do...
+
+= FPGA =
+
+To do...
