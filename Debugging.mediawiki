@@ -13,10 +13,15 @@ GCC/GDB users will likely want to include as much debug information as possible.
 
 <code>$ cmake -DCMAKE_BUILD_TYPE=Debug -DENABLE_GDB_EXTENSIONS=Yes ../</code>
 
-== Crashes ==
+== Crashes and Memory-related Failures ==
 When dealing with a crashing application, one generally wants to identify:
 # The state of the application at the time the failure occurred, including what the program was currently executing, and the state of relevant variables.
 # The origin of any incorrect values, such as when a pointer was assigned a NULL value.
+
+=== A note on debugging with GNU Radio === 
+When possible, try to reproduce failures with the bladeRF-cli or simple test applications in order to remove some degree of complexity from the situation, as well as narrow the scope of where defects reside.
+
+If this is not possible, or the failure appears to be associated with the gr-osmosdr bladeRF support, it is recommended that you review the [http://gnuradio.org/redmine/projects/gnuradio/wiki/TutorialsDebugging#Tutorial-Using-gdb-with-Pythonic-GR-applications GNU Radio documentation on debugging with gdb].
 
 == Getting a backtrace in GDB ==
 To quote the [http://sourceware.org/gdb/onlinedocs/gdb/Backtrace.html GDB documentation], <i>A backtrace is a summary of how your program got to where it is.</i>  Backtraces in GDB show the current stack frame followed by the calling stack frames.
@@ -25,9 +30,9 @@ The below examples shows a snippet from a backtrace of the bladeRF-cli, where an
 
 Note that the <b>backtrace</b> or <b>bt</b> command may be used to display the currently executing function and its callers.  The <b>frame</b> command may be used to switch between the various stack frames, in order to inspect the state of the the program in each frame.
 
+We first start by running the program (bladeRF-cli, in this case) in GDB.  Note that we tell GDB to interpret the arguments following the program name as arguments to that program, rather than to gdb, via <b>--args</b>.
+
 <pre>
-# --args is required to indicate that the arguments following the 
-# program name are arguments to that program, not gdb
 $ gdb --args bladeRF-cli -p   
 
 ... GDB copyright text ...
@@ -44,6 +49,13 @@ Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
 
 Program received signal SIGSEGV, Segmentation fault.
 0x00007ffff7574b28 in libusb_get_device_descriptor () from /lib/x86_64-linux-gnu/libusb-1.0.so.0
+</pre>
+
+Upon running the program, we see it terminate (crash) with a segmentation fault. Note that the location and name of the function that the crash occurred in is shown here -- this is an important piece of information to include an your findings.  
+
+If the function that the program has crashed in is called from many places in the code, one many not be able to glean much from this information.
+
+<pre>
 (gdb) bt
 #0  0x00007ffff7574b28 in libusb_get_device_descriptor ()
    from /lib/x86_64-linux-gnu/libusb-1.0.so.0
@@ -63,11 +75,6 @@ Program received signal SIGSEGV, Segmentation fault.
     at /home/jon/projects/bladeRF/host/utilities/bladeRF-cli/src/main.c:360
 (gdb) 
 </pre>
-
-
-
-== Memory corruption and leaks ==
-
 
 
 = FX3 Firmware =
