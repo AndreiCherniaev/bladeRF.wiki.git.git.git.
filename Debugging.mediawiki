@@ -23,9 +23,44 @@ To quote the [http://sourceware.org/gdb/onlinedocs/gdb/Backtrace.html GDB docume
 
 The below examples shows a snippet from a backtrace of the bladeRF-cli, where an invalid loop bound defect was introduced to result in a segfault:
 
-<code>
-$ gdb --args bladeRF-cli -p   # --args is required to indicate that the arguments following the program name are arguments to that program, not gdb
-</code>
+<pre>
+# --args is required to indicate that the arguments following the 
+# program name are arguments to that program, not gdb
+$ gdb --args bladeRF-cli -p   
+
+... GDB copyright text ...
+Reading symbols from /usr/local/bin/bladeRF-cli...done.
+(gdb) run
+Starting program: /usr/local/bin/bladeRF-cli -p
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[New Thread 0x7ffff6d8c700 (LWP 4774)]
+[New Thread 0x7ffff658b700 (LWP 4775)]
+[New Thread 0x7ffff5d8a700 (LWP 4776)]
+[INFO] Found FX3 bootloader device on bus=2 addr=4. This may be a bladeRF.
+[INFO] Use bladeRF-cli command "recover 2 4 <FX3 firmware>" to boot the bladeRF firmware.
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff7574b28 in libusb_get_device_descriptor () from /lib/x86_64-linux-gnu/libusb-1.0.so.0
+(gdb) bt
+#0  0x00007ffff7574b28 in libusb_get_device_descriptor ()
+   from /lib/x86_64-linux-gnu/libusb-1.0.so.0
+#1  0x00007ffff7bcfdd9 in lusb_device_is_bladerf (dev=0x0)
+    at /home/jon/projects/bladeRF/host/libraries/libbladeRF/src/backend/libusb.c:265
+#2  0x00007ffff7bd349c in lusb_probe (info_list=0x7fffffffe210)
+    at /home/jon/projects/bladeRF/host/libraries/libbladeRF/src/backend/libusb.c:2003
+#3  0x00007ffff7bc8026 in backend_probe (devinfo_items=0x7fffffffe268, num_items=0x7fffffffe260)
+    at /home/jon/projects/bladeRF/host/libraries/libbladeRF/src/backend.c:97
+#4  0x00007ffff7bc80bf in bladerf_get_device_list (devices=0x7fffffffe2a8)
+    at /home/jon/projects/bladeRF/host/libraries/libbladeRF/src/bladerf.c:49
+#5  0x0000000000409170 in cmd_probe (s=0x618010, argc=1, argv=0x6186c0)
+    at /home/jon/projects/bladeRF/host/utilities/bladeRF-cli/src/cmd/probe.c:41
+#6  0x00000000004066a9 in cmd_handle (s=0x618010, line=0x40f83e "probe")
+    at /home/jon/projects/bladeRF/host/utilities/bladeRF-cli/src/cmd/cmd.c:640
+#7  0x0000000000405404 in main (argc=2, argv=0x7fffffffe458)
+    at /home/jon/projects/bladeRF/host/utilities/bladeRF-cli/src/main.c:360
+(gdb) 
+</pre>
 
 
 
