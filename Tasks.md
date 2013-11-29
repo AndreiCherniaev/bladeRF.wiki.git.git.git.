@@ -18,10 +18,8 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 
 
 **jynik**
-- Review and merge calibration data (and general flash) backup and restore patchset
+- Flash-related failures in Windows
 - start()/stop() in gr-osmosdr support for bladeRF (horizon may be working on this...keeping in touch with him on this)
-- [Pull Request/Issue 161](https://github.com/Nuand/bladeRF/pull/161)
-- Audit library messages being printed out to make sure they are of the appropriate type (debug, info, etc)
 - Clean up lms.c (return values, style, etc.)
 - Add some hotkey support to test_repeater to allow the user to adjust RX/TX gains
 - Developing test and release cycle plans on the wiki. Needs to cover versioning & tagging schemes, branch usage, and tests required to pass before version release **at a minimum**. litghost as opened and issue and provided [some initial ideas.](https://github.com/Nuand/bladeRF/issues/105)
