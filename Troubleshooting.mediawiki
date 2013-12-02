@@ -4,6 +4,43 @@ If you run across an issue not listed here and find a solution, please feel free
 
 = Failing to see or connect to the device =
 
+== Device may only be opened by one program ==
+Currently, only one program may have a device open at a time. Any additional calls to bladerf_open() or bladerf_open_with_devinfo() will fail with BLADERF_ERR_NODEV.
+
+Under the hood, this is due to the first caller opening a device claiming the device's interfaces via libusb_claim_interface().  Further attempts to claim an interface will fail with LIBUSB_ERROR_BUSY.
+
+Setting the libbladeRF log level to DEBUG or VERBOSE will generally make this issue apparent. See the bladeRF-cli -v option, or libbladeRF's bladerf_log_set_verbosity() function for information on setting the log level.
+
+For example, if a first instance of the bladeRF-cli is started:
+<pre>
+$ bladeRF-cli -i -v verbose
+bladeRF> info
+  Serial #:                 00000000000000000000000000000000
+  VCTCXO DAC calibration:   0x8100
+  FPGA size:                40 KLE
+  FPGA loaded:              yes
+  USB bus:                  2
+  USB address:              6
+  USB speed:                Hi-Speed
+  Backend:                  libusb
+  Instance:                 0
+</pre>
+
+If another instance of the CLI is run simultaneously, we'll see the aforementioned libusb error about a device being busy (as its interfaces are already claimed by a different device handle.):
+<pre>
+$ bladeRF-cli -i -v verbose                                       ~
+[VERBOSE] Found a bladeRF
+[DEBUG] FPGA currently does not have a version number.
+[DEBUG] Could not claim interface 0 - LIBUSB_ERROR_BUSY
+No device(s) attached.
+bladeRF> 
+</pre>
+
+If you're encountering the following error message with GNU Radio programs, but have verified that the device operates in the CLI, double check that no other programs have the device open:
+
+<code>FATAL: bladerf_source_c failed to open bladeRF device libusb:instance=0</code>
+
+
 == Device's VID and PID ==
 Under normal operation, the bladeRF should appear with VID=1d50 and PID=6066.  
 
