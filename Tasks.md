@@ -15,7 +15,12 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Make UART run at 4608000 baud rate instead of 115200
     - Make the NIOS run at 16*4608000 clock rate and set the divisor appropriately
 - FPGA version number
-
+- Automatic IQ Calibration
+- Create IQ correction block for HDL
+- Create and simulate HDL models
+- Create signal generator block for FPGA
+- Create counter mode for RX stream
+   - This is currently in the dev-uart_speedup branch
 
 **jynik**
 - Flash-related failures in Windows
@@ -28,11 +33,7 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 
 ### Future Items ###
 - Si5338 MIMO/Expansion clock settings
-- Automatic IQ Calibration
-- Create IQ correction block for HDL
-- Create and simulate HDL models
-- Create signal generator block for FPGA
 - Create impulse latency RTT mode for FPGA
-- Create counter mode for RX stream
 - TX -> RX Loopback mode in HDL
-- Store and load default FPGA image in SPI flash
+- Speed up FPGA autoloading (and flashing of FPGA image)
+    - There's some delays that can replaced with quicker device polls
