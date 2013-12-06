@@ -7,6 +7,7 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Get a Windows 8 machine and see why accesses fail
 - In-band scheduling support
 - Fix or remove FS USB descriptors.
+- Flash-related failures in Windows
 - extio.dll support for Windows
 
 **bpadalino**
@@ -25,7 +26,6 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 **jynik**
 - Clean up lms.c (return values, style, etc.) and fix bugs in loopback modes
 - Finish up dev-libuse_cmake_cleanup
-- Flash-related failures in Windows
 - start()/stop() in gr-osmosdr support for bladeRF (horizon may be working on this...keeping in touch with him on this)
 - Address unimplemented functions the CLI
 - Remove synchronous interface from libbladeRF, develop an auxiliary lib that presents a sync i/f using the libbladerf async interface
