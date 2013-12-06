@@ -24,8 +24,10 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 
 **jynik**
 - Clean up lms.c (return values, style, etc.) and fix bugs in loopback modes
+- Finish up dev-libuse_cmake_cleanup
 - Flash-related failures in Windows
 - start()/stop() in gr-osmosdr support for bladeRF (horizon may be working on this...keeping in touch with him on this)
+- Address unimplemented functions the CLI
 - Developing test and release cycle plans on the wiki. Needs to cover versioning & tagging schemes, branch usage, and tests required to pass before version release **at a minimum**. litghost as opened and issue and provided [some initial ideas.](https://github.com/Nuand/bladeRF/issues/105)
 - Create coding style & patch/pull request guidelines document
 - Create a BUGS/Getting Help document detailing information to gather and provide when posting issues to the forum or IRC
