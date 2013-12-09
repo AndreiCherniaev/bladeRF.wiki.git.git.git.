@@ -1,8 +1,8 @@
 This guide describes the process of building and installing the bladeRF host libraries and tool for a Mac OSX system, and quickly getting a device up and running using pre-built firmware and FPGA images.
 
-== Installing Dependencies
+== Installing Dependencies ==
 
-Install XCode from Apple, as you will need a compiler. (Available in the App Store)
+Install XCode from Apple, as you will need a compiler. This is available in the App Store.
 
 Next, install a package management system, such as [[MacPorts|http://www.macports.org/]] (another option is [[HomeBrew|http://brew.sh/]]).
 
