@@ -6,9 +6,9 @@ Install XCode from Apple, as you will need a compiler. This is available in the 
 
 Next, install a package management system, such as [[MacPorts|http://www.macports.org/]] (another option is [[HomeBrew|http://brew.sh/]]).
 
-We need libusb (with USB 3.0 support), pkgconfig, and cmake. The libtecla package is optional; it improves the bladeRF interactive console experience (adds history, vi-bindings, etc.).
+We need libusb (with USB 3.0 support), pkgconfig, and cmake. The libtecla package is optional; it improves the bladeRF interactive console experience (adds history, vi-bindings, etc.). MacPorts users will have to build [[Building-libtecla|build libtecla from source]].
 
-With Macports, you can install these with:
+With MacPorts, you can install these with:
 
 <pre>sudo port install libusb pkgconfig cmake</pre>
 
