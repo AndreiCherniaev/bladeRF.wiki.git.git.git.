@@ -17,7 +17,7 @@ By default, libtecla will install into <code>/usr/local</code>.  If you wish to 
 
 Configure the build via: <code>CC=gcc ./configure</code> or <code>CC=clang ./configure</code>, depending upon which compiler you'd like to use.
 
-''Note:'' On OS X 10.9 (XCode 5.0), the following was required after ''configure'' generated a Makefile:
+'''Note:''' On OS X 10.9 (XCode 5.0), the following was required after ''configure'' generated a Makefile, because the build was attempting to link against a non-existent libgcc.a.
 <pre>
 mv Makefile Makefile.bak
 cat Makefile.bak | sed -e 's/libgcc.a//g' > Makefile
