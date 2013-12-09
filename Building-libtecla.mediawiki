@@ -1,0 +1,19 @@
+= Download and extract the latest release =
+Fetch the latest release from the official site. This is always named '''libtecla.tar.gz'''.
+
+<pre>
+wget http://www.astro.caltech.edu/~mcs/tecla/libtecla.tar.gz
+</pre>
+
+Extract the tarball to the current directory. A ''libtecla/'' directory will be extracted.
+
+<pre>
+tar xzf libtecla.tar.gz
+</pre>
+
+= Configure and build =
+
+By default, libtecla will install into <code>/usr/local</code>.  If you wish to install the library elsewhere, add <code>--prefix=<desired location></code> to the following ''configure'' command.
+
+Configure the build via: <code>CC=gcc ./configure</code> or <code>CC=clang ./configure</code>, depending upon which compiler you'd like to use.
+
