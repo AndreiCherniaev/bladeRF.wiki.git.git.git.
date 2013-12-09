@@ -12,7 +12,7 @@ With Macports, you can install these with:
 
 <pre>sudo port install libusb pkgconfig cmake</pre>
 
-If you're using homebrew, to get the USB 3.0 you use the libusbx package:
+If you're using homebrew, use the libusbx package:
 
 <pre>brew install libusbx pkgconfig cmake</pre>
 
