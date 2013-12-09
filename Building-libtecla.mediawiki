@@ -18,5 +18,4 @@ By default, libtecla will install into <code>/usr/local</code>.  If you wish to 
 Configure the build via: <code>CC=gcc ./configure</code> or <code>CC=clang ./configure</code>, depending upon which compiler you'd like to use.
 
 = Install =
-Install via:
 <pre>sudo make install</pre>
