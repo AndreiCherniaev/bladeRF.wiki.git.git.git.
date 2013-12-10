@@ -88,7 +88,7 @@ Below is a list of configurations that people have reported success on. Feel fre
 | jynik's Laptop
 | Thinkpad W530, Intel i7-3630QM
 | Intel 7 Series/C210 Series xHCI (VID=8086, PID=1e31)
-| Windows 7, XUbuntu 13.04 (All 64-bit). '''Note''': The XHCI issues mentioned above applies to the Linux configuration here.
+| Windows 7, XUbuntu 13.04 (All 64-bit). '''Note''': The XHCI issues mentioned above applies to the Linux configuration here. Able to process 40 Msps in osmocom_fft without overruns.
 |-
 | drmpeg's Desktop
 | Dell T3600, Intel E5-1607
@@ -148,7 +148,7 @@ There is [https://github.com/Nuand/bladeRF/issues/130 an open action item] to ch
 == bladeRF-flash ==
 
 === libusb hotplug support ===
-If you obtain a warning about the installed libusb version not containing hotplug support, you'll need a newer libusb version to build bladeRF-flash. See [[Troubleshooting#outdated-libusb]]
+If you obtain a warning about the installed libusb version not containing hotplug support, you'll need a newer libusb version to build bladeRF-flash. See [[Troubleshooting#outdated-libusb|Outdated libusb]]
 
 = Mac OSX Superspeed issues =
 
