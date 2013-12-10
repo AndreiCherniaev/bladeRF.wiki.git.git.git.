@@ -182,10 +182,10 @@ $ sudo make install
 </pre>
 
 
-== Homebrew ==
+=== Homebrew ===
 '''TO DO:''' Any Homebrew users mind filling this in?
 
-= More Information =
+=== Simple Tests ===
+See the [[Getting-Started:-Linux#wiki-Simple_test_applications_to_verify_device_operation|Getting Started: Linux]] guide for some quick tests to verify device operation with GNU Radio.
 
-Refer to the other guides to see how to send, receive samples.
 
