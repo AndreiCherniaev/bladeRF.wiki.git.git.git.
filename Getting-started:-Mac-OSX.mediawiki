@@ -4,6 +4,8 @@ This guide describes the process of building and installing the bladeRF host lib
 
 Install XCode from Apple, as you will need a compiler. This is available in the App Store.
 
+If you plan to use graphical tools (i.e., GNU Radio Companion), ensure you have X11 installed. See the [[http://xquartz.macosforge.org/landing/|XQuartz project] for additional information and instructions.
+
 Next, install a package management system, such as [[MacPorts|http://www.macports.org/]] (another option is [[HomeBrew|http://brew.sh/]]).
 
 We need libusb (with USB 3.0 support), pkgconfig, and cmake. The libtecla package is optional; it improves the bladeRF interactive console experience (adds history, vi-bindings, etc.). MacPorts users will have to build [[Building-libtecla|build libtecla from source]].
@@ -152,14 +154,11 @@ After the FPGA loads, you should see LEDs on the board begin blinking. At this p
 
 == Building GNU Radio and gr-osmosdr ==
 
-The following procedure uses gnuradio-build to fetch dependencies and checkout some useful tools. However, it only covers installing GNU Radio and gr-osmosdr.  A similar procedure maybe used to install the other tools (such as gr-iqbal). 
+Ensure that you have X11 support
 
-  1. Install sdcc `sudo port install sdcc`
-  2. Install the UHD driver for the USRP, including libusb and Python 2.7:
-      `sudo port install uhd +libusb +python27`
-    When you do this, Boost 1.53 will also be installed, which doesn’t seem to give any problems.
+The following command installs gnu-radio and to fetch dependencies and checkout some useful tools. However, it only covers installing GNU Radio and gr-osmosdr.  A similar procedure maybe used to install the other tools (such as gr-iqbal). 
 
-  3. Install GNU Radio, with UHD support, GRC (the Companion), the WX and QT GUIs (just in case):
+
 `sudo port install gnuradio +uhd +grc +swig +wxgui +qtgui +python27`
 
 After installed can run `gnuradio-companion`.
