@@ -107,7 +107,7 @@ In many cases, load failures have been the result of trying to load the wrong si
 
 If you're unsure which FPGA size is on your board, identify the the Altera Cyclone IV package on the top of the bladeRF. You should see text on the package that reads ''EP4CExxxF23C8N'', where ''xxx'' is the size -- either 40 or 115.
 
-= Compilation Issues =
+= Configuration and Compilation Issues =
 
 == Build fails due to a warning being treated as an error ==
 By default, builds use ''-Werror'' or ''/WX'' to treat warnings as errors, with the intent of forcing developers to address any warnings.
