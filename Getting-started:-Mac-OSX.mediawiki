@@ -89,8 +89,11 @@ $ bladeRF-cli -p
 </pre>
 
 If you do not see any device listed:
+* Double-check that device is plugged in and that the jumpers on J70 are populated correctly
+** LED D1 should be illuminated
 * Try looking in Command-Space 'System Information' to see your USB devices.
 * Verify that you have libusb 1.0.17 (check with 'port installed | grep libusb')
+* Try both USB 2.0 and 3.0 ports
 
 If you see additional issues with the device, ensure that you've [[Upgrading-bladeRF-firmware|upgraded to the latest firmware]].
 
