@@ -89,14 +89,10 @@ $ bladeRF-cli -p
 </pre>
 
 If you do not see any device listed:
-* Something is wrong.
 * Try looking in Command-Space 'System Information' to see your USB devices.
-* It's there? Make sure you have libusb 1.0.17 (check with 'port installed | grep libusb')
-* You do? Has it been sitting on your desk and you've never bothered to plug it in? Upgrade your firmware:
+* Verify that you have libusb 1.0.17 (check with 'port installed | grep libusb')
 
-<pre> curl http://nuand.com/fx3/latest.img -o latest.img ; bladeRF-cli -f latest.img </pre>
-
-* Seriously, the firmware upgrade worked for me even though '''bladeRF-cli -p''' thought there was no bladeRF
+If you see additional issues with the device, ensure that you've [[Upgrading-bladeRF-firmware|upgraded to the latest firmware]].
 
 === Viewing additional device information ===
 
@@ -131,6 +127,7 @@ bladeRF> version
 </pre>
 
 Here we see the device's serial number, DAC calibration, FPGA information, and USB connection information.  Take note of the FPGA size, as this will help determine which FPGA file to load.
+
 === Loading the FPGA ===
 Support for loading the FPGA from flash automatically is currently supported and undergoing further testing. See the <code>bladeRF-cli --help</code> text for information on how to write an FPGA image to flash for autoloading.
 
