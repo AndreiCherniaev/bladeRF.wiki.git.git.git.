@@ -4,11 +4,11 @@ This guide describes the process of building and installing the bladeRF host lib
 
 Install XCode from Apple, as you will need a compiler. This is available in the App Store.
 
-If you plan to use graphical tools (i.e., GNU Radio Companion), ensure you have X11 installed. See the [[http://xquartz.macosforge.org/landing/|XQuartz project] for additional information and instructions.
+If you plan to use graphical tools (i.e., GNU Radio Companion), ensure you have X11 installed. See the [http://xquartz.macosforge.org/landing/ XQuartz project] for additional information and instructions.
 
-Next, install a package management system, such as [[MacPorts|http://www.macports.org/]] (another option is [[HomeBrew|http://brew.sh/]]).
+Next, install a package management system, such as [http://www.macports.org/ MacPorts] (another option is [http://brew.sh/ Homebrew]).
 
-We need libusb (with USB 3.0 support), pkgconfig, and cmake. The libtecla package is optional; it improves the bladeRF interactive console experience (adds history, vi-bindings, etc.). MacPorts users will have to build [[Building-libtecla|build libtecla from source]].
+The required redependencies are: libusb (with USB 3.0 support), pkgconfig, and cmake. The libtecla package is optional; it improves the bladeRF interactive console experience (adds history, vi-bindings, etc.). MacPorts users will have to [[Building-libtecla|build libtecla from source]].
 
 With MacPorts, you can install these with:
 
@@ -156,7 +156,7 @@ After the FPGA loads, you should see LEDs on the board begin blinking. At this p
 
 === MacPorts ===
 
-The following command may be used to install GNU Radio via [[https://trac.macports.org/browser/trunk/dports/science/gnuradio/Portfile|MacPorts]], and any neccessary dependencies.
+The following command may be used to install GNU Radio via [https://trac.macports.org/browser/trunk/dports/science/gnuradio/Portfile MacPorts], and any neccessary dependencies.
 
 <pre>
 $ sudo port install gnuradio +grc +swig +wxgui +qtgui +python27
