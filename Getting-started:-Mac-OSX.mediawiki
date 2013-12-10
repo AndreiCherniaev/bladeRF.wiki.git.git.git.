@@ -12,11 +12,11 @@ We need libusb (with USB 3.0 support), pkgconfig, and cmake. The libtecla packag
 
 With MacPorts, you can install these with:
 
-<pre>sudo port install libusb pkgconfig cmake</pre>
+<pre>$ sudo port install libusb pkgconfig cmake</pre>
 
 If you're using homebrew, use the libusbx package:
 
-<pre>brew install libusbx pkgconfig cmake libtecla</pre>
+<pre>$ brew install libusbx pkgconfig cmake libtecla</pre>
 
 == Building bladeRF libraries and tools from source ==
 
@@ -154,18 +154,38 @@ After the FPGA loads, you should see LEDs on the board begin blinking. At this p
 
 == Building GNU Radio and gr-osmosdr ==
 
-Ensure that you have X11 support
+=== MacPorts ===
 
-The following command installs gnu-radio and to fetch dependencies and checkout some useful tools. However, it only covers installing GNU Radio and gr-osmosdr.  A similar procedure maybe used to install the other tools (such as gr-iqbal). 
+The following command may be used to install GNU Radio via [[https://trac.macports.org/browser/trunk/dports/science/gnuradio/Portfile|MacPorts]], and any neccessary dependencies.
+
+<pre>
+$ sudo port install gnuradio +grc +swig +wxgui +qtgui +python27
+</pre>
+
+After the installation completes (it may take quite some time), you can verify the installation by starting XQuartz and then running '''gnuradio-companion'''.
+
+==== Building gr-osmosdr from source ====
+The current [https://trac.macports.org/browser/trunk/dports/science/gr-osmosdr/Portfile gr-osmosdr portfile] doesn't yet include libbladeRF support, and needs to be built from source:
+
+<pre>
+$ git://git.osmocom.org/gr-osmosdr
+$ cd gr-osmosdr
+$ mkdir build
+$ cd build
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/local ../ 
+</pre>
+
+In the CMake output, you should see a '''nuand bladeRF''' entry in the '''gr-osmosdr enabled components''' list. Build and install via:
+<pre>
+$ make
+$ sudo make install
+</pre>
 
 
-`sudo port install gnuradio +uhd +grc +swig +wxgui +qtgui +python27`
+== Homebrew ==
+'''TO DO:''' Any Homebrew users mind filling this in?
 
-After installed can run `gnuradio-companion`.
-
-gr-osmosdr isn't available in macports and needs to be built separately.
-
-== More Information ==
+= More Information =
 
 Refer to the other guides to see how to send, receive samples.
 
