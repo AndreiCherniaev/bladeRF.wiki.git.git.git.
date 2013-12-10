@@ -122,13 +122,13 @@ cmake -DTREAT_WARNINGS_AS_ERRORS=No ../
 == libbladeRF ==
 
 === Missing libusb ===
-If the libusb is reported to not be found, it may be the case that pkgconfig was not able to locate libusb. (This will certainly be the case for Windows.)
+If the libusb is reported to not be found, it may be the case that pkgconfig was not able to locate libusb. (This will certainly be the case for Windows.) Check your PKG_CONFIG_PATH variable, and ensure that libusb is installed to a location in your system's library search path. 
 
 Users that are in a *nix environment and have installed libusb via a package manager, should double check that both the library and development packages for libusb-1.0 (sometimes packaged as libusbx-1.0) are installed.
 
 Windows users should use the '''LIBUSB_PATH''' CMake variable to specify the location of a the libusb(x) binary distribution.
 
-=== Outdate libusb ===
+=== Outdated libusb ===
 If you receive a message similar to the following when running CMake, you'll need to obtain a more recent version of libusb:
 <pre>
 A newer libusb version is needed by libbladeRF. libusb >= v1.0.10 is required to build. libusb >= v1.0.16 is recommended.
@@ -138,13 +138,17 @@ For some distributions, it may be possible to simply pull in a package from an u
 
 For example, Ubuntu 12.04 users will find that libusb-1.0.9 is provided in the repositories. In this case, it is recommended to upgrade to a more recent distribution (a 3.8+ kernel is also highly desirable). If this is not possible, these users may want to try obtaining a libusb package from the 12.10 repositories (this has not been tested), or attempt to build a slightly newer version from source.
 
-
 === libusb_get_version() is undefined ===
 ''Note: This build issue has been resolved as of [https://github.com/Nuand/bladeRF/commit/95a6c1d0e0988196b57205bff38a47251f0692b4 commit 95a6c1d0e098]. If you see this issue, ensure that you've checkout out the lastest codebase, remove and recreate your build directory, and re-run CMake.''
 
 If you see an error about being unable to find the <code>libusb_get_version</code> function, the version of libusb installed on your machine needs to be updated. Updating to >= 1.0.10 for Linux is required, but >= 1.0.16 is '''highly''' suggested.
 
 There is [https://github.com/Nuand/bladeRF/issues/130 an open action item] to change the CMake configuration to detect and complain about this, prior to compilation.
+
+== bladeRF-flash ==
+
+=== libusb hotplug support ===
+If you obtain a warning about the installed libusb version not containing hotplug support, you'll need a newer libusb version to build bladeRF-flash. See [[Troubleshooting#outdated-libusb]]
 
 = Mac OSX Superspeed issues =
 
