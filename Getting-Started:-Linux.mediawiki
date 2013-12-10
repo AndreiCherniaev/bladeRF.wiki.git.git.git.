@@ -1,6 +1,6 @@
 This guide describes the process of building and installing the bladeRF host libraries and tool for a Linux system, and quickly getting a device up and running using pre-built firmware and FPGA images.
 
-'''Ubuntu users:''' 13.04 or later is recommended (due to its 3.8 kernel and a more recent libusb version). Note that 12.04 contains libusb-1.0.9; libusb-1.0.10 or higher is required.
+'''Ubuntu users:''' 13.04 or later is recommended (due to its 3.8 kernel and a more recent libusb version). Note that 12.04 contains libusb-1.0.9. However, libusb-1.0.10 or higher is required to build and use libbladeRF.
 
 == Easy installation for Ubuntu 13.04 and later ==
 If you're running Ubuntu 13.04 ([[Raring Ringtail|http://releases.ubuntu.com/raring/]]) or later, a PPA is available at [[ppa:rtucker/bladerf-daily|https://launchpad.net/~rtucker/+archive/bladerf-daily/+packages]].  New builds will appear occasionally, built from the master.
