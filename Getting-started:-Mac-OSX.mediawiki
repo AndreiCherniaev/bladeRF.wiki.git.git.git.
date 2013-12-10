@@ -20,7 +20,7 @@ Ensure that your shell configuration (e.g., .bashrc, .zshrc) contains the follow
 export DISPLAY=:0.0
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
-export PYTHONPATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages:${PYTHONPATH}
+export PYTHONPATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages:/opt/local/lib/python2.7/site-packages:${PYTHONPATH}
 </pre>
 
 There is no portfile for libtecla currently, so MacPorts users will have to [[Building-libtecla|build libtecla from source]].
