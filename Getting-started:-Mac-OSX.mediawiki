@@ -8,13 +8,26 @@ If you plan to use graphical tools (i.e., GNU Radio Companion), ensure you have 
 
 Next, install a package management system, such as [http://www.macports.org/ MacPorts] (another option is [http://brew.sh/ Homebrew]).
 
-The required redependencies are: libusb (with USB 3.0 support), pkgconfig, and cmake. The libtecla package is optional; it improves the bladeRF interactive console experience (adds history, vi-bindings, etc.). MacPorts users will have to [[Building-libtecla|build libtecla from source]].
+The required redependencies are: libusb (with USB 3.0 support), pkgconfig, and cmake. The libtecla package is optional; it improves the bladeRF interactive console experience (adds history, vi-bindings, etc.). 
 
+== MacPorts ==
 With MacPorts, you can install these with:
 
 <pre>$ sudo port install libusb pkgconfig cmake</pre>
 
-If you're using homebrew, use the libusbx package:
+Ensure that your shell configuration (e.g., .bashrc, .zshrc) contains the following items (adjusted accordingly):
+<pre>
+export DISPLAY=:0.0
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export MANPATH=/opt/local/share/man:$MANPATH
+export PYTHONPATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages:${PYTHONPATH}
+</pre>
+
+There is no portfile for libtecla currently, so MacPorts users will have to [[Building-libtecla|build libtecla from source]].
+
+== Homebrew==
+
+If you're using Homebrew, install the dependencies via the following command. Note that you want to select libusb'''x'''.
 
 <pre>$ brew install libusbx pkgconfig cmake libtecla</pre>
 
@@ -187,5 +200,3 @@ $ sudo make install
 
 === Simple Tests ===
 See the [[Getting-Started:-Linux#wiki-Simple_test_applications_to_verify_device_operation|Getting Started: Linux]] guide for some quick tests to verify device operation with GNU Radio.
-
-
