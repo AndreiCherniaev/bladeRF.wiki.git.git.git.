@@ -203,7 +203,13 @@ $ make
 $ sudo make install
 </pre>
 
-''(Note that gr-osmosdr will be installed into /usr/local, with SWIG and python items in the python site-packages residing in /opt/local.)'' Back up your install_manifest.txt for any future debugging or manual removal.
+
+Back up your install_manifest.txt for any future debugging or manual removal. You can run <code>sudo make uninstall</code> to remove the gr-osmosdr items.
+
+''(Note that gr-osmosdr will be installed into /usr/local, with SWIG and python items in the python site-packages residing in /opt/local.)'' 
+
+If you prefer that ''all'' gr-osmosdr items instead reside in the /opt/local prefix, append <code>-DCMAKE_INSTALL_PREFIX=/opt/local</code> to the CMake invocation shown above. Note that you may need to add <code>export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib</code> to your shell runtime-config, to ensure that ''libgnuradio-osmosdr'' is located.
+
 
 === Homebrew ===
 '''TO DO:''' Any Homebrew users mind filling this in?
