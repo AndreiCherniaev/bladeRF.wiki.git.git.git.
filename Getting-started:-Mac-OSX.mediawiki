@@ -175,7 +175,26 @@ The following command may be used to install GNU Radio via [https://trac.macport
 $ sudo port install gnuradio +grc +swig +wxgui +qtgui +python27
 </pre>
 
-After the installation completes (it may take quite some time), you can verify the installation by starting XQuartz and then running '''gnuradio-companion'''.
+After the installation completes (it may take quite some time), you can verify the installation by running '''gnuradio-companion'''. Note: XQuartz will automatically start if it is not already started.
+
+To get support for bladeRF sources in Gnuradio, you will need to install gr-osmosdr. Make sure you build bladeRF from source as above before running the port install command.
+
+<pre>
+$ sudo port install gr-osmosdr
+</pre>
+
+If you are having difficulty selecting a bladeRF source, you can check a list of supported device types in osmosdr with the following command.
+
+<pre>
+$ osmocom_fft 2>&1 | grep "source types"
+built-in source types: file fcd rtl rtl_tcp uhd hackrf bladerf netsdr 
+</pre>
+
+If you have a good graphics card in your mac that supports opencl + opengl concurrently (currently it seems Intel's Iris Pro doesn't?), you can also install the fosphor sinks for gnuradio with.
+
+<pre>
+$ sudo port install gr-fosphor
+</pre>
 
 ==== Building gr-osmosdr from source ====
 The current [https://trac.macports.org/browser/trunk/dports/science/gr-osmosdr/Portfile gr-osmosdr portfile] doesn't yet include libbladeRF support, and needs to be built from source. 
