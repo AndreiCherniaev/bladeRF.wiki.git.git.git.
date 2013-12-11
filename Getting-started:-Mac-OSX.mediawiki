@@ -178,22 +178,32 @@ $ sudo port install gnuradio +grc +swig +wxgui +qtgui +python27
 After the installation completes (it may take quite some time), you can verify the installation by starting XQuartz and then running '''gnuradio-companion'''.
 
 ==== Building gr-osmosdr from source ====
-The current [https://trac.macports.org/browser/trunk/dports/science/gr-osmosdr/Portfile gr-osmosdr portfile] doesn't yet include libbladeRF support, and needs to be built from source:
+The current [https://trac.macports.org/browser/trunk/dports/science/gr-osmosdr/Portfile gr-osmosdr portfile] doesn't yet include libbladeRF support, and needs to be built from source. 
+
+To avoid conflicts between the native python and the MacPorts-supplied python, it is necessary to point gr-osmosdr to the desired python items. Be sure to adjust the python-related items in your CMake invocation for any differences. See the [https://trac.macports.org/browser/trunk/dports/science/gr-osmosdr/Portfile gr-osmosdr portfile as a reference].
+
+''h/t to Leonardo (@lvbernal) for identifying and pointing out the python caveats  [http://blog.lvbernal.com/2013_10_01_archive.html in his blog post].''
+
 
 <pre>
 $ git://git.osmocom.org/gr-osmosdr
 $ cd gr-osmosdr
 $ mkdir build
 $ cd build
-$ cmake -DCMAKE_INSTALL_PREFIX=/opt/local ../ 
+$ cmake -DPYTHON_EXECUTABLE=/opt/local/bin/python2.7 \
+        -DPYTHON_INCLUDE_DIR=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/Headers \
+        -DPYTHON_LIBRARY=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/Python \
+        -DGR_PYTHON_DIR=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages \
+        ../
 </pre>
 
-In the CMake output, you should see a '''nuand bladeRF''' entry in the '''gr-osmosdr enabled components''' list. Build and install via:
+In the CMake output, you should see a '''nuand bladeRF''' entry in the '''gr-osmosdr enabled components''' list. Build and install via the following. 
 <pre>
 $ make
 $ sudo make install
 </pre>
 
+''(Note that gr-osmosdr will be installed into /usr/local, with SWIG and python items in the python site-packages residing in /opt/local.)'' Back up your install_manifest.txt for any future debugging or manual removal.
 
 === Homebrew ===
 '''TO DO:''' Any Homebrew users mind filling this in?
