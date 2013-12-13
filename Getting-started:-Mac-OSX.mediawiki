@@ -58,22 +58,19 @@ $ mkdir build; cd build
 
 Next, configure the build. In the below example, we:
 * Set up a Debug build
-* Specify that files should be installed into /usr/local
-** You can install into a different location via the ''-DCMAKE_INSTALL_PREFIX=/some/desired/path'' option. Note that you'll need to need to configure binary and library search paths if you install elsewhere. If you're unsure how to do this, simply follow the steps below to use the default install location.
+* Specify that files should be installed into /opt/local
 
 <pre>
-$ cmake -DCMAKE_BUILD_TYPE=Debug ../
+$ cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/opt/local
 </pre>
 
 === Perform the build and installation ===
 
-The following commands:
-# Perform the build
-# Install files to /usr/local or the location specified by ''CMAKE_INSTALL_PREFIX''
-# Updated share library paths, so that libbladeRF can be found
+Kick off the build and install to the location specified by ''CMAKE_INSTALL_PREFIX''.
 
 <pre>
-$ make && sudo make install
+$ make
+$ sudo make install
 </pre>
 
 === Uninstalling later ===
@@ -209,10 +206,12 @@ $ git://git.osmocom.org/gr-osmosdr
 $ cd gr-osmosdr
 $ mkdir build
 $ cd build
-$ cmake -DPYTHON_EXECUTABLE=/opt/local/bin/python2.7 \
+$ PKG_CONFIG_PATH=/opt/local cmake \
+        -DPYTHON_EXECUTABLE=/opt/local/bin/python2.7 \
         -DPYTHON_INCLUDE_DIR=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/Headers \
         -DPYTHON_LIBRARY=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/Python \
         -DGR_PYTHON_DIR=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages \
+        -DCMAKE_INSTALL_PATH=/opt/local
         ../
 </pre>
 
@@ -224,10 +223,6 @@ $ sudo make install
 
 
 Back up your install_manifest.txt for any future debugging or manual removal. You can run <code>sudo make uninstall</code> to remove the gr-osmosdr items.
-
-'''Note:''' ''gr-osmosdr will be installed into /usr/local, with SWIG and python items in the python site-packages residing in /opt/local.''
-
-If you prefer that ''all'' gr-osmosdr items instead reside in the /opt/local prefix, append <code>-DCMAKE_INSTALL_PREFIX=/opt/local</code> to the CMake invocation shown above. Note that you may need to add <code>export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib</code> to your shell runtime-config, to ensure that ''libgnuradio-osmosdr'' is located.
 
 
 === Homebrew ===
