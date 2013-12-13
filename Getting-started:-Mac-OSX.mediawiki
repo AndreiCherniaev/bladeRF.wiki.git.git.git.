@@ -194,7 +194,7 @@ $ sudo port install gr-fosphor
 </pre>
 
 ==== Building gr-osmosdr from source ====
-The current [https://trac.macports.org/browser/trunk/dports/science/gr-osmosdr/Portfile gr-osmosdr portfile] doesn't yet include libbladeRF support, and needs to be built from source. 
+'''Note''': This is not necessary if you've installed gr-osmosdr via the package manager; this is included here only for people that wish to work with and modify the source.
 
 To avoid conflicts between the native python and the MacPorts-supplied python, it is necessary to point gr-osmosdr to the desired python items. Be sure to adjust the python-related items in your CMake invocation for any differences. See the [https://trac.macports.org/browser/trunk/dports/science/gr-osmosdr/Portfile gr-osmosdr portfile as a reference].
 
