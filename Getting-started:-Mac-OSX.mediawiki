@@ -206,7 +206,7 @@ $ git://git.osmocom.org/gr-osmosdr
 $ cd gr-osmosdr
 $ mkdir build
 $ cd build
-$ PKG_CONFIG_PATH=/opt/local cmake \
+$ PKG_CONFIG_PATH=/opt/local/lib/pkgconfig cmake \
         -DPYTHON_EXECUTABLE=/opt/local/bin/python2.7 \
         -DPYTHON_INCLUDE_DIR=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/Headers \
         -DPYTHON_LIBRARY=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/Python \
