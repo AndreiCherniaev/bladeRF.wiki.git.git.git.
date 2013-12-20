@@ -100,6 +100,11 @@ Below is a list of configurations that people have reported success on. Feel fre
 |ExpressCard ASM1042 (VID=1b21, PID=1042)
 |Gentoo (3.8.10-gentoo x86_64)
 |-
+|piranha32's desktop
+|Asus P6T / i7 920@2.67GHz
+|VIA Technologies, Inc. VL80x xHCI USB 3.0 Controller (rev 02)
+|Fedora 19 x86_64. osmocom_fft works without overruns @42Msps.
+|-
 |}
 
 = FPGA fails to load =
