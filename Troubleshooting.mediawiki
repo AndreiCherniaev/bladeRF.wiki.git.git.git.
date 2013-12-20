@@ -160,6 +160,9 @@ This warning comes up if you have a that is considered out-of-date and requires 
 
 Please update to the [http://nuand.com/fx3/latest.img latest firmware], per the instructions in [[Upgrading-bladeRF-firmware|this wiki page.]]
 
+= Cannot build <code>libtecla</code> under Mac OSX 10.9 due to missing <code>libgcc.a</code> =
+Please take a look at [https://github.com/Nuand/bladeRF/wiki/Building-libtecla#configure-and-build Building libtecla] and note the <code>sed</code> script required to remove the link to <code>libgcc.a</code> in the Makefile.  This is due to the fact that the <code>configure</code> script for <code>libtecla</code> asks <code>gcc -print-libgcc-file-name</code> and <code>gcc</code> lies terribly.  Removing all notion of <code>libgcc.a</code> from the <code>Makefile</code> alleviates the problem.
+
 = Getting help =
 If you're really stuck, join the #bladeRF channel on [http://webchat.freenode.net/ Freenode] or post to the [http://nuand.com/forums/viewforum.php?f=4 Nuand Troubleshooting forum].
 
