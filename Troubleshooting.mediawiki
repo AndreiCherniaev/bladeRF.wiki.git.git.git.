@@ -58,6 +58,14 @@ Windows driver signing enforcement may cause driver installation problems. Try u
 
 In Windows 8, Libusbx may incorrectly report USB 3.0 SuperSpeed connection as Hi-Speed.
 
+== Mac OSX ==
+If you have performed an operating system update, and a previously working bladeRF stops working, you might have a mismatch between the OS and libusb. (For example moving from OSX 10.9.0 to 10.9.1). A sign of this will be that you can see the device via <code>bladeRF-cli -p</code>, but you cannot send or receive any data and instead you will see error messages like <code>[ERROR] could not access peripheral</code>. In this case, reinstall libusb:
+
+<code>
+sudo port -f uninstall libusb
+sudo port install libusb
+</code>
+
 == Host or Device-specific Issues ==
 As USB 3.0 is still relatively new, we've heard reports of some controller working great, and others not working at all. Ensure you have the latest drivers (and firmware, if needed) for your USB controller.
 
