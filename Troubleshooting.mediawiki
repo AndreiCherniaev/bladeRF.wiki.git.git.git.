@@ -124,11 +124,11 @@ Issues have been reported on the following configurations:
 | Operating System(s)
 | Issues and symptoms
 |-
-|
-|
-|
-|
-|
+|steve-m's desktop (with onboard xHCI controller)
+|ASRock Z68 Pro3 Gen3, Z68, Intel i5-2500K
+|Etron Technology, Inc. EJ168 USB 3.0 Host Controller (rev 01)
+|Xubuntu 13.10 x86_64, Linux 3.11
+|"Failed to access peripheral", libusb timeouts, kernel reports "Not enough bandwidth for altsetting 0" and other xHCI related errors
 |-
 |
 |
