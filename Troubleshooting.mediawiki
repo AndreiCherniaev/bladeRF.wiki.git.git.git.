@@ -115,6 +115,28 @@ Below is a list of configurations that people have reported success on. Feel fre
 |-
 |}
 
+=== Problematic Configurations ===
+Issues have been reported on the following configurations:
+{| class="wikitable"
+| Configuration Name
+| Device/Motherboard/CPU
+| Controller or Chipset
+| Operating System(s)
+| Issues and symptoms
+|-
+|
+|
+|
+|
+|
+|-
+|
+|
+|
+|
+|
+|}
+
 = FPGA fails to load =
 In many cases, load failures have been the result of trying to load the wrong size FPGA image for the board in question. Check to make sure you are using the 40kLE FPGA for x40 and the 115kLE FPGA for x115.
 
