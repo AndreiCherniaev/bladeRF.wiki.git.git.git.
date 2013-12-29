@@ -3,17 +3,17 @@ This guide describes the process of building and installing the bladeRF host lib
 '''Ubuntu users:''' 13.04 or later is recommended (due to its 3.8 kernel and a more recent libusb version). Note that 12.04 contains libusb-1.0.9. However, libusb-1.0.10 or higher is required to build and use libbladeRF.
 
 == Easy installation for Ubuntu 13.04 and later ==
-If you're running Ubuntu 13.04 ([[Raring Ringtail|http://releases.ubuntu.com/raring/]]) or later, a PPA is available at [[ppa:rtucker/bladerf-daily|https://launchpad.net/~rtucker/+archive/bladerf-daily/+packages]].  New builds will appear occasionally, built from the master.
+If you're running Ubuntu 13.04 ([[Raring Ringtail|http://releases.ubuntu.com/raring/]]) or later, a PPA is available at [[ppa:bladerf/bladerf-snapshots|https://launchpad.net/~bladerf/+archive/bladerf-snapshots/+packages]].  New builds will appear occasionally, built from the master.
 
 To activate this PPA,
 
-<pre>$ sudo apt-add-repository ppa:rtucker/bladerf-daily
+<pre>$ sudo apt-add-repository ppa:bladerf/bladerf-snapshots
 $ apt-get update
 $ apt-get install bladerf</pre>
 
 Then, skip down to the [[Getting-Started:-Linux#wiki-Checking_basic_device_operation|Checking basic device operation]] section, bypassing the compilation steps.
 
-Note: This PPA will be moved to a new location soon, and some of the binary packages may be renamed at the same time.  Check back here if the PPA disappears and you get errors during system updates.
+Note: This PPA replaces ppa:rtucker/bladerf-daily, which is now deprecated.
 
 == Installing dependencies ==
 
