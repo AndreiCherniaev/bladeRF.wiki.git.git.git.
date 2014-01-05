@@ -137,11 +137,6 @@ Issues have been reported on the following configurations:
 |
 |}
 
-= FPGA fails to load =
-In many cases, load failures have been the result of trying to load the wrong size FPGA image for the board in question. Check to make sure you are using the 40kLE FPGA for x40 and the 115kLE FPGA for x115.
-
-If you're unsure which FPGA size is on your board, identify the the Altera Cyclone IV package on the top of the bladeRF. You should see text on the package that reads ''EP4CExxxF23C8N'', where ''xxx'' is the size -- either 40 or 115.
-
 = Configuration and Compilation Issues =
 
 == Build fails due to a warning being treated as an error ==
@@ -189,6 +184,21 @@ If you obtain a warning about the installed libusb version not containing hotplu
 Please take a look at [https://github.com/Nuand/bladeRF/wiki/Building-libtecla#configure-and-build Building libtecla] and note the <code>sed</code> script required to remove the link to <code>libgcc.a</code> in the Makefile.  This is due to the fact that the <code>configure</code> script for <code>libtecla</code> uses <code>gcc -print-libgcc-file-name</code>, which [http://lists.cs.uiuc.edu/pipermail/llvmbugs/2013-February/027238.html does not provide a full-path].
 
 Removing all notion of <code>libgcc.a</code> from the <code>Makefile</code> appears to alleviate the problem. Alternatively, one may be able to replace this item with the full path the the clang-provided libgcc.a.
+
+= Misc. Runtime Issues =
+
+== [ERROR] Could not write to si5338 (-5): File or device I/O failure ==
+
+One possible reason for this error is a mismatch between the FPGA bistream and the firmware being used. [http://nuand.com/forums/viewtopic.php?f=2&t=3514 As of firmware v1.6.0 and FPGA v0.0.1, the UART bridge baudrate has been increased.] Therefore, a mismatch would result in peripheral communication failures, as the FX3 and the FPGA are unable to communicate.
+
+If you're seeing this issue, ensure that you've updated both your firmware (cycle power after flashing), and FPGA. Ensure you've disabled FPGA autoloading before flashing the new firmware, otherwise the (old) autoloaded FPGA will be attempting to use the lower bridge baudrate.
+
+To disable FPGA autoloading: [code]bladeRF-cli -L X[/code]
+
+== FPGA fails to load ==
+In many cases, load failures have been the result of trying to load the wrong size FPGA image for the board in question. Check to make sure you are using the 40kLE FPGA for x40 and the 115kLE FPGA for x115.
+
+If you're unsure which FPGA size is on your board, identify the the Altera Cyclone IV package on the top of the bladeRF. You should see text on the package that reads ''EP4CExxxF23C8N'', where ''xxx'' is the size -- either 40 or 115.
 
 = Mac OSX Superspeed issues =
 
