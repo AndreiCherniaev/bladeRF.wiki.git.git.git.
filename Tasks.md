@@ -6,6 +6,10 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Figure out why linux has a bandwidth allocation issue after a ^c from a program
 - Get a Windows 8 machine and see why accesses fail
 - In-band scheduling support
+- Discipline VCTCXO using 1pps from GPSDO
+- Discipline VCTCXO using 10MHz external reference
+- Parse NMEA messages from GPS in FPGA for timestamping
+- Add ability to 'reset on next 1pps' signal for TX/RX sample synchronization
 - Fix or remove FS USB descriptors.
 - Flash-related failures in Windows
 - extio.dll support for Windows
