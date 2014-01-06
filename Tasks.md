@@ -11,17 +11,10 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - extio.dll support for Windows
 
 **bpadalino**
-- Get FPGA building with Quartus 13.0sp1
-    - Seems to work out of the box with warnings from Qsys regarding versioning of components
-- Make UART run at 4608000 baud rate instead of 115200
-    - Make the NIOS run at 16*4608000 clock rate and set the divisor appropriately
-- FPGA version number
 - Automatic IQ Calibration
-- Create IQ correction block for HDL
 - Create and simulate HDL models
 - Create signal generator block for FPGA
-- Create counter mode for RX stream
-   - This is currently in the dev-uart_speedup branch
+- Create RRC filter for FPGA to push ATSC filtering burden
 
 **jynik**
 - Clean up lms.c (return values, style, etc.) and fix bugs in loopback modes
