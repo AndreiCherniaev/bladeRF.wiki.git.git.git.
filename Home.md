@@ -24,3 +24,4 @@ This wiki will serve as a place to create some community-based documentation. Pl
 # Tutorials and Related Reading #
 * [[Signals and IQ Data]]
 * [[Github Essentials | github-essentials]]
+* [[[Complete GPS/GLONASS Receiver Design](http://lea.hamradio.si/~s53mv/navsats/theory.html)]]
