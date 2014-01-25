@@ -33,4 +33,4 @@ Find or learn something interesting? Feel free to post links or link pages you'v
 * [[git and GitHub Essentials | github-essentials]]
 
 ## bladeRF ##
-* [[bladeRF-cli Tips and Tricks]]
+* [[bladeRF CLI Tips and Tricks]]
