@@ -25,8 +25,8 @@ This wiki will serve as a place to create some community-based documentation. Pl
 Find or learn something interesting? Feel free to post links or link pages you've created here!
 
 ## RF ##
-* [http://whiteboard.ping.se/SDR/IQ I/Q Data for Dummies]
-* [http://www.ieee.li/pdf/essay/quadrature_signals.pdf Quadrature Signals: Complex, But Not Complicated]
+* [Quadrature Signals: Complex, But Not Complicated](http://www.ieee.li/pdf/essay/quadrature_signals.pdf)
+* [I/Q Data for Dummies](http://whiteboard.ping.se/SDR/IQ)
 * [Complete GPS/GLONASS Receiver Design](http://lea.hamradio.si/~s53mv/navsats/theory.html)
 
 ## Development ##
