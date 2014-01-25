@@ -30,7 +30,7 @@ Find or learn something interesting? Feel free to post links or link pages you'v
 * [Complete GPS/GLONASS Receiver Design](http://lea.hamradio.si/~s53mv/navsats/theory.html)
 
 ## Development ##
-* [[Github Essentials | github-essentials]]
+* [[git and GitHub Essentials | github-essentials]]
 
 ## bladeRF ##
 * [[bladeRF-cli Tips and Tricks]]
