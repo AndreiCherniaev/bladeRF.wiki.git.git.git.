@@ -226,7 +226,18 @@ Back up your install_manifest.txt for any future debugging or manual removal. Yo
 
 
 === Homebrew ===
-'''TO DO:''' Any Homebrew users mind filling this in?
+The following is a bit vague, but it is assured to be workable.
+As of Jan 2014 it seems that that gnuradio is still not yet part of the supported tree for Homebrew.
+There are, however, several 3rd-party scripts.  One of them by user "titanous."
+To use this, you need to run:
+<pre>
+  $ brew tap titanous/homebrew-gnuradio
+</pre>
+but it is advisable to see the README at https://github.com/titanous/homebrew-gnuradio since
+there are several prerequisites and some options to consider.
+Subsequent steps are akin to those under "Building gr-osmosdr from source" (above).
+
+
 
 === Simple Tests ===
 See the [[Getting-Started:-Linux#wiki-Simple_test_applications_to_verify_device_operation|Getting Started: Linux]] guide for some quick tests to verify device operation with GNU Radio.
