@@ -166,7 +166,7 @@ Below is a list of configurations that people have reported success on. Feel fre
 |-
 |Anker PCI-E card
 |Uspeed USB 3.0 PCI-E Express Card with 4 USB 3.0 Ports
-|VIA Technologies, Inc. VL805 Chipset
+|VL805 Chipset (VIA Technologies, Inc. Device 3483 (rev 01))
 |Ubuntu 13.04 x86_64. osmocom_fft runs without issue at 40Msps
 |-
 |}
@@ -188,7 +188,7 @@ Issues have been reported on the following configurations:
 |-
 |Orico PCI-E card
 |PVU3-4P USB 3.0 PCI-Express Host Controller Card
-|
+|VIA Technologies, Inc. VL80x xHCI USB 3.0 Controller (rev 03)
 |Ubuntu 13.04 X86_64
 |Hard lock while loading firmware
 |-
