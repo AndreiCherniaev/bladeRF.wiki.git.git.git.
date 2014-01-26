@@ -164,6 +164,11 @@ Below is a list of configurations that people have reported success on. Feel fre
 |VIA Technologies, Inc. VL80x xHCI USB 3.0 Controller (rev 02)
 |Fedora 19 x86_64. osmocom_fft works without overruns @42Msps.
 |-
+|Anker PCI-E card
+|Uspeed USB 3.0 PCI-E Express Card with 4 USB 3.0 Ports
+|VIA Technologies, Inc. VL805 Chipset
+|Ubuntu 13.04 x86_64. osmocom_fft runs without issue at 40Msps
+|-
 |}
 
 ==== Problematic Configurations ====
@@ -180,6 +185,12 @@ Issues have been reported on the following configurations:
 |Etron Technology, Inc. EJ168 USB 3.0 Host Controller (rev 01)
 |Xubuntu 13.10 x86_64, Linux 3.11
 |"Failed to access peripheral", libusb timeouts, kernel reports "Not enough bandwidth for altsetting 0" and other xHCI related errors
+|-
+|Orico PCI-E card
+|PVU3-4P USB 3.0 PCI-Express Host Controller Card
+|
+|Ubuntu 13.04 X86_64
+|Hard lock while loading firmware
 |-
 |
 |
