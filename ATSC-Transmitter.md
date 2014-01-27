@@ -72,8 +72,7 @@ For this, I'm going to turn one of my bicycle commutes into a music video.  I mo
 
 1. Grab atsc-ts-streamer.bash from my gist: https://gist.github.com/rtucker/8642061
 2. Update VIDEOFILE and AUDIOFILE to point at some video and audio
-3. In one terminal window, run ```python atsc-blade.py``` without any arguments:
-
+3. In one terminal window, run ```python atsc-blade.py``` without any arguments
 4. In another terminal window, run ```./atsc-ts-streamer.bash```:
 
 ```
@@ -116,10 +115,24 @@ Press ctrl-c to stop encoding
 frame= 2172 fps= 30 q=31.0 Lsize=  171281kB time=72.37 bitrate=19389.3kbits/s 
 ```
 
-And boom!  You should see it on your television.
+And boom!  You should see it on your television, with your chosen music on the audio channel.
 
 ![Photograph of television displaying a video from a bicycle traversing a city roadway.](http://hoopycat.com/bladerf_builds/misc/atsc/atsc-4.jpg)
 
+You might notice the signal breaks up more than you'd like.  The transcoding and multiplexing are being done in real time and that is somewhat stressful.  Ways to improve this are welcome.
+
 # Difficulty Level 4: Live capture and encoding of content
 
-(under construction)
+So all that was boring.  Why don't we try something more exciting?  My laptop has a webcam.
+
+Copy the ```atsc-ts-streamer.bash``` script to a machine on the same ethernet segment as the machine running ```atsc-blade.py``` (or maybe the same machine, if you have a webcam!) and set the following:
+
+```
+VIDEOFILE="-f video4linux2 -r 30 -s vga -i /dev/video0"
+AUDIOFILE="-i http://audioplayer.wunderground.com:80/dampier/rochester.mp3"   # or some other suitable streaming audio content
+OUTFILE="udp://192.168.1.194:1234?pkt_size=188&buffer_size=65535"   # replace 192.168.1.194 as required
+```
+
+Start up ```atsc-blade.py``` with no arguments, and then, on your webcam machine, start ```atsc-ts-streamer.bash```.  If all goes well, holy crow!
+
+
