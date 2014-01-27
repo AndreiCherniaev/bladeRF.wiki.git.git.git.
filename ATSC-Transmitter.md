@@ -68,7 +68,57 @@ built-in sink types: bladerf
 
 # Difficulty Level 3: "Live" transcoding of content
 
-(under construction)
+For this, I'm going to turn one of my bicycle commutes into a music video.  I mounted a crappy camera (we'll call it a GoCheap) to my bicycle and got a MJPEG video with a lot of gearshifting noise and heavy breathing on the audio track, so we'll replace that with some pleasant music.
+
+1. Grab atsc-ts-streamer.bash from my gist: https://gist.github.com/rtucker/8642061
+2. Update VIDEOFILE and AUDIOFILE to point at some video and audio
+3. In one terminal window, run ```python atsc-blade.py``` without any arguments:
+
+4. In another terminal window, run ```./atsc-ts-streamer.bash```:
+
+```
+avconv version 0.8.9-6:0.8.9-0ubuntu0.13.10.1, Copyright (c) 2000-2013 the Libav developers
+  built on Nov  9 2013 19:09:46 with gcc 4.8.1
+Input #0, avi, from '/home/rtucker/Videos/Bike Cam/2012-09-09-002-afternoon.AVI':
+  Duration: 00:16:20.15, start: 0.000000, bitrate: 9442 kb/s
+    Stream #0.0: Video: mjpeg, yuvj422p, 640x480, 30 tbr, 30 tbn, 30 tbc
+    Stream #0.1: Audio: pcm_mulaw, 8000 Hz, 1 channels, s16, 64 kb/s
+[mp3 @ 0x19aa7c0] max_analyze_duration reached
+Input #1, mp3, from '/home/rtucker/Music/Track N Field/Marathon/04 - Track N Field - Iso Maha.mp3':
+  Metadata:
+    album           : Marathon
+    genre           : Broken beat/Nu Jazz/Nu Soul
+    copyright       : 2008 Nine2Five
+    TSRC            : DEY470803172
+    title           : Iso Maha
+    artist          : TRACK N FIELD
+    album_artist    : TRACK N FIELD
+    publisher       : para-dise.biz
+    track           : 4
+    date            : 2008-08-01
+  Duration: 00:06:45.02, start: 0.000000, bitrate: 321 kb/s
+    Stream #1.0: Audio: mp3, 44100 Hz, stereo, s16, 320 kb/s
+Incompatible pixel format 'yuvj422p' for codec 'mpeg2video', auto-selecting format 'yuv420p'
+[buffer @ 0x196b740] w:640 h:480 pixfmt:yuvj422p
+[scale @ 0x19fc020] w:640 h:480 fmt:yuvj422p -> w:1280 h:720 fmt:yuv420p flags:0x4
+[mpegts @ 0x19aee00] muxrate 19393000, pcr every 257 pkts, sdt every 6447, pat/pmt every 1289 pkts
+Output #0, mpegts, to 'udp://127.0.0.1:1234?pkt_size=188&buffer_size=65535':
+  Metadata:
+    service_name    : udp://127.0.0.1:1234?pkt_size=188&buffer_size=65535
+    service_provider: BladeRF ATSC Demo
+    encoder         : Lavf53.21.1
+    Stream #0.0: Video: mpeg2video, yuv420p, 1280x720, q=2-31, 2000 kb/s, 90k tbn, 30 tbc
+    Stream #0.1: Audio: ac3, 48000 Hz, stereo, s16, 384 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (mjpeg -> mpeg2video)
+  Stream #1:0 -> #0:1 (mp3 -> ac3_fixed)
+Press ctrl-c to stop encoding
+frame= 2172 fps= 30 q=31.0 Lsize=  171281kB time=72.37 bitrate=19389.3kbits/s 
+```
+
+And boom!  You should see it on your television.
+
+![Photograph of television displaying a video from a bicycle traversing a city roadway.](http://hoopycat.com/bladerf_builds/misc/atsc/atsc-4.jpg)
 
 # Difficulty Level 4: Live capture and encoding of content
 
