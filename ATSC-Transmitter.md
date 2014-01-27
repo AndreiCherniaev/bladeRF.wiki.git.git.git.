@@ -135,4 +135,6 @@ OUTFILE="udp://192.168.1.194:1234?pkt_size=188&buffer_size=65535"   # replace 19
 
 Start up ```atsc-blade.py``` with no arguments, and then, on your webcam machine, start ```atsc-ts-streamer.bash```.  If all goes well, holy crow!
 
+![Photograph of television displaying a video of a man taking a photograph of a television, next to a laptop with a camera taking a video of a man taking a photograph of the television.](http://hoopycat.com/bladerf_builds/misc/atsc/atsc-5.jpg)
 
+The stream tends to be somewhat more unstable in this case, perhaps due to network packet loss, perhaps due to the constraints of real-time video encoding.  Research into improving this is welcome.
