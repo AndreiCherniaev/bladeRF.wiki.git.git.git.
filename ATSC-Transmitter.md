@@ -24,8 +24,8 @@ built-in sink types: bladerf
 
 You should see this on your spectrum analyzer:
 
-![Photograph of spectrum analyzer showing a 6 MHz wide 8-VSB signal centered on 483 MHz.](http://hoopycat.com/bladerf-builds/misc/atsc/atsc-1.jpg)
+![Photograph of spectrum analyzer showing a 6 MHz wide 8-VSB signal centered on 483 MHz.](http://hoopycat.com/bladerf_builds/misc/atsc/atsc-1.jpg)
 
 And you should see this on your television!
 
-![Photograph of television program with on-screen display showing a HD signal on digital channel 14-1.](http://hoopycat.com/bladerf-builds/misc/atsc/atsc-2.jpg)
+![Photograph of television program with on-screen display showing a HD signal on digital channel 14-1.](http://hoopycat.com/bladerf_builds/misc/atsc/atsc-2.jpg)
