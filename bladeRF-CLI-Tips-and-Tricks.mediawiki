@@ -1,5 +1,5 @@
 = Getting the most out of libtecla =
-If you've built bladeRF-cli with support for [http://www.astro.caltech.edu/~mcs/tecla/index.html libtecla] (<i>highly</i> recommended), you'll have a number of great features available to you, including history and handy key bindings (including emacs and vi bindings).
+If you've built bladeRF-cli with support for [http://www.astro.caltech.edu/~mcs/tecla/index.html libtecla] (<i>highly</i> recommended), you'll have a number of great features available to you, including history, tab-completion (for filenames) and handy key bindings (including emacs and vi bindings).
 
 See the [http://www.astro.caltech.edu/~mcs/tecla/tecla.html tecla man page] for detailed information about configuring and using libtelca-based programs.
 
