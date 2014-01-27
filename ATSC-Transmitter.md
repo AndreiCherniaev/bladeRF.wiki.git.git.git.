@@ -15,7 +15,7 @@ To get to this point, you'll want to have your BladeRF connected to a USB 3.0 po
 You should see this in your terminal window:
 
 ```
-Transmitting pre-encoded content: hdenc/advatsc.ts
+Transmitting pre-encoded content: advatsc.ts
 Using Volk machine: avx_64_mmx_orc
 gr-osmosdr v0.1.0-55-g80c4af4f (0.1.1git) gnuradio 3.7.1
 built-in sink types: bladerf 
@@ -29,3 +29,33 @@ You should see this on your spectrum analyzer:
 And you should see this on your television!
 
 ![Photograph of television program with on-screen display showing a HD signal on digital channel 14-1.](http://hoopycat.com/bladerf_builds/misc/atsc/atsc-2.jpg)
+
+Congratulations!  You are now transmitting an ATSC signal!  If it doesn't work straight away, check that you aren't getting a lot of overflow/underflow errors, and that LEDs 1 and 3 are *solid* on your BladeRF.  Also, make sure your TV is set to tune to broadcast channel 14, not cable channel 14.
+
+Press ctrl-C when finished.
+
+# Difficulty Level 2: Generating an MPEG Transport Stream for broadcast
+
+What, you don't like Adventure Time?
+
+If you have a video file that you want to try transmitting, install avconv (aka ffmpeg) and take a look at atsc-ts-converter.bash: https://gist.github.com/rtucker/8641882
+
+This script specifies a video file (tbm_tdf_2.mp4) and saves it to a transport stream file (tbm_tdf_2.ts).  It also puts a text overlay on it.  Feel free to change TEXT, VIDEOFILE, and OUTFILE to suit your needs.
+
+Be warned that MPEG Transport Streams are *big*:
+
+```
+-rw-r--r-- 1 rtucker rtucker  23839649 Dec 29 20:23 tbm_tdf_2.mp4
+-rw-r--r-- 1 rtucker rtucker 792414924 Dec 29 20:54 tbm_tdf_2.ts
+```
+
+But once you have it generated,
+
+```
+$ ./atsc-blade.py ~/Videos/tbm_atsc_test/tbm_tdf_2.ts 
+Transmitting pre-encoded content: /home/rtucker/Videos/tbm_atsc_test/tbm_tdf_2.ts
+Using Volk machine: avx_64_mmx_orc
+gr-osmosdr v0.1.0-55-g80c4af4f (0.1.1git) gnuradio 3.7.1
+built-in sink types: bladerf 
+[bladeRF source] Using nuand LLC bladeRF #0 SN [redacted] FW v1.6.1 FPGA v0.0.2
+```
