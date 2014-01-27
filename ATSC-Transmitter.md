@@ -42,6 +42,8 @@ If you have a video file that you want to try transmitting, install avconv (aka 
 
 This script specifies a video file (tbm_tdf_2.mp4) and saves it to a transport stream file (tbm_tdf_2.ts).  It also puts a text overlay on it.  Feel free to change TEXT, VIDEOFILE, and OUTFILE to suit your needs.
 
+Note that the video just has to be in a format avconv can understand -- it will do the transcoding into something your TV should understand.
+
 Be warned that MPEG Transport Streams are *big*:
 
 ```
@@ -49,7 +51,7 @@ Be warned that MPEG Transport Streams are *big*:
 -rw-r--r-- 1 rtucker rtucker 792414924 Dec 29 20:54 tbm_tdf_2.ts
 ```
 
-But once you have it generated,
+But once you have it generated, you can play it back, and it should work:
 
 ```
 $ ./atsc-blade.py ~/Videos/tbm_atsc_test/tbm_tdf_2.ts 
@@ -59,3 +61,15 @@ gr-osmosdr v0.1.0-55-g80c4af4f (0.1.1git) gnuradio 3.7.1
 built-in sink types: bladerf 
 [bladeRF source] Using nuand LLC bladeRF #0 SN [redacted] FW v1.6.1 FPGA v0.0.2
 ```
+
+![Photograph of television program with female singer.](http://hoopycat.com/bladerf_builds/misc/atsc/atsc-3.jpg)
+
+(Yes, my television is an old GoldStar CRT with a cheap government-cheese DTV converter box.  Stop laughing at me.  I don't really watch television...)
+
+# Difficulty Level 3: "Live" transcoding of content
+
+(under construction)
+
+# Difficulty Level 4: Live capture and encoding of content
+
+(under construction)
