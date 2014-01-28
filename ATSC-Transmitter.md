@@ -6,7 +6,7 @@ In the typical deployment, ATSC broadcasts use 8VSB modulation in a 6 MHz channe
 
 To get to this point, you'll want to have your BladeRF connected to a USB 3.0 port, and be running a recent firmware and hosted FPGA image.  You'll also need to have libbladeRF and gnuradio installed, generally by using the Quick Start instructions elsewhere in this wiki.  I assume you'll be using Linux.
 
-1. Grab a transport stream from somewhere, such as: http://hoopycat.com/bladerf_builds/misc/atsc/advatsc.ts (246 MB)
+1. Grab a transport stream from somewhere, such as: http://hoopycat.com/bladerf_atsc/advatsc.ts (246 MB)
 2. Grab atsc-blade.py: https://gist.github.com/rtucker/8641650
 3. Make sure a "reasonable" UHF antenna is attached to your BladeRF's transmit port, and that physical channels 14 (470 to 476 MHz) and 15 (476 to 482 MHz) are unused in your area -- if not, adjust center_freq to land on some other channel.
 4. Turn on your DTV receiver and set it to broadcast channel 14 (or whatever you chose).
@@ -24,11 +24,11 @@ built-in sink types: bladerf
 
 You should see this on your spectrum analyzer:
 
-![Photograph of spectrum analyzer showing a 6 MHz wide 8-VSB signal centered on 483 MHz.](http://hoopycat.com/bladerf_builds/misc/atsc/atsc-1.jpg)
+![Photograph of spectrum analyzer showing a 6 MHz wide 8-VSB signal centered on 483 MHz.](http://hoopycat.com/bladerf_atsc/atsc-1.jpg)
 
 And you should see this on your television!
 
-![Photograph of television program with on-screen display showing a HD signal on digital channel 14-1.](http://hoopycat.com/bladerf_builds/misc/atsc/atsc-2.jpg)
+![Photograph of television program with on-screen display showing a HD signal on digital channel 14-1.](http://hoopycat.com/bladerf_atsc/atsc-2.jpg)
 
 Congratulations!  You are now transmitting an ATSC signal!  If it doesn't work straight away, check that you aren't getting a lot of overflow/underflow errors, and that LEDs 1 and 3 are *solid* on your BladeRF.  Also, make sure your TV is set to tune to broadcast channel 14, not cable channel 14.
 
@@ -62,7 +62,7 @@ built-in sink types: bladerf
 [bladeRF source] Using nuand LLC bladeRF #0 SN [redacted] FW v1.6.1 FPGA v0.0.2
 ```
 
-![Photograph of television program with female singer.](http://hoopycat.com/bladerf_builds/misc/atsc/atsc-3.jpg)
+![Photograph of television program with female singer.](http://hoopycat.com/bladerf_atsc/atsc-3.jpg)
 
 (Yes, my television is an old GoldStar CRT with a cheap government-cheese DTV converter box.  Stop laughing at me.  I don't really watch television...)
 
@@ -117,7 +117,7 @@ frame= 2172 fps= 30 q=31.0 Lsize=  171281kB time=72.37 bitrate=19389.3kbits/s
 
 And boom!  You should see it on your television, with your chosen music on the audio channel.
 
-![Photograph of television displaying a video from a bicycle traversing a city roadway.](http://hoopycat.com/bladerf_builds/misc/atsc/atsc-4.jpg)
+![Photograph of television displaying a video from a bicycle traversing a city roadway.](http://hoopycat.com/bladerf_atsc/atsc-4.jpg)
 
 You might notice the signal breaks up more than you'd like.  The transcoding and multiplexing are being done in real time and that is somewhat stressful.  Ways to improve this are welcome.
 
@@ -135,6 +135,6 @@ OUTFILE="udp://192.168.1.194:1234?pkt_size=188&buffer_size=65535"   # replace 19
 
 Start up ```atsc-blade.py``` with no arguments, and then, on your webcam machine, start ```atsc-ts-streamer.bash```.  If all goes well, holy crow!
 
-![Photograph of television displaying a video of a man taking a photograph of a television, next to a laptop with a camera taking a video of a man taking a photograph of the television.](http://hoopycat.com/bladerf_builds/misc/atsc/atsc-5.jpg)
+![Photograph of television displaying a video of a man taking a photograph of a television, next to a laptop with a camera taking a video of a man taking a photograph of the television.](http://hoopycat.com/bladerf_atsc/atsc-5.jpg)
 
 The stream tends to be somewhat more unstable in this case, perhaps due to network packet loss, perhaps due to the constraints of real-time video encoding.  Research into improving this is welcome.
