@@ -1,6 +1,10 @@
 This page describes how to update the firmware on the bladeRF.
 
-Upgrading from v1.0 is a little trickier than upgrading from more recent firmware images. If you received your unit before September 10th, you might encounter some issues on Windows; the troubleshooting ideas below should provide enough methods to flash any v1.0 bladeRF.
+Pre-built firmware is hosted at: http://www.nuand.com/fx3
+
+# Upgrading from early firmware versions #
+
+Upgrading from v1.0 is a little trickier than upgrading from more recent firmware images. If you received your unit before September 10th 2013, you might encounter some issues on Windows; the troubleshooting ideas below should provide enough methods to flash any v1.0 bladeRF.
 
 # Upgrading on Linux #
 
