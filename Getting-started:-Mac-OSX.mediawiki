@@ -181,13 +181,13 @@ $ sudo port install gnuradio +grc +swig +wxgui +qtgui +python27
 
 After the installation completes (it may take quite some time), you can verify the installation by running '''gnuradio-companion'''. Note: XQuartz will automatically start if it is not already started.
 
-To get support for the bladeRF source and sink in GnuRadio, you will need to install [https://trac.macports.org/browser/trunk/dports/science/gr-osmosdr/Portfile gr-osmosdr]. Make sure you build bladeRF from source as above before running the port install command.
+To get support for the bladeRF source and sink in GnuRadio, you will need to install [https://trac.macports.org/browser/trunk/dports/science/gr-osmosdr/Portfile gr-osmosdr]. 
 
 <pre>
 $ sudo port install gr-osmosdr
 </pre>
 
-If you are having difficulty selecting a bladeRF source, you can check a list of supported device types in osmosdr with the following command.
+If you are having difficulty selecting a bladeRF source/sink, you can check a list of supported device types in osmosdr with the following command.
 
 <pre>
 $ osmocom_fft 2>&1 | grep "source types"
