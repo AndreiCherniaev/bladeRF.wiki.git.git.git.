@@ -8,12 +8,13 @@ If you plan to use graphical tools (i.e., GNU Radio Companion), ensure you have 
 
 Next, install a package management system, such as [http://www.macports.org/ MacPorts] (another option is [http://brew.sh/ Homebrew]).
 
-The required redependencies are: libusb (with USB 3.0 support), pkgconfig, and cmake. The libtecla package is optional; it improves the bladeRF interactive console experience (adds history, vi-bindings, etc.). 
+The required dependencies are: libusb (with USB 3.0 support), pkgconfig, and cmake. The libtecla package is optional; it improves the bladeRF interactive console experience (adds history, vi-bindings, etc.). 
 
 == MacPorts ==
-With MacPorts, you can install these with:
 
-<pre>$ sudo port install libusb pkgconfig cmake</pre>
+With MacPorts, the bladeRF utilities can be installed with:
+
+<pre>$ sudo port install bladeRF +tecla</pre>
 
 Ensure that your shell configuration (e.g., .bashrc, .zshrc) contains the following items (adjusted accordingly):
 <pre>
@@ -23,7 +24,7 @@ export MANPATH=/opt/local/share/man:$MANPATH
 export PYTHONPATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages:/opt/local/lib/python2.7/site-packages:${PYTHONPATH}
 </pre>
 
-There is no portfile for libtecla currently, so MacPorts users will have to [[Building-libtecla|build libtecla from source]].
+There is no portfile for libtecla currently, so MacPorts users will have to 
 
 == Homebrew==
 
@@ -32,6 +33,8 @@ If you're using Homebrew, install the dependencies via the following command. No
 <pre>$ brew install libusbx pkgconfig cmake libtecla</pre>
 
 == Building bladeRF libraries and tools from source ==
+
+Required dependencies include: libusb(x), CMake.  libtecla is optional, but highly recommended for bladeRF-cli.  MacPorts and Homebrew provide packages for all of these. 
 
 === Clone the bladeRF git repository ===
 
@@ -162,7 +165,7 @@ bladeRF> load fpga <path/to/fpga/file>
 
 After the FPGA loads, you should see LEDs on the board begin blinking. At this point, you're ready to start using your device!
 
-== Building GNU Radio and gr-osmosdr ==
+== Building/Fetching GNU Radio and gr-osmosdr ==
 
 === MacPorts ===
 
