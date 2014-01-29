@@ -31,6 +31,7 @@ If you're using Homebrew, install the dependencies via the following command. No
 <pre>$ brew install libusbx pkgconfig cmake libtecla</pre>
 
 = Building bladeRF libraries and tools from source =
+If you've installed bladeRF items via a package manager, you can skip this section.  However, if you're interested in diving into the host-side code, continue on!
 
 Required dependencies include: libusb(x), CMake.  libtecla is optional, but highly recommended for bladeRF-cli.  MacPorts and Homebrew provide packages for all of these. 
 
