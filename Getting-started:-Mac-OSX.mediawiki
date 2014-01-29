@@ -146,7 +146,7 @@ bladeRF> version
 Here we see the device's serial number, DAC calibration, FPGA information, and USB connection information.  Take note of the FPGA size, as this will help determine which FPGA file to load.
 
 == Updating Firmware ==
-If you've just received your bladeRF, note the firmware version installed on your device.  If it looks older than what's [http://www.nuand.com/fx3 available for download], see the [Upgrading-bladeRF-firmware this wiki page] for more details on upgrading your device firmware.
+If you've just received your bladeRF, note the firmware version installed on your device.  If it looks older than what's [http://www.nuand.com/fx3 available for download], see the [[Upgrading-bladeRF-firmware| this wiki page]] for more details on upgrading your device firmware.
 
 Note that firmware and FPGA versions are tightly coupled. See the comments associated with the Firmware or FPGA images. (Generally, the latest of both are compatible.)
 
