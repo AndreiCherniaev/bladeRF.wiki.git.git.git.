@@ -217,6 +217,18 @@ In many cases, load failures have been the result of trying to load the wrong si
 
 If you're unsure which FPGA size is on your board, identify the the Altera Cyclone IV package on the top of the bladeRF. You should see text on the package that reads ''EP4CExxxF23C8N'', where ''xxx'' is the size -- either 40 or 115.
 
+==== Error: failed to load FPGA: File or device I/O failure ====
+If you're unable to load the FPGA using a USB 3.0 port while successfully doing so via USB 2.0, edit <code>/linux/drivers/usb/host/xhci.h</code> by changing <code>TRBS_PER_SEGMENT</code> from 64 to 256, and recompiling the kernel.
+
+<pre>
+$ dmesg | grep xhci
+xhci_hcd 0000:03:00.0: Too many fragments 73, max 63
+</pre>
+
+Affected Linux kernel versions: 3.12.6 to 3.12.9. 
+
+This has been patched in [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/usb/host/xhci.h?h=linux-3.12.y&id=v3.12.10 3.12.10].
+
 == Mac OSX Superspeed issues ==
 
 If you've used ports to get libusb installed, there is a high likelihood that it is version 1.0.9.  Unfortunately, libusb didn't add superspeed support until version 1.0.15 for OSX.  We've had reports that the absolute latest version of libusb, 1.0.17, works on OSX.  Please update accordingly.
