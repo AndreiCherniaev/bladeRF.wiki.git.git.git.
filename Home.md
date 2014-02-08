@@ -28,9 +28,10 @@ Feel free to share your bladeRF projects here. Be sure to also check out the [Pr
 # Tutorials and Related Reading #
 Find or learn something interesting? Feel free to post links or link pages you've created here!
 
-## RF ##
+## Signal Processing and RF ##
 * [Quadrature Signals: Complex, But Not Complicated](http://www.ieee.li/pdf/essay/quadrature_signals.pdf)
 * [I/Q Data for Dummies](http://whiteboard.ping.se/SDR/IQ)
+* [MIT OpenCourseWare: Signals and Systems (Spring 2011), Prof Alan V. Oppenheim](http://ocw.mit.edu/resources/res-6-007-signals-and-systems-spring-2011/)
 * [Complete GPS/GLONASS Receiver Design](http://lea.hamradio.si/~s53mv/navsats/theory.html)
 
 ## Development ##
