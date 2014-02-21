@@ -8,12 +8,12 @@ If you're running Ubuntu 13.04 ([[Raring Ringtail|http://releases.ubuntu.com/rar
 To activate this PPA,
 
 <pre>$ sudo apt-add-repository ppa:bladerf/bladerf-snapshots
-$ apt-get update
-$ apt-get install bladerf</pre>
+$ sudo apt-get update
+$ sudo apt-get install bladerf</pre>
 
 If you plan to build gnuradio, gr-osmosdr, etc, you will also need the header files:
 
-<pre>$ apt-get install libbladerf-dev</pre>
+<pre>$ sudo apt-get install libbladerf-dev</pre>
 
 Then, skip down to the [[Getting-Started:-Linux#wiki-Checking_basic_device_operation|Checking basic device operation]] section, bypassing the compilation steps.
 
