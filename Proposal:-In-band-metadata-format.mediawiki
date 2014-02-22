@@ -2,9 +2,9 @@
 
 = Overview =
 
-The bladeRF stream consists of blocks of samples that are multiples of 1024 samples (4096 bytes) in size. When metadata is enabled, the first ''N'' samples of a block are replaced with metadata.
+The bladeRF stream consists of blocks of samples that are multiples of 1024 samples (4096 bytes) in size. When metadata is enabled, the first 4 samples of a block are replaced with metadata.
 
-The below table depicts this metadata. All fields are in little-endian byte order.
+The below table depicts this 16-byte metadata. All fields are in little-endian byte order.
 
 {| class="wikitable" 
 !'''Offset'''
