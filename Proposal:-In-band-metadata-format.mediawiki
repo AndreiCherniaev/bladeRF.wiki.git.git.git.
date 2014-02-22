@@ -1,0 +1,60 @@
+'''This is a work in progress'''
+
+= Overview =
+
+The bladeRF stream consists of blocks of samples that are multiples of 1024 samples (4096 bytes) in size. When metadata is enabled, the first ''N'' samples of a block are replaced with metadata.
+
+The below table depicts this metadata. All fields are in little-endian byte order.
+
+{| class="wikitable" 
+!'''Offset'''
+!'''Size (bytes)'''
+!'''Item'''
+!'''Description'''
+|-
+|0
+|4
+|Header
+|
+{|
+!'''Bits'''
+!'''Field'''
+!'''Description'''
+|-
+|'''[31:28]'''
+|Packet Type
+|
+{|
+|0x0 
+|Data packet with stream identifier
+|-
+|0x1
+|Data packet without stream identifier
+|-
+|0x2 - 0xff
+|Reserved
+|-
+|}
+|-
+|'''[27]'''
+|C-bit ("Class ID present" flag)
+|Always 0. Class ID not supported.
+|-
+|'''[26]'''
+|T-bit ("Trailer present" flag)
+|Always 0. Trailers never used.
+|-
+|'''[25:24]'''
+|Reserved
+|Always 0.
+|-
+|'''[23]'''
+|TSI (TimeStamp-Integer)
+|Always 0. No integer-seconds timestamp fields are supported.
+|-
+|'''[22]'''
+|TSI (TimeStamp-Fractional)
+|Always 3, to denote free-running counter.
+|-
+|}
+|}
