@@ -56,5 +56,7 @@ The below table depicts this metadata. All fields are in little-endian byte orde
 |-
 |4
 |8
-|Timestamp derived from free-running samplerate counter
+|Timestamp
+|Derived from free-running samplerate counter
+|-
 |}
