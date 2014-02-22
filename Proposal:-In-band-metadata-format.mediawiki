@@ -23,7 +23,7 @@ The below table depicts this metadata. All fields are in little-endian byte orde
 |-
 |'''[31:28]'''
 |Packet Type
-|0x1 to denote IF Data packet without stream identifier
+|0x1 to denote IF Data packet with stream identifier
 |-
 |'''[27]'''
 |C-bit ("Class ID present" flag)
@@ -55,6 +55,11 @@ The below table depicts this metadata. All fields are in little-endian byte orde
 |}
 |-
 |4
+|4
+|Stream identifier
+|Currently set to 0. 
+|-
+|8
 |8
 |Timestamp
 |Derived from free-running samplerate counter
