@@ -53,6 +53,7 @@ The below table depicts this metadata. All fields are in little-endian byte orde
 |Packet size
 |Total packet size, in units of 32-bit words, including metadata.
 |}
+|-
 |4
 |8
 |Timestamp derived from free-running samplerate counter
