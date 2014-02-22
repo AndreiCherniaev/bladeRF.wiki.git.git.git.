@@ -1,4 +1,4 @@
-'''This is a work in progress'''
+'''This is a work in progress.''' Do not reference this for current implementations.
 
 = Overview =
 
@@ -23,18 +23,7 @@ The below table depicts this metadata. All fields are in little-endian byte orde
 |-
 |'''[31:28]'''
 |Packet Type
-|
-{|
-|0x0 
-|Data packet with stream identifier
-|-
-|0x1
-|Data packet without stream identifier
-|-
-|0x2 - 0xff
-|Reserved
-|-
-|}
+|0x1 to denote IF Data packet without stream identifier
 |-
 |'''[27]'''
 |C-bit ("Class ID present" flag)
@@ -48,13 +37,20 @@ The below table depicts this metadata. All fields are in little-endian byte orde
 |Reserved
 |Always 0.
 |-
-|'''[23]'''
+|'''[23:22]'''
 |TSI (TimeStamp-Integer)
 |Always 0. No integer-seconds timestamp fields are supported.
 |-
-|'''[22]'''
+|'''[21:20]'''
 |TSI (TimeStamp-Fractional)
 |Always 3, to denote free-running counter.
 |-
+|'''[19:16]'''
+|Packet Count
+|Monotonically increasing sequence number
+|-
+|'''[15:0]'''
+|Packet size
+|Total packet size, in units of 32-bit words, including metadata.
 |}
 |}
