@@ -42,7 +42,7 @@ The below table depicts this 16-byte metadata. All fields are in little-endian b
 |Always 0. No integer-seconds timestamp fields are supported.
 |-
 |'''[21:20]'''
-|TSI (TimeStamp-Fractional)
+|TSF (TimeStamp-Fractional)
 |Always 3, to denote free-running counter.
 |-
 |'''[19:16]'''
