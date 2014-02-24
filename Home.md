@@ -36,6 +36,7 @@ Find or learn something interesting? Feel free to post links or link pages you'v
 
 ## Development ##
 * [[git and GitHub Essentials | github-essentials]]
+* [OpenBSC](https://github.com/Nuand/bladeRF/wiki/OpenBSC)
 
 ## bladeRF ##
 * [[bladeRF CLI Tips and Tricks]]
