@@ -1,0 +1,41 @@
+Welcome to the bladeRF wiki!
+
+This wiki will serve as a place to create some community-based documentation. Please feel free to create a page and link it here!
+
+= Guides and How To's =
+* [[Getting Started: Linux]]
+* [[Getting Started: Windows]]
+* [[Getting Started: Mac OSX]]
+* [[Troubleshooting]]
+* [[Upgrading-bladeRF-firmware|Upgrading the bladeRF firmware]]
+* [[bladeRF CLI Tips and Tricks]]
+
+= Projects =
+Feel free to share your bladeRF projects here. Be sure to also check out the  [https://www.nuand.com/forums/viewforum.php?f=8 Project Showcase] on the forums.
+* [[ATSC Transmitter]]
+
+= Tutorials and Related Reading =
+Find or learn something interesting? Share it here!
+
+== Signal Processing and RF ==
+* [http://www.ieee.li/pdf/essay/quadrature_signals.pdf Quadrature Signals: Complex, But Not Complicated]
+* [http://whiteboard.ping.se/SDR/IQ I/Q Data for Dummies]
+* [http://ocw.mit.edu/resources/res-6-007-signals-and-systems-spring-2011/ MIT OpenCourseWare: Signals and Systems (Spring 2011), Prof Alan V. Oppenheim]
+* [http://lea.hamradio.si/~s53mv/navsats/theory.html Complete GPS/GLONASS Receiver Design]
+
+= Development =
+== Recommended Reading ==
+* [[github-essentials|Using Git and GitHub]]
+* [[Debugging]]
+
+== For Developers ==
+* [[Release-testing|Testing]]
+* [[Using-Coverity-Scan|Coverity scans]]
+* [[Proposals and Requests]]
+* [[FX3-Firmware|FX3 Firmware Development]]
+
+== Ongoing and future efforts ==
+Working on new functionality or adding bladeRF support to a project? Create a page here to plan and document your efforts.
+
+* Current and planned development [[tasks]]
+* [[OpenBSC]]
