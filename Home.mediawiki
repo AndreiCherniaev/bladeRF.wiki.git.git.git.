@@ -22,6 +22,7 @@ Find or learn something interesting? Share it here!
 * [http://whiteboard.ping.se/SDR/IQ I/Q Data for Dummies]
 * [http://ocw.mit.edu/resources/res-6-007-signals-and-systems-spring-2011/ MIT OpenCourseWare: Signals and Systems (Spring 2011), Prof Alan V. Oppenheim]
 * [http://lea.hamradio.si/~s53mv/navsats/theory.html Complete GPS/GLONASS Receiver Design]
+* [http://people.scs.carleton.ca/~barbeau/SDRBook/ Software Radio for Experimenters with GNU Radio, Octave and Python] by [http://people.scs.carleton.ca/~barbeau/ Michel Barbeau]
 
 = Development =
 == Recommended Reading ==
