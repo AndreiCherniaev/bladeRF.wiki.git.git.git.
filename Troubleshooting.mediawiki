@@ -196,6 +196,14 @@ Issues have been reported on the following configurations:
 |SABRENT CP-4PTU USB3 PCIe card with VIA Technologies, Inc. VL80x xHCI USB 3.0 Controller (rev 02)
 |Fedora 19 x86_64. 
 |The card worked flawlessly for about a month, but after that time started to hard lock the motherboard on every attempt to stream from bladeRF.
+|-
+|[http://www.sybausa.com/productInfo.php?iid=1157 3.5" 4 Port USB 3.0 Bay Hub with All-in-One USB 2.0 Card Reader]
+|lsusb output:
+2109:0811
+058f:6364 Alcor Micro Corp. AU6477 Card Reader Controller
+|
+|Arch Linux w/ kernel 3.13.5-1-ARCH
+|Hard lock when reading samples. Needed to reboot.
 |}
 
 
