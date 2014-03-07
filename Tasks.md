@@ -29,7 +29,6 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 - Create a BUGS/Getting Help document detailing information to gather and provide when posting issues to the forum or IRC
 - rpi sweeping spectrum analyzer demo based upon fosphor
     - Pending on FPGA FFT block
-- Add some hotkey support to test_repeater to allow the user to adjust RX/TX gains
 
 ### Future Items ###
 - Si5338 MIMO/Expansion clock settings
