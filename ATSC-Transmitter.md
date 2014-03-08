@@ -2,6 +2,7 @@ Broadcast television in the United States currently uses a set of standards deve
 
 In the typical deployment, ATSC broadcasts use 8VSB modulation in a 6 MHz channel to transmit a 19.39 Mbit/s MPEG Transport Stream, which contains a number of multiplexed video, audio, and data payloads.
 
+
 # Difficulty Level 1: Transmitting a prepared MPEG Transport Stream
 
 To get to this point, you'll want to have your BladeRF connected to a USB 3.0 port, and be running a recent firmware and hosted FPGA image.  You'll also need to have libbladeRF and gnuradio installed, generally by using the Quick Start instructions elsewhere in this wiki.  I assume you'll be using Linux.
@@ -138,3 +139,9 @@ Start up ```atsc-blade.py``` with no arguments, and then, on your webcam machine
 ![Photograph of television displaying a video of a man taking a photograph of a television, next to a laptop with a camera taking a video of a man taking a photograph of the television.](http://hoopycat.com/bladerf_atsc/atsc-5.jpg)
 
 The stream tends to be somewhat more unstable in this case, perhaps due to network packet loss, perhaps due to the constraints of real-time video encoding.  Research into improving this is welcome.
+
+# Props and next steps
+
+Props to argilo for atsc-blade.py and drmpeg for the advatsc.ts transport stream, both of which provided a foundation for making this a thing.
+
+Also, to take the next step, try implementing a DVB-T transmitter and making contacts over the air!  (Yes, you can use the low-cost RTL-SDR USB fob as a television receiver.)  http://www.irrational.net/2014/03/02/digital-atv/
