@@ -189,12 +189,13 @@ with open(sys.argv[1], 'w') as out_file:
 
 To transmit these samples on "infinite" repeat, until the bladeRF-cli is closed:
 <pre>
-$ ./tone_iq.py /dev/shm/samples.csv
+$ cd /dev/shm
+$ ./tone_iq.py samples.csv
 
 $ bladeRF-cli -i
 bladeRF> set frequency tx 1G
 bladeRF> set samplerate tx 4M
-bladeRF> tx config file=/dev/shm/samples.csv format=csv repeat=0
+bladeRF> tx config file=samples.csv format=csv repeat=0
 bladeRF> tx start
 
 ...
