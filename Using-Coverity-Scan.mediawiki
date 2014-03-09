@@ -1,3 +1,10 @@
+Current scan state: 
+[[https://scan.coverity.com/projects/874/badge.svg]]
+
+= Coverity Access =
+
+Coverity does not allow for public access to defect lists.  However, it does allow project maintainers to grant registered Coverity users "Contributor/Member", "Contributer/Viewer" and "Other/Observer" permissions.  You're more than welcome to the bladeRF Coverity scan results, all you have to do is ask! :)
+
 = Setup = 
 
 # Download Coverity Scan from https://scan.coverity.com/download
