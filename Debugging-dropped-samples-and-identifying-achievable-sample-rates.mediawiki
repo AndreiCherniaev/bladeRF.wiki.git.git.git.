@@ -207,10 +207,10 @@ bladeRF> quit
 
 == Using osmocom_siggen ==
 
-To achieve the same results with osmocom_siggen:
+To achieve the same results with osmocom_siggen, run the following and set the "Frequency" field to 3.90625K.
 
 <pre>
 osmocom_siggen -f 1G -s 4M  -a bladerf=0 --sine
 </pre>
 
-Set the "Frequency" field to 3.90625K 
+
