@@ -134,10 +134,10 @@ with open(sys.argv[1], 'rb') as in_file:
 = Looking for discontinuities in transmitted samples using a spectrum analyzer =
 
 A crude test is to transmit a sine at some frequency offset, and look for symptoms of discontinuities:
-1. An extremely "noisy" or "messy" spectrum
-2. Gaps in the RF envelope
-3. Obvious gaps in the IQ waveform over time 
-4. A "messy" IQ polar plot
+# An unexpectedly and extremely "noisy" or "messy" spectrum
+# Gaps in the RF envelope
+# Obvious gaps in the IQ waveform over time 
+# A "messy" IQ polar plot
 
 Examples of each of these, for correct operation and a sample rate that results in discontinuities is shown below:
 
