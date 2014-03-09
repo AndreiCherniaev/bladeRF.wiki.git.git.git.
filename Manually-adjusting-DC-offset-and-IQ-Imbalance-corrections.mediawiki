@@ -34,15 +34,15 @@ With an uncalibrated device, you'll generally see the following a spectrum plot:
 
 === DC offset correction ===
 
-# Move the DC Offset Correction **Real** slider until the amplitude DC spike reaches a local minima
-# Move the DC Offset Correction **Imag** slider to further reduce the DC spike
+# Move the DC Offset Correction ''Real'' slider until the amplitude DC spike reaches a minimum
+# Move the DC Offset Correction ''Imag'' slider to further reduce the DC spike
 # Repeat until the DC spike is sufficiently canceled
 # Record these settings for reference as an initial starting point in the future. 
 
 === IQ imbalance correction ===
 
-# Move the IQ Imbalance Correction **Mag** slider until the amplitude of the image reaches a local minimum
-# Move the IQ Imbalance **Phase** slider to further reduce the amplitude of the image
+# Move the IQ Imbalance Correction ''Mag'' slider until the amplitude of the image reaches a minimum
+# Move the IQ Imbalance ''Phase'' slider to further reduce the amplitude of the image
 # Repeat until the image spike is sufficiently canceled
 # Record these settings for reference as an initial starting point in the future. 
 
