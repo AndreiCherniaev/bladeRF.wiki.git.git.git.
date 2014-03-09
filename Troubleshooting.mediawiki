@@ -168,6 +168,11 @@ Below is a list of configurations that people have reported success on. Feel fre
 |Dell Optiplex 9020 / i5-4570 @ 3.20GHz
 |Intel 8 Series/C220 Series USB Enhanced Host Controller, Intel USB 3.0 eXtensible Host Controller
 |Windows 7 Pro 64 bit Service Pack 1. SDR-Radio 30 MHz display
+|-
+|HoopyCat's desktop
+|ASUS Z87-PRO / i7-4770
+|Intel Corporation 8 Series/C220 Series Chipset Family USB xHCI (rev 05)
+|Linux Mint 16 x86_64
 |}
 
 ==== Problematic Configurations ====
