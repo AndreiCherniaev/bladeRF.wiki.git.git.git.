@@ -15,7 +15,10 @@ Below are some general tips for achieving better sample rates:
 * Store samples in RAM rather than pulling them from disk, when possible.
 ** In *nix, store input/output samples in /dev/shm 
 ** If that's not possible, favor an SSD over an HDD 
-* Disable [https://apps.ubuntu.com/cat/applications/saucy/indicator-cpufreq/ CPU frequency scaling]
+* Disable CPU frequency scaling
+** For example, in Ubuntu 13.10, one can do the following for each CPU ($N in 0-3 for 4 cores) <code>
+echo performance | sudo tee /sys/devices/system/cpu/cpu$N/cpufreq/scaling_governor
+</code>
 * Ensure that your processors are running at their full speeds, and disable power saving or on-demand frequency scaling.
 * When writing applications with libbladeRF's asynchronous interface, avoid any "costly" operations in callbacks.
 ** Treat these likes you would interrupt service routines. Copy sample data and update any necessary status. Even better - don't copy sample data at all. Keep track of which buffers are in-flight versus those that application code is currently using. Avoid performing long calculations or file I/O. 
