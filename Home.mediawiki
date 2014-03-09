@@ -8,6 +8,7 @@ This wiki will serve as a place to create some community-based documentation. Pl
 * [[Getting Started: Mac OSX]]
 * [[Troubleshooting]]
 * [[Upgrading-bladeRF-firmware|Upgrading the bladeRF firmware]]
+* [[Debugging dropped samples and identifying achievable sample rates]]
 * [[bladeRF CLI Tips and Tricks]]
 
 = Projects =
