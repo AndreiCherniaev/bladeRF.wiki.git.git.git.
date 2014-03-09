@@ -1,0 +1,213 @@
+This page describes a few ways to determine the sample rates your computer can keep up with, when using the bladeRF.
+
+= Overview =
+
+Unfortunately, not all setups are created equal. Some [http://www.ximea.com/support/wiki/usb3/Compatible_hardware#USB-30-host-adapters-chipsets USB 3.0 controllers work far better than others], and results may vary across [http://nuand.com/forums/viewtopic.php?f=4&t=3527&start=10#p5217 drivers and OSes].
+
+If you're in the market for a USB 3.0 controller to use with the bladeRF, you'll probably want to take a look at the lists of [https://github.com/Nuand/bladeRF/wiki/Troubleshooting#wiki-Working_configurations working] and [https://github.com/Nuand/bladeRF/wiki/Troubleshooting#wiki-problematic-configurations  
+problematic] configurations. It's also recommended that you talk to other bladeRF users on the forum or IRC channel to learn about their experiences with various setups.
+
+'''Reminder:''' USB 2.0 has a ''nominal'' max speed of 480 mbps (60 MB/s).  With 32-bits samples (i.e., the bladeRF SC16 Q11 DAC format), this corresponds to a nominal max of 15 Msps.  In reality, however, the max achievable rate over USB 2.0 with the bladeRF has been reported to fall within 5-8 Msps (some folks have reported up to 10 Msps).
+
+= Tips =
+
+Below are some general tips for achieving better sample rates:
+* Store samples in RAM rather than pulling them from disk, when possible.
+** In *nix, store input/output samples in /dev/shm 
+** If that's not possible, favor an SSD over an HDD 
+* Disable [https://apps.ubuntu.com/cat/applications/saucy/indicator-cpufreq/ CPU frequency scaling]
+* Ensure that your processors are running at their full speeds, and disable power saving or on-demand frequency scaling.
+* When writing applications with libbladeRF's asynchronous interface, avoid any "costly" operations in callbacks.
+** Treat these likes you would interrupt service routines. Copy sample data and update any necessary status. Even better - don't copy sample data at all. Keep track of which buffers are in-flight versus those that application code is currently using. Avoid performing long calculations or file I/O. 
+
+= Testing various sample rates =
+
+Using the following methods over a number of different sample rates, you can get a rough idea as to where your setup's max achievable sample rate.  
+
+== Looking for gaps in received samples using an FPGA counter ==
+
+In version 0.0.3 of the **hostedx40** and **hostedx115** FPGA builds, the 32-bits of IQ data can be replaced with a 32-bit monotonically increasing counter value, via bit 9 of the FX3 -> FPGA GPIO interface.
+
+We can enable this mode and capture samples via the bladeRF-cli program. Again, it's advised to save samples to RAM rather than to a disk. Here we'll save 80 MB worth of samples at 4Msps:
+
+<pre>
+$ bladeRF-cli -i
+
+bladeRF> load fpga ~/projects/bladeRF-files/hostedx40_v0.0.3.rbf 
+Loading fpga from /home/jon/projects/bladeRF-files/hostedx40_v0.0.3.rbf...
+Done.
+
+bladeRF> set samplerate rx 4M
+
+  Setting RX sample rate - req:   4000000 0/1Hz, actual:   4000000 0/1Hz
+
+bladeRF> print gpio
+
+  GPIO: 0x00000057
+
+    LMS Enable:         Enabled   
+    LMS RX Enable:      Enabled   
+    LMS TX Enable:      Enabled   
+    TX Band:            Low Band (300M - 1.5GHz)
+    RX Band:            Low Band (300M - 1.5GHz)
+    RX Source:          LMS6002D
+
+bladeRF> set gpio 0x257
+bladeRF> print gpio
+
+  GPIO: 0x00000257
+
+    LMS Enable:         Enabled   
+    LMS RX Enable:      Enabled   
+    LMS TX Enable:      Enabled   
+    TX Band:            Low Band (300M - 1.5GHz)
+    RX Band:            Low Band (300M - 1.5GHz)
+    RX Source:          Internal 32-bit counter
+
+bladeRF> rx config file=/dev/shm/samples_4msps.bin n=10M
+bladeRF> rx start
+bladeRF> rx
+    State: Running
+    Last error: None
+    File: /dev/shm/samples_4msps.bin
+    File format: SC16 Q11, Binary
+    # Samples: 10485760
+    # Buffers: 32
+    # Samples per buffer: 32768
+    # Transfers: 16
+    Timeout (ms): 1000
+
+bladeRF> rx
+    State: Idle
+    Last error: None
+    File: /dev/shm/samples_4msps.bin
+    File format: SC16 Q11, Binary
+    # Samples: 10485760
+    # Buffers: 32
+    # Samples per buffer: 32768
+    # Transfers: 16
+    Timeout (ms): 1000
+
+bladeRF> quit
+</pre>
+
+Note that after setting GPIO bit 9, the RX source changed from **LMS6002D** to **Internal 32-bit counter**.
+
+If you look at the /dev/shm/samples_4msps.bin with a hex editor/viewer, you should see that the 32-bit words are incrementing. The following python script may be used to look for gaps in samples. Gaps should not occur; if they do, it's indicative of the host not keeping up with the specified sample rate.
+
+<pre>
+#!env python3
+import sys
+import array
+
+if len(sys.argv) != 2:
+    print('Usage: ' + sys.argv[0] + ': <data file>')
+    sys.exit(1)
+
+with open(sys.argv[1], 'rb') as in_file:
+    data = in_file.read()
+    count = array.array('I')
+    count.fromstring(data)
+    
+    fail = 0
+    curr = count[0]
+    for i in range(1, len(count)):
+        exp = curr + 1
+    
+        if count[i] != exp:
+            print('[' + str(i) + '] = ' + str(count[i]) + ', Expected ' + str(exp) +
+                  ', Gap = ' + str(exp - count[i]))
+            fail += 1
+    
+        curr = count[i]
+    
+    print('Number of gaps:' + str(fail))
+</pre>
+
+
+'''NOTE:''' It's been reported the first block of samples may be leftover in FPGA/FX3 buffers from a previous reception. This is a known issue, and does not indicate dropped samples. In this case, you'll see 1 gap reported, and it will be a gap between the first and second block of samples, where a ''block'' is the value shown above in "# Samples per buffer."
+
+
+= Looking for discontinuities in transmitted samples using a spectrum analyzer =
+
+A crude test is to transmit a sine at some frequency offset, and look for symptoms of discontinuities:
+1. An extremely "noisy" or "messy" spectrum
+2. Gaps in the RF envelope
+3. Obvious gaps in the IQ waveform over time 
+4. A "messy" IQ polar plot
+
+Examples of each of these, for correct operation and a sample rate that results in discontinuities is shown below:
+
+
+== Using bladeRF-cli ==
+
+Below is a simple python script to generate a single period of a sine. The frequency of this will be a function of the sample rate at
+which it's transmitted: ''sample_rate / n_samples''
+
+For example, for a 1 period of sine constructed of 1024 samples @ 4 MHz: ''4e6 sample/second  / 1024 samples  =  3.90625 KHz''
+
+<pre>
+#!env python3
+import sys
+import math
+
+# Number of samples should be a multiple of 1024 to match bladeRF
+# buffer size constraints
+n_samples = 1024
+
+# IQ values are in the range [-2048, 2047]. Clamp to 1800 just to 
+# avoid saturating
+scale = 1800
+
+
+if (len(sys.argv) < 2):
+	print('Usage: ' + sys.argv[0] + ': <output file> [n_samples]\n')
+	sys.exit(1)
+
+if (len(sys.argv) > 2):
+	try: 
+		n_samples = int(sys.argv[2])
+	except ValueError:
+		print('Invalid value for n_samples: ' + sys.argv[2] + '\n')
+		sys.exit(1)
+
+	if n_samples < 1024 or n_samples % 1024 != 0:
+		print('n_samples must be a multiple of 1024\n')
+		sys.exit(1)
+
+with open(sys.argv[1], 'w') as out_file:
+	for n in range(0, n_samples):
+		theta = n * (2 * math.pi) / n_samples 
+		i = int(scale * math.cos(theta))
+		q = int(scale * math.sin(theta))
+
+		out_file.write(str(i) + ', ' + str(q) + '\n')
+</pre>
+
+To transmit these samples on "infinite" repeat, until the bladeRF-cli is closed:
+<pre>
+$ ./sine_iq /dev/shm/samples.csv
+
+$ bladeRF-cli -i
+bladeRF> set frequency tx 1G
+bladeRF> set samplerate tx 4M
+bladeRF> tx config file=/dev/shm/samples.csv format=csv repeat=0
+bladeRF> tx start
+
+...
+Run as long as needed
+...
+
+bladeRF> quit
+</pre>
+
+
+== Using osmocom_siggen ==
+
+To achieve the same results with osmocom_siggen:
+
+<pre>
+osmocom_siggen -f 1G -s 4M  -a bladerf=0 --sine
+</pre>
+
+Set the "Frequency" field to 3.90625K 
