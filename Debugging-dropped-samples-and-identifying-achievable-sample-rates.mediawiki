@@ -135,11 +135,11 @@ with open(sys.argv[1], 'rb') as in_file:
 
 A crude test is to transmit a tone, and look for symptoms of discontinuities:
 # An unexpectedly and extremely "noisy" or "messy" spectrum
-# Gaps in the RF envelope
+# Gaps in the RF envelope, resulting from underrun in the FPGA 
 # Obvious gaps in the IQ waveform over time 
 # A "messy" IQ polar plot
 
-Examples of each of these, for correct operation (left) and a sample rate that results in discontinuities (right) are shown below.  In these examples a ~9.765 KHz tone is being transmitted.
+Examples of each of these, for correct operation (left) and a sample rate that results in discontinuities (right) are shown below.  In these examples a ~9.765 KHz tone is being transmitted. 
 
 [[http://nuand.com/~jon/images/wiki/good_and_bad_samplerates.png]]
 
