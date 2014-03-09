@@ -133,7 +133,7 @@ with open(sys.argv[1], 'rb') as in_file:
 
 = Looking for discontinuities in transmitted samples using a spectrum analyzer =
 
-A crude test is to transmit a sine at some frequency offset, and look for symptoms of discontinuities:
+A crude test is to transmit a tone, and look for symptoms of discontinuities:
 # An unexpectedly and extremely "noisy" or "messy" spectrum
 # Gaps in the RF envelope
 # Obvious gaps in the IQ waveform over time 
