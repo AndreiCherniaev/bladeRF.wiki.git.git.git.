@@ -29,7 +29,7 @@ Using the following methods over a number of different sample rates, you can get
 
 == Looking for gaps in received samples using an FPGA counter ==
 
-In version 0.0.3 of the **hostedx40** and **hostedx115** FPGA builds, the 32-bits of IQ data can be replaced with a 32-bit monotonically increasing counter value, via bit 9 of the FX3 -> FPGA GPIO interface.
+In version 0.0.3 of the ''hostedx40.rbf'' and ''hostedx115'' FPGA builds, the 32-bits of IQ data can be replaced with a 32-bit monotonically increasing counter value, via bit 9 of the FX3 -> FPGA GPIO interface.
 
 We can enable this mode and capture samples via the bladeRF-cli program. Again, it's advised to save samples to RAM rather than to a disk. Here we'll save 80 MB worth of samples at 4Msps:
 
@@ -94,7 +94,7 @@ bladeRF> rx
 bladeRF> quit
 </pre>
 
-Note that after setting GPIO bit 9, the RX source changed from **LMS6002D** to **Internal 32-bit counter**.
+Note that after setting GPIO bit 9, the RX source changed from ''LMS6002D'' to ''Internal 32-bit counter''.
 
 If you look at the /dev/shm/samples_4msps.bin with a hex editor/viewer, you should see that the 32-bit words are incrementing. The following python script may be used to look for gaps in samples. Gaps should not occur; if they do, it's indicative of the host not keeping up with the specified sample rate.
 
