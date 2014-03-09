@@ -11,6 +11,11 @@ problematic] configurations. It's also recommended that you talk to other bladeR
 
 = Tips =
 
+As of FPGA bitstreams hostedx40 and hostedx115 v0.0.3:
+* LED1 turns off momentarily when an RX underrun occurs 
+* LED3 turns off momentarily when a TX overrun occurs
+If you suspect you're seeing samples dropped, check if these LEDs appear to be off, dim, or blinking.
+
 Below are some general tips for achieving better sample rates:
 * Store samples in RAM rather than pulling them from disk, when possible.
 ** In *nix, store input/output samples in /dev/shm 
