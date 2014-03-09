@@ -14,6 +14,10 @@ The LMS6002D transceiver provides DC offset cancellation, and the bladeRF HDL im
 
 = Tuning the TX module =
 
+Below is am image showing a spectrum containing a tone before (left) and after (right) manually adjusting the DC offset and IQ imbalance correction parameters.
+
+[[http://nuand.com/~jon/images/wiki/dc_iq_cal_before_after.png]]
+
 == Using a spectrum analyzer and osmocom_siggen ==
 
 # Ensure the bladeRF's FPGA is loaded
@@ -25,7 +29,7 @@ osmocom_siggen -s 4M -f 450M --sine
 
 With an uncalibrated device, you'll generally see the following a spectrum plot:
 # A spike at DC
-# An image of the sine at -F Hz
+# An image of the tone at -F Hz
 
 
 === DC offset correction ===
