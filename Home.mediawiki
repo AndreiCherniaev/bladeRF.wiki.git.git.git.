@@ -32,6 +32,7 @@ Find or learn something interesting? Share it here!
 
 == For Developers ==
 * [[Release-testing|Testing]]
+* [[Linux Distribution Status]]
 * [[Using-Coverity-Scan|Coverity scans]]
 * [[Proposals and Requests]]
 * [[FX3-Firmware|FX3 Firmware Development]]
