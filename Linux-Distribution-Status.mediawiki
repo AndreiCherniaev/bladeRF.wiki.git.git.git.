@@ -13,7 +13,7 @@ Please feel free to update this page as needed, but please test [https://github.
 | Debian Wheezy (32-bit)
 | Yes
 | '''No'''
-|
+| Need to replicate reported issue(s).
 |-
 | Fedora 20 (64-bit)
 | Yes
