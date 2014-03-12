@@ -2,7 +2,7 @@ This page is intended to track the status of bladeRF software on various Linux d
 
 We could use some help in automatically gathering this information (nightly, if possible). Please email bladeRF@nuand.com or hop on IRC if you're interested!
 
-Please feel free to update this page as needed, but please test [https://github.com/nuand/bladerf/tree/master master] before changing entries.  If you find that support on distribution is broken, be sure to file a bug on the issue tracker. 
+Please feel free to update this page as needed, but please test [https://github.com/nuand/bladerf/tree/master master] before changing entries.  If you find that support on distribution is broken, be sure to [https://github.com/Nuand/bladeRF/issues/new file a bug on the issue tracker].
 
 {| class="wikitable"
 | Distribution
