@@ -1,4 +1,4 @@
-This page is intended to track the status of bladeRF software on various Linux distribution.
+This page is intended to track the status of bladeRF software on various Linux distributions.
 
 We could use some help in automatically gathering this information (nightly, if possible). Please email bladeRF@nuand.com or hop on IRC if you're interested!
 
