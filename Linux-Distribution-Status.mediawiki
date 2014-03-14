@@ -36,8 +36,8 @@ Please feel free to update this page as needed, but please test [https://github.
 |
 |-
 | Ubuntu 11.10
-| No
-| Unknown
+| '''No'''
+| ''Unknown''
 | This ships with a version of libusb which does not contain items used in libbladeRF: ''libusb_error_name()'', ''lusb_get_device_speed()'', ''libusb_handle_events_timeout_completed()'', and the ''LIBUSB_SPEED_*'' macros
 |-
 |}
