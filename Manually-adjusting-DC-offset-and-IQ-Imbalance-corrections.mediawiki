@@ -60,7 +60,7 @@ Note that you many need to re-tune the DC offset or IQ imbalance slightly after 
 The RX-side can be tuned in a manner similar to what's described above for the TX procedure.
 
 The basic procedure is to:
-* Enable RF loopback mode (via rf_lna1 for < 1.5GHz, or rf_lna2 for >= 1.5GHz)
+* Enable RF loopback mode (via rf_lna1 for under 1.5GHz, or rf_lna2 for 1.5GHz or greater)
 * RX at some frequency ''f''
 * Transmit a carrier at some frequency ''f + offset''
 * View the received signal on an FFT plot
