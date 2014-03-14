@@ -35,7 +35,6 @@ Please feel free to update this page as needed, but please test [https://github.
 | Yes
 |
 |-
-|
 | Ubuntu 11.10
 | No
 | Unknown
