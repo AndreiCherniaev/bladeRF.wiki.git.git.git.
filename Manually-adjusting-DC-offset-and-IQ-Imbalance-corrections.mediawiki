@@ -55,4 +55,21 @@ Note that you many need to re-tune the DC offset or IQ imbalance slightly after 
 
 = Tuning the RX module =
 
-TODO
+== Using GNU Radio and the bladeRF's RF loopback functionality ==
+
+The RX-side can be tuned in a manner similar to what's described above for the TX procedure.
+
+The basic procedure is to:
+* Enable RF loopback mode (via rf_lna1 for < 1.5GHz, or rf_lna2 for >= 1.5GHz)
+* RX at some frequency ''f''
+* Transmit a carrier at some frequency ''f + offset''
+* View the received signal on an FFT plot
+** Adjust the DC offset parameters to reduce the spike at DC
+** Adjust the IQ imbalance parameters to reduce the image of the carrier from the TX side
+
+An example GNU Radio script is provided [https://gist.github.com/jynik/9503066 here].
+
+
+
+== Using osmocom_fft and a signal generator ==
+''TO DO''
