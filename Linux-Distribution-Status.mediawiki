@@ -1,8 +1,8 @@
-This page is intended to track the status of bladeRF software on various Linux distributions.
+This page is intended to track the status of bladeRF software reported on various Linux distributions. Note that the bladeRF developers do not manually verify all of these reports, so "your mileage may vary."
 
-We could use some help in automatically gathering this information (nightly, if possible). Please email bladeRF@nuand.com or hop on IRC if you're interested!
+We could use some help in automatically testing distribution support for regressions (nightly, if possible). Please email bladeRF@nuand.com or hop on IRC if you're interested!
 
-Please feel free to update this page as needed, but please test [https://github.com/nuand/bladerf/tree/master master] before changing entries.  If you find that support on distribution is broken, be sure to [https://github.com/Nuand/bladeRF/issues/new file a bug on the issue tracker].
+Please feel free to update this page as needed, but please test [https://github.com/nuand/bladerf/tree/master master] before changing entries if you find that support is broken.  If you find that support on distribution is broken, be sure to [https://github.com/Nuand/bladeRF/issues/new file a bug on the issue tracker].
 
 {| class="wikitable"
 | Distribution
@@ -12,13 +12,38 @@ Please feel free to update this page as needed, but please test [https://github.
 |-
 | Debian Wheezy (32-bit)
 | Yes
-| '''No'''
-| Need to replicate reported issue(s).
+| Performance issues
+| USB 3.0 performance reported to be worse than 2.0 port. Kernel is 3.2.0-4-686-pae
 |-
-| Fedora 20 (64-bit)
+| Fedora 20 (32-bit & 64-bit)
+| Yes
+| Yes
+| 
+|-
+| Fedora 17 (32-bit & 64-bit)
+| Yes
+| Yes
+| Reported to have required a kernel upgrade first.
+|-
+| Mageia 4 (32-bit & 64-bit)
 | Yes
 | Yes
 |
+|-
+| PCLinuxOS (32-bit & 64-bit)
+| Yes
+| Yes
+| 
+|-
+| Sabayon 10 (32-bit)
+| Yes
+| Yes
+|
+|-
+| SuSE 12.1 (32-bit and 64-bit)
+| '''No'''
+| Unknown
+| ''Incompatible libusb-1.0''
 |-
 | Ubuntu 13.10 (64-bit)
 | Yes
@@ -34,6 +59,11 @@ Please feel free to update this page as needed, but please test [https://github.
 | Yes
 | Yes
 |
+|-
+| Ubuntu 12.04
+| Yes
+| Yes
+| 3.11.0-18-generic kernel
 |-
 | Ubuntu 11.10
 | '''No'''
