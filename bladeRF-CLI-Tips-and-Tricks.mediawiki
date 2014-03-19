@@ -1,7 +1,7 @@
 = Backing up and restoring calibration data =
 Currently (FW v1.6.3, libbladeRF v0.14.0, and bladeRF-cli v0.10.7 at the time of writing), the following information is stored in a user-modifiable "calibration region":
 * FPGA size (40 or 115)
-* [http://www.abracon.com/Oscillators/ASTX12_ASVTX12.pdf VCTCXO] (Voltage-controlled temperature-compensated oscillator) trim value
+* [http://www.abracon.com/Oscillators/ASTX12_ASVTX12.pdf VCTCXO] (Voltage-controlled temperature-compensated oscillator) trim DAC value
 
 Unless you're planning to replace the FPGA ('''not''' a recommended endeavor), there's no reason to mess with this field. The reason the FPGA size is here rather than in the OTP region is largely historic and pertains to debug usage during early development and testing.
 
