@@ -69,7 +69,7 @@ This approach useful if you'd like to manually specify a VCTCXO trim value to st
 
 The '''flash_init_cal''' command generates a calibration region of flash, and can either write it directly to a device, or to a file (for future use with the ''flash_restore'' command).
 
-For more information about this command, run ''help flash_init_cal'' from the bladeRF-cli interactive mode.
+For more information about this command, run <code>help flash_init_cal</code> from the bladeRF-cli interactive mode.
 
 For a bladeRF with a 40 kLE FPGA and a desired VCTCXO trim DAC value of 0x9015, you can write this information directly to the device via:
 <pre>
