@@ -5,7 +5,7 @@ Currently (FW v1.6.3, libbladeRF v0.14.0, and bladeRF-cli v0.10.7 at the time of
 
 Unless you're planning to replace the FPGA ('''not''' a recommended endeavor), there's no reason to mess with this field. The reason the FPGA size is here rather than in the OTP region is largely historic and pertains to debug usage during early development and testing.
 
-The VCTCXO frequency will drift over time and due to environmental factors. Users will generally want to periodically recalibrate this trim value, and write it back to the bladeRF.
+The VCTCXO frequency will drift over time and due to environmental factors. Users will generally want to periodically recalibrate the associated trim DAC value, and write it back to the bladeRF.
 
 == Backing up calibration data ==
 From with the bladeRF-cli's interactive mode, the current calibration values can be viewed via the ''info'' command:
