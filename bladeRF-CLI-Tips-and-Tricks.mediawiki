@@ -1,5 +1,5 @@
 = Backing up and restoring calibration data =
-Currently (FW v1.6.3, libbladeRF v0.14.0m and bladeRF-cli v0.10.6 at the time of writing), the following information is stored in a user-modifiable "calibration region":
+Currently (FW v1.6.3, libbladeRF v0.14.0m and bladeRF-cli v0.10.7 at the time of writing), the following information is stored in a user-modifiable "calibration region":
 * FPGA size (40 or 115)
 * [http://www.abracon.com/Oscillators/ASTX12_ASVTX12.pdf VCTCXO] (Voltage-controlled temperature-compensated oscillator) trim value
 
@@ -30,13 +30,14 @@ To back up this information to a file, which may later be restored through the b
 The general usage for saving calibration data is <code>flash_backup <output_file> cal</code>:
 
 <pre>
-bladeRF> flash_backup /home/jon/Desktop/bladerf_cal_2014_03_18.bin cal
+bladeRF> flash_backup ~/Desktop/bladerf_cal_2014_03_18.bin cal
+[INFO] Reading 0x00000100 bytes from address 0x00030000.
 </pre>
 
-This command will store the calibration data, along with some additional metadata, in the specified file. To view the associated metadata, use the '''flash_image''' command.  This metadata may prove useful if you've accidentally renamed a file, or forgot which device (via serial number) is associated with the file.
+This command will store the calibration data, along with some additional metadata, in the specified file. To view the associated metadata stored in the flash image, use the '''flash_image''' command.  This metadata may prove useful if you've accidentally renamed a file, or forgot which device (via serial number) is associated with the file.
 
 <pre>
-bladeRF> flash_image /home/jon/Desktop/bladerf_cal_2014_03_18.bin
+bladeRF> flash_image ~/Desktop/bladerf_cal_2014_03_18.bin
 
 Checksum: d3ad936733b841cd10f0cb852d2a133e08cf080a60c4a607cca9908b75bd5e59
 Image format version: 0.1.0
@@ -47,7 +48,10 @@ Address: 0x00030000
 Length:  0x00000100
 </pre>
 
-== Identifying ==
+== Restoring calibration data ==
+
+=== From a a file ===
+If you've backed up calibration data to a file via the '''flash_backup''' command,
 
 
 
