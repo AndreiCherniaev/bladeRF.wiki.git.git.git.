@@ -1,3 +1,61 @@
+= Backing up and restoring calibration data =
+Currently (FW v1.6.3, libbladeRF v0.14.0m and bladeRF-cli v0.10.6 at the time of writing), the following information is stored in a user-modifiable "calibration region":
+* FPGA size (40 or 115)
+* [http://www.abracon.com/Oscillators/ASTX12_ASVTX12.pdf VCTCXO] (Voltage-controlled temperature-compensated oscillator) trim value
+
+Unless you're planning to replace the FPGA (very much not recommended), there's no reason to mess with this field. (The reason the FPGA size is here rather than in the OTP region is largely historic, and pertains to debug usage during early development and testing.)
+
+The VCTCXO frequency will drift over time and due to environmental factors. Users will generally want to periodically recalibrate this trim value, and write it back to the bladeRF.
+
+== Backing up calibration data ==
+From with the bladeRF-cli's interactive mode, the current calibration values can be viewed via the ''info'' command:
+
+<pre>
+bladeRF> info
+
+  Serial #:                 68b329da9893e34099c7d8ad5cb9c940
+  VCTCXO DAC calibration:   0xa0a8
+  FPGA size:                40 KLE
+  FPGA loaded:              no
+  USB bus:                  4
+  USB address:              2
+  USB speed:                SuperSpeed
+  Backend:                  libusb
+  Instance:                 0
+</pre>
+
+Note the VCTXCO (trim) DAC calibration value above.
+
+To back up this information to a file, which may later be restored through the bladeRF-cli program, the '''flash_backup''' command may be used.  Type <code>help flash_backup</code> to see the full help text for this command.
+
+The general usage for saving calibration data is <code>flash_backup <output_file> cal</code>:
+
+<pre>
+bladeRF> flash_backup /home/jon/Desktop/bladerf_cal_2014_03_18.bin cal
+</pre>
+
+This command will store the calibration data, along with some additional metadata, in the specified file. To view the associated metadata, use the '''flash_image''' command.  This metadata may prove useful if you've accidentally renamed a file, or forgot which device (via serial number) is associated with the file.
+
+<pre>
+bladeRF> flash_image /home/jon/Desktop/bladerf_cal_2014_03_18.bin
+
+Checksum: d3ad936733b841cd10f0cb852d2a133e08cf080a60c4a607cca9908b75bd5e59
+Image format version: 0.1.0
+Timestamp: 2014-03-18 20:25:37
+Serial #: 00000000000000000000000000000000
+Image type: Calibration data
+Address: 0x00030000
+Length:  0x00000100
+</pre>
+
+== Identifying ==
+
+
+
+
+== Wiped your calibration data? All is not lost! ==
+If you've managed to wipe your calibration region and do not have the necessary tools to identify an appropriate VCTCXO trim value, email bladeRF@nuand.com with your serial number and a request to look up your factory-calibrated trim value.  (Please be patient!)
+
 = Getting the most out of libtecla =
 If you've built bladeRF-cli with support for [http://www.astro.caltech.edu/~mcs/tecla/index.html libtecla] (<i>highly</i> recommended), you'll have a number of great features available to you, including history, tab-completion (for filenames) and handy key bindings (including emacs and vi bindings).
 
