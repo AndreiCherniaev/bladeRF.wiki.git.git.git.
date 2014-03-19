@@ -79,6 +79,8 @@ bladeRF> flash_init_cal 40 0x9015
 [INFO] Writing 0x00010000 bytes to address 0x00030000.
 </pre>
 
+'''Note:''' A power cycle will be required for this change to take effect.
+
 Alternatively, to write this data to a file:
 <pre>
 bladeRF> flash_init_cal 40 0x9015 /tmp/new_cal_data.bin
