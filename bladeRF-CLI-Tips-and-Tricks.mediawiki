@@ -50,7 +50,7 @@ Length:  0x00000100
 
 == Restoring calibration data ==
 
-=== From a a file ===
+=== From a file ===
 If you've backed up calibration data to a file via the '''flash_backup''' command, you can use the '''flash_restore''' command to write this data back to the device.  Note that the serial number information in the metadata is strictly for informational purposes; it '''is not''' used to prevent data from being written to another device.
 
 For more information about the '''flash_restore''' command, run <code>help flash_restore</code>.
@@ -63,6 +63,26 @@ bladeRF> flash_restore ~/Desktop/bladerf_cal_2014_03_18.bin
 </pre>
 
 '''Note:''' A power cycle will be required for this change to take effect.
+
+=== From scratch ===
+This approach useful if you'd like to manually specify a VCTCXO trim value to store in the device.
+
+The '''flash_init_cal''' command generates a calibration region of flash, and can either write it directly to a device, or to a file (for future use with the ''flash_restore'' command).
+
+For more information about this command, run ''help flash_init_cal'' from the bladeRF-cli interactive mode.
+
+For a bladeRF with a 40 kLE FPGA and a desired VCTCXO trim DAC value of 0x9015, you can write this information directly to the device via:
+<pre>
+bladeRF> flash_init_cal 40 0x9015
+[INFO] Reading 0x00010000 bytes from address 0x00030000.
+[INFO] Erasing 0x00010000 bytes starting at address 0x00030000.
+[INFO] Writing 0x00010000 bytes to address 0x00030000.
+</pre>
+
+Alternatively, to write this data to a file:
+<pre>
+bladeRF> flash_init_cal 40 0x9015 /tmp/new_cal_data.bin
+</pre>
 
 == Wiped your calibration data? All is not lost! ==
 If you've managed to wipe your calibration region and do not have the necessary tools to identify an appropriate VCTCXO trim value, email bladeRF@nuand.com with your serial number and a request to look up your factory-calibrated trim value.  (Please be patient!)
