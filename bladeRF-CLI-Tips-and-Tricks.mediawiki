@@ -3,7 +3,7 @@ Currently (FW v1.6.3, libbladeRF v0.14.0m and bladeRF-cli v0.10.7 at the time of
 * FPGA size (40 or 115)
 * [http://www.abracon.com/Oscillators/ASTX12_ASVTX12.pdf VCTCXO] (Voltage-controlled temperature-compensated oscillator) trim value
 
-Unless you're planning to replace the FPGA (very much not recommended), there's no reason to mess with this field. (The reason the FPGA size is here rather than in the OTP region is largely historic, and pertains to debug usage during early development and testing.)
+Unless you're planning to replace the FPGA ('''not''' a recommended endeavor), there's no reason to mess with this field. The reason the FPGA size is here rather than in the OTP region is largely historic and pertains to debug usage during early development and testing.
 
 The VCTCXO frequency will drift over time and due to environmental factors. Users will generally want to periodically recalibrate this trim value, and write it back to the bladeRF.
 
@@ -51,10 +51,18 @@ Length:  0x00000100
 == Restoring calibration data ==
 
 === From a a file ===
-If you've backed up calibration data to a file via the '''flash_backup''' command,
+If you've backed up calibration data to a file via the '''flash_backup''' command, you can use the '''flash_restore''' command to write this data back to the device.  Note that the serial number information in the metadata is strictly for informational purposes; it '''is not''' used to prevent data from being written to another device.
 
+For more information about the '''flash_restore''' command, run <code>help flash_restore</code>.
 
+<pre>
+bladeRF> flash_restore ~/Desktop/bladerf_cal_2014_03_18.bin 
+[INFO] Reading 0x00010000 bytes from address 0x00030000.
+[INFO] Erasing 0x00010000 bytes starting at address 0x00030000.
+[INFO] Writing 0x00010000 bytes to address 0x00030000.
+</pre>
 
+'''Note:''' A power cycle will be required for this change to take effect.
 
 == Wiped your calibration data? All is not lost! ==
 If you've managed to wipe your calibration region and do not have the necessary tools to identify an appropriate VCTCXO trim value, email bladeRF@nuand.com with your serial number and a request to look up your factory-calibrated trim value.  (Please be patient!)
