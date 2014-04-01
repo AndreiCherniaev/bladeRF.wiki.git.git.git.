@@ -342,4 +342,6 @@ Test Transmit: (446 MHz + 25 KHz )
 
 Note that only one program can have the bladeRF opened at a time. 
 
-If you'd like to run a quick test in a full-duplex configuration, consider creating a GRC flowgraph.  ''Do not connect the bladeRF TX output to the RX input without an attenuator.''
+If you'd like to run a quick test in a full-duplex configuration, consider creating a GRC flowgraph.  
+
+''Do not connect the bladeRF TX output to the RX input without an attenuator.'' If you do not have an attenuator, consider using the bladeRF's (technically, the LMS6002D's) internal baseband and RF loopback modes, via the ''[http://git.osmocom.org/gr-osmosdr/commit/?id=751ad0f582423419f830e61f230c875cffaa1429 loopback=]'' argument to the osmocom sink/source block.
