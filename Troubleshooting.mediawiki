@@ -102,6 +102,8 @@ If you are using a Virtual Machine, there have been issues reported when changin
 
 It has been reported that some VM software does not fully support USB 3.0. Verify the speed that the VM detects the device at, and try falling back to 2.0 if 3.0 does not work.
 
+Note that you may have to enable USB support in your VM's configuration. For example, in VirtualBox, one must check the "Enable USB Controller" and "Enable USB 2.0 (EHCI) Controller" options under a VM's USB settings.
+
 === Windows ===
 To see the device in Windows, ensure you have the appropriate <code>inf</code> installed so that Windows associated the bladeRF with a libusbK driver. Verify that you've followed [[Getting-Started:-Windows#installing-libusbx|these steps]] in the Getting Started guide for Windows.
 
