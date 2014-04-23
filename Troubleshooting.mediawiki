@@ -258,7 +258,7 @@ Folks in the community are generally very happy to help. However, to make the mo
 ** Are you in a VM? See the [[Troubleshooting#Virtual-Machines|Virtual Machines]] section for some known problems.
 ** Are you running on a 32-bit or 64-bit processor?
 ** What is your USB controller? Given that USB3 is still moderately new, some controllers have found to perform significantly better (or worse) than others.
-** Are you connecting your device to a 2.0 or 3.0 port? If a 3.0 port, is it connecting 
+** Are you connecting your device to a 2.0 or 3.0 port? If a 3.0 port, is it actually enumerating at SuperSpeed (or at Hi-Speed?)
 ** Is this a tablet or smartphone?
 * The OS you're using
 ** For Linux, please note your distribution (and that distribution's version), as well as kernel version
