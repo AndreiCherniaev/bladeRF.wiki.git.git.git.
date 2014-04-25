@@ -1,0 +1,17 @@
+This page is a placeholder until we hear back on why the GitHub Milestone feature 405's...
+
+Preliminary Schedule:
+
+* rc1 (Feature Window) - July 4th 
+*** Last remaining patches for new features accepted
+** API Finalize for following:
+*** XB-100 Support
+*** XB-200 Support
+** Features
+*** DC Removal
+*** Windows Cypress API support/backend
+** Fixes (TODO, pull items from tracker)
+*** Timestamps & Metadata
+* rc2  (Patch Window) - August 1st
+** No new features, fixes only
+* 2014.09 Release - Within September
