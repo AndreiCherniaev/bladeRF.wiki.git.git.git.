@@ -231,11 +231,11 @@ After the FPGA loads, you should see LEDs on the board begin blinking. At this p
 
 == Building GNU Radio and gr-osmosdr ==
 
-The following procedure uses gnuradio-build to fetch dependencies and checkout some useful tools. However, it only covers installing GNU Radio and gr-osmosdr.  A similar procedure maybe used to install the other tools (such as gr-iqbal). 
+The following procedure uses build-gnuradio to fetch dependencies and checkout some useful tools. However, it only covers installing GNU Radio and gr-osmosdr.  A similar procedure maybe used to install the other tools (such as gr-iqbal). 
 
 A "sandbox" directory will be used to do the build. Change this to whatever your preferred build directory is in the relevant commands.
 
-=== Using gnuradio-build to fetch dependencies and checkout source via Git ===
+=== Using build-gnuradio to fetch dependencies and checkout source via Git ===
 
 <pre>
 $ mkdir -p ~/sandbox/gnuradio-builds
