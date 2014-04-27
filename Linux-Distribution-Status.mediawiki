@@ -45,6 +45,11 @@ Please feel free to update this page as needed, but please test [https://github.
 | Unknown
 | ''Incompatible libusb-1.0''
 |-
+| Ubuntu 14.10 (64-bit)
+| Yes
+| Yes
+| libusb version: 1.0.17.10830
+|-
 | Ubuntu 13.10 (64-bit)
 | Yes
 | Yes
@@ -58,7 +63,7 @@ Please feel free to update this page as needed, but please test [https://github.
 | Ubuntu 12.10 (64-bit)
 | Yes
 | Yes
-|
+| libusb version: 1.0.12.10532
 |-
 | Ubuntu 12.04
 | Yes
