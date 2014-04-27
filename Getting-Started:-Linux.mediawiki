@@ -2,12 +2,41 @@ This guide describes the process of building and installing the bladeRF host lib
 
 '''Ubuntu users:''' 13.04 or later is recommended (due to its 3.8 kernel and a more recent libusb version). Note that 12.04 contains libusb-1.0.9. However, libusb-1.0.10 or higher is required to build and use libbladeRF.
 
+== Special note for Ubuntu 14.04 LTS (Trusty) ==
+The bladeRF host libraries and tools are actually included in Ubuntu now!  This is great!  However, the versions are somewhat out-of-date due to the lengthy release cycles for distributions:
+
+<pre>
+$ bladeRF-cli --version
+0.9.0-0.9.0.15.8ba2499
+$ bladeRF-cli --lib-version
+0.10.0-0.9.0.15.8ba2499
+</pre>
+
+If you want the latest, greatest builds, you can easily switch to [[ppa:bladerf/bladerf-snapshots|https://launchpad.net/~bladerf/+archive/bladerf-snapshots/+packages]].
+
+<pre>$ sudo add-apt-repository ppa:bladerf/bladerf-snapshots
+$ sudo apt-get update
+$ sudo apt-get dist-upgrade
+</pre>
+
+This will install a newer libbladerf0, but will also uninstall the command-line tools due to a naming change.  To reinstall the tools,
+
+<pre>$ sudo apt-get install bladerf</pre>
+
+You can verify that you're running a recent release with:
+
+<pre>$ bladeRF-cli --version
+0.10.7-git-528df4d-ppatrusty
+$ bladeRF-cli --lib-version
+0.14.0-git-528df4d-ppatrusty
+</pre>
+
 == Easy installation for Ubuntu 13.04 and later ==
 If you're running Ubuntu 13.04 ([[Raring Ringtail|http://releases.ubuntu.com/raring/]]) or later, a PPA is available at [[ppa:bladerf/bladerf-snapshots|https://launchpad.net/~bladerf/+archive/bladerf-snapshots/+packages]].  New builds will appear occasionally, built from the master.
 
 To activate this PPA,
 
-<pre>$ sudo apt-add-repository ppa:bladerf/bladerf-snapshots
+<pre>$ sudo add-apt-repository ppa:bladerf/bladerf-snapshots
 $ sudo apt-get update
 $ sudo apt-get install bladerf</pre>
 
