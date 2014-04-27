@@ -26,13 +26,14 @@ _Note: Currently [the source contains some mixups between the terms "sector" and
 Below is a map of SPI flash layout.
 (_The following table is still a draft, and may contain errors_)
 
-| Offset (bytes) | Offset (page) | Offset (sector) | Offset (64KiB EB) | Length (bytes) | Description                          |
-| :------------: | :------------ | :-------------- | :---------------- | :------------- | :----------------------------------- |
-| 0x00000000     | 0             | 0               | 0                 | 0x30000        | FX3 Firmware                         |
-| 0x00030000     | 768           | 48              | 3                 | 0x100          | Calibration Data                     |
-| 0x00030100     | 769           | 48              | 3                 | 0xFF00         | Reserved for future calibration data |                   |
-| 0x00040000     | 1024          | 64              | 4                 | 0x100          | FPGA autoload metadata               |
-| 0x00040100     | 1025          | 64              | 4                 | 0x3BFF00       | FPGA bitstream                       |
+| Offset (bytes) | Offset (page) | Offset (64KiB EB) | Length (bytes) | Description                          |
+| :------------: | :------------ | :---------------- | :------------- | :----------------------------------- |
+| 0x00000000     | 0             | 0                 | 0x30000        | FX3 Firmware                         |
+| 0x00030000     | 768           | 3                 | 0x100          | Calibration Data                     |
+| 0x00030100     | 769           | 3                 | 0xFF00         | Reserved for future calibration data |                   |
+| 0x00040000     | 1024          | 4                 | 0x100          | FPGA autoload metadata               |
+| 0x00040100     | 1025          | 4                 | 0x36FF00       | FPGA bitstream data region                 |
+| 0x003A0000     | 14848        | 58                | 0x5000         | Reserved
 
 ### TODO Calibration Data layout ###
 
