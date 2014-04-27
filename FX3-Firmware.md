@@ -28,7 +28,7 @@ Below is a map of SPI flash layout.
 
 | Offset (bytes) | Offset (page) | Offset (sector) | Offset (64KiB EB) | Length (bytes) | Description                          |
 | :------------: | :------------ | :-------------- | :---------------- | :------------- | :----------------------------------- |
-| 0x00000000     | 0             | 0               | 0                 | 0xC0000        | FX3 Firmware                         |
+| 0x00000000     | 0             | 0               | 0                 | 0x30000        | FX3 Firmware                         |
 | 0x00030000     | 768           | 48              | 3                 | 0x100          | Calibration Data                     |
 | 0x00030100     | 769           | 48              | 3                 | 0xF00          | Reserved for future calibration data |
 | 0x00031000     | 784           | 49              | 3                 | 0xF000         | Reserved                             |
