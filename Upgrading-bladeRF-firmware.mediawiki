@@ -63,7 +63,7 @@ The bladeRF is configured to fall back to a USB bootloader if valid firmware is 
 
 = Using the firmware upgrade included in the Windows installer = 
 
-When running the Windows installer (see the [https://github.com/Nuand/bladeRF/wiki/Getting-Started%3A-Windows|Windows Getting Started] guide), the option to upgrade the firmware is provided:
+When running the Windows installer (see the [https://github.com/Nuand/bladeRF/wiki/Getting-Started%3A-Windows Windows Getting Started] guide), the option to upgrade the firmware is provided:
 
 [[http://nuand.com/upgrade.png|Firmware upgrade screenshot]]
 
