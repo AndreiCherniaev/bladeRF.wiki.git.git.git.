@@ -1,41 +1,42 @@
+= Overview = 
+
 Broadcast television in the United States currently uses a set of standards developed by the Advanced Television Systems Committee.  The digital ATSC standards replace the analog National Television System Committee (NTSC) standards for nearly all "major" broadcasters in the US and Canada.
 
 In the typical deployment, ATSC broadcasts use 8VSB modulation in a 6 MHz channel to transmit a 19.39 Mbit/s MPEG Transport Stream, which contains a number of multiplexed video, audio, and data payloads.
 
 
-# Difficulty Level 1: Transmitting a prepared MPEG Transport Stream
+= Transmitting a prepared MPEG Transport Stream =
 
 To get to this point, you'll want to have your BladeRF connected to a USB 3.0 port, and be running a recent firmware and hosted FPGA image.  You'll also need to have libbladeRF and gnuradio installed, generally by using the Quick Start instructions elsewhere in this wiki.  I assume you'll be using Linux.
 
-1. Grab a transport stream from somewhere, such as: http://hoopycat.com/bladerf_atsc/advatsc.ts (246 MB)
-2. Grab atsc-blade.py: https://gist.github.com/rtucker/8641650
-3. Make sure a "reasonable" UHF antenna is attached to your BladeRF's transmit port, and that physical channels 14 (470 to 476 MHz) and 15 (476 to 482 MHz) are unused in your area -- if not, adjust center_freq to land on some other channel.
-4. Turn on your DTV receiver and set it to broadcast channel 14 (or whatever you chose).
-5. Roll that beautiful bean footage: ```python atsc-blade.py advatsc.ts```
+# Grab a transport stream from somewhere, such as: http://hoopycat.com/bladerf_atsc/advatsc.ts (246 MB)
+# Grab atsc-blade.py: https://gist.github.com/rtucker/8641650
+#  Make sure a "reasonable" UHF antenna is attached to your BladeRF's transmit port, and that physical channels 14 (470 to 476 MHz) and 15 (476 to 482 MHz) are unused in your area -- if not, adjust center_freq to land on some other channel.
+# Turn on your DTV receiver and set it to broadcast channel 14 (or whatever you chose).
+# Roll that beautiful bean footage: <code>python atsc-blade.py advatsc.ts</code>
 
 You should see this in your terminal window:
-
-```
+<pre>
 Transmitting pre-encoded content: advatsc.ts
 Using Volk machine: avx_64_mmx_orc
 gr-osmosdr v0.1.0-55-g80c4af4f (0.1.1git) gnuradio 3.7.1
 built-in sink types: bladerf 
 [bladeRF source] Using nuand LLC bladeRF #0 SN [redacted] FW v1.6.1 FPGA v0.0.2
-```
+</pre>
 
 You should see this on your spectrum analyzer:
 
-![Photograph of spectrum analyzer showing a 6 MHz wide 8-VSB signal centered on 483 MHz.](http://hoopycat.com/bladerf_atsc/atsc-1.jpg)
+[[http://hoopycat.com/bladerf_atsc/atsc-1.jpg|Photograph of spectrum analyzer showing a 6 MHz wide 8-VSB signal centered on 483 MHz.]]
 
 And you should see this on your television!
 
-![Photograph of television program with on-screen display showing a HD signal on digital channel 14-1.](http://hoopycat.com/bladerf_atsc/atsc-2.jpg)
+[[http://hoopycat.com/bladerf_atsc/atsc-2.jpg|Photograph of television program with on-screen display showing a HD signal on digital channel 14-1.]]
 
 Congratulations!  You are now transmitting an ATSC signal!  If it doesn't work straight away, check that you aren't getting a lot of overflow/underflow errors, and that LEDs 1 and 3 are *solid* on your BladeRF.  Also, make sure your TV is set to tune to broadcast channel 14, not cable channel 14.
 
 Press ctrl-C when finished.
 
-# Difficulty Level 2: Generating an MPEG Transport Stream for broadcast
+= Generating an MPEG Transport Stream for broadcast =
 
 What, you don't like Adventure Time?
 
@@ -47,36 +48,36 @@ Note that the video just has to be in a format avconv can understand -- it will 
 
 Be warned that MPEG Transport Streams are *big*:
 
-```
+<pre>
 -rw-r--r-- 1 rtucker rtucker  23839649 Dec 29 20:23 tbm_tdf_2.mp4
 -rw-r--r-- 1 rtucker rtucker 792414924 Dec 29 20:54 tbm_tdf_2.ts
-```
+</pre>
 
 But once you have it generated, you can play it back, and it should work:
 
-```
+<pre>
 $ ./atsc-blade.py ~/Videos/tbm_atsc_test/tbm_tdf_2.ts 
 Transmitting pre-encoded content: /home/rtucker/Videos/tbm_atsc_test/tbm_tdf_2.ts
 Using Volk machine: avx_64_mmx_orc
 gr-osmosdr v0.1.0-55-g80c4af4f (0.1.1git) gnuradio 3.7.1
 built-in sink types: bladerf 
 [bladeRF source] Using nuand LLC bladeRF #0 SN [redacted] FW v1.6.1 FPGA v0.0.2
-```
+</pre>
 
-![Photograph of television program with female singer.](http://hoopycat.com/bladerf_atsc/atsc-3.jpg)
+[[http://hoopycat.com/bladerf_atsc/atsc-3.jpg|Photograph of television program with female singer.]]
 
 (Yes, my television is an old GoldStar CRT with a cheap government-cheese DTV converter box.  Stop laughing at me.  I don't really watch television...)
 
-# Difficulty Level 3: "Live" transcoding of content
+== "Live" transcoding of content ==
 
 For this, I'm going to turn one of my bicycle commutes into a music video.  I mounted a crappy camera (we'll call it a GoCheap) to my bicycle and got a MJPEG video with a lot of gearshifting noise and heavy breathing on the audio track, so we'll replace that with some pleasant music.
 
-1. Grab atsc-ts-streamer.bash from my gist: https://gist.github.com/rtucker/8642061
-2. Update VIDEOFILE and AUDIOFILE to point at some video and audio
-3. In one terminal window, run ```python atsc-blade.py``` without any arguments
-4. In another terminal window, run ```./atsc-ts-streamer.bash```:
+# Grab atsc-ts-streamer.bash from my gist: https://gist.github.com/rtucker/8642061
+# Update VIDEOFILE and AUDIOFILE to point at some video and audio
+# In one terminal window, run <code>python atsc-blade.py</code> without any arguments
+# In another terminal window, run <code>./atsc-ts-streamer.bash</code>:
 
-```
+<pre>
 avconv version 0.8.9-6:0.8.9-0ubuntu0.13.10.1, Copyright (c) 2000-2013 the Libav developers
   built on Nov  9 2013 19:09:46 with gcc 4.8.1
 Input #0, avi, from '/home/rtucker/Videos/Bike Cam/2012-09-09-002-afternoon.AVI':
@@ -114,34 +115,34 @@ Stream mapping:
   Stream #1:0 -> #0:1 (mp3 -> ac3_fixed)
 Press ctrl-c to stop encoding
 frame= 2172 fps= 30 q=31.0 Lsize=  171281kB time=72.37 bitrate=19389.3kbits/s 
-```
+</pre>
 
 And boom!  You should see it on your television, with your chosen music on the audio channel.
 
-![Photograph of television displaying a video from a bicycle traversing a city roadway.](http://hoopycat.com/bladerf_atsc/atsc-4.jpg)
+[[http://hoopycat.com/bladerf_atsc/atsc-4.jpg|Photograph of television displaying a video from a bicycle traversing a city roadway.]]
 
 You might notice the signal breaks up more than you'd like.  The transcoding and multiplexing are being done in real time and that is somewhat stressful.  Ways to improve this are welcome.
 
-# Difficulty Level 4: Live capture and encoding of content
+= Live capture and encoding of content =
 
 So all that was boring.  Why don't we try something more exciting?  My laptop has a webcam.
 
-Copy the ```atsc-ts-streamer.bash``` script to a machine on the same ethernet segment as the machine running ```atsc-blade.py``` (or maybe the same machine, if you have a webcam!) and set the following:
+Copy the <code>atsc-ts-streamer.bash</code> script to a machine on the same ethernet segment as the machine running <code>atsc-blade.py</code> (or maybe the same machine, if you have a webcam!) and set the following:
 
-```
+<pre>
 VIDEOFILE="-f video4linux2 -r 30 -s vga -i /dev/video0"
 AUDIOFILE="-i http://audioplayer.wunderground.com:80/dampier/rochester.mp3"   # or some other suitable streaming audio content
 OUTFILE="udp://192.168.1.194:1234?pkt_size=188&buffer_size=65535"   # replace 192.168.1.194 as required
-```
+</pre>
 
 Start up ```atsc-blade.py``` with no arguments, and then, on your webcam machine, start ```atsc-ts-streamer.bash```.  If all goes well, holy crow!
 
-![Photograph of television displaying a video of a man taking a photograph of a television, next to a laptop with a camera taking a video of a man taking a photograph of the television.](http://hoopycat.com/bladerf_atsc/atsc-5.jpg)
+[[http://hoopycat.com/bladerf_atsc/atsc-5.jpg|Photograph of television displaying a video of a man taking a photograph of a television, next to a laptop with a camera taking a video of a man taking a photograph of the television.]]
 
 The stream tends to be somewhat more unstable in this case, perhaps due to network packet loss, perhaps due to the constraints of real-time video encoding.  Research into improving this is welcome.
 
-# Props and next steps
+= Props and next steps =
 
-Props to argilo for atsc-blade.py and drmpeg for the advatsc.ts transport stream, both of which provided a foundation for making this a thing.
+Props to [https://github.com/argilo argilo] for atsc-blade.py and drmpeg for the advatsc.ts transport stream, both of which provided a foundation for making this a thing.
 
 Also, to take the next step, try implementing a DVB-T transmitter and making contacts over the air!  (Yes, you can use the low-cost RTL-SDR USB fob as a television receiver.)  http://www.irrational.net/2014/03/02/digital-atv/
