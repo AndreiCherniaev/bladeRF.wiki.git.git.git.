@@ -1,5 +1,9 @@
 = Development Procedures =
 * [[Release Testing]]
 
+= Software =
+== libbladeRF ==
+* [[Proposal:-In-band-metadata-format|In-band metadata format]]
+
 = Hardware =
 * [[Improvement-Requests-for-Board-Layout|Board Layout Improvement Requests]]
