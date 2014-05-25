@@ -28,7 +28,7 @@ Find or learn something interesting? Share it here!
 
 = Development =
 == Recommended Reading ==
-* [[github-essentials|Using Git and GitHub]]
+* [[git-essentials|Using Git and GitHub]]
 * [[Debugging]]
 
 == For Developers ==
