@@ -68,7 +68,7 @@ built-in sink types: bladerf
 
 (Yes, my television is an old GoldStar CRT with a cheap government-cheese DTV converter box.  Stop laughing at me.  I don't really watch television...)
 
-== "Live" transcoding of content ==
+= "Live" transcoding of content =
 
 For this, I'm going to turn one of my bicycle commutes into a music video.  I mounted a crappy camera (we'll call it a GoCheap) to my bicycle and got a MJPEG video with a lot of gearshifting noise and heavy breathing on the audio track, so we'll replace that with some pleasant music.
 
