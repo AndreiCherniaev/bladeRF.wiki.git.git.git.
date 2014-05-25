@@ -1,8 +1,5 @@
 = Development Procedures =
 * [[Release Testing]]
 
-= FX3 Firmware =
-* [[Proposal-for-new-FX3-firmware-loading|Firmware upgrading]] - Pre v1.4.X discussion, now out of date.
-
 = Hardware =
 * [[Improvement-Requests-for-Board-Layout|Board Layout Improvement Requests]]
