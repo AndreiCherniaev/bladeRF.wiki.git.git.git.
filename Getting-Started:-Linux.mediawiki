@@ -19,9 +19,9 @@ $ sudo apt-get update
 $ sudo apt-get dist-upgrade
 </pre>
 
-This will install a newer libbladerf0, but will also uninstall the command-line tools due to a naming change.  To reinstall the tools,
+This will install a newer libbladerf0, but will also uninstall the command-line tools due to a naming change.  To reinstall the tools, and install development headers:
 
-<pre>$ sudo apt-get install bladerf</pre>
+<pre>$ sudo apt-get install bladerf libbladerf-dev</pre>
 
 You can verify that you're running a recent release with:
 
