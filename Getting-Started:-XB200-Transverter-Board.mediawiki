@@ -16,10 +16,12 @@ For additional information, please see:
 * [[XB-200 schematics|http://nuand.com/xb200.pdf]]
 * [[XB-200 filter designs|http://nuand.com/RF_filters.pdf]]
 
-= Architecture =
+= Hardware =
+
+== Architecture ==
 TODO discuss the architecture of the transverter design here
 
-= SMA Connectors =
+== SMA Connectors ==
 
 There are 10 SMA connectors on the XB-200. Below are brief descriptions of each.
 
@@ -36,6 +38,10 @@ There are 10 SMA connectors on the XB-200. Below are brief descriptions of each.
 * <b>TXFILT</b> (<i>J11</i>): Mixer-side of the TX custom filter path. Connect this directly to <b>TXFILT-ANT</b> to use no filter, or connect this to one end of your custom filter, and the other end of your filter to <b>TXFILT-ANT</b>.
 * <b>TXFILT-ANT</b> (<i>J10</i>): Antenna-side of the TX custom filter path.
 * <b>DAC</b> (<i>J15</i>): This SMA exposes the DAC direct sampling path (skipping the LMS6002). This can also be accessed without the XB-200 via <i>J60</i> on the bladeRF.
+
+== GPIO ports ==
+
+GPIO pins are exposed on the XB-200 via <b>J1<b>, <b>J13</b>, and <b>J16</b>.
 
 = Software Support =
 
