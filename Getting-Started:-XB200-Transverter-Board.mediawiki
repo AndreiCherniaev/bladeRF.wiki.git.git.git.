@@ -19,13 +19,12 @@ For additional information, please see:
 = Hardware =
 
 == Architecture ==
-TODO discuss the architecture of the transverter design here
 
 The transverter was meant to extend the range of the bladeRF without impairing the current frequency capabilities.  As such, the transverter has a bypass path as well as a mixed path.  The bypass path just connects the antenna port to the IF port directly without any modification to the signal.
 
 The mixed path first has a filterbank for selectivity filtering.  This filterbank consists of 4 separate paths: 50MHz filter, 144MHz filter, 222MHz filter and a custom filter.  The custom filter can be put in line using the filter SMA connections on the transverter.
 
-Each of the filters was designed to try to notch the terrestrial FM band as much as possible.  To be able to receive normal FM, the simplest way is to put an SMA jumper in the custom path.
+Each of the filters was designed to try to notch the terrestrial FM band as much as possible.  To be able to receive normal FM, the simplest way is to put an SMA jumper in the custom path (i.e., between the RX/TX <b>FILT</b> and <b>FILT-ANT</b> SMA connectors).
 
 The block converter stage uses an ADF4351 to produce a 1248MHz high-side injection tone.  The mixing frequency was chosen because of it being about 3x higher than the 300MHz highest frequency we want to use and we can run the ADF4351 in integer-N mode, reducing spurs which may have resulted from a fractional-N mode of operation.  The output of the ADF4351 is always divided by 2x, so 38.4MHz*32.5 = 1248MHz.
 
@@ -51,7 +50,9 @@ There are 10 SMA connectors on the XB-200. Below are brief descriptions of each.
 
 == GPIO ports ==
 
-GPIO pins are exposed on the XB-200 via <b>J1<b>, <b>J13</b>, and <b>J16</b>.
+GPIO pins are exposed on the XB-200 via <b>J1</b>, <b>J13</b>, and <b>J16</b>.
+
+TODO provide jumper pinout and FPGA pin associations.
 
 = Software Support =
 
