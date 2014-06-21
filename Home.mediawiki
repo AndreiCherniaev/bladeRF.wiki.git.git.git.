@@ -2,12 +2,17 @@ Welcome to the bladeRF wiki!
 
 This wiki will serve as a place to create some community-based documentation. Please feel free to create a page and link it here!
 
-= Guides and How To's =
+= Getting Started =
+These guides describe the process of building and installing the bladeRF software from source code 
 * [[Getting Started: Linux]]
 * [[Getting Started: Windows]]
 * [[Getting Started: Mac OSX]]
-* [[Troubleshooting]]
-* [[Upgrading-bladeRF-firmware|Upgrading the bladeRF firmware]]
+
+= Help! =
+* [[Troubleshooting]] - This guide lists common problems and issues, with some advice and potential fixes.
+* [[Upgrading-bladeRF-firmware|Upgrading the bladeRF firmware]] - This guide describes both the normal firmware and bootloader-based firmware upgrade procedures.
+
+= How-To's =
 * [[Debugging dropped samples and identifying achievable sample rates]]
 * [[Manually adjusting DC offset and IQ Imbalance corrections]]
 * [[bladeRF CLI Tips and Tricks]]
