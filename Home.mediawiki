@@ -7,6 +7,7 @@ These guides describe the process of building and installing the bladeRF softwar
 * [[Getting Started: Linux]]
 * [[Getting Started: Windows]]
 * [[Getting Started: Mac OSX]]
+* [[Getting Started: XB-200 Transverter Board]] - <b>Work in progress</b>This guide will provide a brief overview of the XB-200 transverter board, and describes how to enable it's use with various program.
 
 = Help! =
 * [[Troubleshooting]] - This guide lists common problems and issues, with some advice and potential fixes.
