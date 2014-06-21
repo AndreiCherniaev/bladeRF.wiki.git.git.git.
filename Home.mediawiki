@@ -3,7 +3,7 @@ Welcome to the bladeRF wiki!
 This wiki will serve as a place to create some community-based documentation. Please feel free to create a page and link it here!
 
 = Getting Started =
-These guides describe the process of building and installing the bladeRF software from source code 
+These guides describe the process of building and installing the bladeRF software from source code. If you've just received your bladeRF, this is the place to start.
 * [[Getting Started: Linux]]
 * [[Getting Started: Windows]]
 * [[Getting Started: Mac OSX]]
