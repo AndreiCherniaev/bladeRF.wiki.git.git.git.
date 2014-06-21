@@ -22,17 +22,17 @@ For additional information, please see:
 There are 10 SMA connectors on the XB-200. Below are brief descriptions of each.
 
 <u>RX</u> 
-* <b>RXIF</b> (<i>J3</i>): RX Intermediate Frequency. Connect this to the bladeRF RX port (<i>J53</i> via an SMA cable.
+* <b>RXIF</b> (<i>J3</i>): RX Intermediate Frequency. Connect this to the bladeRF RX port (<i>J53</i>) via an SMA cable.
 * <b>RXANT</b> (<i>J12</i>): RX Input. Connect an antenna here.
-* <b>RXFILT</b> (<i>J8</i>):
-* <b>RXFILT-ANT</b> (<i>J9</i>):
+* <b>RXFILT</b> (<i>J8</i>): Mixer-side of the RX custom filter path. Connect this directly to <b>RXFILT-ANT</b> to use no filter, or connect this to one end of your custom filter, and the other end of your filter to <b>RXFILT-ANT</b>.
+* <b>RXFILT-ANT</b> (<i>J9</i>): Antenna-side of the RX custom filter path.
 * <b>ADC</b> (<i>J14</i>): This SMA exposes the direct ADC sampling path (skipping the LMS6002). This can also be accessed without the XB-200 via <i>J61</i> on the bladeRF.
 
 <u>TX</u>
 * <b>TXIF</b> (<i>J1</i>): TX Intermediate Frequency. Connect this to the bladeRF TX port (<i>J54</i>) via an SMA cable.
 * <b>TXANT</b> (<i>J2</i>): TX output. Connect an antenna here. When not transmitting, it is recommended to keep a dummy load or attenuator on this port.
-* <b>TXFILT</b> (<i>J11</i>):
-* <b>TXFILT-ANT</b> (<i>J10</i>)
+* <b>TXFILT</b> (<i>J11</i>): Mixer-side of the TX custom filter path. Connect this directly to <b>TXFILT-ANT</b> to use no filter, or connect this to one end of your custom filter, and the other end of your filter to <b>TXFILT-ANT</b>.
+* <b>TXFILT-ANT</b> (<i>J10</i>): Antenna-side of the TX custom filter path.
 * <b>DAC</b> (<i>J15</i>): This SMA exposes the DAC direct sampling path (skipping the LMS6002). This can also be accessed without the XB-200 via <i>J60</i> on the bladeRF.
 
 = Software Support =
