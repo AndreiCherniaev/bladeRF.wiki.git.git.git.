@@ -6,7 +6,22 @@ The <b>XB-200 transverter board</b> is a block up-down converter that expands th
 
 The RX and TX paths each have a set of 3 filters, at the 50MHz-54MHz (6 meter) band, 149MHz-159MHz (2 meter) band, and 206-235MHz bands. There are also pairs of SMA connectors that will let users plug their own band filters into the RF path.
 
-For additional information, please see....
+The XB-200 mates to the bladeRF as follows. (There is only one possible orientation)
+* XB-200 <b>U20</b> to bladeRF <b>U74</b>
+* XB-200 <b>J5</b> to bladeRF <b>J61</b>
+* XB-200 <b>J6</b> to bladeRF <b>J60</b>
+
+For additional information, please see:
 * [[XB-200 product page|http://www.nuand.com/blog/product/hf-vhf-transverter/]]
 * [[XB-200 schematics|http://nuand.com/xb200.pdf]]
 * [[XB-200 filter designs|http://nuand.com/RF_filters.pdf]]
+
+
+= SMA Connectors =
+
+There are 10 SMA connectors on the XB-200/ 
+
+
+= Other information on HAM bands =
+
+* [[US Amateur Radio Bands|http://labyrinth13.com/Hambands_color.pdf]]
