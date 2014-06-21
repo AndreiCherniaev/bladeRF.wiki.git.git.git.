@@ -1,0 +1,51 @@
+This page provides an overview of the <b>XB-200and provides some information on its use.
+
+= Introduction =
+
+The <b>XB-200 transverter board</b> is a block up-down converter that expands the bladeRF’s lower frequency range, allowing the bladeRF to be used in HF/VHF applications. 
+
+The RX and TX paths each have a set of 3 filters, at the 50MHz-54MHz (6 meter) band, 149MHz-159MHz (2 meter) band, and 206-235MHz (includes 1.25m) bands. There are also pairs of SMA connectors that will let users plug their own band filters into the RF path.
+
+The XB-200 mates to the top of the bladeRF as follows. (There is only one possible orientation)
+* XB-200 <b>U20</b> to bladeRF <b>U74</b>
+* XB-200 <b>J5</b> to bladeRF <b>J61</b>
+* XB-200 <b>J6</b> to bladeRF <b>J60</b>
+
+For additional information, please see:
+* [[XB-200 product page|http://www.nuand.com/blog/product/hf-vhf-transverter/]]
+* [[XB-200 schematics|http://nuand.com/xb200.pdf]]
+* [[XB-200 filter designs|http://nuand.com/RF_filters.pdf]]
+
+
+= SMA Connectors =
+
+There are 10 SMA connectors on the XB-200. Below are brief descriptions of each.
+
+<u>RX</u> 
+* <b>RXIF</b> (<i>J3</i>):
+* <b>RXANT</b> (<i>J12</i>):
+* <b>RXFILT</b> (<i>J8</i>)
+* <b>RXFILT-ANT</b> (<i>J9</i>)
+* <b>ADC</b> (<i>J14</i>):
+
+<u>TX</u>
+* <b>TXIF</b> (<i>J1</i>):
+* <b>TXANT</b> (<i>J2</i>):
+* <b>TXFILT</b> (<i>J11</i>):
+* <b>TXFILT-ANT</b> (<i>J10</i>)
+* <b>DAC</b> (<i>J15</i>):
+
+= Software Support =
+
+== libbladeRF ==
+TODO Reference some of the API calls, and how they should be used.  Perhaps link to a few places in the API header on GitHub?
+
+== bladeRF-cli ==
+TODO Describe the commands involved with the XB-200
+
+== gr-osmosdr ==
+TODO Describe device parameter arguments required to use the XB-200 and to select the filter banks.
+
+== SDR-Console ==
+Not supported yet? Perhaps list the status of this and anything that can be done via the CLI to allow it to be used in the meantime, until official support is provided?
+
