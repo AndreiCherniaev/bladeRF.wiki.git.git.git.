@@ -4,7 +4,7 @@ This page provides an overview of the <b>XB-200and provides some information on 
 
 The <b>XB-200 transverter board</b> is a block up-down converter that expands the bladeRF’s lower frequency range, allowing the bladeRF to be used in HF/VHF applications. 
 
-The RX and TX paths each have a set of 3 filters, at the 50MHz-54MHz (6 meter band), 149MHz-159MHz band, and 206-235MHz bands. There are also pairs of SMA connectors that will let users plug their own band filters into the RF path.
+The RX and TX paths each have a set of 3 filters, at the 50MHz-54MHz (6 meter) band, 149MHz-159MHz (2 meter) band, and 206-235MHz bands. There are also pairs of SMA connectors that will let users plug their own band filters into the RF path.
 
 For additional information, please see....
 * [[XB-200 product page|http://www.nuand.com/blog/product/hf-vhf-transverter/]]
