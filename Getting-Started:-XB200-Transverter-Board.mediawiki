@@ -16,6 +16,8 @@ For additional information, please see:
 * [[XB-200 schematics|http://nuand.com/xb200.pdf]]
 * [[XB-200 filter designs|http://nuand.com/RF_filters.pdf]]
 
+= Architecture =
+TODO discuss the architecture of the transverter design here
 
 = SMA Connectors =
 
