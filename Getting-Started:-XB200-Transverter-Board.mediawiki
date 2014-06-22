@@ -32,7 +32,7 @@ Since high side injection is used, the LMS6002D on the bladeRF is tuning to 1248
 
 == SMA Connectors ==
 
-There are 10 SMA connectors on the XB-200. Below are brief descriptions of each.
+There are 10 SMA connectors on the XB-200. Below are brief descriptions of each. <b>If your board has discrepancies, follow the J<i>n</i> numbers here, rather than the silkscreen name.</b> 
 
 <u>RX</u> 
 * <b>RXIF</b> (<i>J3</i>): RX Intermediate Frequency. Connect this to the bladeRF RX port (<i>J53</i>) via an SMA cable.
