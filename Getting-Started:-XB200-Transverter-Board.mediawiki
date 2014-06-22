@@ -65,7 +65,7 @@ TODO Describe the commands involved with the XB-200
 == gr-osmosdr ==
 
 === Fetching the pending patches ===
-A set of preliminary patches have been submitted to the gr-osmosdr maintainers, and pending further review. These patches are subject to change.
+A set of preliminary patches have been submitted to the gr-osmosdr maintainers, and are pending further review. These patches are subject to change.
 
 Below are the two patches and a quick overview of how to apply them. Save these to the filenames indicated below.
 
