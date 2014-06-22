@@ -63,7 +63,248 @@ TODO Reference some of the API calls, and how they should be used.  Perhaps link
 TODO Describe the commands involved with the XB-200
 
 == gr-osmosdr ==
-TODO Describe device parameter arguments required to use the XB-200 and to select the filter banks.
+
+=== Fetching the pending patches ===
+A set of preliminary patches have been submitted to the gr-osmosdr maintainers, and pending further review. These patches are subject to change.
+
+Below are the two patches and a quick overview of how to apply them. Save these to the filenames indicated below.
+
+<pre>
+# Enter the directory containing the gr-osmosdr source
+$ cd path/to/gr-osmosdr/source
+
+# Ensure you have the latest and greatest. This is required.
+$ git checkout master
+$ git pull
+
+# Create a nuand-xb200-pending branch. In the future, you can return 
+# to master and delete this branch via:
+#   git checkout master && git branch -D nuand-xb200-pending
+$ git checkout -b nuand-xb200-pending
+
+# Apply the patches 
+$ git am 0001-bladeRF-Add-XB-200-support.patch 0002-bladeRF-auto-filterbank-selection.patch
+
+# Now rebuild and re-install as you normally would
+</pre>
+
+<b>0001-bladeRF-Add-XB-200-support.patch</b>
+<pre>
+From e6458f30625ed17a944b00ffc97076933a7436ed Mon Sep 17 00:00:00 2001
+From: Robert Ghilduta <robert.ghilduta@nuand.com>
+Date: Wed, 11 Jun 2014 01:11:09 -0700
+Subject: [PATCH 1/2] bladeRF: Add XB-200 support
+
+This commit adds support for the bladeRF XB-200 transverter expansion board. To
+enable the expansion board and to allow the osmocom source to down to 0Hz,
+parameter XB-200 has to be set. Additionally the XB-200 comes with 4 filter
+banks that can be set via configuration option, xb200filt. The following values
+are valid:
+   "50M"     :  50MHz band
+   "144M"    : 144MHz band
+   "222M"    : 222MHz band
+   [default] : Custom filter
+---
+ lib/bladerf/bladerf_common.cc | 26 ++++++++++++++++++++++++--
+ lib/bladerf/bladerf_common.h  |  2 ++
+ 2 files changed, 26 insertions(+), 2 deletions(-)
+
+diff --git a/lib/bladerf/bladerf_common.cc b/lib/bladerf/bladerf_common.cc
+index 7516020..ac56747 100644
+--- a/lib/bladerf/bladerf_common.cc
++++ b/lib/bladerf/bladerf_common.cc
+@@ -48,7 +48,7 @@ using namespace boost::assign;
+ boost::mutex bladerf_common::_devs_mutex;
+ std::list<boost::weak_ptr<struct bladerf> > bladerf_common::_devs;
+ 
+-bladerf_common::bladerf_common() : _conv_buf(NULL), _conv_buf_size(4096) {}
++bladerf_common::bladerf_common() : _conv_buf(NULL), _conv_buf_size(4096), xb_200_attached(false) {}
+ 
+ bladerf_common::~bladerf_common()
+ {
+@@ -305,6 +305,28 @@ void bladerf_common::init(dict_t &dict, bladerf_module module)
+ 
+   }
+ 
++  if ( dict.count("xb200")) {
++    if (bladerf_expansion_attach(_dev.get(), BLADERF_XB_200)) {
++       std::cerr << "Could not attach XB-200";
++    } else {
++       _xb_200_attached = true;
++    }
++  }
++
++  bladerf_xb200_filter filter = BLADERF_XB200_CUSTOM;
++  if ( dict.count("xb200filt")) {
++      if ( dict["xb200filt"] == "50M") {
++          filter = BLADERF_XB200_50M;
++      } else if ( dict["xb200filt"] == "144M") {
++          filter = BLADERF_XB200_144M;
++      } else if ( dict["xb200filt"] == "222M") {
++          filter = BLADERF_XB200_222M;
++      }
++  }
++
++  if (bladerf_xb200_set_filterbank(_dev.get(), module, filter)) {
++       std::cerr << "Could not set XB-200 filter";
++  }
+ 
+   /* Show some info about the device we've opened */
+   std::cerr << _pfx << "Using nuand LLC bladeRF #" << device_number;
+@@ -387,7 +409,7 @@ void bladerf_common::init(dict_t &dict, bladerf_module module)
+ osmosdr::freq_range_t bladerf_common::freq_range()
+ {
+   /* assuming the same for RX & TX */
+-  return osmosdr::freq_range_t( 300e6, 3.8e9 );
++  return osmosdr::freq_range_t( _xb_200_attached ? 0 : 300e6, 3.8e9 );
+ }
+ 
+ osmosdr::meta_range_t bladerf_common::sample_rates()
+diff --git a/lib/bladerf/bladerf_common.h b/lib/bladerf/bladerf_common.h
+index b13a6cf..3b1cb0b 100644
+--- a/lib/bladerf/bladerf_common.h
++++ b/lib/bladerf/bladerf_common.h
+@@ -82,6 +82,8 @@ protected:
+ 
+   std::string _pfx;
+ 
++  bool _xb_200_attached;
++
+   /* BladeRF IQ correction parameters */
+   static const int16_t DCOFF_SCALE  = 2048;
+   static const int16_t GAIN_SCALE   = 4096;
+-- 
+1.9.1
+</pre>
+
+
+<b>0002-bladeRF-auto-filterbank-selection.patch</b>
+<pre>
+From 1e3e5168361d61704726c7de26e1095b7871c6f5 Mon Sep 17 00:00:00 2001
+From: Robert Ghilduta <robert.ghilduta@nuand.com>
+Date: Wed, 11 Jun 2014 15:01:33 -0700
+Subject: [PATCH 2/2] bladeRF: auto filterbank selection
+
+Setting xb200filt to "auto" causes the bladeRF sink and source blocks to
+automatically select the appropriate filterbank based on center
+frequency.
+---
+ lib/bladerf/bladerf_common.cc   | 12 ++++++++----
+ lib/bladerf/bladerf_common.h    |  1 +
+ lib/bladerf/bladerf_sink_c.cc   | 18 ++++++++++++++++++
+ lib/bladerf/bladerf_source_c.cc | 18 ++++++++++++++++++
+ 4 files changed, 45 insertions(+), 4 deletions(-)
+
+diff --git a/lib/bladerf/bladerf_common.cc b/lib/bladerf/bladerf_common.cc
+index ac56747..6773d4d 100644
+--- a/lib/bladerf/bladerf_common.cc
++++ b/lib/bladerf/bladerf_common.cc
+@@ -48,7 +48,7 @@ using namespace boost::assign;
+ boost::mutex bladerf_common::_devs_mutex;
+ std::list<boost::weak_ptr<struct bladerf> > bladerf_common::_devs;
+ 
+-bladerf_common::bladerf_common() : _conv_buf(NULL), _conv_buf_size(4096), xb_200_attached(false) {}
++bladerf_common::bladerf_common() : _conv_buf(NULL), _conv_buf_size(4096), _xb_200_attached(false), _xb_200_auto_filter(false) {}
+ 
+ bladerf_common::~bladerf_common()
+ {
+@@ -315,7 +315,9 @@ void bladerf_common::init(dict_t &dict, bladerf_module module)
+ 
+   bladerf_xb200_filter filter = BLADERF_XB200_CUSTOM;
+   if ( dict.count("xb200filt")) {
+-      if ( dict["xb200filt"] == "50M") {
++      if ( dict["xb200filt"] == "auto") {
++          _xb_200_auto_filter = true;
++      } else if ( dict["xb200filt"] == "50M") {
+           filter = BLADERF_XB200_50M;
+       } else if ( dict["xb200filt"] == "144M") {
+           filter = BLADERF_XB200_144M;
+@@ -324,8 +326,10 @@ void bladerf_common::init(dict_t &dict, bladerf_module module)
+       }
+   }
+ 
+-  if (bladerf_xb200_set_filterbank(_dev.get(), module, filter)) {
+-       std::cerr << "Could not set XB-200 filter";
++  if (_xb_200_attached && !_xb_200_auto_filter) {
++      if (bladerf_xb200_set_filterbank(_dev.get(), module, filter)) {
++          std::cerr << "Could not set XB-200 filter";
++      }
+   }
+ 
+   /* Show some info about the device we've opened */
+diff --git a/lib/bladerf/bladerf_common.h b/lib/bladerf/bladerf_common.h
+index 3b1cb0b..f67c5b5 100644
+--- a/lib/bladerf/bladerf_common.h
++++ b/lib/bladerf/bladerf_common.h
+@@ -83,6 +83,7 @@ protected:
+   std::string _pfx;
+ 
+   bool _xb_200_attached;
++  bool _xb_200_auto_filter;
+ 
+   /* BladeRF IQ correction parameters */
+   static const int16_t DCOFF_SCALE  = 2048;
+diff --git a/lib/bladerf/bladerf_sink_c.cc b/lib/bladerf/bladerf_sink_c.cc
+index c230e41..32fbd5e 100644
+--- a/lib/bladerf/bladerf_sink_c.cc
++++ b/lib/bladerf/bladerf_sink_c.cc
+@@ -183,6 +183,24 @@ double bladerf_sink_c::set_center_freq( double freq, size_t chan )
+                                 boost::lexical_cast<std::string>(freq) +
+                                 ":" + std::string(bladerf_strerror(ret)));
+     }
++
++    if (_xb_200_auto_filter) {
++      bladerf_xb200_filter filter = BLADERF_XB200_CUSTOM;
++      if ( freq >= 50e6 && freq <= 54e6 ) {
++        filter = BLADERF_XB200_50M;
++      } else if ( freq >= 149e6 && freq <= 159e6 ) {
++        filter = BLADERF_XB200_144M;
++      } else if ( freq >= 206e6 && freq <= 235e6 ) {
++        filter = BLADERF_XB200_222M;
++      }
++
++      if (bladerf_xb200_set_filterbank(_dev.get(), BLADERF_MODULE_TX, filter)) {
++        throw std::runtime_error( std::string(__FUNCTION__) + " " +
++                                  "Failed to auto set XB-200 filter at frequency " +
++                                  boost::lexical_cast<std::string>(freq) +
++                                  ":" + std::string(bladerf_strerror(ret)));
++      }
++    }
+   }
+ 
+   return get_center_freq( chan );
+diff --git a/lib/bladerf/bladerf_source_c.cc b/lib/bladerf/bladerf_source_c.cc
+index d7eaeeb..3b1b5c8 100644
+--- a/lib/bladerf/bladerf_source_c.cc
++++ b/lib/bladerf/bladerf_source_c.cc
+@@ -232,6 +232,24 @@ double bladerf_source_c::set_center_freq( double freq, size_t chan )
+                                 boost::lexical_cast<std::string>(freq) + ": " +
+                                 std::string(bladerf_strerror(ret)) );
+     }
++
++    if (_xb_200_auto_filter) {
++      bladerf_xb200_filter filter = BLADERF_XB200_CUSTOM;
++      if ( freq >= 50e6 && freq <= 54e6 ) {
++        filter = BLADERF_XB200_50M;
++      } else if ( freq >= 149e6 && freq <= 159e6 ) {
++        filter = BLADERF_XB200_144M;
++      } else if ( freq >= 206e6 && freq <= 235e6 ) {
++        filter = BLADERF_XB200_222M;
++      }
++
++      if (bladerf_xb200_set_filterbank(_dev.get(), BLADERF_MODULE_RX, filter)) {
++        throw std::runtime_error( std::string(__FUNCTION__) + " " +
++                                  "Failed to auto set XB-200 filter at frequency " +
++                                  boost::lexical_cast<std::string>(freq) +
++                                  ":" + std::string(bladerf_strerror(ret)));
++      }
++    }
+   }
+ 
+   return get_center_freq( chan );
+-- 
+1.9.1
+</pre>
 
 == SDR-Console ==
 Not supported yet? Perhaps list the status of this and anything that can be done via the CLI to allow it to be used in the meantime, until official support is provided?
