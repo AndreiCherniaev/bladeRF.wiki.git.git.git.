@@ -315,7 +315,7 @@ index d7eaeeb..3b1b5c8 100644
 
 === Enabling the XB-200 and Selecting Filters ===
 To enable the XB200 in software that utilizes gr-osmosdr, add 'xb200' to the source/sink arguments string.
-By default, the custom filter banks will be selected. Therefore, you must have the <b>FILT</b> and <b>FILT-ANT</b> connected through a filter, or directly connected together (no filter).
+By default, the custom filter bank will be selected. Therefore, you must have the <b>FILT</b> and <b>FILT-ANT</b> connected through a filter, or directly connected together (no filter).
 
 If you wish to select one of the other filter paths, append one of the following to the source/sink arguments string:
 * <code>xb200filt=50M</code>
