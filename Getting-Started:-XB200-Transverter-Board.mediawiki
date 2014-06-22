@@ -315,8 +315,5 @@ If you wish to select one of the other filter paths, append one of the following
 * <code>xb200filt=144M</code>
 * <code>xb200filt=222M</code>
 * <code>xb200file=auto</code>
-** This option will select an appropriate filter path based upon the selected center frequency.
-
-== SDR-Console ==
-Not supported yet? Perhaps list the status of this and anything that can be done via the CLI to allow it to be used in the meantime, until official support is provided?
+** This option will select an appropriate filter path based upon the selected center frequency. 
 
