@@ -321,6 +321,6 @@ If you wish to select one of the other filter paths, append one of the following
 * <code>xb200filt=50M</code>
 * <code>xb200filt=144M</code>
 * <code>xb200filt=222M</code>
-* <code>xb200file=auto</code>
+* <code>xb200filt=auto</code>
 ** This option will select an appropriate filter path based upon the selected center frequency. 
 
