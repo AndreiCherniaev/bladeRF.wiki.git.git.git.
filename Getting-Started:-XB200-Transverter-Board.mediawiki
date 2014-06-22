@@ -57,7 +57,13 @@ TODO provide jumper pinout and FPGA pin associations.
 = Software Support =
 
 == libbladeRF ==
-TODO Reference some of the API calls, and how they should be used.  Perhaps link to a few places in the API header on GitHub?
+
+The general procedure for using the XB-200 programmatically, via libbladeRF is as follows:
+* With an open device handle, enable support for the XB-200 via: [https://github.com/Nuand/bladeRF/blob/15340770ca59d30b82109ad8670aa0fe027ca9fe/host/libraries/libbladeRF/include/libbladeRF.h#L980 bladerf_expansion_attach(dev, BLADERF_XB_200)]
+* Select the desired filter bank for the RX and TX paths. For example, to configure the RX module to use the 149-159MHz filter: [https://github.com/Nuand/bladeRF/blob/15340770ca59d30b82109ad8670aa0fe027ca9fe/host/libraries/libbladeRF/include/libbladeRF.h#L1012 bladerf_xb200_set_filterbank(dev, BLADERF_MODULE_RX, BLADERF_XB200_144M)]
+** See the [https://github.com/Nuand/bladeRF/blob/15340770ca59d30b82109ad8670aa0fe027ca9fe/host/libraries/libbladeRF/include/libbladeRF.h#L492 bladerf_xb200_filter] enumeration for other options.
+* Specify that the XB-200 mixer path should be used: [https://github.com/Nuand/bladeRF/blob/15340770ca59d30b82109ad8670aa0fe027ca9fe/host/libraries/libbladeRF/include/libbladeRF.h#L1041 bladerf_xb200_set_path(dev, BLADERF_MODULE_RX, BLADERF_XB200_MIX)]
+** To tune to the "normal" bladeRF ranges, bypass the XB-200 mixer by using the BLADERF_XB200_BYPASS value with the above function.
 
 == bladeRF-cli ==
 TODO Describe the commands involved with the XB-200
