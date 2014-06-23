@@ -52,7 +52,7 @@ There are 10 SMA connectors on the XB-200. Below are brief descriptions of each.
 
 GPIO pins are exposed on the XB-200 via <b>J1</b>, <b>J13</b>, and <b>J16</b>. libbladeRF API calls to manipulate these pins are a work in progress.
 
-<b>TO DO:</b> provide jumper pinout and FPGA pin associations.
+<b>TO DO:</b> provide jumper pinout and FPGA pin associations. 
 
 
 = Software Support =
@@ -74,7 +74,9 @@ TODO Describe the commands involved with the XB-200
 === Fetching the pending patches ===
 A set of preliminary patches have been submitted to the gr-osmosdr maintainers, and are pending further review. These patches are subject to change.
 
-Below are the two patches and a quick overview of how to apply them. Save these to the filenames indicated below.
+Below are the two patches (0001-bladeRF-Add-XB-200-support.patch and 0002-bladeRF-auto-filterbank-selection.patch) and a quick overview of how to apply them. 
+
+Save the aforementioned patches to the top-level of the gr-osmosdr repo. Include everything shown below; do not remove the header information.
 
 <pre>
 # Enter the directory containing the gr-osmosdr source
