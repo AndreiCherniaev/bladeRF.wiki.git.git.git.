@@ -3,6 +3,8 @@
 = Clang and scan-build =
 Developers are '''highly''' encouraged to use [http://clang-analyzer.llvm.org/scan-build.html scan-build] to check for various issues before the manifest themselves in defect reports. Please do this before submitting pull requests.
 
+In many Linux distributions, scan-build is included with the <code>clang</code> package.
+
 Below is an example of how to run a scan against the bladeRF host code:
 <pre>
 $ cd ~/projects/bladeRF/host/
