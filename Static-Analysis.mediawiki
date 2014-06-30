@@ -1,10 +1,10 @@
 [[https://scan.coverity.com/projects/874/badge.svg]]
 
-= Coverity Access =
+= Coverity =
 
-Coverity does not allow for public access to defect lists.  However, it does allow project maintainers to grant registered Coverity users ''Contributor/Member'', ''Contributer/Viewer'', and ''Other/Observer'' permissions.  You're more than welcome to the bladeRF Coverity scan results, all you have to do is ask! :)
+[https://scan.coverity.com/ Coverity] does not allow for public access to defect lists.  However, it does allow project maintainers to grant registered Coverity users ''Contributor/Member'', ''Contributer/Viewer'', and ''Other/Observer'' permissions.  You're more than welcome to the bladeRF Coverity scan results, all you have to do is ask! :)
 
-= Setup = 
+== Setup ==
 
 # Download Coverity Scan from https://scan.coverity.com/download
 # Extract and add the Coverity Scan tools to the path
@@ -12,17 +12,17 @@ Coverity does not allow for public access to defect lists.  However, it does all
 ## `cov-configure --comptype gcc --compiler /opt/cypress/fx3_sdk/arm-2011.03/bin/arm-none-eabi-gcc`
 ## Replace /opt/cypress/fx3_sdk/arm-2011.03/bin/arm-none-eabi-gcc with wherever your FX3 SDK is installed
 
-= Performing a build =
+== Performing a build ==
 
 Always use the root level CMakeLists.txt to do a build, not the one in host.  If you do a build in host, the fx3 sources will be removed from Coverity.
 
-== Setup common CMake build folder (if needed) ==
+=== Setup common CMake build folder (if needed) ===
 # cd to root of source tree (e.g. cd ~/bladeRF)
 # `mkdir build`
 # `cd build`
 # `cmake ..`
 
-== Perform the Coverity build ==
+=== Perform the Coverity build ===
 # cd to root build folder (e.g. cd ~/bladeRF/build)
 # `make clean`
 # `rm -rf cov-int`
