@@ -1,5 +1,19 @@
 [[https://scan.coverity.com/projects/874/badge.svg]]
 
+= Clang and scan-build =
+Developers are '''highly''' encouraged to use [http://clang-analyzer.llvm.org/scan-build.html scan-build] to check for various issues before the manifest themselves in defect reports. Please do this before submitting pull requests.
+
+Below is an example of how to run a scan against the bladeRF host code:
+<pre>
+$ cd ~/projects/bladeRF/host/
+$ mkdir -p build/scan
+$ cd build/scan
+$ cmake -DCMAKE_C_COMPILER=/usr/share/clang/scan-build/ccc-analyzer ../../
+$ /usr/share/clang/scan-build/scan-build make clean all
+</pre>
+
+When this completes, it will print instructions on how to view the defect reports, which will be html pages populated in a /tmp directory.
+
 = Coverity =
 
 [https://scan.coverity.com/ Coverity] does not allow for public access to defect lists.  However, it does allow project maintainers to grant registered Coverity users ''Contributor/Member'', ''Contributer/Viewer'', and ''Other/Observer'' permissions.  You're more than welcome to the bladeRF Coverity scan results, all you have to do is ask! :)
