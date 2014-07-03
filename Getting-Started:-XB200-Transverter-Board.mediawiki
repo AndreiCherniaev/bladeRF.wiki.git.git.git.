@@ -316,8 +316,7 @@ index d7eaeeb..3b1b5c8 100644
 </pre>
 
 === Enabling the XB-200 and Selecting Filters ===
-To enable the XB200 in software that utilizes gr-osmosdr, add 'xb200' to the source/sink arguments string.
-By default, the custom filter bank will be selected. Therefore, you must have the <b>FILT</b> and <b>FILT-ANT</b> connected through a filter, or directly connected together (no filter).
+To enable the XB200 in software that utilizes gr-osmosdr, add '''xb200''' to the source/sink arguments string. By default, the custom filter bank will be selected. Therefore, you must have the <b>FILT</b> and <b>FILT-ANT</b> connected through a filter, or directly connected together (no filter).
 
 If you wish to select one of the other filter paths, append one of the following to the source/sink arguments string:
 * <code>xb200filt=50M</code>
@@ -325,4 +324,8 @@ If you wish to select one of the other filter paths, append one of the following
 * <code>xb200filt=222M</code>
 * <code>xb200filt=auto</code>
 ** This option will select an appropriate filter path based upon the selected center frequency. 
-
+<br>
+Below is an example device string that enables the XB-200 and selects the 144MHz - 148MHz filter:
+<pre>
+bladerf=0,xb200,xb200filt=144M
+</pre>
