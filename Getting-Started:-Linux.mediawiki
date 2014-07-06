@@ -12,9 +12,9 @@ $ bladeRF-cli --lib-version
 0.10.0-0.9.0.15.8ba2499
 </pre>
 
-If you want the latest, greatest builds, you can easily switch to [[ppa:bladerf/bladerf-snapshots|https://launchpad.net/~bladerf/+archive/bladerf-snapshots/+packages]].
+If you want the latest, greatest builds, you can easily switch to [[ppa:bladerf/bladerf|https://launchpad.net/~bladerf/+archive/bladerf/+packages]].
 
-<pre>$ sudo add-apt-repository ppa:bladerf/bladerf-snapshots
+<pre>$ sudo add-apt-repository ppa:bladerf/bladerf
 $ sudo apt-get update
 $ sudo apt-get dist-upgrade
 </pre>
@@ -26,13 +26,15 @@ This will install a newer libbladerf0, but will also uninstall the command-line 
 You can verify that you're running a recent release with:
 
 <pre>$ bladeRF-cli --version
-0.10.7-git-528df4d-ppatrusty
+0.11.0-git-unknown
 $ bladeRF-cli --lib-version
-0.14.0-git-528df4d-ppatrusty
+0.16.0-git-unknown
 </pre>
 
 == Easy installation for Ubuntu 13.04 and later ==
 If you're running Ubuntu 13.04 ([[Raring Ringtail|http://releases.ubuntu.com/raring/]]) or later, a PPA is available at [[ppa:bladerf/bladerf-snapshots|https://launchpad.net/~bladerf/+archive/bladerf-snapshots/+packages]].  New builds will appear occasionally, built from the master.
+
+Note: There is also a ppa:bladerf/bladerf PPA for tagged builds and release candidates.
 
 To activate this PPA,
 
