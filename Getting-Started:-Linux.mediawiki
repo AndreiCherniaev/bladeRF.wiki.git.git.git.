@@ -31,6 +31,8 @@ $ bladeRF-cli --lib-version
 0.16.0-git-unknown
 </pre>
 
+'''Skip down to "Checking Basic Device Operation" after performing these steps.'''
+
 == Easy installation for Ubuntu 13.10 and later ==
 If you're running Ubuntu 13.10 (saucy) or later, a release PPA is available at [[ppa:bladerf/bladerf|https://launchpad.net/~bladerf/+archive/bladerf/+packages]].  New builds will appear occasionally as bladeRF releases are tagged.
 
@@ -50,7 +52,11 @@ Then, skip down to the [[Getting-Started:-Linux#wiki-Checking_basic_device_opera
 
 Note: This PPA replaces ppa:rtucker/bladerf-daily, which is now deprecated.
 
+'''Skip down to "Checking Basic Device Operation" after performing these steps.'''
+
 == Installing dependencies ==
+
+'''If you already installed the bladeRF software using apt-get above, you can skip this section.'''
 
 '''NOTE:''' If your distribution provides libusb-1.0 packages earlier than 1.0.16, you may want to consider to manually installing libusb >= 1.0.16, either from source or from upstream packages.
 
@@ -79,6 +85,8 @@ $ sudo yum install libusbx libusbx-devel cmake wget gcc-c++
 </pre>
 
 == Building bladeRF libraries and tools from source ==
+
+'''If you already installed the bladeRF software using apt-get above, you can skip this section.'''
 
 === Clone the bladeRF git repository ===
 
