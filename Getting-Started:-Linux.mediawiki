@@ -12,7 +12,7 @@ $ bladeRF-cli --lib-version
 0.10.0-0.9.0.15.8ba2499
 </pre>
 
-If you want the latest, greatest builds, you can easily switch to [[ppa:bladerf/bladerf|https://launchpad.net/~bladerf/+archive/bladerf/+packages]].
+You can easily switch to [[ppa:bladerf/bladerf|https://launchpad.net/~bladerf/+archive/bladerf/+packages]] to get the latest release-grade bladeRF software:
 
 <pre>$ sudo add-apt-repository ppa:bladerf/bladerf
 $ sudo apt-get update
@@ -31,14 +31,14 @@ $ bladeRF-cli --lib-version
 0.16.0-git-unknown
 </pre>
 
-== Easy installation for Ubuntu 13.04 and later ==
-If you're running Ubuntu 13.04 ([[Raring Ringtail|http://releases.ubuntu.com/raring/]]) or later, a PPA is available at [[ppa:bladerf/bladerf-snapshots|https://launchpad.net/~bladerf/+archive/bladerf-snapshots/+packages]].  New builds will appear occasionally, built from the master.
+== Easy installation for Ubuntu 13.10 and later ==
+If you're running Ubuntu 13.10 (saucy) or later, a release PPA is available at [[ppa:bladerf/bladerf|https://launchpad.net/~bladerf/+archive/bladerf/+packages]].  New builds will appear occasionally as bladeRF releases are tagged.
 
-Note: There is also a ppa:bladerf/bladerf PPA for tagged builds and release candidates.
+Note: There is also a ppa:bladerf/bladerf-snapshots PPA for more frequent, bleeding-edge builds from master.
 
 To activate this PPA,
 
-<pre>$ sudo add-apt-repository ppa:bladerf/bladerf-snapshots
+<pre>$ sudo add-apt-repository ppa:bladerf/bladerf
 $ sudo apt-get update
 $ sudo apt-get install bladerf</pre>
 
