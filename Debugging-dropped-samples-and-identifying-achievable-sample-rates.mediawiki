@@ -34,7 +34,7 @@ Using the following methods over a number of different sample rates, you can get
 
 == Looking for gaps in received samples using an FPGA counter ==
 
-In version 0.0.3 of the ''hostedx40.rbf'' and ''hostedx115'' FPGA builds, the 32-bits of IQ data can be replaced with a 32-bit monotonically increasing counter value, via bit 9 of the FX3 -> FPGA GPIO interface.
+In v0.0.3 and later of the ''hostedx40.rbf'' and ''hostedx115'' FPGA builds, the 32-bits of IQ data can be replaced with a 32-bit monotonically increasing counter value, via bit 9 of the FX3 -> FPGA GPIO interface.
 
 We can enable this mode and capture samples via the bladeRF-cli program. Again, it's advised to save samples to RAM rather than to a disk. Here we'll save 80 MB worth of samples at 4Msps:
 
