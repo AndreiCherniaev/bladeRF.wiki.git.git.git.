@@ -67,9 +67,9 @@ The general procedure for using the XB-200 programmatically, via libbladeRF is a
 ** To tune to the "normal" bladeRF ranges, bypass the XB-200 mixer by using the [https://github.com/Nuand/bladeRF/blob/15340770ca59d30b82109ad8670aa0fe027ca9fe/host/libraries/libbladeRF/include/libbladeRF.h#L498 BLADERF_XB200_BYPASS] value with the above function.
 
 == bladeRF-cli ==
-To tell the CLI that the XB-200 has been attached, simply run the command '''xb attach 200'''.  This will expand the frequency range that the board is able to tune.
+To tell the CLI that the XB-200 has been attached, simply run the command <code>xb attach 200</code>.  This will expand the frequency range that the board is able to tune.
 
-At this time, the filterbank selection is not easily changed in the CLI.  The '''set xb_gpio''' command has to be used to manually select the filterbank and there is no current way to automatically follow the tuned frequency.
+At this time, the filterbank selection is not easily changed in the CLI.  The <code>set xb_gpio</code> command has to be used to manually select the filterbank and there is no current way to automatically follow the tuned frequency.
 
 == gr-osmosdr ==
 As of commit [http://cgit.osmocom.org/gr-osmosdr/commit/?id=9cb023b00a36d04ad8ea7e0bf08ad0623ab3e95f 9cb023], gr-osmosdr supports natively the XB-200.  Note that the way to enable the board has changed slightly from the previous patched method, so be sure to read the next section very carefully and make appropriate modifications to the device string.
