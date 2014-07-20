@@ -67,265 +67,27 @@ The general procedure for using the XB-200 programmatically, via libbladeRF is a
 ** To tune to the "normal" bladeRF ranges, bypass the XB-200 mixer by using the [https://github.com/Nuand/bladeRF/blob/15340770ca59d30b82109ad8670aa0fe027ca9fe/host/libraries/libbladeRF/include/libbladeRF.h#L498 BLADERF_XB200_BYPASS] value with the above function.
 
 == bladeRF-cli ==
-TODO Describe the commands involved with the XB-200
+To tell the CLI that the XB-200 has been attached, simply run the command '''xb attach 200'''.  This will expand the frequency range that the board is able to tune.
+
+At this time, the filterbank selection is not easily changed in the CLI.  The '''set xb_gpio''' command has to be used to manually select the filterbank and there is no current way to automatically follow the tuned frequency.
 
 == gr-osmosdr ==
-
-=== Fetching the pending patches ===
-A set of preliminary patches have been submitted to the gr-osmosdr maintainers, and are pending further review. These patches are subject to change.
-
-Below are the two patches (0001-bladeRF-Add-XB-200-support.patch and 0002-bladeRF-auto-filterbank-selection.patch) and a quick overview of how to apply them. 
-
-Save the aforementioned patches to the top-level of the gr-osmosdr repo. Include everything shown below; do not remove the header information.
-
-<pre>
-# Enter the directory containing the gr-osmosdr source
-$ cd path/to/gr-osmosdr/source
-
-# Ensure you have the latest and greatest. This is required.
-$ git checkout master
-$ git pull
-
-# Create a nuand-xb200-pending branch. In the future, you can return 
-# to master and delete this branch via:
-#   git checkout master && git branch -D nuand-xb200-pending
-$ git checkout -b nuand-xb200-pending
-
-# Apply the patches 
-$ git am 0001-bladeRF-Add-XB-200-support.patch 0002-bladeRF-auto-filterbank-selection.patch
-
-# Now rebuild and re-install as you normally would
-</pre>
-
-<b>0001-bladeRF-Add-XB-200-support.patch</b>
-<pre>
-From e6458f30625ed17a944b00ffc97076933a7436ed Mon Sep 17 00:00:00 2001
-From: Robert Ghilduta <robert.ghilduta@nuand.com>
-Date: Wed, 11 Jun 2014 01:11:09 -0700
-Subject: [PATCH 1/2] bladeRF: Add XB-200 support
-
-This commit adds support for the bladeRF XB-200 transverter expansion board. To
-enable the expansion board and to allow the osmocom source to down to 0Hz,
-parameter XB-200 has to be set. Additionally the XB-200 comes with 4 filter
-banks that can be set via configuration option, xb200filt. The following values
-are valid:
-   "50M"     :  50MHz band
-   "144M"    : 144MHz band
-   "222M"    : 222MHz band
-   [default] : Custom filter
----
- lib/bladerf/bladerf_common.cc | 26 ++++++++++++++++++++++++--
- lib/bladerf/bladerf_common.h  |  2 ++
- 2 files changed, 26 insertions(+), 2 deletions(-)
-
-diff --git a/lib/bladerf/bladerf_common.cc b/lib/bladerf/bladerf_common.cc
-index 7516020..ac56747 100644
---- a/lib/bladerf/bladerf_common.cc
-+++ b/lib/bladerf/bladerf_common.cc
-@@ -48,7 +48,7 @@ using namespace boost::assign;
- boost::mutex bladerf_common::_devs_mutex;
- std::list<boost::weak_ptr<struct bladerf> > bladerf_common::_devs;
- 
--bladerf_common::bladerf_common() : _conv_buf(NULL), _conv_buf_size(4096) {}
-+bladerf_common::bladerf_common() : _conv_buf(NULL), _conv_buf_size(4096), xb_200_attached(false) {}
- 
- bladerf_common::~bladerf_common()
- {
-@@ -305,6 +305,28 @@ void bladerf_common::init(dict_t &dict, bladerf_module module)
- 
-   }
- 
-+  if ( dict.count("xb200")) {
-+    if (bladerf_expansion_attach(_dev.get(), BLADERF_XB_200)) {
-+       std::cerr << "Could not attach XB-200";
-+    } else {
-+       _xb_200_attached = true;
-+    }
-+  }
-+
-+  bladerf_xb200_filter filter = BLADERF_XB200_CUSTOM;
-+  if ( dict.count("xb200filt")) {
-+      if ( dict["xb200filt"] == "50M") {
-+          filter = BLADERF_XB200_50M;
-+      } else if ( dict["xb200filt"] == "144M") {
-+          filter = BLADERF_XB200_144M;
-+      } else if ( dict["xb200filt"] == "222M") {
-+          filter = BLADERF_XB200_222M;
-+      }
-+  }
-+
-+  if (bladerf_xb200_set_filterbank(_dev.get(), module, filter)) {
-+       std::cerr << "Could not set XB-200 filter";
-+  }
- 
-   /* Show some info about the device we've opened */
-   std::cerr << _pfx << "Using nuand LLC bladeRF #" << device_number;
-@@ -387,7 +409,7 @@ void bladerf_common::init(dict_t &dict, bladerf_module module)
- osmosdr::freq_range_t bladerf_common::freq_range()
- {
-   /* assuming the same for RX & TX */
--  return osmosdr::freq_range_t( 300e6, 3.8e9 );
-+  return osmosdr::freq_range_t( _xb_200_attached ? 0 : 300e6, 3.8e9 );
- }
- 
- osmosdr::meta_range_t bladerf_common::sample_rates()
-diff --git a/lib/bladerf/bladerf_common.h b/lib/bladerf/bladerf_common.h
-index b13a6cf..3b1cb0b 100644
---- a/lib/bladerf/bladerf_common.h
-+++ b/lib/bladerf/bladerf_common.h
-@@ -82,6 +82,8 @@ protected:
- 
-   std::string _pfx;
- 
-+  bool _xb_200_attached;
-+
-   /* BladeRF IQ correction parameters */
-   static const int16_t DCOFF_SCALE  = 2048;
-   static const int16_t GAIN_SCALE   = 4096;
--- 
-1.9.1
-</pre>
-
-
-<b>0002-bladeRF-auto-filterbank-selection.patch</b>
-<pre>
-From 1e3e5168361d61704726c7de26e1095b7871c6f5 Mon Sep 17 00:00:00 2001
-From: Robert Ghilduta <robert.ghilduta@nuand.com>
-Date: Wed, 11 Jun 2014 15:01:33 -0700
-Subject: [PATCH 2/2] bladeRF: auto filterbank selection
-
-Setting xb200filt to "auto" causes the bladeRF sink and source blocks to
-automatically select the appropriate filterbank based on center
-frequency.
----
- lib/bladerf/bladerf_common.cc   | 12 ++++++++----
- lib/bladerf/bladerf_common.h    |  1 +
- lib/bladerf/bladerf_sink_c.cc   | 18 ++++++++++++++++++
- lib/bladerf/bladerf_source_c.cc | 18 ++++++++++++++++++
- 4 files changed, 45 insertions(+), 4 deletions(-)
-
-diff --git a/lib/bladerf/bladerf_common.cc b/lib/bladerf/bladerf_common.cc
-index ac56747..6773d4d 100644
---- a/lib/bladerf/bladerf_common.cc
-+++ b/lib/bladerf/bladerf_common.cc
-@@ -48,7 +48,7 @@ using namespace boost::assign;
- boost::mutex bladerf_common::_devs_mutex;
- std::list<boost::weak_ptr<struct bladerf> > bladerf_common::_devs;
- 
--bladerf_common::bladerf_common() : _conv_buf(NULL), _conv_buf_size(4096), xb_200_attached(false) {}
-+bladerf_common::bladerf_common() : _conv_buf(NULL), _conv_buf_size(4096), _xb_200_attached(false), _xb_200_auto_filter(false) {}
- 
- bladerf_common::~bladerf_common()
- {
-@@ -315,7 +315,9 @@ void bladerf_common::init(dict_t &dict, bladerf_module module)
- 
-   bladerf_xb200_filter filter = BLADERF_XB200_CUSTOM;
-   if ( dict.count("xb200filt")) {
--      if ( dict["xb200filt"] == "50M") {
-+      if ( dict["xb200filt"] == "auto") {
-+          _xb_200_auto_filter = true;
-+      } else if ( dict["xb200filt"] == "50M") {
-           filter = BLADERF_XB200_50M;
-       } else if ( dict["xb200filt"] == "144M") {
-           filter = BLADERF_XB200_144M;
-@@ -324,8 +326,10 @@ void bladerf_common::init(dict_t &dict, bladerf_module module)
-       }
-   }
- 
--  if (bladerf_xb200_set_filterbank(_dev.get(), module, filter)) {
--       std::cerr << "Could not set XB-200 filter";
-+  if (_xb_200_attached && !_xb_200_auto_filter) {
-+      if (bladerf_xb200_set_filterbank(_dev.get(), module, filter)) {
-+          std::cerr << "Could not set XB-200 filter";
-+      }
-   }
- 
-   /* Show some info about the device we've opened */
-diff --git a/lib/bladerf/bladerf_common.h b/lib/bladerf/bladerf_common.h
-index 3b1cb0b..f67c5b5 100644
---- a/lib/bladerf/bladerf_common.h
-+++ b/lib/bladerf/bladerf_common.h
-@@ -83,6 +83,7 @@ protected:
-   std::string _pfx;
- 
-   bool _xb_200_attached;
-+  bool _xb_200_auto_filter;
- 
-   /* BladeRF IQ correction parameters */
-   static const int16_t DCOFF_SCALE  = 2048;
-diff --git a/lib/bladerf/bladerf_sink_c.cc b/lib/bladerf/bladerf_sink_c.cc
-index c230e41..32fbd5e 100644
---- a/lib/bladerf/bladerf_sink_c.cc
-+++ b/lib/bladerf/bladerf_sink_c.cc
-@@ -183,6 +183,24 @@ double bladerf_sink_c::set_center_freq( double freq, size_t chan )
-                                 boost::lexical_cast<std::string>(freq) +
-                                 ":" + std::string(bladerf_strerror(ret)));
-     }
-+
-+    if (_xb_200_auto_filter) {
-+      bladerf_xb200_filter filter = BLADERF_XB200_CUSTOM;
-+      if ( freq >= 50e6 && freq <= 54e6 ) {
-+        filter = BLADERF_XB200_50M;
-+      } else if ( freq >= 149e6 && freq <= 159e6 ) {
-+        filter = BLADERF_XB200_144M;
-+      } else if ( freq >= 206e6 && freq <= 235e6 ) {
-+        filter = BLADERF_XB200_222M;
-+      }
-+
-+      if (bladerf_xb200_set_filterbank(_dev.get(), BLADERF_MODULE_TX, filter)) {
-+        throw std::runtime_error( std::string(__FUNCTION__) + " " +
-+                                  "Failed to auto set XB-200 filter at frequency " +
-+                                  boost::lexical_cast<std::string>(freq) +
-+                                  ":" + std::string(bladerf_strerror(ret)));
-+      }
-+    }
-   }
- 
-   return get_center_freq( chan );
-diff --git a/lib/bladerf/bladerf_source_c.cc b/lib/bladerf/bladerf_source_c.cc
-index d7eaeeb..3b1b5c8 100644
---- a/lib/bladerf/bladerf_source_c.cc
-+++ b/lib/bladerf/bladerf_source_c.cc
-@@ -232,6 +232,24 @@ double bladerf_source_c::set_center_freq( double freq, size_t chan )
-                                 boost::lexical_cast<std::string>(freq) + ": " +
-                                 std::string(bladerf_strerror(ret)) );
-     }
-+
-+    if (_xb_200_auto_filter) {
-+      bladerf_xb200_filter filter = BLADERF_XB200_CUSTOM;
-+      if ( freq >= 50e6 && freq <= 54e6 ) {
-+        filter = BLADERF_XB200_50M;
-+      } else if ( freq >= 149e6 && freq <= 159e6 ) {
-+        filter = BLADERF_XB200_144M;
-+      } else if ( freq >= 206e6 && freq <= 235e6 ) {
-+        filter = BLADERF_XB200_222M;
-+      }
-+
-+      if (bladerf_xb200_set_filterbank(_dev.get(), BLADERF_MODULE_RX, filter)) {
-+        throw std::runtime_error( std::string(__FUNCTION__) + " " +
-+                                  "Failed to auto set XB-200 filter at frequency " +
-+                                  boost::lexical_cast<std::string>(freq) +
-+                                  ":" + std::string(bladerf_strerror(ret)));
-+      }
-+    }
-   }
- 
-   return get_center_freq( chan );
--- 
-1.9.1
-</pre>
+As of commit [http://cgit.osmocom.org/gr-osmosdr/commit/?id=9cb023b00a36d04ad8ea7e0bf08ad0623ab3e95f 9cb023], gr-osmosdr supports natively the XB-200.  Note that the way to enable the board has changed slightly from the previous patched method, so be sure to read the next section very carefully and make appropriate modifications to the device string.
 
 === Enabling the XB-200 and Selecting Filters ===
-To enable the XB200 in software that utilizes gr-osmosdr, add '''xb200''' to the source/sink arguments string. By default, the custom filter bank will be selected. Therefore, you must have the <b>FILT</b> and <b>FILT-ANT</b> connected through a filter, or directly connected together (no filter).
+To enable the XB200 in software that utilizes gr-osmosdr, add '''xb200''' to the source/sink arguments string. By default, the filter bank selected will automatically tune with the tuned frequency at the 1dB points. Therefore, you must have the <b>FILT</b> and <b>FILT-ANT</b> connected through a filter, or directly connected together (no filter).
 
 If you wish to select one of the other filter paths, append one of the following to the source/sink arguments string:
-* <code>xb200filt=50M</code>
-* <code>xb200filt=144M</code>
-* <code>xb200filt=222M</code>
-* <code>xb200filt=auto</code>
-** This option will select an appropriate filter path based upon the selected center frequency. 
+* <code>xb200=50M</code>
+* <code>xb200=144M</code>
+* <code>xb200=222M</code>
+* <code>xb200=auto</code>
+** This option will select an appropriate filter path based upon the selected center frequency with 1dB corners.  This is the default if no filter is selected.
+* <code>xb200=auto3db</code>
+** This option will select an appropriate file path based upon the selected center frequency with 3dB corners.
+* <code>xb200=custom</code>
 <br>
 Below is an example device string that enables the XB-200 and selects the 144MHz - 148MHz filter:
 <pre>
-bladerf=0,xb200,xb200filt=144M
+bladerf=0,xb200=144M
 </pre>
