@@ -25,9 +25,9 @@ Simply place (or symlink, for *nix users) the FPGA bitfile in one of these direc
 
 = Firmware-based =
 
-Another option is to write an FPGA-bitstream to the device's SPI flash.  When the firmware boots, it checks for the presence of FPGA metadata, and will being to load the FPGA if a bitstream is present. 
+Another option is to write an FPGA-bitstream to the device's SPI flash.  When the firmware boots, it checks for the presence of FPGA metadata, and will begin to load the FPGA if a bitstream is present. 
 
-This is process is slower than the host-based mechanism mentioned above. However, this mechanism allows for "headless" (without a host PC) operation. It takes approximately 10 seconds to load an x40 image, and 30 seconds to load an x115 image.  Speeding this process up is a pending development task.
+This process is slower than the host-based mechanism mentioned above. However, this mechanism allows for "headless" (without a host PC) operation. It takes approximately 10 seconds to load an x40 image, and 30 seconds to load an x115 image.  Speeding this process up is a pending development task.
 
 <b>Important:</b> Be sure that the firmware autoload has completed before attempting to use the device (i.e., open a device handle)! When the FPGA is fully configured, LEDs 1-3 will be lit.
 
