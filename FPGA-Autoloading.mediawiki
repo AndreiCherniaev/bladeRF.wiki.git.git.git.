@@ -16,6 +16,8 @@ Upon opening a device handle, libbladeRF checks the device's FPGA size.  It then
 * <code>/etc/Nuand/bladeRF/</code>
 * <code>/usr/share/Nuand/bladeRF/</code>
 
+The user's home directory is determined based upon contents of <code>/etc/passwd</code>.
+
 <b>Windows</b>
 * <code>%APPDATA%/Nuand/bladeRF/</code>
 
