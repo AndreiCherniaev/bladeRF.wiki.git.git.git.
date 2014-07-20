@@ -38,20 +38,20 @@ The pthreads library is required to build libbladeRF and its utilities. A few st
 
 # Download the latest release. Currently this is [ftp://sourceware.org/pub/pthreads-win32/pthreads-w32-2-9-1-release.zip the pthreads-win32 website].
 # Extract the contents of the release zip.
-# Copy the contents of the _Pre-built.2_ directory to _C:\Program Files (x86)\pthreads-win32
+# Copy the contents of the <code>Pre-built.2</code> directory to <code>C:\Program Files (x86)\pthreads-win32</code>
 
 === Installing CMake ===
 Download and install CMake for Windows: 
 http://www.cmake.org/cmake/resources/software.html
 
-== Building with CMake and VS2012 ==
+== Building with CMake and Visual Studio 2013 ==
 
 === Configuring with CMake ===
 # Run the CMake GUI utility. 
-# Under "Where is the source code", browse to '''some_dir/bladeRF/host'''. 
-# Create a new directory, '''some_dir/bladeRF/host/build'''. 
-# Under "Where to build the binaries", browse to the newly created /bladeRF/host/build. Click the Configure button. 
-# Select your appropriate version of Visual Studio.  Current development is done using "Visual Studio 11" or "Visual Studio 11 Win64" as the generator (Visual Studio 2012).  Select "Use default native compilers", then click "Finish". 
+# Under "Where is the source code", browse to '''preferred_directory/bladeRF/host'''. 
+# Create a new directory, '''preferred_directory/bladeRF/host/build'''. 
+# Under "Where to build the binaries", browse to the newly created '''preferred_directory/bladeRF/host/build'''. Click the Configure button. 
+# Select your appropriate version of Visual Studio.  For Visual Studio 2013, select "Visual Studio 12" or "Visual Studio 12 Win64".  Select "Use default native compilers", then click "Finish". 
 # If the configuration fails, double check the values for ''LIBUSB_PATH'' and ''LIBPTHREADSWIN32_PATH'', and re-run the configuration.
 # Click on the Generate button.
 # A visual studio solution should now be available, '''build/host/bladeRF.sln'''
