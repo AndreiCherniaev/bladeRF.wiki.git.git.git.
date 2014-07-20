@@ -6,6 +6,8 @@ These "autoload" mechanisms alleviate the need to manually load the FPGA via the
 = Host software-based =
 As of version [https://github.com/Nuand/bladeRF/commit/14f515e4674674fb818172cde5feb9733cfaedcc 0.16.0], libbladeRF provides a mechanism to load an FPGA when a device handle is opened, if the FPGA is detected to not already be in a configured state.
 
+<i>This approach is generally recommended over the firmware-based mechanism, for users who will always be using the bladeRF device with a host machine.</i>
+
 Upon opening a device handle, libbladeRF checks the device's FPGA size.  It then searchs for the corresponding FPGA bitfile (<code>hostedx40.rbf</code> or <code>hostedx115.rbf</code>) in one of the following locations. The order in which these locations are searched is from top to bottom.
 
 <b>Linux or OSX</b>
