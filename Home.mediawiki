@@ -21,6 +21,7 @@ These guides describe the process of building and installing the bladeRF softwar
 * [[Upgrading-bladeRF-firmware|Upgrading the bladeRF firmware]] - This guide describes both the normal firmware and bootloader-based firmware upgrade procedures.
 
 = How-To's =
+* [[FPGA Autoloading]]
 * [[bladeRF CLI Tips and Tricks]]
 * [[Debugging dropped samples and identifying achievable sample rates]]
 * [[Manually adjusting DC offset and IQ Imbalance corrections]]
