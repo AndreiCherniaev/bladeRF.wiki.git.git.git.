@@ -69,33 +69,15 @@ Open up a '''cmd.exe''' window and navigate to the output directory associated w
 
 <pre>
 C:\Users\jon\Documents\projects\bladeRF\host\build\host\output\Debug>dir
- Volume in drive C is Windows7_OS
- Volume Serial Number is D632-7BC2
 
- Directory of C:\Users\jon\Documents\projects\bladeRF\host\build\host\output\Debug
-
-10/19/2013  05:36 PM    <DIR>          .
-10/19/2013  05:36 PM    <DIR>          ..
 10/19/2013  05:36 PM           122,880 bladeRF-cli.exe
-10/19/2013  05:36 PM           506,340 bladeRF-cli.ilk
-10/19/2013  05:36 PM           921,600 bladerf-cli.pdb
 10/19/2013  05:36 PM           139,776 bladeRF.dll
-10/19/2013  05:36 PM            10,351 bladeRF.exp
-10/19/2013  05:36 PM           388,640 bladeRF.ilk
-10/19/2013  05:36 PM            17,676 bladeRF.lib
-10/19/2013  05:36 PM           839,680 bladerf.pdb
-10/19/2013  05:36 PM            36,352 libbladeRF_test_async.exe
-10/19/2013  05:36 PM           273,580 libbladeRF_test_async.ilk
-10/19/2013  05:36 PM           552,960 libbladerf_test_async.pdb
-10/19/2013  05:36 PM            54,272 libbladeRF_test_repeater.exe
-10/19/2013  05:36 PM           330,296 libbladeRF_test_repeater.ilk
-10/19/2013  05:36 PM           618,496 libbladerf_test_repeater.pdb
+
+... Snipped out some other items ...
+
 10/19/2013  05:35 PM            92,160 libusb-1.0.dll
 10/19/2013  05:35 PM            55,808 pthreadVC2.dll
-              16 File(s)      4,960,867 bytes
-               2 Dir(s)  80,010,641,408 bytes free
 
-C:\Users\jon\Documents\projects\bladeRF\host\build\host\output\Debug>
 </pre>
 
 Note the presence of the libusb-1.0.dll and pthreadVC2.dll in this directory. These are placed here so that the bladeRF-cli and other tests may be run from this directory.
