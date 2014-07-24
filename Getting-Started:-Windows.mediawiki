@@ -82,4 +82,4 @@ C:\Users\jon\Documents\projects\bladeRF\host\build\host\output\Debug>dir
 
 Note the presence of the libusb-1.0.dll and pthreadVC2.dll in this directory. These are placed here so that the bladeRF-cli and other tests may be run from this directory.
 
-From here, you can continue on with the [[Getting Started: Verifying Basic Device Operation]] wiki page.
+From here, you can continue on with the [[Getting Started: Verifying Basic Device Operation]] wiki page. If you encounter any errors or warnings, please see the [[Troubleshooting]] guide.
