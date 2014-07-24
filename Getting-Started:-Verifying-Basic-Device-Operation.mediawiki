@@ -286,9 +286,16 @@ At this point, the CSV could be easily be loaded into [http://freemat.sourceforg
 
 Similar to the <code>rx</code> command, the <code>tx</code> command can transmit samples in the background, with the data coming from either CSV or binary files.
 
-Run <code>help tx</code> for usage information for this command. For a CSV file formatted as described in the previous section, you can transmit the contents of the CSV 10 times at 3.25 Msps via:
+Run <code>help tx</code> for usage information for this command. For a CSV file formatted as described in the previous section, you can transmit the contents of the CSV 10 times at 3.25 Msps via the following.
+
+'''Note that we first place the device into internal loopback here to avoid transmitting on the external TX port in this example.'''
 
 <pre>
+bladeRF> set loopback rf_lna1
+bladeRF> print loopback
+
+Loopback mode: rf_lna1
+
 bladeRF> set samplerate tx 3.25M
 
   Setting TX sample rate - req:   3250000 0/1Hz, actual:   3250000 0/1Hz
