@@ -214,7 +214,7 @@ This warning comes up if you have a that is considered out-of-date. It may be co
 
 Please update to the [http://nuand.com/fx3/latest.img latest firmware], per the instructions in [[Upgrading-bladeRF-firmware|this wiki page.]]
 
-== Outdated FPGA warning ===
+== Outdated FPGA warning ==
 libbladeRF prints a warning if it detects that the device's firmware requires a more recent FPGA version. If you see this message, fetch the associated FPGA image from [https://www.nuand.com/fpga.php the FPGA download page].
 
 
