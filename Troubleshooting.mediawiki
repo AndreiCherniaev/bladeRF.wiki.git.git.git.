@@ -236,7 +236,7 @@ If you're seeing this issue, ensure that you've updated both your firmware (cycl
 
 To disable FPGA autoloading: <code>bladeRF-cli -L X</code>
 
-== FPGA fails to load ==
+== FPGA fails to load with a timeout ==
 In many cases, load failures have been the result of trying to load the wrong size FPGA image for the board in question. Check to make sure you are using the 40kLE FPGA for x40 and the 115kLE FPGA for x115.
 
 If you're unsure which FPGA size is on your board, identify the the Altera Cyclone IV package on the top of the bladeRF. You should see text on the package that reads ''EP4CExxxF23C8N'', where ''xxx'' is the size -- either 40 or 115.
