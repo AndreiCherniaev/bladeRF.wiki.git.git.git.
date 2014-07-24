@@ -84,7 +84,10 @@ The ''install_manifest.txt'' file, created after running the install step succes
 
 = Checking basic device operation =
 
-Before continuing on with the rest of this article, head over to the [[Getting Started: Verifying Basic Device Operation]] page. If you have any issues, be sure to check the [[Troubleshooting]] page.
+Before continuing on with the rest of this article, head over to the [[Getting Started: Verifying Basic Device Operation]] page. If you have any issues:
+* Try both USB 2.0 and 3.0 ports
+* Check if the bladeRF appears without problems in Command-Space 'System Information' to see your USB devices.
+* Head over to the [[Troubleshooting]] page.
 
 <br>
 
