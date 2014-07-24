@@ -163,97 +163,13 @@ $ make && sudo make install && sudo ldconfig
 Note that from this same directory, you can run the following to uninstall the files place on your system in the previous step. <pre>sudo make uninstall</pre> 
 
 The ''install_manifest.txt'' file, created after running the install step successfully, lists all the files installed.  It is a good idea to back up this file if you plan on removing this build directory later.
-
+<br>
 == Checking basic device operation ==
 
-=== Detecting the bladeRF ===
-With the libraries and tools installed, we can now use the ''bladeRF-cli'' (command line interface) to probe for devices attached to the system.
+Before continuing, see the [[Getting Started: Verifying Basic Device Operation]] guide to test basic functionality. 
 
-First, take a look at the command-line options:
-<pre>
-$ bladeRF-cli --help
-</pre>
-
-* If you see the help text, you can skip ahead to the invocation with the ''-p'' option.
-
-* If you receive error about not being able to find libbladeRF.so.0, then we must create an ldconfig entry to ensure that library path in which libbladeRF was installed is searched. Follow the next few steps.
-** As root (i.e., use sudo) create an /etc/ld.so.conf.d/bladeRF.conf and open it with your favorite editor
-** Add a single line containing <code>/usr/local/lib</code> to the file.  If you specified something other than /usr/local for ''CMAKE_INSTALL_PREFIX'' (the default), adjust this line accordingly.
-** Run <code>sudo ldconfig</code> and then try running <code>bladeRF-cli --help</code> again. The library search issue should now be resolved.
-
-
-Note that the ''-p'' option may be used to probe for device. Plug in your device, and run the following command. You should see similar output.
-
-<pre>
-$ bladeRF-cli -p
-    Backend:        libusb
-    Serial:         f12ce1037830a1b27f3ceeba1f521413
-    USB Bus:        4
-    USB Address:    8
-</pre>
-
-If you do not see any device listed:
-* Verify that your user is in the ''plugdev'' group
-* Double check ''dmesg'' and ''lsusb'' output
-** The bladeRF's VID=1d50 and PID=6066
-** If you see a Cypress device with VID=04b4 PID=00f3, then the bladeRF is running in the bootloader mode. No worries! Follow the instructions at [[Upgrading-bladeRF-firmware|this page]] to reflash your device.
-* See the [[Troubleshooting]] page before continuing.
-
-=== Viewing additional device information ===
-
-More information about the attached device can be viewed while running ''bladeRF-cli'' in interactive mode. Enter this mode and issue the '''help''' command to see a list of available command.  Use the '''info''' command to print information about the device, and '''version''' to view version information, most notably, the firmware:
-
-<pre>
-$ bladeRF-cli -i
-
-bladeRF> help
-
-... (Help text shown here ) ...
-
-bladeRF> info
-
-  Serial #:                 f12ce1037830a1b27f3ceeba1f521413                          
-  VCTCXO DAC calibration:   0x894e
-  FPGA size:                40 KLE
-  FPGA loaded:              no
-  USB bus:                  2
-  USB address:              3
-  USB speed:                Hi-Speed
-  Backend:                  libusb
-  Instance:                 0
-
-bladeRF> version
-  bladeRF-cli version:        0.6.0-git-f1f1c25
-  libbladeRF version:         0.7.0-git-f1f1c25
-
-  Firmware version:           1.0.0
-  FPGA version:               Unknown (FPGA not loaded)
-
-</pre>
-
-Here we see the device's serial number, DAC calibration, FPGA information, and USB connection information.  Take note of the FPGA size, as this will help determine which FPGA file to load.
-
-'''Note:''' If you see a warning about libbladeRF detecting outdated firmware, you should upgrade the firmware before continuing to the next section.  See [[Upgrading-bladeRF-firmware|this wiki page]] for more information.
-
-=== Loading the FPGA ===
-Support for loading the FPGA from flash automatically is currently supported and undergoing further testing. See the <code>bladeRF-cli --help</code> text for information on how to write an FPGA image to flash for autoloading.
-
-For simplicity, this guide shows how to load the FPGA without storing it into flash for autoloading. (As a result, you'll have to load the FPGA each time the device is reset or plugged in.)
-
-FPGA images can be obtained from [[the Nuand website|http://www.nuand.com/fpga]] or from a [[nightly build of "bleeding edge" images|http://hoopycat.com/bladerf_builds/]].
-
-To load an image from the command line.
-<pre>
-$ bladeRF-cli -l <path/to/fpga/file>
-</pre>
-
-Or to load an image while in interactive mode:
-<pre>
-bladeRF> load fpga <path/to/fpga/file>
-</pre>
-
-After the FPGA loads, you should see LEDs on the board begin blinking. At this point, you're ready to start using your device!
-
+If you encounter any issues or warnings, be sure to check the [[Troubleshooting]] guide before continuing on with this article.
+<br>
 == Building GNU Radio and gr-osmosdr ==
 
 The following procedure uses build-gnuradio to fetch dependencies and checkout some useful tools. However, it only covers installing GNU Radio and gr-osmosdr.  A similar procedure maybe used to install the other tools (such as gr-iqbal). 
