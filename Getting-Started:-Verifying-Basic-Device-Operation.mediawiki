@@ -76,3 +76,142 @@ Ensure you download [https://github.com/Nuand/bladeRF/wiki/Troubleshooting#FPGA_
 After the FPGA loads, you should see LED1, LED2 and LED3 light up. When is in use, LED2 will be blinking.
 
 If you do not want to manually load the FPGA at every power on, see the [[FPGA Autoloading]] page.
+
+= Adjusting Device Parameters =
+
+A number of device parameters can be printed and set via the bladeRF-cli <code>print</code> and <code>set</code> commands, respectively.  Run <code>help print</code> and <code>help set</code> for a list of parameters.
+
+== Gain ==
+
+=== RX Gain ===
+
+The <code>lnagain</code>, <code>rxvga1</code>, and <code>rxvga2</code> parameters may be used to view and adjust RX gains:
+
+<pre>
+bladeRF> print lnagain
+
+   LNA Gain: 6 dB
+
+bladeRF> print rxvga1
+
+  RXVGA1 Gain:  30dB
+
+bladeRF> print rxvga2
+
+  RXVGA2 Gain:   3dB
+
+bladeRF> set rxvga2 6 
+bladeRF> print rxvga2
+
+  RXVGA2 Gain:   6dB
+</pre>
+
+=== TX Gain ===
+
+The <code>txvga1</code> and <code>txvga2</code> parameters may be used to view and adjust TX gains.
+
+<pre>
+bladeRF> print txvga1
+
+  TXVGA1 Gain: -14dB
+
+bladeRF> print txvga2
+
+  TXVGA2 Gain: 0dB
+
+bladeRF> set txvga1 -18
+bladeRF> print txvga1
+
+  TXVGA1 Gain: -18dB
+</pre>
+
+== Bandwidth ==
+
+Use the <code>bandwidth</code> parameter to query and adjust the current bandwidth settings.  This may be done for both RX and TX modules simultaneously, or on a per-module basis. Note that there are discrete bandwidth settings available. bladeRF-cli prints out the requested bandwidth, and the closest actual setting used.
+
+<pre>
+bladeRF> print bandwidth
+
+  RX Bandwidth:  28000000Hz
+  TX Bandwidth:  28000000Hz
+
+bladeRF> set bandwidth 1.5MHz
+
+  Set RX bandwidth - req:  1500000Hz actual:  1500000Hz
+  Set TX bandwidth - req:  1500000Hz actual:  1500000Hz
+
+bladeRF> set bandwidth RX 4MHz
+
+  Set RX bandwidth - req:  4000000Hz actual:  5000000Hz
+</pre>
+
+== Frequency ==
+Use the <code>frequency</code> parameter to view and changed the frequencies the RX and TX modules are tuned to. Similar to the <code>bandwidth</code> parameter, this may be applied to both the RX and TX modules simultaneously, or just one of them.
+
+<pre>
+bladeRF> print frequency
+
+  RX Frequency: 1000000000Hz
+  TX Frequency: 1000000000Hz
+
+bladeRF> set frequency 2.4GHz
+
+  Set RX frequency: 2400000000Hz
+  Set TX frequency: 2400000000Hz
+
+bladeRF> set frequency rx 455.55MHz
+
+  Set RX frequency:  455550000Hz
+</pre>
+
+== Sample Rate ==
+As you may have guessed by this point, the <code>samplerate</code> parameter controls the RX and TX sample rates. RX and TX may be configured to operate at different sample rates. The units in these commands are ''samples per second''.  As sample rates are rounded to achievable rational numbers, the actual value set is printed back.
+
+<pre>
+bladeRF> print samplerate
+
+  RX sample rate: 1000000 0/1
+  TX sample rate: 1000000 0/1
+
+bladeRF> set samplerate rx 40M
+
+  Setting RX sample rate - req:  40000000 0/1Hz, actual:  40000000 0/1Hz
+</pre>
+
+
+== Loopback ==
+
+It's often ''very'' handy to be able to internally loopback signals from the TX module back to the RX module, without an external cable and attenuator. (Generally, it's recommended to keep an attenuator on an unconnected TX port, just to be cautious.)
+
+The LMS6002D provides internal loopback modes, which loopback the analog signals; this means you will not receive the exact data you transmit.  See the ''Loopback and Bypass Modes'' section of the [http://www.limemicro.com/download/LMS6002Dr2-Programming_and_Calibration_Guide-1.1r1.pdf LMS6002D Programming and Calibration Guide] to understand how each loopback mode is achieved. The LMS-based loopback modes have a ''bb_'' (baseband) or ''rf_'' (Post-mixer RF path) prefixes.
+
+If you want to receive the ''exact'' same data that you transmit, use the '''firmware''' loopback modes.
+
+<pre>
+
+Loopback mode: none
+
+bladeRF> set loopback
+
+Usage: set loopback <mode>, where <mode> is one of the following:
+
+  bb_txlpf_rxvga2   Baseband loopback: TXLPF output --> RXVGA2 input
+  bb_txlpf_rxlpf    Baseband loopback: TXLPF output --> RXLPF input
+  bb_txvga1_rxvga2  Baseband loopback: TXVGA1 output --> RXVGA2 input.
+  bb_txvga1_rxlpf   Baseband loopback: TXVGA1 output --> RXLPF input
+  rf_lna1           RF loopback: TXMIX --> RXMIX via LNA1 path.
+  rf_lna2           RF loopback: TXMIX --> RXMIX via LNA2 path.
+  rf_lna3           RF loopback: TXMIX --> RXMIX via LNA3 path.
+  firmware          Firmware-based sample loopback.
+  none              Loopback disabled - Normal operation.
+
+bladeRF> set loopback rf_lna1
+bladeRF> print loopback
+
+Loopback mode: rf_lna1
+
+bladeRF> set loopback none
+bladeRF> print loopback
+
+Loopback mode: none
+</pre>
