@@ -117,7 +117,7 @@ $ cd build
 Next, configure the build. In the below example, we:
 * Set up a Debug build
 * Enable the installation of udev rules. 
-** By default, this grant members of the ''plugdev'' group read-write access to bladeRF devices.  This group can can be changed via <code>-DBLADERF_GROUP=desired_group</code>. The remainder of this guide assumes the default.
+** By default, this grants members of the ''plugdev'' group read-write access to bladeRF devices.  This group can can be changed via <code>-DBLADERF_GROUP=desired_group</code>. The remainder of this guide assumes the default. '''You should be sure to specify this group if plugdev is not used by your distribution.'''
 * Specify that files should be installed into /usr/local
 ** You can install into a different location via the <code>-DCMAKE_INSTALL_PREFIX=/some/desired/path</code> option. Note that you'll need to need to configure binary and library search paths if you install elsewhere. If you're unsure how to do this, simply follow the steps below to use the default install location.
 
@@ -126,34 +126,33 @@ $ cmake -DCMAKE_BUILD_TYPE=Debug -DINSTALL_UDEV_RULES=ON ../
 </pre>
 
 
-Ensure that your user is in the group specified by <code>BLADERF_GROUP</code> (plugdev, by default).  Check the output of the ''groups'' command:
+Ensure that your user is in the group specified by <code>BLADERF_GROUP</code>.  Check the output of the ''groups'' command:
 
 <pre>
-$ groups                                                       ~
+$ groups
 jon adm cdrom sudo dip plugdev lpadmin sambashare
 </pre>
 
-In the above case (an Ubuntu 13.10 system), the user is already in the <code>plugdev</code> group, so we can skip ahead to the next subsection.
+In the above case, the user is already in the <code>plugdev</code> group, so we can skip ahead to the next subsection.
 
-
-However, on a Fedora 19 system, the user will not be in many groups. Furthermore, this distro doesn't have normally create and use a ''plugdev'' group.  We can create one as follows:
+However, on other systems, the user may not already be in the required group. Furthermore, some distributions may not use the plugdev group. In these cases, you can either add a user to a more appropriate group or create a new group (and configure the build with <code>-DBLADERF_GROUP=desired_group</code>.  For example, to create a ''bladerf'' group and add the user ''jon'' to it:
 <pre>
-$ groups                                                       ~
+$ groups
 jon wheel
-$ sudo groupadd plugdev
-$ sudo usermod -a -G plugdev jon
+$ sudo groupadd bladerf
+$ sudo usermod -a -G bladerf jon
 
 # Now log out and log back in...
 
 $ groups
-jon wheel plugdev
+jon wheel bladerf
 </pre>
 
 === Perform the build and installation ===
 
 The following commands:
 # Perform the build
-# Install files to /usr/local or the location specified by ''CMAKE_INSTALL_PREFIX''
+# Install files to /usr/local or the location specified by <code>CMAKE_INSTALL_PREFIX</code>
 # Updated share library paths, so that libbladeRF can be found
 
 <pre>
