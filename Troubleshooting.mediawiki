@@ -41,11 +41,6 @@ If you see an error about being unable to find the <code>libusb_get_version</cod
 
 There is [https://github.com/Nuand/bladeRF/issues/130 an open action item] to change the CMake configuration to detect and complain about this, prior to compilation.
 
-== bladeRF-flash ==
-
-=== libusb hotplug support ===
-If you obtain a warning about the installed libusb version not containing hotplug support, you'll need a newer libusb version to build bladeRF-flash. See [[Troubleshooting#outdated-libusb|Outdated libusb]]
-
 == Cannot build <code>libtecla</code> under Mac OSX 10.9 due to missing <code>libgcc.a</code> ==
 Please take a look at [https://github.com/Nuand/bladeRF/wiki/Building-libtecla#configure-and-build Building libtecla] and note the <code>sed</code> script required to remove the link to <code>libgcc.a</code> in the Makefile.  This is due to the fact that the <code>configure</code> script for <code>libtecla</code> uses <code>gcc -print-libgcc-file-name</code>, which [http://lists.cs.uiuc.edu/pipermail/llvmbugs/2013-February/027238.html does not provide a full-path].
 
