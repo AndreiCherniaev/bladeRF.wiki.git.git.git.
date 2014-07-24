@@ -217,6 +217,16 @@ Please update to the [http://nuand.com/fx3/latest.img latest firmware], per the 
 == Outdated FPGA warning ==
 libbladeRF prints a warning if it detects that the device's firmware requires a more recent FPGA version. If you see this message, fetch the associated FPGA image from [https://www.nuand.com/fpga.php the FPGA download page].
 
+== FPGA load failures ==
+
+=== Operation Timed Out ===
+In many cases, load failures have been the result of trying to load the wrong size FPGA image for the board in question. Check to make sure you are using the 40kLE FPGA for x40 and the 115kLE FPGA for x115.
+
+If you're unsure which FPGA size is on your board, identify the the Altera Cyclone IV package on the top of the bladeRF. You should see text on the package that reads ''EP4CExxxF23C8N'', where ''xxx'' is the size -- either 40 or 115.
+
+== File or device I/O failure ==
+If you're unable to load the FPGA using a USB 3.0 port while successfully doing so via USB 2.0, edit <code>/linux/drivers/usb/host/xhci.h</code> by changing <code>TRBS_PER_SEGMENT</code> from 64 to 256, and recompiling the kernel.
+
 == Linux: Failure to find libbladeRF.so or libbladeRF.so.0 ==
 
 Ensure the location that you installed libbladeRF to is in your library search path. If you can't recall where this location is:
@@ -235,14 +245,6 @@ One possible reason for this error is a mismatch between the FPGA bistream and t
 If you're seeing this issue, ensure that you've updated both your firmware (cycle power after flashing), and FPGA. Ensure you've disabled FPGA autoloading before flashing the new firmware, otherwise the (old) autoloaded FPGA will be attempting to use the lower bridge baudrate.
 
 To disable FPGA autoloading: <code>bladeRF-cli -L X</code>
-
-== FPGA fails to load with a timeout ==
-In many cases, load failures have been the result of trying to load the wrong size FPGA image for the board in question. Check to make sure you are using the 40kLE FPGA for x40 and the 115kLE FPGA for x115.
-
-If you're unsure which FPGA size is on your board, identify the the Altera Cyclone IV package on the top of the bladeRF. You should see text on the package that reads ''EP4CExxxF23C8N'', where ''xxx'' is the size -- either 40 or 115.
-
-== Error: failed to load FPGA: File or device I/O failure ==
-If you're unable to load the FPGA using a USB 3.0 port while successfully doing so via USB 2.0, edit <code>/linux/drivers/usb/host/xhci.h</code> by changing <code>TRBS_PER_SEGMENT</code> from 64 to 256, and recompiling the kernel.
 
 <pre>
 $ dmesg | grep xhci
