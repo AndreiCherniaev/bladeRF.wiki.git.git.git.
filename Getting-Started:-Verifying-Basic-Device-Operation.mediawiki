@@ -229,8 +229,6 @@ Loopback mode: none
 == Receiving samples ==
 After configuring device parameters, you can receive samples to either to a CSV file or a binary file, using the <code>rx</code> command. Run <code>help rx</code> in the bladeRF-cli program to view information about this command.
 
-In the binary file format, samples are stored in the [http://tinyurl.com/ogmarcr SC16Q11 format] -- interleaved, little endian 16-bit I and Q values, sign-extended and in the range of -2048 to 2047.
-
 Below is a basic example for receiving 10737418240 (10 * 1024 * 1024 * 1024) samples to a CSV file, at a sample rate of 1 Msps. This is a little over 10s of samples, and totals 40MiB.
 
 <pre>
@@ -278,8 +276,72 @@ bladeRF> rx
 
 As shown above, with no arguments, <code>rx</code> shows the current state of the RX module. After starting the RX module, samples will be received in the background of the CLI. <code>rx wait</code> may be used to wait until reception is complete (or Ctrl-C is pressed), and then return to the prompt.
 
-Note that in Linux or OSX, if you have bladeRF-cli built with libtecla support, you can tab-complete on filenames, and <code>~</code> will be expanded to your home directory: <code>rx config file=~/Desktop/samples.csv format=csv n=10M</code>
-
 When complete, the <code>samples.csv</code> file will contain two columns, the first being I, and the second being Q. These values will be in the range of <code>[-2048 to 2048)</code>, which represents <code>[-1.0, 1.0)</code>.  Note that the upper bound here is exclusive; the max value will be 2047.
 
 At this point, the CSV could be easily be loaded into [http://freemat.sourceforge.net/ FreeMat], [https://www.gnu.org/software/octave/ Octave], [https://www.mathworks.com/programs/nrd/matlab-trial-request.html?ref=ggl&s_eid=ppc_4341 MATLAB], or your favorite scripting language for further analysis.
+
+
+== Transmitting samples ==
+''Please double check the above'' '''Important Notes''' ''if you haven't already read them.''
+
+Similar to the <code>rx</code> command, the <code>tx</code> command can transmit samples in the background, with the data coming from either CSV or binary files.
+
+Run <code>help tx</code> for usage information for this command. For a CSV file formatted as described in the previous section, you can transmit the contents of the CSV 10 times at 3.25 Msps via:
+
+<pre>
+bladeRF> set samplerate tx 3.25M
+
+  Setting TX sample rate - req:   3250000 0/1Hz, actual:   3250000 0/1Hz
+
+bladeRF> tx config file=samples.csv format=csv repeat=10
+bladeRF> tx
+
+    State: Idle
+    Last error: None
+    File: samples.csv
+    File format: SC16 Q11, CSV
+    Repetitions: 10
+    Repetition delay: none
+    # Buffers: 32
+    # Samples per buffer: 32768
+    # Transfers: 16
+    Timeout (ms): 1000
+
+bladeRF> tx start
+    Converted CSV to SC16 Q11 file and switched to converted file.
+
+bladeRF> tx
+
+    State: Running
+    Last error: None
+    File: bladeRF_samples_from_csv.bin
+    File format: SC16 Q11, Binary
+    Repetitions: 10
+    Repetition delay: none
+    # Buffers: 32
+    # Samples per buffer: 32768
+    # Transfers: 16
+    Timeout (ms): 1000
+
+bladeRF> tx wait
+bladeRF> tx
+
+    State: Idle
+    Last error: None
+    File: bladeRF_samples_from_csv.bin
+    File format: SC16 Q11, Binary
+    Repetitions: 10
+    Repetition delay: none
+    # Buffers: 32
+    # Samples per buffer: 32768
+    # Transfers: 16
+    Timeout (ms): 1000
+</pre>
+
+Note the similarity to the <code>rx</code> command -- with no arguments, <code>tx</code> will report the current status, and the <code>tx wait</code> can be used to block until the transmission has finished.
+
+== Other notes ==
+
+In the binary file format, samples are read/stored in the [http://tinyurl.com/ogmarcr SC16Q11 format] -- interleaved, little endian 16-bit I and Q values, sign-extended and in the range of -2048 to 2047.
+
+When using Linux or OSX, if you have bladeRF-cli built with libtecla support, you can tab-complete on filenames, and <code>~</code> will be expanded to your home directory: <code>rx config file=~/Desktop/samples.csv format=csv n=10M</code>
