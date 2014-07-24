@@ -1,0 +1,75 @@
+This guide shows how to exercise some very basic device operations using the [https://github.com/Nuand/bladeRF/tree/master/host/utilities/bladeRF-cli bladeRF-cli] program in order to verify that the device is functioning and that the required host software is installed.
+
+This guide shows invocations and prompts from a Linux system. Windows users may simply replace <code>bladeRF-cli</code> invocations with <code>bladeRF-cli.exe</code> and use the same commands.
+
+If you encounter errors, warnings, or unexpected output, be sure to check the [[Troubleshooting]] page.
+<br><br>
+
+= Detecting the bladeRF =
+First, take a look at bladeRF-cli's command-line options, via <code>bladeRF-cli --help</code>.
+
+Note that the ''-p'' option may be used to probe for device. Plug in your device, and run the following command. You should see similar output.
+
+<pre>
+$ bladeRF-cli -p
+    Backend:        libusb
+    Serial:         f12ce1037830a1b27f3ceeba1f521413
+    USB Bus:        4
+    USB Address:    8
+</pre>
+
+= Viewing additional device information =
+
+More information about the attached device can be viewed while running ''bladeRF-cli'' in interactive mode, Enter this mode and issue the '''help''' command to see a list of available command.  Use the '''info''' command to print information about the device, and '''version''' to view version information, most notably, the firmware:
+
+<pre>
+$ bladeRF-cli -i
+
+bladeRF> help
+
+... (Help text shown here ) ...
+
+bladeRF> info
+
+  Serial #:                 f12ce1037830a1b27f3ceeba1f521413                          
+  VCTCXO DAC calibration:   0x894e
+  FPGA size:                40 KLE
+  FPGA loaded:              no
+  USB bus:                  2
+  USB address:              3
+  USB speed:                SuperSpeed
+  Backend:                  libusb
+  Instance:                 0
+
+bladeRF> version
+  bladeRF-cli version:        0.11.0-git-58c3ff4
+  libbladeRF version:         0.16.1-git-58c3ff4
+
+  Firmware version:           1.7.1-git-ca697ee
+  FPGA version:               Unknown (FPGA not loaded)
+</pre>
+
+Here we see the device's serial number, the VCTCXO DAC calibration value, FPGA information, and USB connection information.  Take note of the FPGA size, as this will help determine which FPGA file to load.
+
+Note that this information could have also been gathered using multiple <code>-e <command></code> argument: 
+<code>bladeRF-cli -e version -e info</code>
+
+= Loading the FPGA =
+
+FPGA images can be obtained from [[the Nuand website|http://www.nuand.com/fpga]] or from a [[nightly build of "bleeding edge" images|http://hoopycat.com/bladerf_builds/]].
+
+To load an image from the command line: 
+<pre>
+$ bladeRF-cli -l <path/to/fpga/file>
+</pre>
+
+Or to load an image while in interactive mode:
+<pre>
+bladeRF> load fpga <path/to/fpga/file>
+</pre>
+
+After the FPGA loads, you should see LED1, LED2 and LED3 light up. When is in use, LED2 will be blinking.
+
+If you do not want to manually load the FPGA at every power on, see the [[FPGA Autoloading]] page.
+
+At this point, you're ready to start using your device!
