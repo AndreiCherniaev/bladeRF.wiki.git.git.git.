@@ -280,6 +280,6 @@ As shown above, with no arguments, <code>rx</code> shows the current state of th
 
 Note that in Linux or OSX, if you have bladeRF-cli built with libtecla support, you can tab-complete on filenames, and <code>~</code> will be expanded to your home directory: <code>rx config file=~/Desktop/samples.csv format=csv n=10M</code>
 
-When complete, the <code>samples.csv</code> file will contain two columns, the first being I, and the second being Q. These values will be in the range of [-2048 to 2048), which represents [-1.0, 1.0).  Note that the upper bound here is exclusive; the max value will be 2047.
+When complete, the <code>samples.csv</code> file will contain two columns, the first being I, and the second being Q. These values will be in the range of <code>[-2048 to 2048)</code>, which represents <code>[-1.0, 1.0)</code>.  Note that the upper bound here is exclusive; the max value will be 2047.
 
 At this point, the CSV could be easily be loaded into [http://freemat.sourceforge.net/ FreeMat], [https://www.gnu.org/software/octave/ Octave], [https://www.mathworks.com/programs/nrd/matlab-trial-request.html?ref=ggl&s_eid=ppc_4341 MATLAB], or your favorite scripting language for further analysis.
