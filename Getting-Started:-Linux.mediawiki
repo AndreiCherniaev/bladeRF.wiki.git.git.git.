@@ -94,8 +94,8 @@ $ ls
 
 The directory contents will look something like this:
 <pre>
-CMakeLists.txt  COPYING          fx3_firmware  host
-CONTRIBUTORS    firmware_common  hdl           README.md
+CHANGELOG       CONTRIBUTORS  debian           fx3_firmware  host   README.md
+CMakeLists.txt  COPYING       firmware_common  hdl           legal
 </pre>
 
 In the future, you can update the repository via:
