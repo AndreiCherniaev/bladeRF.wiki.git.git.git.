@@ -217,6 +217,16 @@ Please update to the [http://nuand.com/fx3/latest.img latest firmware], per the 
 == Outdated FPGA warning ==
 libbladeRF prints a warning if it detects that the device's firmware requires a more recent FPGA version. If you see this message, fetch the associated FPGA image from [https://www.nuand.com/fpga.php the FPGA download page].
 
+== Linux: Failure to find libbladeRF.so or libbladeRF.so.0 ==
+
+Ensure the location that you installed libbladeRF to is in your library search path. If you can't recall where this location is:
+* Check the ''install_manifest.txt'' from your build directory, if you built from source
+* Make note of the libbladeRF location in the output of: <code>ldd `which bladeRF-cli`</code>
+
+If running <code>sudo ldconfig -v</code> does not resolve the issue, you may have to add an ldconfig entry to ensure the proper libraty path is searched by the dynamic loader. To do this::
+* As root (i.e., use sudo) create an /etc/ld.so.conf.d/bladeRF.conf and open it with your favorite editor
+* Add a single line containing <code>/usr/local/lib</code> to the file.  If you specified something other than /usr/local for ''CMAKE_INSTALL_PREFIX'' (the default), adjust this line accordingly.
+* Run <code>sudo ldconfig</code> and then try running <code>bladeRF-cli --help</code>. The library search issue should now be resolved.
 
 == [ERROR] Could not write to si5338 (-5): File or device I/O failure ==
 
