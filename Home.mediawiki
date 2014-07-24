@@ -11,6 +11,7 @@ These guides describe the process of building and installing the bladeRF softwar
 * [[Getting Started: Linux]]
 * [[Getting Started: Windows]]
 * [[Getting Started: Mac OSX]]
+* [[Getting Started: Verifying Basic Device Operation]]
 
 == Expansion Boards ==
 
