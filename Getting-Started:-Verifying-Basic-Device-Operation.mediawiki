@@ -18,9 +18,12 @@ $ bladeRF-cli -p
     USB Address:    8
 </pre>
 
-= Viewing additional device information =
+= Querying device information =
 
-More information about the attached device can be viewed while running ''bladeRF-cli'' in interactive mode, Enter this mode and issue the '''help''' command to see a list of available command.  Use the '''info''' command to print information about the device, and '''version''' to view version information, most notably, the firmware:
+More information about the attached device can be viewed while running <code>bladeRF-cli</code> in interactive mode, 
+Enter this mode and issue the <code>help</code> command to see a list of available commands.
+
+Use the <code>info</code> command to print information about the device, and <code>version</code> to view version information, most notably, the firmware:
 
 <pre>
 $ bladeRF-cli -i
@@ -54,6 +57,8 @@ Here we see the device's serial number, the VCTCXO DAC calibration value, FPGA i
 Note that this information could have also been gathered using multiple <code>-e <command></code> argument: 
 <code>bladeRF-cli -e version -e info</code>
 
+Before going further, the devices FPGA must be configured.
+
 = Loading the FPGA =
 
 FPGA images can be obtained from [[the Nuand website|http://www.nuand.com/fpga]] or from a [[nightly build of "bleeding edge" images|http://hoopycat.com/bladerf_builds/]].
@@ -71,5 +76,3 @@ bladeRF> load fpga <path/to/fpga/file>
 After the FPGA loads, you should see LED1, LED2 and LED3 light up. When is in use, LED2 will be blinking.
 
 If you do not want to manually load the FPGA at every power on, see the [[FPGA Autoloading]] page.
-
-At this point, you're ready to start using your device!
