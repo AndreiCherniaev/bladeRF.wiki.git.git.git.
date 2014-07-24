@@ -80,9 +80,13 @@ Note that from this same directory, you can run the following to uninstall the f
 
 The ''install_manifest.txt'' file, created after running the install step successfully, lists all the files installed.  It is a good idea to back up this file if you plan on removing this build directory later.
 
+<br>
+
 = Checking basic device operation =
 
-Before continuing on with the rest of this article, head over to the [[Verifying Basic Device Operation]] page.
+Before continuing on with the rest of this article, head over to the [[Getting Started: Verifying Basic Device Operation]] page. If you have any issues, be sure to check the [[Troubleshooting]] page.
+
+<br>
 
 = GNU Radio and gr-osmosdr =
 
@@ -126,6 +130,3 @@ To use this, you need to run:
 but it is advisable to see the README at https://github.com/titanous/homebrew-gnuradio since
 there are several prerequisites and some options to consider.
 Subsequent steps are akin to those under "Building gr-osmosdr from source" (above).
-
-= Simple Tests =
-See the [[Getting-Started:-Linux#wiki-Simple_test_applications_to_verify_device_operation|Getting Started: Linux]] guide for some quick tests to verify device operation with GNU Radio.
