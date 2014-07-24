@@ -229,7 +229,7 @@ Loopback mode: none
 == Receiving samples ==
 After configuring device parameters, you can receive samples to either to a CSV file or a binary file, using the <code>rx</code> command. Run <code>help rx</code> in the bladeRF-cli program to view information about this command.
 
-In the binary file format, samples are stored in the [http://www.fairviewmicrowave.com/30db-fixed-attenuator-sma-male-sma-female-10-watts-sa4s10w-30-p.aspx?gclid=CO2rmdCZ3b8CFQwEaQodCXEATA SC16Q11 format] -- interleaved, little endian 16-bit I and Q values, sign-extended and in the range of -2048 to 2047.
+In the binary file format, samples are stored in the [http://hoopycat.com/bladerf_builds/latest/artifacts/libbladeRF_doxygen/group___f_m_t___m_e_t_a.html#gga4c61587834fd4de51a8e2d34e14a73b2a92cfbda7a5577c809e2ff6123f8f30b6 SC16Q11  format] -- interleaved, little endian 16-bit I and Q values, sign-extended and in the range of -2048 to 2047.
 
 Below is a basic example for receiving 10737418240 (10 * 1024 * 1024 * 1024) samples to a CSV file, at a sample rate of 1 Msps. This is a little over 10s of samples, and totals 40MiB.
 
