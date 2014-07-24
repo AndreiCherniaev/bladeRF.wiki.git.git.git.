@@ -63,15 +63,15 @@ Before going further, the devices FPGA must be configured.
 
 FPGA images can be obtained from [[the Nuand website|http://www.nuand.com/fpga]] or from a [[nightly build of "bleeding edge" images|http://hoopycat.com/bladerf_builds/]].
 
-To load an image from the command line: 
-<pre>
-$ bladeRF-cli -l <path/to/fpga/file>
-</pre>
+Ensure you download [https://github.com/Nuand/bladeRF/wiki/Troubleshooting#FPGA_fails_to_load the correct image for your FPGA size].
 
-Or to load an image while in interactive mode:
-<pre>
-bladeRF> load fpga <path/to/fpga/file>
-</pre>
+<br>
+
+''To load an image from the command line:'' <code>$ bladeRF-cli -l <path/to/fpga/file></code>
+
+''To load an image while in interactive mode:'' <code>bladeRF> load fpga <path/to/fpga/file> </code>
+
+<br>
 
 After the FPGA loads, you should see LED1, LED2 and LED3 light up. When is in use, LED2 will be blinking.
 
