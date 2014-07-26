@@ -52,8 +52,9 @@ Find or learn something interesting? Share it here!
 * [[git-essentials|Using Git and GitHub]]
 * [[Debugging]]
 
-== For Developers ==
+== Project Maintenance ==
 * [[Release-testing|Testing]]
+* [[Version Change Checklist]]
 * [[Linux Distribution Status]]
 * [[Static Analysis]]
 * [[Proposals and Requests]]
