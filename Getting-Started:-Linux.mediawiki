@@ -1,44 +1,13 @@
 This guide describes the process of building and installing the bladeRF host libraries and tool for a Linux system, and quickly getting a device up and running using pre-built firmware and FPGA images.
 
-'''Ubuntu users:''' 14.04 LTS (Trusty) is ''highly'' recommended. 
+'''Ubuntu users:''' 14.04 LTS (Trusty) is ''highly'' recommended.  Use the bladeRF PPA (instructions below) for maximum freshness.
 
-== Special note for Ubuntu 14.04 LTS (Trusty) ==
-The bladeRF host libraries and tools are actually included in Ubuntu now!  This is great!  However, the versions are somewhat out-of-date due to the lengthy release cycles for distributions:
+== Easy installation for Ubuntu using the bladeRF PPA ==
+If you're running Ubuntu 14.04 (trusty) or later, a release PPA is available at [[ppa:bladerf/bladerf|https://launchpad.net/~bladerf/+archive/bladerf/+packages]].  New builds will appear occasionally as bladeRF releases (and release candidates) are tagged.  (Package signing key is [[1024R/2FB21B35|http://keyserver.ubuntu.com:11371/pks/lookup?search=0x188FE585DD24922CE9CD1EE9BE99746B2FB21B35&op=index]].)
 
-<pre>
-$ bladeRF-cli --version
-0.9.0-0.9.0.15.8ba2499
-$ bladeRF-cli --lib-version
-0.10.0-0.9.0.15.8ba2499
-</pre>
+Want something fresher?  There is also a [[ppa:bladerf/bladerf-snapshots|https://launchpad.net/~bladerf/+archive/bladerf-snapshots/+packages]] PPA for more frequent, bleeding-edge builds from the master branch.  Same process, just change the <pre>ppa:</pre> name below.
 
-You can easily switch to [[ppa:bladerf/bladerf|https://launchpad.net/~bladerf/+archive/bladerf/+packages]] to get the latest release-grade bladeRF software:
-
-<pre>$ sudo add-apt-repository ppa:bladerf/bladerf
-$ sudo apt-get update
-$ sudo apt-get dist-upgrade
-</pre>
-
-This will install a newer libbladerf0, but will also uninstall the command-line tools due to a naming change.  To reinstall the tools, and install development headers:
-
-<pre>$ sudo apt-get install bladerf libbladerf-dev</pre>
-
-You can verify that you're running a recent release with:
-
-<pre>$ bladeRF-cli --version
-0.11.0-git-unknown
-$ bladeRF-cli --lib-version
-0.16.0-git-unknown
-</pre>
-
-'''Skip down to "Checking Basic Device Operation" after performing these steps.'''
-
-== Easy installation for Ubuntu 13.10 and later ==
-If you're running Ubuntu 13.10 (saucy) or later, a release PPA is available at [[ppa:bladerf/bladerf|https://launchpad.net/~bladerf/+archive/bladerf/+packages]].  New builds will appear occasionally as bladeRF releases are tagged.
-
-Note: There is also a ppa:bladerf/bladerf-snapshots PPA for more frequent, bleeding-edge builds from master.
-
-To activate this PPA,
+To activate the release PPA, simply:
 
 <pre>$ sudo add-apt-repository ppa:bladerf/bladerf
 $ sudo apt-get update
@@ -50,7 +19,7 @@ If you plan to build gnuradio, gr-osmosdr, etc, you will also need the header fi
 
 Then, skip down to the [[Getting-Started:-Linux#wiki-Checking_basic_device_operation|Checking basic device operation]] section, bypassing the compilation steps.
 
-Note: This PPA replaces ppa:rtucker/bladerf-daily, which is now deprecated.
+Note: Ubuntu's repositories have an older version of the bladeRF libraries and tools, with the <pre>bladeRF-cli</pre> tool in a package named <pre>bladerf-host</pre> instead of <pre>bladerf</pre>.  If all goes well, the <pre>apt-get install bladerf</pre> step will remove the older package and upgrade the other packages without issue.
 
 '''Skip down to "Checking Basic Device Operation" after performing these steps.'''
 
@@ -169,7 +138,7 @@ The ''install_manifest.txt'' file, created after running the install step succes
 Before continuing, see the [[Getting Started: Verifying Basic Device Operation]] guide to test basic functionality. 
 
 If you encounter any issues or warnings, be sure to check the [[Troubleshooting]] guide before continuing on with this article.
-<br>
+
 == Building GNU Radio and gr-osmosdr ==
 
 The following procedure uses build-gnuradio to fetch dependencies and checkout some useful tools. However, it only covers installing GNU Radio and gr-osmosdr.  A similar procedure maybe used to install the other tools (such as gr-iqbal). 
