@@ -1,3 +1,5 @@
+'''This page is a work in progress'''
+
 This page documents the tasks that must be performed before and after tagging a version change in the various components of the repo.  Build and functional testing tasks are a given and should be documented elsewhere.
 
 The items in this list should be double-checked by a separate dev prior to applying tags.
