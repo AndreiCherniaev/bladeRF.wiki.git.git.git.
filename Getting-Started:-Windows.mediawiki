@@ -5,7 +5,7 @@
 = Building from source =
 == Tools and Dependencies ==
 === Installing git for Windows ===
-# Download and install [http://msysgit.github.io/ msysgit]. If you plan to submit patches to the bladeRF project, please select the _Checkout as-is, commit Unix-style line endings_ option in the installer.
+# Download and install [http://msysgit.github.io/ msysgit]. If you plan to submit patches to the bladeRF project, please select the ''Checkout as-is, commit Unix-style line endings'' option in the installer.
 # Download and install [http://code.google.com/p/tortoisegit/wiki/Download tortoisegit].
 
 For more information, see the [https://github.com/msysgit/msysgit/wiki/InstallMSysGit mysysgit] and [http://code.google.com/p/tortoisegit/wiki/SetupHowTo tortoisegit] wiki pages about their install procedures.
