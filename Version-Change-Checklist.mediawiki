@@ -1,0 +1,38 @@
+This page documents the tasks that must be performed before and after tagging a version change in the various components of the repo.  Build and functional testing tasks are a given and should be documented elsewhere.
+
+The items in this list should be double-checked by a separate dev prior to applying tags.
+
+When multiple components in the repo have changed, this checklist should be performed in the order provided. Generally, this ordering is from the "lowest" layers "upward."
+
+<br>
+
+= FPGA =
+* Update the version compatibility table in [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/host/libraries/libbladeRF/src/version_compat.c#L30 libbladeRF's version_compat.c ].
+* Update the upstream location and bitstream checksum in the debian postinst files:
+** [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/debian/bladerf-fpga-hostedx115.postinst bladerf-fpga-hostedx115.postinst]
+** [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/debian/bladerf-fpga-hostedx115.postinst bladerf-fpga-hostedx40.postinst]
+* Update FPGA [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/hdl/CHANGELOG CHANGELOG]
+* Update the FPGA version in the (no longer appropriately named) [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/hdl/fpga/ip/altera/nios_system/software/lms_spi_controller/lms_spi_controller.c#L48 lms_spi_controller.c] file.
+* Generate the official bitstreams '''at''' the tag
+
+= FX3 =
+* Update the version compatibility table in [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/host/libraries/libbladeRF/src/version_compat.c#L30 libbladeRF's version_compat.c ].
+* Update the upstream location and image checksum in the debian postinst file: [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/debian/bladerf-firmware-fx3.postinst bladerf-firmware-fx3.postinst]
+* Update fx3_firmware [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/fx3_firmware/CHANGELOG CHANGELOG]
+* Update the version number in the associated [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/fx3_firmware/CMakeLists.txt#L4 CMakeLists.txt].
+* Generate the official FX3 image '''at''' the tag
+
+= libbladeRF =
+* Update the libbladeRF [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/host/libraries/libbladeRF/CHANGELOG CHANGELOG]
+* Update the version number in the [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/host/libraries/libbladeRF/CMakeLists.txt#L24 CMakeLists.txt] file.
+* Generate the Doxygen pages '''at''' the tag with <code>-DTAGGED_RELEASE=ON</code>
+
+= bladeRF-cli =
+* Re-generate the fallback <code>cmd_help.*</code> files via the ''[https://github.com/Nuand/bladeRF/tree/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/host/utilities/bladeRF-cli/src/cmd/doc src/cmd/doc/generate.bash generate.bash]'' script.
+* Update the version number in the [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/host/utilities/bladeRF-cli/CMakeLists.txt#L8 CMakeLists.txt] file.
+
+= Project-Wide Release =
+* Ensure '''all''' of the above items are a tagged version. 
+* Update the [https://github.com/rtucker/bladeRF/blob/2ec1abaa51b4e457782f2b655f573f31ffdcc020/debian/changelog debian/CHANGELOG]
+* Update the top-level [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/CHANGELOG CHANGELOG].
+* Obligatory sanity-check sign-offs from the other devs
