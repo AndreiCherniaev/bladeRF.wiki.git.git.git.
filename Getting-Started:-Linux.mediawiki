@@ -25,7 +25,7 @@ $ sudo apt-get install bladerf-fpga-hostedx115  # for the 115 kLE hardware</pre>
 
 Then, skip down to the [[Getting-Started:-Linux#wiki-Checking_basic_device_operation|Checking basic device operation]] section, bypassing the compilation steps.
 
-Note: Ubuntu's repositories have an older version of the bladeRF libraries and tools, with the <code>bladeRF-cli</code> tool provided by a package named <code>bladerf-host</code>, instead of <code>bladerf</code>.  If all goes well, the <code>apt-get install bladerf</code> step will remove the older package and upgrade the other packages without issue.
+Note: Ubuntu's repositories have an older version of the bladeRF libraries and tools, with the <code>bladeRF-cli</code> tool provided by a package named <code>bladerf-host</code>, instead of <code>bladerf</code>.  If you've previously installed the Ubuntu repository version, the <code>apt-get install bladerf</code> step will remove/upgrade the older packages as appropriate.
 
 '''Skip down to "Checking Basic Device Operation" after performing these steps.'''
 
@@ -138,7 +138,7 @@ $ make && sudo make install && sudo ldconfig
 Note that from this same directory, you can run the following to uninstall the files place on your system in the previous step. <pre>sudo make uninstall</pre> 
 
 The ''install_manifest.txt'' file, created after running the install step successfully, lists all the files installed.  It is a good idea to back up this file if you plan on removing this build directory later.
-<br>
+
 == Checking basic device operation ==
 
 Before continuing, see the [[Getting Started: Verifying Basic Device Operation]] guide to test basic functionality. 
