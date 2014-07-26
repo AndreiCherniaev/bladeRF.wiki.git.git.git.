@@ -1,9 +1,9 @@
 '''This page is a work in progress''
 
-This page is intended to allow bladeRF developers and package maintainers to collaborate together on establishing common practices and procedures.  
+This page is intended to allow bladeRF developers and package maintainers to collaborate together on establishing common practices and procedures.
 
 = Objectives = 
-We want to ensure that package maintainers do not have to jump through hoops to get bladeRF packaged into their OS's package repositories.  Specifically, package maintainers '''should not''' have to apply patches to get the project to build as required by their procedures and guidelines.
+We want to ensure that package maintainers do not have to jump through hoops to get bladeRF packaged into their OS's package repositories.  Specifically, package maintainers '''should not''' have to apply patches to get the project to build as required by their procedures and guidelines.  More importantly, the project should ensure that end users to need not jump through hoops.
 
 The project's CMake flags should provide the ability to sufficiently changes paths, build options, and the use of optional dependencies.  If this is found '''not''' to be the case, package maintainers should consider this to be a defect in the bladeRF project, and [https://github.com/Nuand/bladeRF/issues/new report it as a bug on the issue tracker].
 
