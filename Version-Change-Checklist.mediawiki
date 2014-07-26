@@ -15,14 +15,14 @@ When multiple components in the repo have changed, this checklist should be perf
 ** [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/debian/bladerf-fpga-hostedx115.postinst bladerf-fpga-hostedx40.postinst]
 * Update FPGA [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/hdl/CHANGELOG CHANGELOG]
 * Update the FPGA version in the (no longer appropriately named) [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/hdl/fpga/ip/altera/nios_system/software/lms_spi_controller/lms_spi_controller.c#L48 lms_spi_controller.c] file.
-* Generate the official bitstreams '''at''' the tag
+* Generate the official bitstreams '''at''' the tag, with <code>-DTAGGED_RELEASE=Yes</code>
 
 = FX3 =
 * Update the version compatibility table in [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/host/libraries/libbladeRF/src/version_compat.c#L30 libbladeRF's version_compat.c ].
 * Update the upstream location and image checksum in the debian postinst file: [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/debian/bladerf-firmware-fx3.postinst bladerf-firmware-fx3.postinst]
 * Update fx3_firmware [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/fx3_firmware/CHANGELOG CHANGELOG]
 * Update the version number in the associated [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/fx3_firmware/CMakeLists.txt#L4 CMakeLists.txt].
-* Generate the official FX3 image '''at''' the tag
+* Generate the official FX3 image '''at''' the tag, <code>-DTAGGED_RELEASE=Yes</code>
 
 = libbladeRF =
 * Update the libbladeRF [https://github.com/Nuand/bladeRF/blob/dddc72f1c6c15ceeb73250daeba07515ff4a7e6f/host/libraries/libbladeRF/CHANGELOG CHANGELOG]
