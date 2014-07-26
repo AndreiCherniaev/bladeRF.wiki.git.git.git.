@@ -1,4 +1,4 @@
-'''This page is a work in progress''
+'''This page is a work in progress draft''
 
 This page is intended to allow bladeRF developers and package maintainers to collaborate together on establishing common practices and procedures.
 
