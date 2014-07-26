@@ -17,6 +17,12 @@ If you plan to build gnuradio, gr-osmosdr, etc, you will also need the header fi
 
 <pre>$ sudo apt-get install libbladerf-dev</pre>
 
+Compatible firmware and FPGA images can be installed as well.  You'll need to manually update the firmware using <code>bladeRF-cli --flash-firmware /usr/share/Nuand/bladeRF/bladeRF_fw.img</code>, but the FPGA image should be automatically loaded each time your bladeRF is plugged in.
+
+<pre>$ sudo apt-get install bladerf-firmware-fx3
+$ sudo apt-get install bladerf-fpga-hostedx40   # for the 40 kLE hardware
+$ sudo apt-get install bladerf-fpga-hostedx115  # for the 115 kLE hardware</pre>
+
 Then, skip down to the [[Getting-Started:-Linux#wiki-Checking_basic_device_operation|Checking basic device operation]] section, bypassing the compilation steps.
 
 Note: Ubuntu's repositories have an older version of the bladeRF libraries and tools, with the <code>bladeRF-cli</code> tool provided by a package named <code>bladerf-host</code>, instead of <code>bladerf</code>.  If all goes well, the <code>apt-get install bladerf</code> step will remove the older package and upgrade the other packages without issue.
