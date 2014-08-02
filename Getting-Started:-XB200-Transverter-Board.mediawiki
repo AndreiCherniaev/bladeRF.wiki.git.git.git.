@@ -57,6 +57,8 @@ GPIO pins are exposed on the XB-200 via <b>J1</b>, <b>J13</b>, and <b>J16</b>. l
 
 = Software Support =
 
+This section is intended to provide information regarding support for the XB-200 in various pieces of software.  Please keep libbladeRF first, but feel free to add or stub out programs you'd like to see more information for.
+
 == libbladeRF ==
 
 The general procedure for using the XB-200 programmatically, via libbladeRF is as follows:
@@ -91,3 +93,12 @@ Below is an example device string that enables the XB-200 and selects the 144MHz
 <pre>
 bladerf=0,xb200=144M
 </pre>
+
+== GQRX ==
+As this utilized gr-osmosdr, you can simply follow the information in the previous section
+
+== SDR# ==
+TODO - Efforts to integrate XB-200 support are ongoing. Add links to official support here when it's available.
+
+== SDR-Radio ==
+TODO - Efforts to integrate XB-200 support are ongoing. Add links to official support here when it's available.
