@@ -95,7 +95,7 @@ bladerf=0,xb200=144M
 </pre>
 
 == GQRX ==
-As this utilized gr-osmosdr, you can simply follow the information in the previous section
+As this utilizes gr-osmosdr, you can simply follow the information in the previous section regarding the device arguments.
 
 == SDR# ==
 TODO - Efforts to integrate XB-200 support are ongoing. Add links to official support here when it's available.
