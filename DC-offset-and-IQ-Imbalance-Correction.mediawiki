@@ -11,7 +11,7 @@ IQ imbalances occur due to the slightest mismatches in sections of the receiver 
 To make matters worse, these impairments need to be corrected for over both frequency and temperature.
 
 For further information, check out the following:
-* [http://venividiwiki.ee.virginia.edu/mediawiki/images/9/93/DCR_Raman.pdf 76 DC Offsets in Direct-Conversion Receivers: Characterization and Implications] by R. Svitek and S. Raman
+* [http://venividiwiki.ee.virginia.edu/mediawiki/images/9/93/DCR_Raman.pdf DC Offsets in Direct-Conversion Receivers: Characterization and Implications] by R. Svitek and S. Raman
 * [http://www.eetimes.com/document.asp?doc_id=1205337 Direct Conversion: No Pain, No Gain] by Jon Strange and Doug Grant
 
 The LMS6002D transceiver provides DC offset cancellation, and the bladeRF HDL implements IQ imbalance corrections. Correction values for these can be manually specified via libbladeRF's [https://github.com/Nuand/bladeRF/blob/0acf5b1159d087f9f4ffeeaeccd3ab8dd2125b24/host/libraries/libbladeRF/include/libbladeRF.h#L595 bladerf_set_correction()] function.
