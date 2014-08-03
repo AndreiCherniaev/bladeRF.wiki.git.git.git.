@@ -38,6 +38,41 @@ If you plan to be operating at a single frequency and gain, you can perform the 
 ## Again, you should see fairly low error values and the same comments apply if you find this not to be the case.
 ## Please note that there is a [https://github.com/Nuand/blaindeRF/issues/304 known issue] for some frequency and gain settings.
 
+<i><b><u>Example:</u></b></i>
+<pre>
+bladeRF> set frequency 455.55M
+
+  Set RX frequency:  455550000Hz
+  Set TX frequency:  455550000Hz
+
+bladeRF> print rxvga2
+
+  RXVGA2 Gain:   3dB
+
+bladeRF> set rxvga2 8
+bladeRF> cal lms
+Calibrating LMS LPF tuning module...
+    LPF tuning module: 23
+
+Calibrating LMS TX LPF modules...
+    TX LPF I filter: 35
+    TX LPF Q filter: 33
+
+Calibrating LMS RX LPF modules...
+    RX LPF I filter: 25
+    RX LPF Q filter: 25
+
+Calibrating LMS RXVGA2 modules...
+    RX VGA2 DC reference module: 27
+    RX VGA2 stage 1, I channel: 31
+    RX VGA2 stage 1, Q channel: 35
+    RX VGA2 stage 2, I channel: 23
+    RX VGA2 stage 2, Q channel: 29
+
+bladeRF> cal dc rx
+RX DC I Setting = -4, error ~= 0
+RX DC Q Setting = 156, error ~= 0
+</pre>
 
 == Generating a DC offset table ==
 
