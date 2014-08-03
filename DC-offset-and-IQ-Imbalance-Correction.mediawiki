@@ -60,7 +60,7 @@ The general procedure for generating a table is:
 ## You can speed up table generation by using larger frequency step sizes or a smaller frequency range.  See <code>help cal</code> for more info.
 # Upon completion of the above command, a calibration table file will be generated in the current working directory, named: <code><serial #>_dc_rx.tbl</code>
 # Move the aforementioned file to one of the following locations:
-## Linux, OSX:would cause the table a
+## Linux, OSX:
 ### <code>~/.config/Nuand/bladeRF</code>
 ### <code>~/.Nuand/bladeRF</code>
 ### <code>~/etc/Nuand/bladeRF</code>
