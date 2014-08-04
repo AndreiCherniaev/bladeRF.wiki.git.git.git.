@@ -135,7 +135,8 @@ bladeRF> cal table dc rx
   Calibrating @ 3800000000 Hz... I=358  (avg. val: -1  ), Q=37   (avg. val: 0   )
 Done.
 bladeRF> q
-$ mv *_dc_rx.tbl ~/.config/Nuand/bladeRF
+$ mkdir -p ~/.config/Nuand/bladeRF
+$ mv *_dc_rx.tbl ~/.config/Nuand/bladeRF/
 </pre>
 
 
