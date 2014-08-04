@@ -202,4 +202,4 @@ If you have access to a signal generator (or another SDR that's pretty well cali
 # Run <code>osmocom_fft --dc-offset-mode=0 --iq-balance-mode=0</code>.
 # Tune the bladeRF to some frequency <i>f1</i>
 # Using the signal generator to generate a tone at some <i>f2 = f1 + small_offset</i>
-# Follow the same general procedure used in the above "[[Manually adjusting DC offset and IQ Imbalance corrections#Using a spectrum analyzer and osmocom_siggen | Using a spectrum analyzer and osmocom_siggen"]]" section.
+# Follow the same general procedure used in the above "[[Manually adjusting DC offset and IQ Imbalance corrections#Using a spectrum analyzer and osmocom_siggen | Using a spectrum analyzer and osmocom_siggen]]" section.
