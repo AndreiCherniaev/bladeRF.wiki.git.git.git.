@@ -2,8 +2,8 @@ This page provides some information and links to Live Linux DVDs or USB images t
 
 This is a great place to start if you are new to Linux, and is a better choice than using a virtual machine for a few reasons:
 * SDR support and applications are pre-installed
-* All of your CPU and RAM are dedicated to the OS, rather than splitting between a guest and host
-* It's easily portable
+* All of your CPU and RAM are dedicated to the OS, rather than splitting between a guest and host.
+* It's very portable!
 ** You can often create persistent data region on live USB sticks to save your changes to the image
 * The quality and reliability of USB pass-through support varies across different VM software offerings.
 <br>
