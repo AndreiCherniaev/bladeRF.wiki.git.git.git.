@@ -15,7 +15,7 @@ There are a myriad of useful resources regarding burning ISOs to DVDs and prepar
 ** You may need to run the following to install the Startup Disk Creator: <pre>$ sudo apt-get install usb-creator-gtk</pre> 
 ** Note the option to reserve extra space . This allows you to make persistent changes to the image, for example, installing your favorite packages or program configurations. <b> This is highly recommended!</b>
 * [https://wiki.archlinux.org/index.php/USB_flash_installation_media An Arch wiki page] on creating USB flash installation media
-* [https://wiki.gentoo.org/wiki/LiveUSB/HOWTO A Gento wiki guide on creating a Live USB stick]
+* [https://wiki.gentoo.org/wiki/LiveUSB/HOWTO A Gentoo wiki guide on creating a Live USB stick]
 ** This is a very complete guide, which includes details for Windows, Mac OS X, and Linux operating systems, as well as various programs.
 * [http://unetbootin.sourceforge.net/ UNetBootin] - A cross platform tool for creating bootable USB drives.
 * [http://sourceforge.net/projects/usbwriter/ USBWriter] - A Windows tool for writing bootable images to USB drives.
