@@ -47,6 +47,8 @@ Find or learn something interesting? Share it here!
 * Books:
 ** [http://www.amazon.com/Understanding-Digital-Signal-Processing-Edition/dp/0137027419/ Understanding Digital Signal Processing] by Richard G. Lyons
 ** [http://www.amazon.com/SOFTWARE-RECEIVER-DESIGN-COMMUNICATIONS-Hardcover/dp/B00IJ7FX44/ Software Receiver Design: Build Your Own Digital Communication System In Five Easy Steps] by C. Richard Johnson, Jr., William A. Sethares, & Andrew G. Klein
+* Application Notes:
+** [http://www.atmel.com/Images/doc9164.pdf Atmel: Manchester Coding Basics]
 
 == Amateur Radio ==
 * [[US Amateur Radio Bands|http://labyrinth13.com/Hambands_color.pdf]]
