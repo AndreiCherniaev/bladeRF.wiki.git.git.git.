@@ -31,6 +31,11 @@ The current version (containing GNU Radio 3.7.5), contains bladeRF support from 
 
 The FPGA images are included in <code>/usr/share/Nuand/bladeRF</code> and will be [https://github.com/Nuand/bladeRF/wiki/FPGA-Autoloading#host-software-based automatically loaded] when a device is opened.  If you wish to use different FPGA images, you can place them in <code>~/.config/Nuand/bladeRF/</code>.
 
+If you're using a USB drive for persistance, you may find it helpful to install <code>indicator-cpufreq</code> and then log out and back in (or reboot), as shown below.  This adds a CPU monitor that allows you to quickly configure your CPUs for "performance" rather than "ondemand," effectively disabling CPU frequency scaling. While running flowgraphs, if you hear choppy audio or occasionally see dropped packets, this is worth a shot.
+<pre>
+ubuntu@ubuntu $ sudo apt-get install indicator-cpufreq
+</pre>
+
 == Pentoo ==
 Coming soon...
 
