@@ -8,6 +8,7 @@ This wiki will serve as a place to create some community-based documentation. Pl
 
 These guides describe the process of building and installing the bladeRF software from source code. If you've just received your bladeRF, this is the place to start.
 
+* [[Getting Started: Linux Live Images]]
 * [[Getting Started: Linux]]
 * [[Getting Started: Windows]]
 * [[Getting Started: Mac OSX]]
