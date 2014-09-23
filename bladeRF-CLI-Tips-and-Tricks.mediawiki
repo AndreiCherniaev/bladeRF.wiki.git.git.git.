@@ -89,6 +89,33 @@ bladeRF> flash_init_cal 40 0x9015 /tmp/new_cal_data.bin
 == Wiped your calibration data? All is not lost! ==
 If you've managed to wipe your calibration region and do not have the necessary tools to identify an appropriate VCTCXO trim value, email bladeRF@nuand.com with your serial number and a request to look up your factory-calibrated trim value.  (Please be patient!)
 
+= Importing samples into Octave/MATLAB =
+Samples received via the bladeRF-cli, in either CSV or binary format, can be imported into Octave or MATLAB as shown here.
+
+== CSV data ==
+In the CSV format, samples are stored in rows of: <code>I, Q</code>. 
+
+To load these samples and reconstruct the complex signal:
+<pre>
+> samples = load("my_file.csv"); 
+> samples_i = samples(:, 1);
+> samples_q = samples(:, 2);
+> signal = samples_i + j * samples_q;
+> % Plot the magnitude signal in the time domain
+> plot(abs(signal));
+</pre>
+
+== Binary Data (SC16Q11 format) ==
+Binary data in the SC16Q11 format is little-endian, sign-extended, and right-aligned. To load the samples and reconstruct the complex signal:
+<pre>
+> f = fopen("debug_trimmed.bin", "r", "ieee-le");
+> samples = fread(f, Inf, "int16");
+> samples_i = samples(1:2:end, :);
+> samples_q = samples(2:2:end, :);
+> % Plot the magnitude signal in the time domain
+> plot(abs(signal));
+</pre>
+
 = Getting the most out of libtecla =
 If you've built bladeRF-cli with support for [http://www.astro.caltech.edu/~mcs/tecla/index.html libtecla] (<i>highly</i> recommended), you'll have a number of great features available to you, including history, tab-completion (for filenames) and handy key bindings (including emacs and vi bindings).
 
