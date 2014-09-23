@@ -101,7 +101,7 @@ To load these samples and reconstruct the complex signal:
 > samples_i = samples(:, 1);
 > samples_q = samples(:, 2);
 > signal = samples_i + j * samples_q;
-> % Plot the magnitude signal in the time domain
+> % Plot the magnitude of the signal in the time domain
 > plot(abs(signal));
 </pre>
 
@@ -112,7 +112,7 @@ Binary data in the SC16Q11 format is little-endian, sign-extended, and right-ali
 > samples = fread(f, Inf, "int16");
 > samples_i = samples(1:2:end, :);
 > samples_q = samples(2:2:end, :);
-> % Plot the magnitude signal in the time domain
+> % Plot the magnitude of the signal in the time domain
 > plot(abs(signal));
 </pre>
 
