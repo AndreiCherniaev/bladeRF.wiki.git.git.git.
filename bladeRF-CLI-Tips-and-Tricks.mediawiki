@@ -89,10 +89,11 @@ bladeRF> flash_init_cal 40 0x9015 /tmp/new_cal_data.bin
 == Wiped your calibration data? All is not lost! ==
 If you've managed to wipe your calibration region and do not have the necessary tools to identify an appropriate VCTCXO trim value, email bladeRF@nuand.com with your serial number and a request to look up your factory-calibrated trim value.  (Please be patient!)
 
-= Importing samples into Octave or MATLAB =
-Samples received via the bladeRF-cli, in either CSV or binary format, can be imported into [https://www.gnu.org/software/octave/ Octave] or [http://www.mathworks.com/products/matlab/ MATLAB] as shown here.
+= Analyzing RX'd data =
+Samples received via the bladeRF-cli, in either CSV or binary format, can easily be imported into tools such as [https://www.gnu.org/software/octave/ Octave], [http://www.mathworks.com/products/matlab/ MATLAB] or [http://www.baudline.com/ baudline].
 
-== CSV data ==
+== Octave/MATLAB == 
+=== CSV data ===
 In the CSV format, samples are stored in rows of: <code>I, Q</code>. 
 
 To load these samples and reconstruct the complex signal:
@@ -105,7 +106,7 @@ To load these samples and reconstruct the complex signal:
 > plot(abs(signal));
 </pre>
 
-== Binary Data (SC16Q11 format) ==
+=== Binary Data (SC16Q11 format) ===
 Binary data in the SC16Q11 format is little-endian, sign-extended, and right-aligned. To load the samples and reconstruct the complex signal:
 <pre>
 > f = fopen("debug_trimmed.bin", "r", "ieee-le");
@@ -115,6 +116,20 @@ Binary data in the SC16Q11 format is little-endian, sign-extended, and right-ali
 > % Plot the magnitude of the signal in the time domain
 > plot(abs(signal));
 </pre>
+
+== baudline ==
+Samples must be in a binary format to be used with baudline. This section assumes you've saved them to the binary SC16Q11 format, but other conversions are certainly possible.
+
+# Open baudline
+# Right-click and select <b>Input -> Open File</b>
+# Change <b>File Format</b> to <b>raw</b>
+# Select your file and click <b>Open</b>
+# Set the following parameters in the <b>raw parameters</b> dialog:
+## Decompression: <b>OFF</b>
+## Initial byte offset: <b>0</b>
+## Sample Rate: <i>Sample rate you recorded the samples at</i>
+## Channel: <b>2</b>, <b>quadrature</b>
+## Decode Format: <b>16 bit linear</b>, <b>little endian</b>
 
 = Getting the most out of libtecla =
 If you've built bladeRF-cli with support for [http://www.astro.caltech.edu/~mcs/tecla/index.html libtecla] (<i>highly</i> recommended), you'll have a number of great features available to you, including history, tab-completion (for filenames) and handy key bindings (including emacs and vi bindings).
