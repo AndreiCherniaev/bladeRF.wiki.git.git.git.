@@ -26,9 +26,9 @@ export PYTHONPATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/li
 
 == Homebrew==
 
-If you're using Homebrew, install the dependencies via the following command. Note that you want to select libusb'''x'''.
+If you're using Homebrew, install the dependencies via the following command. Older homebrew versions required using libusbx which has now been merged into libusb. Homebrew no longer has a libusbx formula.
 
-<pre>$ brew install libusbx pkgconfig cmake libtecla</pre>
+<pre>$ brew install libusb pkgconfig cmake libtecla</pre>
 
 = Building bladeRF libraries and tools from source =
 If you've installed bladeRF items via a package manager, you can skip this section.  However, if you're interested in diving into the host-side code, continue on!
@@ -63,7 +63,7 @@ Next, configure the build. In the below example, we:
 * Specify that files should be installed into /opt/local
 
 <pre>
-$ cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/opt/local
+$ cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/opt/local ..
 </pre>
 
 == Perform the build and installation ==
