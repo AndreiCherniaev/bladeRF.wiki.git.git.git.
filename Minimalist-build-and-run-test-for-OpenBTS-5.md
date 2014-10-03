@@ -24,12 +24,13 @@ Follow the links where such exist. The text referred to are usually not large an
   * Build only 2 directories (order matters):
      * cd into `Peering`, run make
      * cd into `TransceiverRAD1` and make
-  * Copy produced tranciver binary from YateBTS to OpenBTS:
-    cd ..
-    cp ./yatebts/mbts/TransceiverRAD1/transceiver-bladerf openbts/apps/
-    cd openbts/apps/
-    ln -sf transceiver-bladerf transceiver
-  
+  * Copy produced transceiver binary from YateBTS to OpenBTS:
+```bash
+cd ..
+cp ./yatebts/mbts/TransceiverRAD1/transceiver-bladerf openbts/apps/
+cd openbts/apps/
+ln -sf transceiver-bladerf transceiver
+```  
 * enter openbts and run `autogen.sh`
 * Run `./configure --with-uhd`
 * Configure mysql DB according to [this](https://wush.net/trac/rangepublic/wiki/BuildInstallRun#ConfiguringOpenBTS) but patch `apps/OpenBTS.example.sql` first:
