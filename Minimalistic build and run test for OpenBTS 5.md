@@ -1,0 +1,74 @@
+## What is this?
+These are notes jotted down from IRC logs from `rwr` helping `mambrus` setting up a minimalistic OpenBTS 5 one late night 2014-10-02.
+
+No guarantees it will work, but hopefully rather serve as a base for future documentation. (Let me know if it does or doesn't and we can skip this caution-note.)
+
+## Condensed **do-list**
+Follow the links where such exist. The text referred to are usually not large and I've tried to be specific. Some of the links are just for future referral, some of them contain code snippets that should had gone in here instead. As I said, these are just jotted notes atm ;-)
+
+* RangeNetworks [gits](https://github.com/RangeNetworks/) <-- are here
+* Prerequisites. 
+   * Install your distributions packages (no need to build from source).
+     * libgsm1-dev
+     * asterisk-dev
+     * asterisk-config
+   * May need build...
+     * Very recent `libusb`. If built from source (for example for Ubuntu 12.04):
+       * copy that over /usr/lib/x86_64-linux-gnu/libusb.so (consider saving the old one)
+* Prepare a directory for OpenBTS_5 as follows:
+```bash
+#!/bin/bash
+ 
+git clone https://github.com/RangeNetworks/openbts.git
+git clone https://github.com/RangeNetworks/smqueue.git
+git clone https://github.com/RangeNetworks/subscriberRegistry.git
+
+#From here and downwards you can copy&paste (that's why the ';' are for)
+for D in *; do (
+    echo $D;
+    echo "=======";
+    cd $D;
+    git clone https://github.com/RangeNetworks/CommonLibs.git;
+    git clone https://github.com/RangeNetworks/NodeManager.git);
+done
+```
+* In the same root directory clone [YateBTS](http://wiki.yatebts.com/index.php/SVN)
+  * *Note:* you don't need the Yate tool
+  * Remove loading of fpga in YateBTS
+    * `vim ./yatebts/mbts/TransceiverRAD1/bladeRFDevice.cpp +108` and onward to line 129. `#ifdef NEVER` it...
+      * Make sure you have a recent fpga and matching firmware in bladeRF (install fpga permanently: `bladeRF-cli  -L path/file`, Make sure not to interrupt flashing)
+  * Go to YateBTS and run `autogen.sh` to get a configure script.
+  * Run `configure`
+    * Which will fail with an error complaining about yate. Find the error in `configure` and fix it (patch it to ignore the error in any preferable way). Then rerun `configure`. 
+  * You need to build only 2 directories from `yatebts` to get the transceiver (order matters):
+*Note:* I've noticed that `yatebts` does not support out of source build.
+     * cd into `Peering`, run make
+     * cd into `TransceiverRAD1` and make
+  * Copy produced transceiver binary from YateBTS to OpenBTS:
+```bash
+cd ..
+cp ./yatebts/mbts/TransceiverRAD1/transceiver-bladerf openbts/apps/
+cd openbts/apps/
+ln -sf transceiver-bladerf transceiver
+```  
+* build OpenBTS.
+This is done very traditionally but spelled out here because of the configure flag.
+  * enter openbts and run `autogen.sh`
+  * Run `./configure --with-uhd`
+  * make
+* Configure sqlite3 DB according to [this](https://wush.net/trac/rangepublic/wiki/BuildInstallRun#ConfiguringOpenBTS) but patch `apps/OpenBTS.example.sql` first:
+  * `GSM.Radio.RxGain` from 47 to **5** in 
+  * `GSM.Radio.PowerManager.MaxAttenDB` to **35**
+  * `GSM.Radio.PowerManager.MinAttenDB` to **35**
+* Continue from the DB configuration part and onward
+   * When done OpenBTS should be running and output interactive console similar to [this](http://pastebin.com/GPHu3DBG)
+* Phone search for networks should show something similar to:
+
+<a href="http://picpaste.com/2014-10-03_16.57.40-gIoaKgVA.jpg"><img src="http://picpaste.com/extpics/2014-10-03_16.57.40-gIoaKgVA.jpg" alt="PicPaste: 2014-10-03_16.57.40-gIoaKgVA.jpg" /></a>
+
+* Did you read the OpenBTS document referred to [above](https://wush.net/trac/rangepublic/wiki/BuildInstallRun#RunningOpenBTS) carefully? Then you know how to make your BTS accept your phone (look for `Control.LUR.OpenRegistration`). End-result could then look something like this:
+
+<a href="http://picpaste.com/2014-10-03_15.04.53-qDwsRkrO.png"><img src="http://picpaste.com/extpics/2014-10-03_15.04.53-qDwsRkrO.png" alt="PicPaste: 2014-10-03_15.04.53-qDwsRkrO.png" /></a>
+
+*Please do take care about following local regulations.*
+ 
