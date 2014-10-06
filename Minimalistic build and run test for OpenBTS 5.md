@@ -3,6 +3,32 @@ These are notes jotted down from IRC logs from `rwr` helping `mambrus` setting u
 
 No guarantees it will work, but hopefully rather serve as a base for future documentation. (Let me know if it does or doesn't and we can skip this caution-note.)
 
+## Prerequisites
+Copy & paste the following for a Debian-based system:
+```bash
+sudo apt-get install $(
+    wget -qO - https://raw.githubusercontent.com/RangeNetworks/dev/master/build.sh | \
+    grep installIfMissing | \
+    grep -v "{" | \
+    cut -f2 -d" ")
+```
+
+Hopefully all the packages are in your distros repo and are named the same. If not, modify the lines above and add `grep -v <package>` for the packages the fail.
+
+### Alternative ways of installing for some packages.
+
+#### libzmq3 & libzmq3-dev
+* For Ubuntu:
+```bash
+$ sudo add-apt-repository ppa:chris-lea/zeromq
+$ sudo apt-get update
+$ sudo apt-get install libzmq3-dbg libzmq3-dev 
+```
+For Debian 7.2 you can use `libzmq3` & `libzmq3-dev` (**Note:** Confirmation needed)
+
+#### uhd
+Build and install [gnuradio from source](http://gnuradio.org/redmine/projects/gnuradio/wiki/InstallingGRFromSource#Using-the-build-gnuradio-script)
+
 ## Condensed **do-list**
 Follow the links where such exist. The text referred to are usually not large and I've tried to be specific. Some of the links are just for future referral, some of them contain code snippets that should had gone in here instead. As I said, these are just jotted notes atm ;-)
 
@@ -30,8 +56,26 @@ for D in *; do (
     cd $D;
     git clone https://github.com/RangeNetworks/CommonLibs.git;
     git clone https://github.com/RangeNetworks/NodeManager.git);
-done
+done;
+git clone https://github.com/RangeNetworks/libcoredumper.git;
+git clone https://github.com/RangeNetworks/liba53.git
 ```
+
+* Build libraries libcoredumper & liba53
+```bash
+cd libcoredumper;
+./build.sh && \
+   sudo dpkg -i *.deb;
+cd ..
+```
+
+```bash
+cd liba53;
+make && \
+   sudo make install;
+cd ..;
+```
+
 * In the same root directory clone [YateBTS](http://wiki.yatebts.com/index.php/SVN)
   * *Note:* you don't need the Yate tool
   * Remove loading of fpga in YateBTS
@@ -50,7 +94,8 @@ cd ..
 cp ./yatebts/mbts/TransceiverRAD1/transceiver-bladerf openbts/apps/
 cd openbts/apps/
 ln -sf transceiver-bladerf transceiver
-```  
+```
+
 * build OpenBTS.
 This is done very traditionally but spelled out here because of the configure flag.
   * enter openbts and run `autogen.sh`
