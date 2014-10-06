@@ -41,7 +41,8 @@ The bladeRF is configured to fall back to a USB bootloader if valid firmware is 
 # Connect a jumper on J64, as shown in the below image. 
 ## This forces the loading of firmware from SPI flash to fail, which results in the device falling back to the USB bootloader.
 # Power the board on. 
-## You should see the bootloader enumerate as ''04b4:00f3 Cypress Semiconductor Corp.'' in dmesg output, Device Manager, etc.
+## You should see the bootloader enumerate as <code>04b4:00f3 Cypress Semiconductor Corp.</code> in dmesg output, or a Cypress <code>WestBridge</code> device in Device Manager.
+### <b>Windows Users:</b> Windows will automatically install the CYUSB3 driver for this bootloader. This will work with the Cypress Control Center utility.  To recover the device as shown below, you will need to use Zadig (as you did when following the Getting Started Guide) to associate the VID/PID of the Cypress bootloader with a libusb-driver (libusbK or WinUSB) before continuing on.
 # '''Remove the jumper on J64.''' 
 ## This is very important, as otherwise the SPI flash writes will not be able to succeed in the following steps.
 # From a shell (or cmd.exe), run <code>bladeRF-cli -i</code>.
