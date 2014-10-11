@@ -19,7 +19,7 @@ Upon opening a device handle, libbladeRF checks the device's FPGA size.  It then
 The user's home directory is determined based upon contents of <code>/etc/passwd</code>.
 
 <b>Windows</b>
-* <code>%APPDATA%/Nuand/bladeRF/</code>
+* <code>%APPDATA%/Roaming/Nuand/bladeRF/</code>
 
 Simply place (or symlink, for *nix users) the FPGA bitfile in one of these directories and it will be loaded when you first open the device handle.
 
