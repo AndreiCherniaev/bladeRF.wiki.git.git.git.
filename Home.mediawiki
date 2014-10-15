@@ -27,6 +27,7 @@ These guides describe the process of building and installing the bladeRF softwar
 * [[DC offset and IQ Imbalance Correction ]]
 * [[bladeRF CLI Tips and Tricks]]
 * [[Debugging dropped samples and identifying achievable sample rates]]
+* [[Minimalistic build and run test for OpenBTS 5]]
 
 = Projects =
 Feel free to share your bladeRF projects here. Be sure to also check out the  [https://www.nuand.com/forums/viewforum.php?f=8 Project Showcase] on the forums.
