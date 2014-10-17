@@ -71,8 +71,14 @@ The general procedure for using the XB-200 programmatically, via libbladeRF is a
 == bladeRF-cli ==
 To tell the CLI that the XB-200 has been attached, simply run the command <code>xb 200 attach</code>.  This will expand the frequency range that the board is able to tune.
 
-To select RX or TX filter banks, use the command <code>xb 200 filter <rx|tx> <50|144|222|custom</code>. "50" refers to the 50-54 MHz (6 meter) band, "144" refers to the 144-148 MHz (2 meter) band, and "222" refers to the 222-225 MHz (1.25 meter) band.  Technically, the filter associated with the "222" options covers 206-235 MHz.  The <code>custom</code> option enables the custom filter bank path. 
+To select RX or TX filter banks, use the command <code>xb 200 filter <rx|tx> <50|144|222|custom
+auto_1db|auto_3db</code>. 
 
+"50" refers to the 50-54 MHz (6 meter) band, "144" refers to the 144-148 MHz (2 meter) band, and "222" refers to the 222-225 MHz (1.25 meter) band.  Technically, the filter associated with the "222" options covers 206-235 MHz.  
+
+The "custom" option enables the custom filter bank path. 
+
+The "auto_1db" and "auto_3b" options instruct libbladeRF to automatically select the appropriate filterbank based upon the filters' 1dB and 3dB points based upon the current device frequency.  Outside of these regions, the custom filter path will be selected.
 
 == gr-osmosdr ==
 As of commit [http://cgit.osmocom.org/gr-osmosdr/commit/?id=9cb023b00a36d04ad8ea7e0bf08ad0623ab3e95f 9cb023], gr-osmosdr supports natively the XB-200.  Note that the way to enable the board has changed slightly from the previous patched method, so be sure to read the next section very carefully and make appropriate modifications to the device string.
