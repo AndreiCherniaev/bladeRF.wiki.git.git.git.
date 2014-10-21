@@ -33,7 +33,7 @@ This is handled by using alternate interface settings in the FX3 firmware.  Each
 |}
 
 = SPI Flash Layout =
-The FX3 is booted from a 32 Mbit [http://www.macronix.com/QuickPlace/hq/PageLibrary4825740B00298A3B.nsf/h_Index/3F21BAC2E121E17848257639003A3146/$File/MX25U3235F,%201.8V,%2032Mb,%20v1.1.pdf MX25U3235EM2I] 1.8V SPI flash, with 64KiB and 32KiB blocks, 4KiB sectors, and 256 byte pages. This flash also stores the device's serial number, calibration, and (optionally) an FPGA bitstream. 
+The FX3 is booted from a 32 Mbit [http://www.macronix.com/en-us/Product/Pages/ProductDetail.aspx?PartNo=MX25U3235E MX25U3235EM2I] 1.8V SPI flash, with 64KiB and 32KiB blocks, 4KiB sectors, and 256 byte pages. This flash also stores the device's serial number, calibration, and (optionally) an FPGA bitstream. 
 
 Below is a map of SPI flash layout.
 
