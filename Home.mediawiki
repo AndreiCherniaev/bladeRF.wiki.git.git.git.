@@ -35,6 +35,7 @@ Feel free to share your favorite projects or blogs containing bladeRF and/or SDR
 * Blog: [http://www.irrational.net/ Clayton's Domain]
 ** [http://www.irrational.net/2014/03/22/reverse-engineering-a-ceiling-fan/ Reverse Engineering a Ceiling Fan]
 ** [http://www.irrational.net/2014/03/02/digital-atv/ Digital amateur TV on 70cm, 33cm, and 23cm]
+* Github: [https://github.com/argilo/sdr-examples argilo's sdr-examples]
 
 = Tutorials and Related Reading =
 Find or learn something interesting? Share it here!
