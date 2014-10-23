@@ -35,7 +35,12 @@ Feel free to share your favorite projects or blogs containing bladeRF and/or SDR
 * Blog: [http://www.irrational.net/ Clayton's Domain]
 ** [http://www.irrational.net/2014/03/22/reverse-engineering-a-ceiling-fan/ Reverse Engineering a Ceiling Fan]
 ** [http://www.irrational.net/2014/03/02/digital-atv/ Digital amateur TV on 70cm, 33cm, and 23cm]
-* Github: [https://github.com/argilo/sdr-examples argilo's sdr-examples]
+* Github: [https://github.com/argilo argilo's] [https://github.com/argilo/sdr-examples sdr-examples]
+* Github: [https://github.com/drmpegs drmpeg's] projects
+** [https://github.com/drmpeg/dtv-utils Utilities for SDR digital television]
+** [https://github.com/drmpeg/gr-dvbs A DVB-S transmitter for GNU Radio]
+** [https://github.com/drmpeg/gr-dvbs2 A DVB-S2 and DVB-S2X transmitter for GNU Radio]
+** [https://github.com/drmpeg/gr-atscmap Mapping block for bladeRF ATSC modulater and RRC filter FPGA image]
 
 = Tutorials and Related Reading =
 Find or learn something interesting? Share it here!
