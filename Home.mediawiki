@@ -29,9 +29,12 @@ These guides describe the process of building and installing the bladeRF softwar
 * [[Debugging dropped samples and identifying achievable sample rates]]
 * [[Minimalistic build and run test for OpenBTS 5]]
 
-= Projects =
-Feel free to share your bladeRF projects here. Be sure to also check out the  [https://www.nuand.com/forums/viewforum.php?f=8 Project Showcase] on the forums.
+= Projects and Blogs =
+Feel free to share your favorite projects or blogs containing bladeRF and/or SDR content! Be sure to also check out the  [https://www.nuand.com/forums/viewforum.php?f=8 Project Showcase] on the forums.
 * [[ATSC Transmitter]]
+* Blog: [http://www.irrational.net/ Clayton's Domain]
+** [http://www.irrational.net/2014/03/22/reverse-engineering-a-ceiling-fan/ Reverse Engineering a Ceiling Fan]
+** [http://www.irrational.net/2014/03/02/digital-atv/ Digital amateur TV on 70cm, 33cm, and 23cm]
 
 = Tutorials and Related Reading =
 Find or learn something interesting? Share it here!
