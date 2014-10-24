@@ -4,7 +4,6 @@ This is a revolving list of tasks that we need to do.  Priorities change constan
 
 == Unassigned ==
 * Figure out why linux has a bandwidth allocation issue after a ^c from a program
-* In-band scheduling support
 * Discipline VCTCXO using 1pps from GPSDO
 * Discipline VCTCXO using 10MHz external reference
 * Parse NMEA messages from GPS in FPGA for timestamping
