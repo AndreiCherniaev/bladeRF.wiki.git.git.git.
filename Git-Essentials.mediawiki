@@ -7,3 +7,4 @@ If your pull requests are squashed to a single commit or very few commits that a
 * [http://ariejan.net/2009/10/26/how-to-create-and-apply-a-patch-with-git/ How to create and apply a patch with Git by Ariejan de Vroom]
 * [http://www.gitguys.com/topics/merging-with-a-conflict-conflicts-and-resolutions/ Resoling git conflicts by The Git Guys]
 * [http://gitimmersion.com/index.html Git Immersion - A Guided tour through Gitland]
+* [http://www-cs-students.stanford.edu/~blynn/gitmagic/ Git manual from Stanford]
