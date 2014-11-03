@@ -11,17 +11,17 @@ The project's CMake flags should provide the ability to sufficiently changes pat
 
 == Release tags ==
 
-We are currently working toward a 2014.09 release, with at least monthly release candidates.  Releases are  represent points where all components are inter-operable and stable. 
+We are currently working toward a 2014.11 release, with at least monthly release candidates.  Releases are  represent points where all components are inter-operable and stable. 
 
-Release tags are in the format: <code>YYYY.MM[-rcN]</code> (for example, ''2014.09-rc2''). Package maintainers will most likely only want track these tags. 
+Release tags are in the format: <code>YYYY.MM[-rcN]</code> (for example, ''2014.11-rc3''). Package maintainers will most likely only want track these tags. 
 
 The top-level CHANGELOG shall list the components and their associated versions present in the release:
 <pre>
 This release candidate consists of the following versions:
-  * FPGA bitstream v0.0.6
+  * FPGA bitstream v0.1.0
   * FX3 firmware v1.7.1
-  * libbladeRF v0.16.2
-  * bladeRF-cli v0.11.1
+  * libbladeRF v0.17.0
+  * bladeRF-cli v0.12.0
 </pre>
 
 == Repository components ==
