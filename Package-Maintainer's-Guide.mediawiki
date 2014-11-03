@@ -13,7 +13,13 @@ The project's CMake flags should provide the ability to sufficiently changes pat
 
 We are currently working toward a 2014.11 release, with at least monthly release candidates.  Releases are  represent points where all components are inter-operable and stable. 
 
-Release tags are in the format: <code>YYYY.MM[-rcN]</code> (for example, ''2014.11-rc3''). Package maintainers will most likely only want track these tags. 
+Release tags are in the format: <code>YYYY.MM[-rcN]</code> (for example, ''2014.11-rc3''). Package maintainers will most likely only want track these tags, and not those used to track version bumps in individual components.
+
+For example, to view release tags:
+```
+git tag | grep '^20[0-9]\{2\}\.[0-9]\{2\}\(-rc[0-9]\+\)\?' 
+```
+
 
 The top-level CHANGELOG shall list the components and their associated versions present in the release:
 <pre>
