@@ -1,4 +1,5 @@
 = Using an Installer =
+* [https://www.nuand.com/Windows Nuand Windows Installer Guide and Download]
 * [http://www.scan-ne.net/bladerf/bladerfwin7.html  bladeRF, Windows 7, and SDR-Radio] (Courtesy of [http://nuand.com/forums/viewtopic.php?f=9&t=3526 Scott] from [http://www.scan-ne.net Scan New England])
 * [http://nuand.com/forums/viewtopic.php?f=5&t=3498 bladeRF, Windows 8, and SDR-Console] (Thanks to Drew)
 
