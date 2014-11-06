@@ -1,7 +1,7 @@
 ## What is this?
-These are notes jotted down from IRC logs from `rwr` helping `mambrus` setting up a minimalistic OpenBTS 5 one late night 2014-10-02.
+These are notes jotted down from IRC logs from `rwr` helping `mambrus` setting up a minimalistic [OpenBTS **pre-release** version 5](http://openbts.org/) using [YateBTS](http://wiki.yatebts.com/index.php/Main_Page) transceiver one late night `2014-10-02`.
 
-No guarantees it will work, but hopefully rather serve as a base for future documentation. (Let me know if it does or doesn't and we can skip this caution-note.)
+No guarantees it will work, but hopefully rather serve as a base for future documentation. (Let me know if it does or doesn't and we can skip this caution-note and/or refine this into a proper how-to.)
 
 ## Prerequisites
 Copy & paste the following for a Debian-based system:
@@ -13,9 +13,11 @@ sudo apt-get install $(
     cut -f2 -d" ")
 ```
 
-Hopefully all the packages are in your distros repo and are named the same. If not, modify the lines above and add `grep -v <package>` for the packages the fail.
+Hopefully all the packages are in your distros repo and are named the same. If not, modify the lines above and add `grep -v <package>` for the packages that fail, then find another way to install them. Building from source is always an alternative...
 
-### Alternative ways of installing for some packages.
+### Alternative ways of installing cumbersome packages.
+
+This section describe alternative ways of installing some of the packages above known to be missing for some Debian-stable distros.
 
 #### libzmq3 & libzmq3-dev
 * For Ubuntu:
@@ -116,4 +118,12 @@ This is done very traditionally but spelled out here because of the configure fl
 <a href="http://picpaste.com/2014-10-03_15.04.53-qDwsRkrO.png"><img src="http://picpaste.com/extpics/2014-10-03_15.04.53-qDwsRkrO.png" alt="PicPaste: 2014-10-03_15.04.53-qDwsRkrO.png" /></a>
 
 *Please do take care about following local regulations.*
+
+## Updates
+
+* 2014-11-04 fbe0b6a8 breaks YateBTS transceiver
+
+Prior to (fbe0b6a8)[https://github.com/Nuand/bladeRF/commit/fbe0b6a81e251517fa6265211809b8e66b781d50#commitcomment-8413061], bladerf_sync_config()did not touch the timestamp bit as there was no support for dealing with timestamps.
+
+There's a patch proposal to Yate at the following link: [Yate_transceiver_revert_init_order.patch](http://pastebin.com/G1Y32Z9a). Patch is pending accept and until further notice you have to patch in YateBTS source manually (``patch -p0 < the.patch``) to be able to use the YateBTS transceiver.
  
