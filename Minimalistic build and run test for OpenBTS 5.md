@@ -123,7 +123,7 @@ This is done very traditionally but spelled out here because of the configure fl
 
 * 2014-11-04 fbe0b6a8 breaks YateBTS transceiver
 
-Prior to (fbe0b6a8)[https://github.com/Nuand/bladeRF/commit/fbe0b6a81e251517fa6265211809b8e66b781d50#commitcomment-8413061], bladerf_sync_config()did not touch the timestamp bit as there was no support for dealing with timestamps.
+Prior to [fbe0b6a8](https://github.com/Nuand/bladeRF/commit/fbe0b6a81e251517fa6265211809b8e66b781d50#commitcomment-8413061), bladerf_sync_config()did not touch the timestamp bit as there was no support for dealing with timestamps.
 
-There's a patch proposal to Yate at the following link: [Yate_transceiver_revert_init_order.patch](http://pastebin.com/G1Y32Z9a). Patch is pending accept and until further notice you have to patch in YateBTS source manually (``patch -p0 < the.patch``) to be able to use the YateBTS transceiver.
+There's a patch proposal to Yate at the following link: [Yate_transceiver_revert_init_order.patch](http://pastebin.com/G1Y32Z9a). Patch is pending accept and until further notice you have to patch in YateBTS source manually (`patch -p0 < the.patch`) to be able to use the YateBTS transceiver.
  
