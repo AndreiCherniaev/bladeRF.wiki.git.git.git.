@@ -21,7 +21,7 @@ Simply place (or symlink, for *nix users) the FPGA bitfile in one of these direc
 The user's home directory is determined based upon contents of <code>/etc/passwd</code>.
 
 == Windows ==
-* <code>C:\Users\<user name>\AppData\Roaming</code> (via [http://msdn.microsoft.com/en-us/library/windows/desktop/dd378457%28v=vs.85%29.aspx FOLDERID_RoamingAppData])
+* <code>C:\Users\<user name>\AppData\Roaming\Nuand\bladeRF</code> (via [http://msdn.microsoft.com/en-us/library/windows/desktop/dd378457%28v=vs.85%29.aspx FOLDERID_RoamingAppData])
 
 
 = Firmware-based =
