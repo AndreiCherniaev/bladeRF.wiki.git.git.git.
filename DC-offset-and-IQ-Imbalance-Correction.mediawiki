@@ -18,9 +18,9 @@ The LMS6002D transceiver provides DC offset cancellation, and the bladeRF HDL im
 
 = Automatic corrections =
 
-Currently, automatic DC calibration/correction is in the mainline codebase, but is still a work in progress with some [https://github.com/Nuand/bladeRF/issues/269 known] [https://github.com/Nuand/blaindeRF/issues/304 issues].
+Currently, automatic DC calibration/correction is in the mainline codebase.
 
-IQ imbalance auto calibration/correction is not yet implemented, but is instead scheduled as a future effort.
+IQ imbalance auto calibration/correction is not currently implemented.  However, you can manually adjust IQ balance parameters via [http://hoopycat.com/bladerf_builds/latest/artifacts/libbladeRF_doxygen/group___f_n___c_t_r_l.html#ga25cbc4835fd5fad2a10fe124ba23fd44 bladerf_set_correction()].
 
 == DC auto-calibration for a single frequency and gain ==
 If you plan to be operating at a single frequency and gain, you can perform the following steps via <code>bladeRF-cli</code>.  Note that you would need to do this each time you power up the device. See the next subsection if this is not sufficient.
@@ -30,7 +30,6 @@ If you plan to be operating at a single frequency and gain, you can perform the 
 ## You may instead wish to do this from outside the CLI, using your favorite program for viewing the spectrum.
 # Run <code>cal lms</code>
 ## This runs the LMS6002D's DC offset calibration routines. You only need to do this once after powering up the device. See the next section for a less involved approach.
-## If you see all 31's for the RXVGA2 values, this is a [https://github.com/Nuand/bladeRF/issues/269 known issue] that is being worked on. You can try re-running this command until you see values other than 31.
 # To automatically calibrate and set appropriate corrections the RX module, run <code>cal dc rx</code>
 ## Ideally, you should see the "error" values near zero, and certainly less than 10.
 ### Values any higher may indicate that it may not be possible to bring the DC offset close to zero for the current frequency and gain settings.  If this happens, it is recommended that you confirm this to be the case via the manual approaches described later in this page.  If you are able to manually tune the DC offset where the auto-calibration fails, please report it to developers with the settings you are using.
