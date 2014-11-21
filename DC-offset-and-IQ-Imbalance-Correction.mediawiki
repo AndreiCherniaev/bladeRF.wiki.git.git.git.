@@ -18,7 +18,7 @@ The LMS6002D transceiver provides DC offset cancellation, and the bladeRF HDL im
 
 = Automatic corrections =
 
-Currently, automatic DC calibration/correction is in the mainline codebase.
+Currently, a table-based automatic DC calibration/correction is in the mainline codebase.
 
 IQ imbalance auto calibration/correction is not currently implemented.  However, you can manually adjust IQ balance parameters via [http://hoopycat.com/bladerf_builds/latest/artifacts/libbladeRF_doxygen/group___f_n___c_t_r_l.html#ga25cbc4835fd5fad2a10fe124ba23fd44 bladerf_set_correction()].
 
