@@ -35,7 +35,6 @@ If you plan to be operating at a single frequency and gain, you can perform the 
 ### Values any higher may indicate that it may not be possible to bring the DC offset close to zero for the current frequency and gain settings.  If this happens, it is recommended that you confirm this to be the case via the manual approaches described later in this page.  If you are able to manually tune the DC offset where the auto-calibration fails, please report it to developers with the settings you are using.
 # To calibrate the TX module, run <code>cal dc tx</code>
 ## Again, you should see fairly low error values and the same comments apply if you find this not to be the case.
-## Please note that there is a [https://github.com/Nuand/blaindeRF/issues/304 known issue] for some frequency and gain settings.
 
 <i><b><u>Example:</u></b></i>
 <pre>
