@@ -65,13 +65,14 @@ Find or learn something interesting? Share it here!
 * [[US Amateur Radio Bands|http://labyrinth13.com/Hambands_color.pdf]]
 
 = Development =
+
+See the [https://github.com/Nuand/bladeRF/tree/master/doc doc/] and [https://github.com/Nuand/bladeRF/tree/master/doc/development doc/development] directories for "official" development-related documentation.
+
 == Recommended Reading ==
 * [[git-essentials|Using Git and GitHub]]
 * [[Debugging]]
 
 == Project Maintenance ==
-* [[Release-testing|Testing]]
-* [[Version Change Checklist]]
 * [[Linux Distribution Status]]
 * [[Static Analysis]]
 * [[Proposals and Requests]]
