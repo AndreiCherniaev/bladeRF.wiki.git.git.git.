@@ -120,6 +120,10 @@ Binary data in the SC16Q11 format is little-endian, sign-extended, and right-ali
 == baudline ==
 Samples must be in a binary format to be used with baudline. This section assumes you've saved them to the binary SC16Q11 format, but other conversions are certainly possible.
 
+=== Pre-recorded samples ===
+
+Here's one way to view binary samples you've saved off using the bladeRF-cli program. Note that you can open a file using these settings from the command-line as well.
+
 # Open baudline
 # Right-click and select <b>Input -> Open File</b>
 # Change <b>File Format</b> to <b>raw</b>
@@ -130,6 +134,21 @@ Samples must be in a binary format to be used with baudline. This section assume
 ## Sample Rate: <i>Sample rate you recorded the samples at</i>
 ## Channel: <b>2</b>, <b>quadrature</b>
 ## Decode Format: <b>16 bit linear</b>, <b>little endian</b>
+
+=== Live Viewing ===
+
+When getting your bearings in the bladeRF-cli, it's handy to be able to see some data while you're dialing in settings. Having baudline show the samples RX'd by the bladeRF-cli comes in quite handy.
+
+# Create a fifo: <pre>$ mkfifo /tmp/sample_fifo</pre>
+# Start up baudline, using the fifo as input. Adjust the <code>samplerate</code> parameter appropriately. <pre>./baudline -reset -format le16 -channels 2 -quadrature -samplerate 2000000 -stdin < /tmp/sample_fifo</pre>
+# Start up the CLI and configure the device.
+<pre>
+bladeRF> set frequency 433.92M
+bladeRF> set samplerate 2M
+bladeRF> set bandwidth 1.5M
+bladeRF> rx config file=/tmp/sample_fifo n=0
+bladeRF> rx_start
+</pre>
 
 = Getting the most out of libtecla =
 If you've built bladeRF-cli with support for [http://www.astro.caltech.edu/~mcs/tecla/index.html libtecla] (<i>highly</i> recommended), you'll have a number of great features available to you, including history, tab-completion (for filenames) and handy key bindings (including emacs and vi bindings).
