@@ -147,7 +147,9 @@ bladeRF> set frequency 433.92M
 bladeRF> set samplerate 2M
 bladeRF> set bandwidth 1.5M
 bladeRF> rx config file=/tmp/sample_fifo n=0
-bladeRF> rx_start
+bladeRF> rx start
+bladeRF> # Adjust parameters while viewing the spectrum in baudline!
+bladeRF> rx stop
 </pre>
 
 = Getting the most out of libtecla =
