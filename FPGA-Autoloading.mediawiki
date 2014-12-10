@@ -15,7 +15,7 @@ Simply place (or symlink, for *nix users) the FPGA bitfile in one of these direc
 == Linux or OSX ==
 * The directory specified by the <code>BLADERF_SEARCH_DIR</code> environment variable (As of 2014-12-10)
 * The current working directory (As of 2014-12-10)
-* The directory containing the program being executed.
+* The directory containing the program being executed. (As of 2014-12-10)
 * <code>your_home_directory/.config/Nuand/bladeRF/</code> (libbladeRF v0.16.0 +)
 * <code>your_home_directory/.Nuand/bladeRF/</code> (libbladeRF v0.16.0 +)
 * <code>/etc/Nuand/bladeRF/</code> (libbladeRF v0.16.0 +)
