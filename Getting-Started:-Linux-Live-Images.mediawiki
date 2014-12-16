@@ -10,7 +10,8 @@ This is a great place to start if you are new to Linux, and is a better choice t
 
 = Creating Live DVDs and USB Sticks =
 There are a myriad of useful resources regarding burning ISOs to DVDs and preparing bootable USB sticks on the web. Below are a just a few guides. Feel free to add any guides you've found helpful!
-* [https://help.ubuntu.com/community/BurningIsoHowto An Ubuntu community wiki page] on burning ISOs to DVDs. ** This covers Windows, Mac OS X, and Ubuntu Linux.
+* [https://help.ubuntu.com/community/BurningIsoHowto An Ubuntu community wiki page] on burning ISOs to DVDs.
+** This covers Windows, Mac OS X, and Ubuntu Linux.
 * [http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-ubuntu An Ubuntu guide on creating a bootable USB sticks]
 ** You may need to run the following to install the Startup Disk Creator: <pre>$ sudo apt-get install usb-creator-gtk</pre> 
 ** Note the option to reserve extra space . This allows you to make persistent changes to the image, for example, installing your favorite packages or program configurations. <b> This is highly recommended!</b>
