@@ -28,7 +28,7 @@ From the [http://gnuradio.org/redmine/projects/gnuradio/wiki/GNURadioLiveDVD GNU
 
 <i>"The GNU Radio Live SDR Environment, produced by [http://corganlabs.com/ Corgan Labs], is a bootable Ubuntu Linux DVD with [http://gnuradio.org/redmine/projects/gnuradio/wiki GNU Radio] and third party software pre-installed. It is designed for quick and easy testing and experimentation with GNU Radio without having to make any permanent modifications to a PC or laptop. It is not, however, an installation DVD."</i>
 
-The current version (containing GNU Radio 3.7.5), contains bladeRF support from [https://github.com/Nuand/bladeRF/commit/0bb0cceba20b4dd0ce23bf13ed3f4678ee6dd263 changeset 0bb0cceb].  
+The current version (containing GNU Radio 3.7.6), contains bladeRF support from [https://github.com/Nuand/bladeRF/commit/06703b23986d391097ec451e161f75caa8cdaca6 changeset 06703b23].  
 
 The FPGA images are included in <code>/usr/share/Nuand/bladeRF</code> and will be [https://github.com/Nuand/bladeRF/wiki/FPGA-Autoloading#host-software-based automatically loaded] when a device is opened.  If you wish to use different FPGA images, you can place them in <code>~/.config/Nuand/bladeRF/</code>.
 
