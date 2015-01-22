@@ -23,6 +23,11 @@ There are a myriad of useful resources regarding burning ISOs to DVDs and prepar
 
 = Live Distros =
 
+Below are live Linux images that contain bladeRF support.
+
+The FPGA images are included in <code>/usr/share/Nuand/bladeRF</code> and will be [https://github.com/Nuand/bladeRF/wiki/FPGA-Autoloading#host-software-based automatically loaded] when a device is opened.  If you wish to use different FPGA images, you can place them in <code>~/.config/Nuand/bladeRF/</code>.
+</pre>
+
 == GNU Radio Live SDR Environment ==
 From the [http://gnuradio.org/redmine/projects/gnuradio/wiki/GNURadioLiveDVD GNU Radio Live SDR Environment] wiki page:<br>
 
@@ -30,11 +35,12 @@ From the [http://gnuradio.org/redmine/projects/gnuradio/wiki/GNURadioLiveDVD GNU
 
 The current version (containing GNU Radio 3.7.6), contains bladeRF support from [https://github.com/Nuand/bladeRF/commit/06703b23986d391097ec451e161f75caa8cdaca6 changeset 06703b23].  
 
-The FPGA images are included in <code>/usr/share/Nuand/bladeRF</code> and will be [https://github.com/Nuand/bladeRF/wiki/FPGA-Autoloading#host-software-based automatically loaded] when a device is opened.  If you wish to use different FPGA images, you can place them in <code>~/.config/Nuand/bladeRF/</code>.
-</pre>
-
 == Pentoo ==
-Coming soon...
 
+bladeRF support is now included in [http://www.pentoo.ch Pentoo], a security-focused live Linux image based upon Gentoo.  See the Pentoo [http://pentoo.blogspot.com/ blog] and [http://www.pentoo.ch/download/ downloads page] for more information.
 
-
+The 2015 RC3.7 Pentoo release includes:
+- bladeRF-cli v0.12.0 (2014.11-rc3 release)
+- libbladeRF v0.17.0  (2014.11-rc3 release)
+- FPGA bitstream v0.1.1
+- FX3 firmware version 1.7.1
