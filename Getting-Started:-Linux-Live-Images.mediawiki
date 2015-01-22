@@ -40,7 +40,7 @@ The current version (containing GNU Radio 3.7.6), contains bladeRF support from 
 bladeRF support is now included in [http://www.pentoo.ch Pentoo], a security-focused live Linux image based upon Gentoo.  See the Pentoo [http://pentoo.blogspot.com/ blog] and [http://www.pentoo.ch/download/ downloads page] for more information.
 
 The 2015 RC3.7 Pentoo release includes:
-- bladeRF-cli v0.12.0 (2014.11-rc3 release)
-- libbladeRF v0.17.0  (2014.11-rc3 release)
-- FPGA bitstream v0.1.1
-- FX3 firmware version 1.7.1
+* bladeRF-cli v0.12.0 (2014.11-rc3 release)
+* libbladeRF v0.17.0  (2014.11-rc3 release)
+* FPGA bitstream v0.1.1
+* FX3 firmware version 1.7.1
