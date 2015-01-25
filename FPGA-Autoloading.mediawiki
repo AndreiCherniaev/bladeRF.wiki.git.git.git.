@@ -37,7 +37,7 @@ Another option is to write an FPGA-bitstream to the device's SPI flash.  When th
 
 This process is slower than the host-based mechanism mentioned above. However, this mechanism allows for "headless" (without a host PC) operation. It takes approximately 4 seconds to load an x40 image, and ~12 seconds to load an x115 image.
 
-<b>IMPORTANT:</b> Be sure that the firmware autoload has completed before attempting to use the device (i.e., open a device handle)! When the FPGA is fully configured, LEDs 1-3 will be lit. As of FX3 firmware v1.8.0 and libbladeRF v1.0.0, `bladerf_open()` will block and wait until the device reports that its initialization (including autoloading) have completed. Therefore, using the latest available version alleviates this concern.
+<b>IMPORTANT:</b> Be sure that the firmware autoload has completed before attempting to use the device (i.e., open a device handle)! When the FPGA is fully configured, LEDs 1-3 will be lit. As of FX3 firmware v1.8.0 and libbladeRF v1.0.0, <code>bladerf_open()</code> will block and wait until the device reports that its initialization (including autoloading) have completed. Therefore, using the latest available version alleviates this concern.
 
 The FPGA may be written to the bladeRF's SPI flash via the CLI:
 <pre>bladeRF-cli -L path/to/hostedx(size).rbf</pre>
