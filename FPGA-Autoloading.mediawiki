@@ -45,4 +45,4 @@ The FPGA may be written to the bladeRF's SPI flash via the CLI:
 To disable this autoload mechanism, erase the FPGA image and metadata. This can also be done via the CLI:
 <pre>bladeRF-cli -L X</pre>
 
-<b>IMPORTANT:</b> It is highly recommended that you disable FPGA autoload when prior to upgrading device firmware in order to avoid any potential conflicts.
+<b>IMPORTANT:</b> It is highly recommended that you disable FPGA autoload prior to upgrading device firmware in order to avoid any potential conflicts.
