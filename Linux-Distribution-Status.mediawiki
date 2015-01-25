@@ -10,6 +10,12 @@ Please feel free to update this page as needed, but please test [https://github.
 | Runs?
 | Comments
 |-
+| ArchLinux (32-bit & 64-bit)
+| Yes
+| Yes
+| 
+|-
+|-
 | Debian Wheezy (32-bit)
 | Yes
 | Performance issues
