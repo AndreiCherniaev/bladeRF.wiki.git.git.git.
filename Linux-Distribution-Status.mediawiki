@@ -36,6 +36,12 @@ Please feel free to update this page as needed, but please test [https://github.
 | Yes
 |
 |-
+|-
+| NixOS (32-bit & 64-bit)
+| Yes
+| Unknown
+| 
+|-
 | PCLinuxOS (32-bit & 64-bit)
 | Yes
 | Yes
