@@ -39,7 +39,7 @@ Please feel free to update this page as needed, but please test [https://github.
 |-
 | NixOS (32-bit & 64-bit)
 | Yes
-| Unknown
+| Yes
 | 
 |-
 | PCLinuxOS (32-bit & 64-bit)
