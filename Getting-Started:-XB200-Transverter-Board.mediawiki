@@ -112,7 +112,9 @@ bladerf=0,xb200=144M
 As this utilizes gr-osmosdr, you can simply follow the information in the previous section regarding the device arguments.
 
 == SDR# ==
-TODO - Efforts to integrate XB-200 support are ongoing. Add links to official support here when it's available.
+The current beta vers
 
 == SDR-Radio ==
-TODO - Efforts to integrate XB-200 support are ongoing. Add links to official support here when it's available.
+The current beta version (v2.3 build 1990 at the time of writing) of SDR-Radio assumes an XB-200 is attached, and performs the necessary calls to enable it.
+
+If you do not have an XB-200 attached, this behavior causes a clock signal to be driven to the expansion port, which may introduce undesired artifacts. To avoid this, you can [https://github.com/Nuand/bladeRF/wiki/Getting-Started%3A-Windows#Building_from_source build your own modified bladeRF.dll] with a change that replaces [https://github.com/Nuand/bladeRF/blob/13dde0f6d53a11042a10cac6535539db3a7b53a4/host/libraries/libbladeRF/src/bladerf.c#L1305 this line in bladerf.c] with <code>status = 0;</code> to prevent the expansion board enable from taking place.
