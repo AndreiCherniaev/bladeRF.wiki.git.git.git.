@@ -112,7 +112,7 @@ bladerf=0,xb200=144M
 As this utilizes gr-osmosdr, you can simply follow the information in the previous section regarding the device arguments.
 
 == SDR# ==
-The current beta vers
+The bladeRF can be used with SDR# via a [https://github.com/jmichelp/sdrsharp-bladerf plugin written by Jean-Michel Picod].  Follow the instructions on his GitHub page, and feel free to discuss/comment/ask questions about the plugin in Jean-Michel's [https://nuand.com/forums/viewtopic.php?f=5&t=3597 forum thread].
 
 == SDR-Radio ==
 The current beta version (v2.3 build 1990 at the time of writing) of SDR-Radio assumes an XB-200 is attached, and performs the necessary calls to enable it.
