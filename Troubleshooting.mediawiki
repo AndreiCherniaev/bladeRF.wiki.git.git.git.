@@ -170,6 +170,16 @@ Below is a list of configurations that people have reported success on. Feel fre
 |ASUS Z87-PRO / i7-4770
 |Intel Corporation 8 Series/C220 Series Chipset Family USB xHCI (rev 05)
 |Linux Mint 16 x86_64
+|-
+|piranha32's desktop
+|Asus P6T/i7 920@2.66GHz
+|Syba SD-PEX20139, uPD720201
+|Fedora 21 x86_64. Max RX sample rate measured using bladeRF-cli: 31Msps
+|-
+|piranha32's desktop
+|Asus P6T/i7 920@2.66GHz
+|IOCrest/Syba SY-PEX20140, Etron EJ188
+|Fedora 21 x86_64. Max RX sample rate measured using bladeRF-cli: 83Msps
 |}
 
 ==== Problematic Configurations ====
