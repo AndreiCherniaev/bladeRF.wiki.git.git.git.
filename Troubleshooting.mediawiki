@@ -267,7 +267,7 @@ This has been patched in [https://git.kernel.org/cgit/linux/kernel/git/stable/li
 
 == Mac OSX Superspeed issues ==
 
-If you've used ports to get libusb installed, there is a high likelihood that it is version 1.0.9.  Unfortunately, libusb didn't add superspeed support until version 1.0.15 for OSX.  We've had reports that the absolute latest version of libusb, 1.0.17, works on OSX.  Please update accordingly.
+If you've used ports to get libusb installed, there is a high likelihood that it is version 1.0.9.  Unfortunately, libusb didn't add superspeed support until version 1.0.15 for OSX. libusb v1.0.17+, works on OSX.
 
 = Getting help =
 If you're really stuck, join the #bladeRF channel on [http://webchat.freenode.net/ Freenode] or post to the [http://nuand.com/forums/viewforum.php?f=4 Nuand Troubleshooting forum].
