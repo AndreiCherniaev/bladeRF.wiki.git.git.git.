@@ -26,7 +26,7 @@ $ sudo add-apt-repository ppa:chris-lea/zeromq
 $ sudo apt-get update
 $ sudo apt-get install libzmq3-dbg libzmq3-dev 
 ```
-For Debian 7.2 you can use `libzmq3` & `libzmq3-dev` (**Note:** Confirmation needed)
+For Debian 7.2(Wheezy) you can use `libzmq3` & Debian Sid you can try `libzmq3-dev` (**Note:** Confirmation needed)
 
 #### uhd
 Build and install [gnuradio from source](http://gnuradio.org/redmine/projects/gnuradio/wiki/InstallingGRFromSource#Using-the-build-gnuradio-script)
