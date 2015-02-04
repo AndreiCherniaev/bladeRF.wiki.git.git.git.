@@ -121,7 +121,7 @@ If possible, try testing the device on both USB 2.0 and USB 3.0 ports, as well a
 
 ==== Issues with XHCI and Linux ====
 
-Previously, there was a known problem with Intel XHCI controllers in Linux, where killing an application using libbladeRF in a manner that doesn't allow libusb_close() to be called; this caused the device to not open again until a power-on reset was performed. This has been resolved in libbladeRF v1.2.0, via [https://github.com/Nuand/bladeRF/commit/2c48ba9e53574c7f4d3f7b8a969d89667b94251c commit 2c48ba9e].
+Previously, there was a known problem with Intel XHCI controllers in Linux when killing an application using libbladeRF in a manner that didn't allow libusb_close() to be called. This caused the device to not open again until a power-on reset was performed. This has been resolved in libbladeRF v1.2.0, via [https://github.com/Nuand/bladeRF/commit/2c48ba9e53574c7f4d3f7b8a969d89667b94251c commit 2c48ba9e].
 
 Other reported problems with Linux and XHCI drivers range from poor transfer rates to system-wide lockups.  Should you encounter these, it is recommended that you try to use a more recent kernel version. 
 
