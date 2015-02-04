@@ -120,13 +120,12 @@ As USB 3.0 is still relatively new, we've heard reports of some controller worki
 If possible, try testing the device on both USB 2.0 and USB 3.0 ports, as well as other host machines. 
 
 ==== Issues with XHCI and Linux ====
-There is currently a known problem with Intel XHCI controllers in Linux, where killing an application using libbladeRF (which uses libusb) in a manner that doesn't allow libusb_close() to be called. The symptoms will include kernel crashes with NULL pointer dereferences in xhci_free_dev(), and "not enough bandwidth for altsetting...) messages in dmesg (requiring a Power-on Reset).
 
-To avoid this issue, ensure that programs using the device are closed cleanly:
-- Add SIGTERM/SIGINT handlers to your custom applications to ensure the bladeRF device handle is closed. See the [https://github.com/Nuand/bladeRF/blob/master/host/utilities/bladeRF-cli/src/interactive/fgets.c#L40 bladeRF-cli] source for a reference.
-- When using GNU Radio Companion, **do not** click the "Kill flowgraph" (a red X) button. Instead, close the GUI window associated with the flow graph. If your flow graph doesn't contain any GUI widgets, you'll have to add a dummy one just to achieve this.
+Previously, there was a known problem with Intel XHCI controllers in Linux, where killing an application using libbladeRF in a manner that doesn't allow libusb_close() to be called; this caused the device to not open again until a power-on reset was performed. This has been resolved in libbladeRF v1.2.0, via [https://github.com/Nuand/bladeRF/commit/2c48ba9e53574c7f4d3f7b8a969d89667b94251c commit 2c48ba9e].
 
-As always, any help into investigating this issue is appreciated!
+Other reported problems with Linux and XHCI drivers range from poor transfer rates to system-wide lockups.  Should you encounter these, it is recommended that you try to use a more recent kernel version. 
+
+For example, the 3.13 kernel shipping with Ubuntu 14.04 is reported to cause system lockups when using a Renesas uPD720202-based USB 3.0 controller. However, the 3.16 kernel shipping with Ubuntu 14.10 does not appear to be affected.  (For those needing to remain on the 14.04 LTS, it is recommended that you [https://wiki.ubuntu.com/KernelTeam/GitKernelBuild build a more recent kernel])
 
 ==== Working configurations ====
 Below is a list of configurations that people have reported success on. Feel free to add to this list. (Please try to keep it reasonably organized.)
