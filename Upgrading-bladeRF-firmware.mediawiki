@@ -11,13 +11,13 @@ However, some firmware versions are incompatible with the current tools.  If kno
 = Prerequisites =
 Before continuing, ensure you've...
 # Installed all libraries and utilities, per the [https://github.com/nuand/bladerf/wiki#guides-and-how-tos Getting Started Guides].
-# Downloaded the latest FX3 image. In Linux: <pre>$ wget http://nuand.com/fx3/latest.img</pre>
+# Downloaded the latest FX3 image. In Linux: <pre>$ wget http://nuand.com/fx3/bladeRF_fw_latest.img</pre>
 
 = Normal upgrade procedure = 
 
 The bladeRF-cli program may be used in Linux, Mac OSX, and Windows (from cmd.exe) to upgrade firmware.  
 
-# Write the firmware to the bladeRF's SPI flash. Enabling verbose output here will result in the SPI flash block erases and page read/write operations being printed out. Remove the <code>-v verbose</code> portion of this command to suppress that information. <pre>$ bladeRF-cli -f latest.img -v verbose</pre>
+# Write the firmware to the bladeRF's SPI flash. Enabling verbose output here will result in the SPI flash block erases and page read/write operations being printed out. Remove the <code>-v verbose</code> portion of this command to suppress that information. <pre>$ bladeRF-cli -f bladeRF_fw_latest.img -v verbose</pre>
 # When the write operation completes, power-cycle the device.
 # The interactive mode command, <code>version</code> should now reflect the new firmware version:
 <pre>
