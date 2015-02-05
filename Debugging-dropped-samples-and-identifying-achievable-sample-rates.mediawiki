@@ -132,10 +132,6 @@ with open(sys.argv[1], 'rb') as in_file:
     print('Number of gaps:' + str(fail))
 </pre>
 
-
-'''NOTE:''' It's been reported the first block of samples may be leftover in FPGA/FX3 buffers from a previous reception. This is a known issue, and does not indicate dropped samples. In this case, you'll see 1 gap reported, and it will be a gap between the first and second block of samples, where a ''block'' is the value shown above in "# Samples per buffer."
-
-
 = Looking for discontinuities in transmitted samples using a spectrum analyzer =
 
 A crude test is to transmit a tone, and look for symptoms of discontinuities:
