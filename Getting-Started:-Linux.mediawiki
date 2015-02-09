@@ -145,7 +145,7 @@ Before continuing, see the [[Getting Started: Verifying Basic Device Operation]]
 
 If you encounter any issues or warnings, be sure to check the [[Troubleshooting]] guide before continuing on with this article.
 
-== Building GNU Radio, and gr-osmosdr ==
+== Building GNU Radio, gr-iqbal, and gr-osmosdr ==
 
 The following procedure uses build-gnuradio to fetch dependencies and checkout some useful tools. However, it only covers installing GNU Radio and gr-osmosdr.  A similar procedure maybe used to install the other tools.
 
