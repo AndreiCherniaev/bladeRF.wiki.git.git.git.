@@ -145,11 +145,13 @@ Before continuing, see the [[Getting Started: Verifying Basic Device Operation]]
 
 If you encounter any issues or warnings, be sure to check the [[Troubleshooting]] guide before continuing on with this article.
 
-== Building GNU Radio and gr-osmosdr ==
+== Building GNU Radio, and gr-osmosdr ==
 
-The following procedure uses build-gnuradio to fetch dependencies and checkout some useful tools. However, it only covers installing GNU Radio and gr-osmosdr.  A similar procedure maybe used to install the other tools (such as gr-iqbal). 
+The following procedure uses build-gnuradio to fetch dependencies and checkout some useful tools. However, it only covers installing GNU Radio and gr-osmosdr.  A similar procedure maybe used to install the other tools.
 
-A "sandbox" directory will be used to do the build. Change this to whatever your preferred build directory is in the relevant commands.
+See the [https://gnuradio.org/redmine/projects/gnuradio/wiki/InstallingGRFromSource GNU-Radio wiki for more information], including the use of PyBOMBS, which is now the preferred installation method. If you're not comfortable with the instructions presented below, please consider following the PyBOMBS instructions on the GNU Radio wiki instead.
+
+A "sandbox" directory will be used in the below instructions to perform the build. Change this to whatever your preferred build directory is in the relevant commands.
 
 === Using build-gnuradio to fetch dependencies and checkout source via Git ===
 
