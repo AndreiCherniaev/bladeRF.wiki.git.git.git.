@@ -131,7 +131,7 @@ The following commands:
 # Updated share library paths, so that libbladeRF can be found
 
 <pre>
-$ make && sudo make install && sudo ldconfig
+$ make -j8 && sudo make install && sudo ldconfig
 </pre>
 
 === Uninstalling later ===
