@@ -176,20 +176,24 @@ $ make && sudo make install
 
 
 === Add GNU Radio to linker path and executable path ===
-Create a new file called /etc/profile.d/gnuradio.sh
+If you would like GNU Radio to be available in PATH for all uses, create a new file called <code>/etc/profile.d/gnuradio.sh</code>:
 <pre>sudo vi /etc/profile.d/gnuradio.sh</pre>
+
+Otherwise, if you would like GNU Radio executables to only be in your path, update your shell's runtime-config file, such as <code>~/.bashrc</code>.
 
 Put the following into it:
 <pre>#!/bin/bash
 # Add GNU Radio binaries to the search path
-export PATH=$PATH:/opt/gnuradio-3.7.6.1/bin
+GNURADIO_PATH=/opt/gnuradio-3.7.6.1
+export PATH=$PATH:$GNURADIO_PATH/bin
 # Add GNU Radio python libraries to python search path
 if [ $PYTHONPATH ]; then
-        export PYTHONPATH=$PYTHONPATH:/opt/gnuradio-3.7.6.1/lib/python2.7/dist-packages
+        export PYTHONPATH=$PYTHONPATH:$GNURADIO_PATH/lib/python2.7/dist-packages
 else
-        export PYTHONPATH=/opt/gnuradio-3.7.6.1/lib/python2.7/dist-packages
+        export PYTHONPATH=$GNURADIO_PATH/lib/python2.7/dist-packages
 fi</pre>
-'''Note: update the path above if you deviated from gnuradio-3.7.6.1'''
+
+'''Note: Be sure to update <code>GNURADIO_PATH</code> if you deviated from gnuradio-3.7.6.1'''
 
 '''Note: If you're on a non-Debian based distro, you might need to replace "dist-packages" with "site-packages".'''
 
@@ -235,9 +239,10 @@ You should see something akin to the following:
 
 If so, you're all set!
 
-For the profile.d changes to take effect, either:
+For the changes to your PATH take effect, either:
 * Log out and log back in
-* Run <code>$ source /etc/profile.d/gnuradio.sh</code> to update the environment in your current termunal
+* Run <code>$ source /etc/profile.d/gnuradio.sh</code> or <code>source ~/.bashrc</code>, depending which file you added the PATH definition to, in order to update the environment in your current terminal
+
 Once you have logged back in to your desktop, you should be able to run gnuradio-companion.
 
 
