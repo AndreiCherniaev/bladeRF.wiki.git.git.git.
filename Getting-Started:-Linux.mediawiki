@@ -248,6 +248,17 @@ Once you have logged back in to your desktop, you should be able to run gnuradio
 
 If you get a pop-up with errors about ''PYTHONPATH'' or ''LD_LIBRARY_PATH'', check the output of the <code>env</code> command to see how these environment variables are currently set.
 
+=== Build and install gr-iqbal ===
+This step is optional, but will make additional IQ balance functionality available for gr-osmosdr.
+
+<pre>
+$ cd ~/sandbox/gnuradio-builds/gr-iqbal
+$ mkdir build
+$ cd build
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.6.1 ../
+$ make && sudo make install && sudo ldconfig
+</pre>
+
 === Build and install gr-osmosdr ===
 [http://sdr.osmocom.org/trac/wiki/GrOsmoSDR gr-osmosdr] was checked out during the build-gnuradio execution. This provides GNU Radio support for a number of devices, including the bladeRF.
 
