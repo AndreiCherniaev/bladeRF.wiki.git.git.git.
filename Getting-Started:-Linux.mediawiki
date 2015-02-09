@@ -165,10 +165,10 @@ Note that this takes quite a bit of time, depending on how many dependencies you
 === Compile GNU Radio ===
 <pre>
 $ cd ~/sandbox/gnuradio-builds/gnuradio/
-$ git checkout -b gnuradio-v3.7.5.1 v3.7.5.1
+$ git checkout -b gnuradio-v3.7.6.1 v3.7.6.1
 $ mkdir build
 $ cd build
-$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.5.1  ../
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.6.1  ../
 $ make && sudo make install
 </pre>
 
@@ -180,14 +180,14 @@ Create a new file called /etc/profile.d/gnuradio.sh
 Put the following into it:
 <pre>#!/bin/bash
 # Add GNU Radio binaries to the search path
-export PATH=$PATH:/opt/gnuradio-3.7.5.1/bin
+export PATH=$PATH:/opt/gnuradio-3.7.6.1/bin
 # Add GNU Radio python libraries to python search path
 if [ $PYTHONPATH ]; then
-        export PYTHONPATH=$PYTHONPATH:/opt/gnuradio-3.7.5.1/lib/python2.7/dist-packages
+        export PYTHONPATH=$PYTHONPATH:/opt/gnuradio-3.7.6.1/lib/python2.7/dist-packages
 else
-        export PYTHONPATH=/opt/gnuradio-3.7.5.1/lib/python2.7/dist-packages
+        export PYTHONPATH=/opt/gnuradio-3.7.6.1/lib/python2.7/dist-packages
 fi</pre>
-'''Note: update the path above if you deviated from gnuradio-3.7.5.1'''
+'''Note: update the path above if you deviated from gnuradio-3.7.6.1'''
 
 '''Note: If you're on a non-Debian based distro, you might need to replace "dist-packages" with "site-packages".'''
 
@@ -195,7 +195,7 @@ Again, with your favorite text editor, create a new file call /etc/ld.so.conf.d/
 you will need sudo for this again.. (one line file)
 <pre>sudo vi /etc/ld.so.conf.d/gnuradio.conf</pre>
 Put this in the new file:
-<pre>/opt/gnuradio-3.7.5.1/lib</pre>
+<pre>/opt/gnuradio-3.7.6.1/lib</pre>
 '''Note: on some 64 bit systems, you might need a lib64 directory in this file as well.'''
 
 * Update your library cache again
@@ -203,32 +203,32 @@ Put this in the new file:
 
 You should see something akin to the following:
 <pre>
-/opt/gnuradio-3.7.5.1/lib:
+/opt/gnuradio-3.7.6.1/lib:
 	libgnuradio-iqbalance.so -> libgnuradio-iqbalance.so
-	libgnuradio-qtgui-3.7.5.1.so.0.0.0 -> libgnuradio-qtgui.so
-	libgnuradio-zeromq-3.7.5.1.so.0.0.0 -> libgnuradio-zeromq.so
-	libgnuradio-dtv-3.7.5.1.so.0.0.0 -> libgnuradio-dtv.so
-	libgnuradio-audio-3.7.5.1.so.0.0.0 -> libgnuradio-audio.so
-	libgnuradio-wxgui-3.7.5.1.so.0.0.0 -> libgnuradio-wxgui.so
-	libgnuradio-fcd-3.7.5.1.so.0.0.0 -> libgnuradio-fcd.so
-	libgnuradio-trellis-3.7.5.1.so.0.0.0 -> libgnuradio-trellis.so
+	libgnuradio-wavelet-3.7.6.1.so.0.0.0 -> libgnuradio-wavelet.so
+	libgnuradio-dtv-3.7.6.1.so.0.0.0 -> libgnuradio-dtv.so
+	libgnuradio-pmt-3.7.6.1.so.0.0.0 -> libgnuradio-pmt.so
+	libgnuradio-fcd-3.7.6.1.so.0.0.0 -> libgnuradio-fcd.so
+	libgnuradio-qtgui-3.7.6.1.so.0.0.0 -> libgnuradio-qtgui.so
+	libgnuradio-pager-3.7.6.1.so.0.0.0 -> libgnuradio-pager.so
 	libgnuradio-fosphor-3.7.0git.so.0.0.0 -> libgnuradio-fosphor.so
-	libgnuradio-noaa-3.7.5.1.so.0.0.0 -> libgnuradio-noaa.so
-	libgnuradio-channels-3.7.5.1.so.0.0.0 -> libgnuradio-channels.so
+	libgnuradio-digital-3.7.6.1.so.0.0.0 -> libgnuradio-digital.so
+	libgnuradio-noaa-3.7.6.1.so.0.0.0 -> libgnuradio-noaa.so
 	libgnuradio-osmosdr-0.1.5git.so.0.0.0 -> libgnuradio-osmosdr.so
-	libgnuradio-pmt-3.7.5.1.so.0.0.0 -> libgnuradio-pmt.so
-	libgnuradio-wavelet-3.7.5.1.so.0.0.0 -> libgnuradio-wavelet.so
-	libgnuradio-digital-3.7.5.1.so.0.0.0 -> libgnuradio-digital.so
-	libgnuradio-analog-3.7.5.1.so.0.0.0 -> libgnuradio-analog.so
-	libgnuradio-video-sdl-3.7.5.1.so.0.0.0 -> libgnuradio-video-sdl.so
-	libgnuradio-fec-3.7.5.1.so.0.0.0 -> libgnuradio-fec.so
-	libgnuradio-pager-3.7.5.1.so.0.0.0 -> libgnuradio-pager.so
-	libgnuradio-runtime-3.7.5.1.so.0.0.0 -> libgnuradio-runtime.so
-	libgnuradio-blocks-3.7.5.1.so.0.0.0 -> libgnuradio-blocks.so
-	libgnuradio-filter-3.7.5.1.so.0.0.0 -> libgnuradio-filter.so
-	libgnuradio-atsc-3.7.5.1.so.0.0.0 -> libgnuradio-atsc.so
-	libgnuradio-fft-3.7.5.1.so.0.0.0 -> libgnuradio-fft.so
-	libgnuradio-vocoder-3.7.5.1.so.0.0.0 -> libgnuradio-vocoder.so
+	libgnuradio-trellis-3.7.6.1.so.0.0.0 -> libgnuradio-trellis.so
+	libgnuradio-filter-3.7.6.1.so.0.0.0 -> libgnuradio-filter.so
+	libgnuradio-audio-3.7.6.1.so.0.0.0 -> libgnuradio-audio.so
+	libgnuradio-blocks-3.7.6.1.so.0.0.0 -> libgnuradio-blocks.so
+	libgnuradio-analog-3.7.6.1.so.0.0.0 -> libgnuradio-analog.so
+	libgnuradio-zeromq-3.7.6.1.so.0.0.0 -> libgnuradio-zeromq.so
+	libgnuradio-atsc-3.7.6.1.so.0.0.0 -> libgnuradio-atsc.so
+	libgnuradio-channels-3.7.6.1.so.0.0.0 -> libgnuradio-channels.so
+	libgnuradio-vocoder-3.7.6.1.so.0.0.0 -> libgnuradio-vocoder.so
+	libgnuradio-fec-3.7.6.1.so.0.0.0 -> libgnuradio-fec.so
+	libgnuradio-fft-3.7.6.1.so.0.0.0 -> libgnuradio-fft.so
+	libgnuradio-wxgui-3.7.6.1.so.0.0.0 -> libgnuradio-wxgui.so
+	libgnuradio-video-sdl-3.7.6.1.so.0.0.0 -> libgnuradio-video-sdl.so
+	libgnuradio-runtime-3.7.6.1.so.0.0.0 -> libgnuradio-runtime.so
 </pre>
 
 If so, you're all set!
@@ -248,7 +248,7 @@ If you get a pop-up with errors about ''PYTHONPATH'' or ''LD_LIBRARY_PATH'', che
 $ cd ~/sandbox/gnuradio-builds/gr-osmosdr
 $ mkdir build
 $ cd build
-$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.5.1 ../
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.6.1 ../
 $ make && sudo make install && sudo ldconfig
 </pre>
 
