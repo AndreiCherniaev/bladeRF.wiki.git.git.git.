@@ -129,7 +129,10 @@ There are, however, several 3rd-party scripts.  One of them by user "titanous."
 To use this, you need to run:
 <pre>
   $ brew tap titanous/homebrew-gnuradio
+  $ brew install --with-qt gnuradio
 </pre>
 but it is advisable to see the README at https://github.com/titanous/homebrew-gnuradio since
 there are several prerequisites and some options to consider.
 Subsequent steps are akin to those under "Building gr-osmosdr from source" (above).
+
+Note that `gfortran` and `umfpack` have been removed from brew as of February 2015.  Do not `brew install gcc`.  brew will install the right dependency (i.e. apple-gcc42).
