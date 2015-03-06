@@ -5,6 +5,7 @@ If your pull requests are squashed to a single commit or very few commits that a
 * [http://gun.io/blog/how-to-github-fork-branch-and-pull-request/ How to GitHub: Fork, Branch, Track, Squash and Pull Request by Rich Jones]
 * [http://nvie.com/posts/a-successful-git-branching-model/ A successful Git branching model by Vincent Driessen]
 * [http://ariejan.net/2009/10/26/how-to-create-and-apply-a-patch-with-git/ How to create and apply a patch with Git by Ariejan de Vroom]
-* [http://www.gitguys.com/topics/merging-with-a-conflict-conflicts-and-resolutions/ Resoling git conflicts by The Git Guys]
+* [http://www.gitguys.com/topics/merging-with-a-conflict-conflicts-and-resolutions/ Resolving git conflicts by The Git Guys]
 * [http://gitimmersion.com/index.html Git Immersion - A Guided tour through Gitland]
 * [http://www-cs-students.stanford.edu/~blynn/gitmagic/ Git manual from Stanford]
+* [http://41j.com/blog/2015/02/common-git-screwupsquestions-solutions/ Most common git screwups/questions and solutions]
