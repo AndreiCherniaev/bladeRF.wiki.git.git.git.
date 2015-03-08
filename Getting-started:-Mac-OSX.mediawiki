@@ -59,11 +59,12 @@ $ mkdir build; cd build
 
 
 Next, configure the build. In the below example, we:
-* Set up a Debug build
+* Set up a Release build
+** Change to <code>Debug</code> for a debug build, or <code>RelWithDebInfo</code> for a release build with debug symbols
 * Specify that files should be installed into /opt/local
 
 <pre>
-$ cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/opt/local ..
+$ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/local ..
 </pre>
 
 == Perform the build and installation ==
