@@ -87,7 +87,7 @@ bladeRF> flash_init_cal 40 0x9015 /tmp/new_cal_data.bin
 </pre>
 
 == Wiped your calibration data? All is not lost! ==
-If you've managed to wipe your calibration region and do not have the necessary tools to identify an appropriate VCTCXO trim value, email bladeRF@nuand.com with your serial number and a request to look up your factory-calibrated trim value.  (Please be patient!)
+If you've managed to wipe your calibration region and do not have the necessary tools to identify an appropriate VCTCXO trim value, you may look up that factory default on [https://www.nuand.com/calibration.php this page].
 
 = Analyzing RX'd data =
 Samples received via the bladeRF-cli, in either CSV or binary format, can easily be imported into tools such as [https://www.gnu.org/software/octave/ Octave], [http://www.mathworks.com/products/matlab/ MATLAB] or [http://www.baudline.com/ baudline].
