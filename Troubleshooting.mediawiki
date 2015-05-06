@@ -226,6 +226,104 @@ Please update to the [http://nuand.com/fx3/latest.img latest firmware], per the 
 == Outdated FPGA warning ==
 libbladeRF prints a warning if it detects that the device's firmware requires a more recent FPGA version. If you see this message, fetch the associated FPGA image from [https://www.nuand.com/fpga.php the FPGA download page].
 
+= bladeRF-cli detects device in bootloader mode =
+In the event that flash is corrupted, the bladeRF falls back to a bootloader mode, courtesy of the Cypress FX3 USB 3.0 peripheral controller.  From this bootloader, we can [https://github.com/Nuand/bladeRF/wiki/Upgrading-bladeRF-firmware#upgrading-using-the-fx3-bootloader re-flash the firmware].
+
+The current bladeRF-cli version should detect and report FX3-based devices found in bootloader mode, as shown below:
+
+```
+$ bladeRF-cli -i
+NOTE: One or more FX3-based devices operating in bootloader mode
+      were detected. Run 'help recover' to view information about
+      downloading firmware to the device(s).
+
+No device(s) attached.
+bladeRF> 
+```
+In this situation, you should see a USB device enumerated as a Cypress Westbridge device. If the only FX3-based device plugged into your machine is a bladeRF you can continue to reflash it. Otherwise, ensure you're not flashing bladeRF firmware onto some other device.
+
+Per the CLI's instructions, we can get additional information on how to recover from the bootloader:
+
+```
+bladeRF> help recover
+
+Usage: recover [<bus> <address> <firmware file>]
+
+Load firmware onto a device running in bootloader mode, or list all
+devices currently in bootloader mode.
+
+With no arguments, this command lists the USB bus and address for
+FX3-based devices running in bootloader mode.
+
+When provided a bus, address, and path to a firmware file, the
+specified device will be loaded with and begin executing the provided
+firmware.
+
+In most cases, after successfully loading firmware into the device's
+RAM, users should open the device with the "open" command, and write
+the firmware to flash via "load fx3 <firmware file>"
+```
+
+In short, we can run 'recover' to tell us the USB device and address in the bootloader mode, and then we can use this to specify which device to write the firmware to:
+
+```
+bladeRF> recover
+
+  FX3 bootloader devices:
+  ---------------------------------------------------------
+    Backend:    libusb
+    Bus:        1
+    Address:    5
+
+  Use 'recover <bus> <addr> <firmware>' to download and boot
+  firmware to the specified device.
+```
+
+Assuming we have the firmware, [http://nuand.com/fx3.php bladeRF_fw_latest.img] in our current directory, we see that our next command should be `recover 1 5 bladeRF_fw_latest.img`:
+
+```
+bladeRF> recover 1 5 bladeRF_fw_latest.img 
+
+  Success! Use "open" to switch to this device.
+  Note that a "load fx3 <firmware>" is required t
+```
+
+This `recover` command does not yet actually flash anything. It writes to and boots from RAM on the FX3. This is intended to allow developers to quickly experiment with different firmware loads, without having to always write to flash.
+
+Next, we can open the device and write this firmware to flash.
+
+```
+bladeRF> open
+
+bladeRF> version
+
+  bladeRF-cli version:        1.1.2
+  libbladeRF version:         1.2.1
+
+  Firmware version:           1.8.0
+  FPGA version:               Unknown (FPGA not loaded)
+
+bladeRF> load fx3 bladeRF_fw_latest.img 
+
+  Flashing firmware from bladeRF_fw_latest.img ...
+[INFO @ usb.c:611] Erasing 3 blocks starting at block 0
+[INFO @ usb.c:616] Erased block 2
+[INFO @ usb.c:624] Done erasing 3 blocks
+[INFO @ usb.c:818] Writing 479 pages starting at page 0
+[INFO @ usb.c:822] Writing page 478
+[INFO @ usb.c:831] Done writing 479 pages
+[INFO @ flash.c:110] Verifying 479 pages, starting at page 0
+[INFO @ usb.c:716] Reading 479 pages starting at page 0
+[INFO @ usb.c:719] Reading page 478
+[INFO @ usb.c:730] Done reading 479 pages
+  Done. Cycle power on the device.
+
+bladeRF> 
+
+```
+
+At this point, one can exit the bladeRF-cli and power cycle the device. It should be detected as a bladeRF when it is next plugged in.
+
 == FPGA load failures ==
 
 === Operation Timed Out ===
