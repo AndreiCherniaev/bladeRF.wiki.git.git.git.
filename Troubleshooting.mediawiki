@@ -226,7 +226,7 @@ Please update to the [http://nuand.com/fx3/latest.img latest firmware], per the 
 == Outdated FPGA warning ==
 libbladeRF prints a warning if it detects that the device's firmware requires a more recent FPGA version. If you see this message, fetch the associated FPGA image from [https://www.nuand.com/fpga.php the FPGA download page].
 
-= bladeRF-cli detects device in bootloader mode =
+== bladeRF-cli detects device in bootloader mode ==
 In the event that flash is corrupted, the bladeRF falls back to a bootloader mode, courtesy of the Cypress FX3 USB 3.0 peripheral controller.  From this bootloader, we can [https://github.com/Nuand/bladeRF/wiki/Upgrading-bladeRF-firmware#upgrading-using-the-fx3-bootloader re-flash the firmware].
 
 The current bladeRF-cli version should detect and report FX3-based devices found in bootloader mode, as shown below:
