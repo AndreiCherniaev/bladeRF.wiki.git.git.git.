@@ -264,7 +264,7 @@ RAM, users should open the device with the "open" command, and write
 the firmware to flash via "load fx3 <firmware file>"
 ```
 
-In short, we can run ```recover``` to tell us the USB device and address in the bootloader mode, and then we can use this to specify which device to write the firmware to:
+In short, we can run <code>recover</code> to tell us the USB device and address in the bootloader mode, and then we can use this to specify which device to write the firmware to:
 
 ```
 bladeRF> recover
@@ -279,7 +279,7 @@ bladeRF> recover
   firmware to the specified device.
 ```
 
-Assuming we have the firmware, [http://nuand.com/fx3.php bladeRF_fw_latest.img] in our current directory, we see that our next command should be ```recover 1 5 bladeRF_fw_latest.img```:
+Assuming we have the firmware, [http://nuand.com/fx3.php bladeRF_fw_latest.img] in our current directory, we see that our next command should be <code>recover 1 5 bladeRF_fw_latest.img</code>:
 
 ```
 bladeRF> recover 1 5 bladeRF_fw_latest.img 
