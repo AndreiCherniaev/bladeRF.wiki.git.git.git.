@@ -288,7 +288,7 @@ bladeRF> recover 1 5 bladeRF_fw_latest.img
   Note that a "load fx3 <firmware>" is required t
 ```
 
-This `recover` command does not yet actually flash anything. It writes to and boots from RAM on the FX3. This is intended to allow developers to quickly experiment with different firmware loads, without having to always write to flash.
+This <code>recover</code> command does not yet actually flash anything. It writes to and boots from RAM on the FX3. This is intended to allow developers to quickly experiment with different firmware loads, without having to always write to flash.
 
 Next, we can open the device and write this firmware to flash.
 
