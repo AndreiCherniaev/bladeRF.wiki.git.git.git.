@@ -49,6 +49,8 @@ As shown by page 14 on the [http://nuand.com/bladerf.pdf bladeRF schematic], the
 
 = Projects and Blogs =
 Feel free to share your favorite projects or blogs containing bladeRF and/or SDR content! Be sure to also check out the  [https://www.nuand.com/forums/viewforum.php?f=8 Project Showcase] on the forums.
+* [http://blog.yate.ro/ Yate Blog: Software Defined Mobile Network]
+** [http://blog.yate.ro/2015/05/20/ofdm-the-science-behind-lte/ OFDM - the science behind LTE]
 * [[ATSC Transmitter]]
 * Blog: [http://www.irrational.net/ Clayton's Domain]
 ** [http://www.irrational.net/2014/03/22/reverse-engineering-a-ceiling-fan/ Reverse Engineering a Ceiling Fan]
