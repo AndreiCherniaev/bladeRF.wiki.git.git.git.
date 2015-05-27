@@ -20,8 +20,14 @@ These guides describe the process of building and installing the bladeRF softwar
 
 == Accessories ==
 
-=== Power Bricks compatible with the bladeRF ===
-The DC barrel jack on the bladeRF requires a 5V adapter, which should be rated to supply 1.5 to 2A. The inner plug on the receptacle (on the bladeRF) is 2.5 mm and is +V.  The diameter of the plug on the power supply is 5.5mm and is -V.
+=== External DC Power ===
+The DC barrel jack on the bladeRF requires a 5V adapter, which should be rated to supply 1.5 to 2A.
+
+The inner plug on the receptacle (on the bladeRF) is 2.5 mm and is +V.  The diameter of the plug on the power supply is 5.5mm and is -V.
+
+As shown by page 14 on the [http://nuand.com/bladerf.pdf bladeRF schematic], the DC barrel jack is a  [http://www.mouser.com/ds/2/393/rapc712x_cd-371318.pdf Switchcraft RAPC712X]. Remember that both jumpers on J70 need to be moved when switching between USB power and the DC barrel input.
+
+==== Wall Mount AC Adapters ====
 
 * Artesyn [http://www.mouser.com/ds/2/633/da12-m_series_ds_06-04-14_79cfb80a76-520005.pdf DA12-050US-M]
 ** [http://www.mouser.com/ProductDetail/Artesyn-Embedded-Technologies/DA12-050US-M/?qs=emAWHUWp%252blcZAFicGRINPQ%3D%3D&kpid=330909095&gclid=CL6GvIqK4sUCFQemaQodIjgASA Mouser]
