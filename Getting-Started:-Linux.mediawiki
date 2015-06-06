@@ -222,32 +222,29 @@ Put this in the new file:
 
 You should see something akin to the following:
 <pre>
-/opt/gnuradio-3.7.6.1/lib:
-	libgnuradio-iqbalance.so -> libgnuradio-iqbalance.so
-	libgnuradio-wavelet-3.7.6.1.so.0.0.0 -> libgnuradio-wavelet.so
-	libgnuradio-dtv-3.7.6.1.so.0.0.0 -> libgnuradio-dtv.so
-	libgnuradio-pmt-3.7.6.1.so.0.0.0 -> libgnuradio-pmt.so
-	libgnuradio-fcd-3.7.6.1.so.0.0.0 -> libgnuradio-fcd.so
-	libgnuradio-qtgui-3.7.6.1.so.0.0.0 -> libgnuradio-qtgui.so
-	libgnuradio-pager-3.7.6.1.so.0.0.0 -> libgnuradio-pager.so
-	libgnuradio-fosphor-3.7.0git.so.0.0.0 -> libgnuradio-fosphor.so
-	libgnuradio-digital-3.7.6.1.so.0.0.0 -> libgnuradio-digital.so
-	libgnuradio-noaa-3.7.6.1.so.0.0.0 -> libgnuradio-noaa.so
-	libgnuradio-osmosdr-0.1.5git.so.0.0.0 -> libgnuradio-osmosdr.so
-	libgnuradio-trellis-3.7.6.1.so.0.0.0 -> libgnuradio-trellis.so
-	libgnuradio-filter-3.7.6.1.so.0.0.0 -> libgnuradio-filter.so
-	libgnuradio-audio-3.7.6.1.so.0.0.0 -> libgnuradio-audio.so
-	libgnuradio-blocks-3.7.6.1.so.0.0.0 -> libgnuradio-blocks.so
-	libgnuradio-analog-3.7.6.1.so.0.0.0 -> libgnuradio-analog.so
-	libgnuradio-zeromq-3.7.6.1.so.0.0.0 -> libgnuradio-zeromq.so
-	libgnuradio-atsc-3.7.6.1.so.0.0.0 -> libgnuradio-atsc.so
-	libgnuradio-channels-3.7.6.1.so.0.0.0 -> libgnuradio-channels.so
-	libgnuradio-vocoder-3.7.6.1.so.0.0.0 -> libgnuradio-vocoder.so
-	libgnuradio-fec-3.7.6.1.so.0.0.0 -> libgnuradio-fec.so
-	libgnuradio-fft-3.7.6.1.so.0.0.0 -> libgnuradio-fft.so
-	libgnuradio-wxgui-3.7.6.1.so.0.0.0 -> libgnuradio-wxgui.so
-	libgnuradio-video-sdl-3.7.6.1.so.0.0.0 -> libgnuradio-video-sdl.so
-	libgnuradio-runtime-3.7.6.1.so.0.0.0 -> libgnuradio-runtime.so
+/opt/gnuradio-3.7.7.1/lib:
+	libgnuradio-atsc-3.7.7.1.so.0.0.0 -> libgnuradio-atsc.so
+	libgnuradio-dtv-3.7.7.1.so.0.0.0 -> libgnuradio-dtv.so
+	libgnuradio-fft-3.7.7.1.so.0.0.0 -> libgnuradio-fft.so
+	libgnuradio-wavelet-3.7.7.1.so.0.0.0 -> libgnuradio-wavelet.so
+	libgnuradio-fec-3.7.7.1.so.0.0.0 -> libgnuradio-fec.so
+	libgnuradio-pmt-3.7.7.1.so.0.0.0 -> libgnuradio-pmt.so
+	libgnuradio-audio-3.7.7.1.so.0.0.0 -> libgnuradio-audio.so
+	libgnuradio-wxgui-3.7.7.1.so.0.0.0 -> libgnuradio-wxgui.so
+	libgnuradio-zeromq-3.7.7.1.so.0.0.0 -> libgnuradio-zeromq.so
+	libgnuradio-vocoder-3.7.7.1.so.0.0.0 -> libgnuradio-vocoder.so
+	libgnuradio-blocks-3.7.7.1.so.0.0.0 -> libgnuradio-blocks.so
+	libgnuradio-fcd-3.7.7.1.so.0.0.0 -> libgnuradio-fcd.so
+	libgnuradio-qtgui-3.7.7.1.so.0.0.0 -> libgnuradio-qtgui.so
+	libgnuradio-filter-3.7.7.1.so.0.0.0 -> libgnuradio-filter.so
+	libgnuradio-noaa-3.7.7.1.so.0.0.0 -> libgnuradio-noaa.so
+	libgnuradio-pager-3.7.7.1.so.0.0.0 -> libgnuradio-pager.so
+	libgnuradio-analog-3.7.7.1.so.0.0.0 -> libgnuradio-analog.so
+	libgnuradio-digital-3.7.7.1.so.0.0.0 -> libgnuradio-digital.so
+	libgnuradio-channels-3.7.7.1.so.0.0.0 -> libgnuradio-channels.so
+	libgnuradio-video-sdl-3.7.7.1.so.0.0.0 -> libgnuradio-video-sdl.so
+	libgnuradio-runtime-3.7.7.1.so.0.0.0 -> libgnuradio-runtime.so
+	libgnuradio-trellis-3.7.7.1.so.0.0.0 -> libgnuradio-trellis.so
 </pre>
 
 If so, you're all set!
