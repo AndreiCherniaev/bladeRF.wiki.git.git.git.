@@ -150,34 +150,39 @@ If you encounter any issues or warnings, be sure to check the [[Troubleshooting]
 
 The following procedure uses build-gnuradio to fetch dependencies and checkout some useful tools. However, it only covers installing GNU Radio and gr-osmosdr.  A similar procedure maybe used to install the other tools.
 
-A "sandbox" directory will be used in the below instructions to perform the build. Change this to whatever your preferred build directory is in the relevant commands.
-
-=== PyBOMBS ===
 See the [https://gnuradio.org/redmine/projects/gnuradio/wiki/InstallingGRFromSource GNU-Radio wiki for more information], including the use of [http://gnuradio.org/redmine/projects/pybombs/wiki PyBOMBS], which is now the installation method preferred by many users. 
 
 If you're not comfortable with the instructions presented below, please consider following the [http://gnuradio.org/redmine/projects/pybombs/wiki PyBOMBS] instructions on the GNU Radio wiki instead.
 
+=== GNU Radio >= 3.7.7 and VOLK ===
+As of GNU Radio v3.7.7, [http://libvolk.org/ VOLK] is now a separate project pulled in via a git submodule. This implies that one must use the ```--recursive``` flag when cloning the repository. (build-gnuradio and PyBOMBS do this for you.)  If you are manually cloning the GNU Radio and forget to use the ```--recursive``` flag, you'll need to run ```git submodule init volk``` followed by ```git submodule update``` to initialize the VOLK subrepo.
+
+=== Multiple GNU Radio Installations ===
+Having multiple GNU Radio installations on your system is highly discouraged, unless you're aware of how to 
+avoid mixups between library search paths and binary paths between the different installations.
+
+If you are building GNU Radio from source, as shown below, ensure you do not have GNU Radio installed from your distribution's package manager or from a previous build.  If you do, remove it before continuing.
+
 === Using build-gnuradio to fetch dependencies and checkout source via Git ===
 
 <pre>
-$ mkdir -p ~/sandbox/gnuradio-builds
-$ cd ~/sandbox/gnuradio-builds
+$ mkdir -p ~/software/gnuradio-build
+$ cd ~/software/gnuradio-build
 $ wget http://www.sbrac.org/files/build-gnuradio
 $ chmod +x ./build-gnuradio
 $ ./build-gnuradio -m prereqs gitfetch
 </pre>
-Note that this takes quite a bit of time, depending on how many dependencies you need to have installed. Run <code>top</code> periodically to see what's currently going on.
+Note that this takes a bit of time, depending on how many dependencies you need to have installed. Run <code>top</code> periodically to see what's currently going on.
 
 === Compile GNU Radio ===
 <pre>
-$ cd ~/sandbox/gnuradio-builds/gnuradio/
-$ git checkout -b gnuradio-v3.7.6.1 v3.7.6.1
+$ cd ~/software/gnuradio-build/gnuradio/
+$ git checkout -b gnuradio-v3.7.7.1 v3.7.7.1
 $ mkdir build
 $ cd build
-$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.6.1  ../
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.7.1  ../
 $ make -j8 && sudo make install
 </pre>
-
 
 === Add GNU Radio to linker path and executable path ===
 If you would like GNU Radio to be available in PATH for all uses, create a new file called <code>/etc/profile.d/gnuradio.sh</code>:
@@ -188,7 +193,7 @@ Otherwise, if you would like GNU Radio executables to only be in your path, upda
 Put the following into it:
 <pre>#!/bin/bash
 # Add GNU Radio binaries to the search path
-GNURADIO_PATH=/opt/gnuradio-3.7.6.1
+GNURADIO_PATH=/opt/gnuradio-3.7.7.1
 export PATH=$PATH:$GNURADIO_PATH/bin
 # Add GNU Radio python libraries to python search path
 if [ $PYTHONPATH ]; then
@@ -197,7 +202,7 @@ else
         export PYTHONPATH=$GNURADIO_PATH/lib/python2.7/dist-packages
 fi</pre>
 
-'''Note: Be sure to update <code>GNURADIO_PATH</code> if you deviated from gnuradio-3.7.6.1'''
+'''Note: Be sure to update <code>GNURADIO_PATH</code> if you deviated from gnuradio-3.7.7.1'''
 
 '''Note: If you're on a non-Debian based distro, you might need to replace "dist-packages" with "site-packages".'''
 
@@ -205,7 +210,7 @@ Again, with your favorite text editor, create a new file call /etc/ld.so.conf.d/
 you will need sudo for this again.. (one line file)
 <pre>sudo vi /etc/ld.so.conf.d/gnuradio.conf</pre>
 Put this in the new file:
-<pre>/opt/gnuradio-3.7.6.1/lib</pre>
+<pre>/opt/gnuradio-3.7.7.1/lib</pre>
 '''Note: on some 64 bit systems, you might need a lib64 directory in this file as well.'''
 
 * Update your library cache again
@@ -256,10 +261,10 @@ If you get a pop-up with errors about ''PYTHONPATH'' or ''LD_LIBRARY_PATH'', che
 This step is optional, but will make additional IQ balance functionality available for gr-osmosdr.
 
 <pre>
-$ cd ~/sandbox/gnuradio-builds/gr-iqbal
+$ cd ~/software/gnuradio-builds/gr-iqbal
 $ mkdir build
 $ cd build
-$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.6.1 ../
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.7.1 ../
 $ make && sudo make install && sudo ldconfig
 </pre>
 
@@ -270,7 +275,7 @@ $ make && sudo make install && sudo ldconfig
 $ cd ~/sandbox/gnuradio-builds/gr-osmosdr
 $ mkdir build
 $ cd build
-$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.6.1 ../
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.7.1 ../
 $ make && sudo make install && sudo ldconfig
 </pre>
 
@@ -278,10 +283,10 @@ $ make && sudo make install && sudo ldconfig
 The osmocom programs may be used to quickly view an FFT and generate a tone. 
 
 Test Receive: (446 MHz)
-<pre>osmocom_fft -a bladerf=0,fpga=<your FPGA image> -s 2000000 -f 446000000</pre>
+<pre>osmocom_fft -a bladerf=0 -s 2000000 -f 446000000</pre>
 
 Test Transmit: (446 MHz + 25 KHz )
-<pre>osmocom_siggen -a bladerf=0,fpga=<your FPGA image> -s 2000000 -f 446000000 -g 4 --sine -x 25000</pre>
+<pre>osmocom_siggen -a bladerf=0 -s 2000000 -f 446000000 -g 4 --sine -x 25000</pre>
 
 Note that only one program can have the bladeRF opened at a time. 
 
