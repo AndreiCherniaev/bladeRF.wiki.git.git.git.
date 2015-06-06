@@ -150,9 +150,12 @@ If you encounter any issues or warnings, be sure to check the [[Troubleshooting]
 
 The following procedure uses build-gnuradio to fetch dependencies and checkout some useful tools. However, it only covers installing GNU Radio and gr-osmosdr.  A similar procedure maybe used to install the other tools.
 
-See the [https://gnuradio.org/redmine/projects/gnuradio/wiki/InstallingGRFromSource GNU-Radio wiki for more information], including the use of PyBOMBS, which is now the preferred installation method. If you're not comfortable with the instructions presented below, please consider following the PyBOMBS instructions on the GNU Radio wiki instead.
-
 A "sandbox" directory will be used in the below instructions to perform the build. Change this to whatever your preferred build directory is in the relevant commands.
+
+=== PyBOMBS ===
+See the [https://gnuradio.org/redmine/projects/gnuradio/wiki/InstallingGRFromSource GNU-Radio wiki for more information], including the use of [http://gnuradio.org/redmine/projects/pybombs/wiki PyBOMBS], which is now the installation method preferred by many users. 
+
+If you're not comfortable with the instructions presented below, please consider following the [http://gnuradio.org/redmine/projects/pybombs/wiki PyBOMBS] instructions on the GNU Radio wiki instead.
 
 === Using build-gnuradio to fetch dependencies and checkout source via Git ===
 
