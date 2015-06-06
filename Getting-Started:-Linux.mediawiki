@@ -294,3 +294,34 @@ Note that only one program can have the bladeRF opened at a time.
 If you'd like to run a quick test in a full-duplex configuration, consider creating a GRC flowgraph.  
 
 ''Do not connect the bladeRF TX output to the RX input without an attenuator.'' If you do not have an attenuator, consider using the bladeRF's (technically, the LMS6002D's) internal baseband and RF loopback modes, via the ''[http://sdr.osmocom.org/trac/wiki/GrOsmoSDR#bladeRFSourceSink loopback=]'' argument to the osmocom sink/source block.
+
+== Build and install GQRX ==
+
+[http://gqrx.dk/ GQRX] is a software defined radio receiver powered by GNU Radio and Qt. The bladeRF is supported via gr-osmosdr.  The latest and greatest of GQRX can be built from source as follows, assuming you have Qt libraries (and development headers) already installed:
+
+<pre>
+$ cd ~/software/gnuradio-build/
+$ git clone git@github.com:csete/gqrx.git 
+$ cd gqrx
+$ mkdir build
+$ cd build
+$ PKG_CONFIG_PATH=/opt/gnuradio-3.7.7.1/lib/pkgconfig qmake PREFIX=/opt/gnuradio-3.7.7.1 ..
+$ make -j8
+$ sudo make install
+</pre>
+
+When first running gqrx (or after running <code>gqrx -e</code>), you will be presented with a dialog to configure a device. Below are some suggested settings to start:
+
+'''Device String:''' bladerf=0,buffers=128,buflen=8192,transfers=32
+This selects the first available bladeRF, and adds some additional buffering.
+
+'''Sample rate:''' 5000000
+5Msps is a good starting point, as this should work on both USB 2.0 and USB 3.0 connections.
+
+'''Bandwidth:''' 3.84 MHz
+The bandwidth should always be set less than the sample rate to minimize aliases and prevent noise from folding in. See [http://www.limemicro.com/download/LMS6002Dr2-DataSheet-1.2r0.pdf Figure 6 in LMS6002D] datasheet to determine how low to set the bandwidth to ensure you get maximal rejection for your selected sample rate.
+
+
+</pre>
+
+
