@@ -321,7 +321,7 @@ This selects the first available bladeRF, and adds some additional buffering.
 '''Bandwidth:''' <code>3.84 MHz</code>
 The bandwidth should always be set less than the sample rate to minimize aliases and prevent noise from folding in. See [http://www.limemicro.com/download/LMS6002Dr2-DataSheet-1.2r0.pdf Figure 6 in LMS6002D] datasheet to determine how low to set the bandwidth to ensure you get maximal rejection, at the bandwidth limits governed by your sample rate.
 
-=== Tips ===
+==== Tips ====
 - Note that the ''Receive Options'' tab allows you to enable various demodulators
 - Use the ''Squelch'' under ''Receiver Options'' to mute auto below a certain threshold
 - The ''FFT settings'' tab allows you to increase the FFT size and speed up the FFT and waterfall
