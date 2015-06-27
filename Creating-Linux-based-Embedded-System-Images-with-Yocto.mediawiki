@@ -12,7 +12,7 @@ The Yocto Project provides *excellent* [https://www.yoctoproject.org/documentati
 
 [http://elinux.org/images/d/de/Elc2011_kooi.pdf These slides] and [http://blogs.mentor.com/chrishallinan/blog/2012/04/13/yocto-versus-poky-versus-angstrom-etc/ this blog post] provide some helpful clarifications on various terminology. Have these handy as you read the manual.
 
-== Platform Support ==
+= Platform Support =
 
 '''Covered on this page:'''
 
@@ -39,7 +39,7 @@ Problems have been experienced with the following platforms. Additional investig
 * [http://beagleboard.org/BLACK Beaglebone Black]
 ** The musb driver was crashing with kernel OOPses. It may be related to the use of the USB reset request when libbladeRF opens a device. (jynik)
 
-== Disclaimers ==
+= Disclaimers =
 
 The tools used in this page do have a significant learning curve. As such, you will need to practice independence and due diligence in reading manuals, mailing list archives, and searching the web.
 
@@ -63,7 +63,7 @@ To achieve a reasonable level of signal quality, the platform must be able to su
 
 Some platforms many not be able to supply sufficient power to the bladeRF via their USB ports. Therefore, it is recommended that you first consider [https://github.com/Nuand/bladeRF/wiki#External_DC_Power powering the bladeRF externally].
 
-== Recommended Workflow ==
+= Recommended Workflow =
 
 In general, it is not recommended to perform you initial development using the embedded target.
 
