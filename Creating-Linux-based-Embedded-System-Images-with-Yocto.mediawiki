@@ -165,3 +165,26 @@ Review the rest of this file, as the template describes additional options. Also
 ** See [http://www.yoctoproject.org/docs/current/ref-manual/ref-manual.html#var-BUILDHISTORY_COMMIT BUILDHISTORY_COMMIT] for more information. (Note that this will slow your build down!)
 
 * If you wish to use a package manager, consider selecting the desired package type via [http://www.yoctoproject.org/docs/current/ref-manual/ref-manual.html#var-PACKAGE_CLASSES PACKAGE_CLASSES].
+
+==== conf/bblayers.conf ====
+
+Next, we need to inform the build system of where it can find recipes. This is done via the ''conf/bblayers.conf'' file.
+
+Edit this file to add the ''meta-openembedded'' and ''meta-sdr'' layers.
+
+Also, add any of the layers you fetched for your specific hardware platform.  For example, for the Wandboard Quad, your BBLAYERS definition would look similar to this:
+
+<pre>
+BBLAYERS ?= " \
+  /home/jon/builds/yocto/poky-fido-1.8/meta \
+  /home/jon/builds/yocto/poky-fido-1.8/meta-yocto \
+  /home/jon/builds/yocto/poky-fido-1.8/meta-yocto-bsp \
+  /home/jon/builds/yocto/poky-fido-1.8/meta-openembedded/meta-oe \
+  /home/jon/builds/yocto/poky-fido-1.8/meta-openembedded/meta-filesystems \
+  /home/jon/builds/yocto/poky-fido-1.8/meta-openembedded/meta-networking \
+  /home/jon/builds/yocto/poky-fido-1.8/meta-openembedded/meta-python \
+  /home/jon/builds/yocto/poky-fido-1.8/meta-sdr \
+  /home/jon/builds/yocto/poky-fido-1.8/meta-fsl-arm \
+  /home/jon/builds/yocto/poky-fido-1.8/meta-fsl-arm-extra \
+  "
+</pre>
