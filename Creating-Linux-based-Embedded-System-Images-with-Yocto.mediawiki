@@ -188,3 +188,38 @@ BBLAYERS ?= " \
   /home/jon/builds/yocto/poky-fido-1.8/meta-fsl-arm-extra \
   "
 </pre>
+
+= Builds =
+
+== core-image-minimal ==
+
+As indicated by its name, ''core-image-minimal'' image is a minimalistic build that does little more than allow the platform to boot Linux and a barebones rootfs.  This is very useful in ensuring you have the build environment set up correctly, and verifying that the hardware is operating correctly.
+
+Assuming you're still in the <code>builds/sdr</code> directory (from executing <code>oe-init-build-env</code>), invoke bitbake to build this image:
+
+<code>bitbake core-image-minimal</code>
+
+The very first build will take a long time, as all of the required software is being downloaded and built (including toolchains). Successive builds will be much quicker, as only the components affected by changes will be re-built.
+
+=== Common Problems ===
+
+When <code>bitbake</code> fails, it generally does a great job of articulating the reason for the failure. Using its error messages in a search engine query will usually lead you to mailing list discussions involving people encountering the same issue.
+
+Below are some common issues:
+
+* Host machine does not have required package(s).  If you do not have certain tools installed, <code>bitbake</code> will error out and request that you install a specific program.
+** For example, Ubuntu users will need to install the <code>chrpath</code> package, as it is not installed by default.
+
+* Typos in the config files
+** Check for missing quotes around variable assignments
+** Check for missing or extra line continuation characters (<code>\</code> at the end of a line)
+
+* Forgot to include a layer in <code>conf/bblayers.conf</code>
+
+=== Booting core-image-minimal ===
+
+== Adding Individual items to core-image-minimal ==
+
+== Developing a custom image ==
+
+== gnuradio-demo-image ==
