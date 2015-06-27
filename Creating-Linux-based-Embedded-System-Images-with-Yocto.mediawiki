@@ -118,13 +118,13 @@ $ git clone git://github.com/balister/meta-sdr.git
 $ git clone -b fido git://github.com/openembedded/meta-openembedded.git
 </pre>
 
-***For Freescale platforms:***
+''For Freescale platforms:''
 <pre>
 $ git clone -b fido git://git.yoctoproject.org/meta-fsl-arm
 $ git clone -b fido git://git.yoctoproject.org/meta-fsl-arm-extra
 </pre>
 
-***For the Raspberry Pi 2: ***
+''For the Raspberry Pi 2:''
 <pre>
 $ git clone -b fido http://git.yoctoproject.org/git/meta-raspberrypi
 </pre>
