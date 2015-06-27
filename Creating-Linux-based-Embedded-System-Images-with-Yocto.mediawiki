@@ -146,12 +146,16 @@ your environment is set up. The argument here is the target build directory, whi
 $ source oe-init-build-en build/sdr
 </pre>
 
+=== conf/local.conf ===
+
 First, we'll open and edit the <code>conf/local.conf</code> file. Search for ''MACHINE ?= ...'' and change it to one of the following, per your target platform:
 
 * <code>MACHINE = "wandboard-quad"</code>
 * <code>MACHINE = "raspberrypi2"</code>
 
-Next, we'll ensure downloads are placed in the directory we created earlier. Find the line containing ''DL_DIR'' and change as needed, using a full path: <code>DL_DIR = "/home/jon/builds/yocto/downloads"</code>
+Next, we'll ensure downloads are placed in the directory we created earlier. Find the line containing ''DL_DIR'' and change as needed, using a full path: 
+
+<code>DL_DIR = "/home/jon/builds/yocto/downloads"</code>
 
 Review the rest of this file, as the template describes additional options. Also consider using the following parameters, if they are of interest to you:
 * [http://www.yoctoproject.org/docs/current/ref-manual/ref-manual.html#speeding-up-the-build Parallel build parameters]
