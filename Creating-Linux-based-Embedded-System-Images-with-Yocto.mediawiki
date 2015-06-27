@@ -4,11 +4,11 @@ This page describes how to build Linux-based embedded system images with bladeRF
 
 = Introduction =
 
-Per its website,  "The [https://www.yoctoproject.org Yocto Project] is an open source collaboration project that provides templates, tools and methods to help you create custom Linux-based systems for embedded products regardless of the hardware architecture."
+Per its website,  "''The [https://www.yoctoproject.org Yocto Project] is an open source collaboration project that provides templates, tools and methods to help you create custom Linux-based systems for embedded products regardless of the hardware architecture.''"
 
 Yocto heavily leverages the build system provided and originally developed by [http://www.openembedded.org OpenEmbedded]. You will find that there is significant common ground between these projects. 
 
-The Yocto Project provides *excellent* [https://www.yoctoproject.org/documentation documentation].  Perhaps one of the most handy documents is the beloved "[http://www.yoctoproject.org/docs/1.8/mega-manual/mega-manual.html" Mega-Manual] that consists of all the documentation concatenated together into a single web page, for your searching pleasure.
+The Yocto Project provides *excellent* [https://www.yoctoproject.org/documentation documentation].  Perhaps one of the most handy documents is the beloved "[http://www.yoctoproject.org/docs/1.8/mega-manual/mega-manual.html Mega-Manual]" that consists of all the documentation concatenated together into a single web page, for your searching pleasure.
 
 [http://elinux.org/images/d/de/Elc2011_kooi.pdf These slides] and [http://blogs.mentor.com/chrishallinan/blog/2012/04/13/yocto-versus-poky-versus-angstrom-etc/ this blog post] provide some helpful clarifications on various terminology. Have these handy as you read the manual.
 
@@ -20,18 +20,22 @@ The Yocto Project provides *excellent* [https://www.yoctoproject.org/documentati
 * [https://www.raspberrypi.org/products/raspberry-pi-2-model-b/ Raspberry Pi 2 Model B]
 
 '''Wishlist:'''
+
 We'd love to see the following hardware tested and its respective build process with Yocto documented.
 
 * [http://www.hardkernel.com/main/products/prdt_info.php?g_code=G140448267127 ODROID-XU3]
 * [https://developer.nvidia.com/jetson-tk1 NVIDIA Jetson TK1]
 
 '''Available to test:'''
+
 The associated user has this platform available to test and develop with.
 
 * [http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=MCIMX28EVKJ i.MX28 EVK] (jynik)
 
 '''Deemed Problematic:'''
+
 Problems have been experienced with the following platforms. Additional investigations and work is required.
+
 * [http://beagleboard.org/BLACK Beaglebone Black]
 ** The musb driver was crashing with kernel OOPses. It may be related to the use of the USB reset request when libbladeRF opens a device. (jynik)
 
