@@ -146,7 +146,7 @@ your environment is set up. The argument here is the target build directory, whi
 $ source oe-init-build-en build/sdr
 </pre>
 
-=== conf/local.conf ===
+==== conf/local.conf ====
 
 First, we'll open and edit the <code>conf/local.conf</code> file. Search for ''MACHINE ?= ...'' and change it to one of the following, per your target platform:
 
