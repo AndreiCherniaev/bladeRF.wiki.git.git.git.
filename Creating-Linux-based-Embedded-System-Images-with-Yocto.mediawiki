@@ -2,15 +2,38 @@
 
 This page describes how to build Linux-based embedded system images with bladeRF support, using Yocto.
 
-= Overview =
+= Introduction =
 
-Per its website,  "[t]he [https://www.yoctoproject.org Yocto Project] is an open source collaboration project that provides templates, tools and methods to help you create custom Linux-based systems for embedded products regardless of the hardware architecture."
+Per its website,  "The [https://www.yoctoproject.org Yocto Project] is an open source collaboration project that provides templates, tools and methods to help you create custom Linux-based systems for embedded products regardless of the hardware architecture."
 
 Yocto heavily leverages the build system provided and originally developed by [http://www.openembedded.org OpenEmbedded]. You will find that there is significant common ground between these projects. 
 
-The Yocto Project provides *excellent* [documentation](https://www.yoctoproject.org/documentation).  Perhaps one of the most handy documents is the beloved "[Mega-Manual](http://www.yoctoproject.org/docs/1.8/mega-manual/mega-manual.html") that consists of all the documentation concatenated together into a single web page, for your searching pleasure.
+The Yocto Project provides *excellent* [https://www.yoctoproject.org/documentation documentation].  Perhaps one of the most handy documents is the beloved "[http://www.yoctoproject.org/docs/1.8/mega-manual/mega-manual.html" Mega-Manual] that consists of all the documentation concatenated together into a single web page, for your searching pleasure.
 
 [http://elinux.org/images/d/de/Elc2011_kooi.pdf These slides] and [http://blogs.mentor.com/chrishallinan/blog/2012/04/13/yocto-versus-poky-versus-angstrom-etc/ this blog post] provide some helpful clarifications on various terminology. Have these handy as you read the manual.
+
+== Platform Support ==
+
+'''Covered on this page:'''
+
+* [http://www.wandboard.org/ Wandboard Quad]
+* [https://www.raspberrypi.org/products/raspberry-pi-2-model-b/ Raspberry Pi 2 Model B]
+
+'''Wishlist:'''
+We'd love to see the following hardware tested and its respective build process with Yocto documented.
+
+* [http://www.hardkernel.com/main/products/prdt_info.php?g_code=G140448267127 ODROID-XU3]
+* [https://developer.nvidia.com/jetson-tk1 NVIDIA Jetson TK1]
+
+'''Available to test:'''
+The associated user has this platform available to test and develop with.
+
+* [http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=MCIMX28EVKJ i.MX28 EVK] (jynik)
+
+'''Deemed Problematic:'''
+Problems have been experienced with the following platforms. Additional investigations and work is required.
+* [http://beagleboard.org/BLACK Beaglebone Black]
+** The musb driver was crashing with kernel OOPses. It may be related to the use of the USB reset request when libbladeRF opens a device. (jynik)
 
 == Disclaimers ==
 
@@ -18,15 +41,36 @@ The tools used in this page do have a significant learning curve. As such, you w
 
 The bladeRF developers and maintainers of the layers used in this guide simply will not have enough time in the day to walk everyone through this process and debug the mistakes that one are bound to make while learning the tools. While you're certainly free to ask questions on the bladeRF IRC channel and forums, please do your homework first when encountering issues.  
 
-= Expectations vs. Capabilities ==
+== Expectations vs. Capabilities ==
 
-TODO: Describe common platform limitations, including interface bandwidths, power capabilities, processing limitations, etc.
+It is very important to understand and be aware of the limitations of the platform you are targeting.
 
-== Platforms covered in on this page ==
+=== Computational Performance ===
 
-* [http://www.wandboard.org/ Wandboard Quad]
-* [https://www.raspberrypi.org/products/raspberry-pi-2-model-b/ Raspberry Pi 2 Model B]
+Many of the popular low-cost platforms simply may not have the computational capabilities of executing the signal processing code at the desired sample rate. As such, it is advised that you do some initial benchmarking to better understand this.
 
+Bear in mind that the FPGA on the bladeRF provides excellent opportunities for offloading DSP operations. Consider whether or not it makes sense in your application to have the embedded platform simply perform control and configuration, while custom FPGA blocks perform the intensive processing.
+
+=== USB Interface ===
+
+To achieve a reasonable level of signal quality, the platform must be able to sustain a sample rate of 2Msps, or <code>2 Msps * 2 * sizeof(int16_t) = 8MiB/s</code>, since the lowest front-end LPF setting is 1.5 MHz. (Sampling slightly above this ensures the filter reaches full rejection before 2MHz).
+
+=== Power Requirements ===
+
+Some platforms many not be able to supply sufficient power to the bladeRF via their USB ports. Therefore, it is recommended that you first consider [https://github.com/Nuand/bladeRF/wiki#External_DC_Power powering the bladeRF externally].
+
+== Recommended Workflow ==
+
+In general, it is not recommended to perform you initial development using the embedded target.
+
+Instead, consider performing your initial development, testing, and benchmarking on a desktop machine. This will often ensure you can debug and benchmark code effectively, in a comfortable environment. (As a side effect, this requires that you develop reasonably portable code.)
+
+At this stage you can also identify potential bottlenecks that may prove problematic on the embedded target, as well as develop your benchmarking strategies.
+
+Next, you could try building, testing, and benchmarking on the embedded target. At this point, you should have
+an understanding of expected behavior, and debugging will consist of identifying the causes for any differences in operation you observe. If you find that you are exceeding the limits of your platform, you will need to make optimizations in either your code or through FPGA development.
+
+Rinse and repeat!
 
 = Fetching and Setting up Yocto =
 
