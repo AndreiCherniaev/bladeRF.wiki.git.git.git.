@@ -105,6 +105,12 @@ Lots of software will be downloaded during this process. It's handy to store it 
 $ mkdir downloads
 </pre>
 
+Next, make a directory where we'll actually perform the build:
+
+<pre>
+$ mkdir -p build/sdr
+</pre>
+
 === Cloning Repositories ===
 
 Now we'll clone the Yocto from the project's git repository. See [https://www.yoctoproject.org/downloads the Yocto downloads] page for more information and any new releases.
@@ -131,4 +137,27 @@ $ git clone -b fido git://git.yoctoproject.org/meta-fsl-arm-extra
 $ git clone -b fido http://git.yoctoproject.org/git/meta-raspberrypi
 </pre>
 
+=== Initial Configuration ===
 
+When entering your build directory, you must always do it via the '''oe-init-build-env''' script to ensure
+your environment is set up. The argument here is the target build directory, which we created earlier:
+
+<pre>
+$ source oe-init-build-en build/sdr
+</pre>
+
+First, we'll open and edit the <code>conf/local.conf</code> file. Search for ''MACHINE ?= ...'' and change it to one of the following, per your target platform:
+
+* <code>MACHINE = "wandboard-quad"</code>
+* <code>MACHINE = "raspberrypi2"</code>
+
+Next, we'll ensure downloads are placed in the directory we created earlier. Find the line containing ''DL_DIR'' and change as needed, using a full path: <code>DL_DIR = "/home/jon/builds/yocto/downloads"</code>
+
+Review the rest of this file, as the template describes additional options. Also consider using the following parameters, if they are of interest to you:
+* [http://www.yoctoproject.org/docs/current/ref-manual/ref-manual.html#speeding-up-the-build Parallel build parameters]
+** By default, all cores will be used. This may slow your machine down, so you may wish to limit the build to half of your cores.
+
+* You can get a list of all packages and their versions installed into your final image by adding the line: <code>BUILDHISTORY_COMMIT ?= "0"</code>
+** See [http://www.yoctoproject.org/docs/current/ref-manual/ref-manual.html#var-BUILDHISTORY_COMMIT BUILDHISTORY_COMMIT] for more information. (Note that this will slow your build down!)
+
+* If you wish to use a package manager, consider selecting the desired package type via [http://www.yoctoproject.org/docs/current/ref-manual/ref-manual.html#var-PACKAGE_CLASSES PACKAGE_CLASSES].
