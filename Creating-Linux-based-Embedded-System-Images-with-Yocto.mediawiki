@@ -8,7 +8,7 @@ Per its website,  "''The [https://www.yoctoproject.org Yocto Project] is an open
 
 Yocto heavily leverages the build system provided and originally developed by [http://www.openembedded.org OpenEmbedded]. You will find that there is significant common ground between these projects. 
 
-The Yocto Project provides *excellent* [https://www.yoctoproject.org/documentation documentation].  Perhaps one of the most handy documents is the beloved "[http://www.yoctoproject.org/docs/1.8/mega-manual/mega-manual.html Mega-Manual]" that consists of all the documentation concatenated together into a single web page, for your searching pleasure.
+The Yocto Project provides *excellent* [https://www.yoctoproject.org/documentation documentation].  Perhaps one of the most handy documents is the beloved "[http://www.yoctoproject.org/docs/current/mega-manual/mega-manual.html Mega-Manual]" that consists of all the documentation concatenated together into a single web page, for your searching pleasure.  In particular, this guide is handy for quickly searching for terms and various names.
 
 [http://elinux.org/images/d/de/Elc2011_kooi.pdf These slides] and [http://blogs.mentor.com/chrishallinan/blog/2012/04/13/yocto-versus-poky-versus-angstrom-etc/ this blog post] provide some helpful clarifications on various terminology. Have these handy as you read the manual.
 
@@ -77,4 +77,56 @@ an understanding of expected behavior, and debugging will consist of identifying
 Rinse and repeat!
 
 = Fetching and Setting up Yocto =
+
+== Obligatory Quick Start Guide ==
+First, read and review the [http://www.yoctoproject.org/docs/current/yocto-project-qs/yocto-project-qs.html Yocto Quick Start Guide]. This page will assume you're familiar with the terms presented there, and may not make sense if you skip this.
+
+It is **highly** recommended that you work through the Quick Start Guide, including the parts where you build and "boot" images for a QEMU x86 target.
+
+
+== Initial Setup ==
+
+=== Directories ===
+
+These builds can become quite large. Some vendors providing Yocto-based BSPs recommend a minimum of 50 GiB of available space. With that said, you may want to perform these builds in a directory on a large disk.
+
+These instructions will assume the user's home directory is on a sufficiently large disk. We first create a "builds" directory: 
+
+<pre>
+$ mkdir ~/builds
+$ cd ~/builds
+</pre>
+
+Lots of software will be downloaded during this process. It's handy to store it all in one common place, so we'll now make a directory for it.
+
+<pre>
+$ mkdir downloads
+</pre>
+
+=== Cloning Repositories ===
+
+Now we'll clone the Yocto from the project's git repository. See [https://www.yoctoproject.org/downloads the Yocto downloads] page for more information and any new releases.
+
+<pre>
+$ git clone -b fido git://git.yoctoproject.org/poky.git poky-fido-1.8
+$ cd poky-fido-1.8
+</pre>
+
+Next, we'll check out the layers we'll need for our SDR-related items:
+<pre>
+$ git clone git://github.com/balister/meta-sdr.git
+$ git clone -b fido git://github.com/openembedded/meta-openembedded.git
+</pre>
+
+***For Freescale platforms:***
+<pre>
+$ git clone -b fido git://git.yoctoproject.org/meta-fsl-arm
+$ git clone -b fido git://git.yoctoproject.org/meta-fsl-arm-extra
+</pre>
+
+***For the Raspberry Pi 2: ***
+<pre>
+$ git clone -b fido http://git.yoctoproject.org/git/meta-raspberrypi
+</pre>
+
 
