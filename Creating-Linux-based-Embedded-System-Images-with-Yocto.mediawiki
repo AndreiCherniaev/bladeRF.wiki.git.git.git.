@@ -57,7 +57,7 @@ Bear in mind that the FPGA on the bladeRF provides excellent opportunities for o
 
 === USB Interface ===
 
-To achieve a reasonable level of signal quality, the platform must be able to sustain a sample rate of 2Msps, or <code>2 Msps * 2 * sizeof(int16_t) = 8MiB/s</code>, since the lowest front-end LPF setting is 1.5 MHz. (Sampling slightly above this ensures the filter reaches full rejection before 2MHz).
+To achieve a reasonable level of signal quality, the platform must be able to sustain a sample rate of 2Msps, or <code>2 Msps * 2 * sizeof(int16_t) = 8MiB/s</code>, since the lowest front-end LPF setting is 1.5 MHz. (Sampling slightly above this ensures the filter reaches full rejection before the Nyquist limit).
 
 === Power Requirements ===
 
