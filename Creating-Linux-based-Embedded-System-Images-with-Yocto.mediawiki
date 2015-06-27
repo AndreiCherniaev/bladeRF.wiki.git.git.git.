@@ -1,24 +1,22 @@
-**NOTE:** This page is a work in progress. It is not complete and is subject to (significant) change
+''NOTE:'' This page is a work in progress. It is not complete and is subject to (significant) change
 
 This page describes how to build Linux-based embedded system images with bladeRF support, using Yocto.
 
 = Overview =
 
-Per its website,  "[t]he [Yocto Project](https://www.yoctoproject.org) is an open source collaboration project that provides templates, tools and methods to help you create custom Linux-based systems for embedded products regardless of the hardware architecture."
+Per its website,  "[t]he [https://www.yoctoproject.org Yocto Project] is an open source collaboration project that provides templates, tools and methods to help you create custom Linux-based systems for embedded products regardless of the hardware architecture."
 
-Yocto heavily leverages the build system provided and originally developed by [OpenEmbedded](http://www.openembedded.org). You will find that there is significant common ground between these projects. 
-
-[These slides](http://elinux.org/images/d/de/Elc2011_kooi.pdf) and [this blog post](http://blogs.mentor.com/chrishallinan/blog/2012/04/13/yocto-versus-poky-versus-angstrom-etc/) 
+Yocto heavily leverages the build system provided and originally developed by [http://www.openembedded.org OpenEmbedded]. You will find that there is significant common ground between these projects. 
 
 The Yocto Project provides *excellent* [documentation](https://www.yoctoproject.org/documentation).  Perhaps one of the most handy documents is the beloved "[Mega-Manual](http://www.yoctoproject.org/docs/1.8/mega-manual/mega-manual.html") that consists of all the documentation concatenated together into a single web page, for your searching pleasure.
+
+[http://elinux.org/images/d/de/Elc2011_kooi.pdf These slides] and [http://blogs.mentor.com/chrishallinan/blog/2012/04/13/yocto-versus-poky-versus-angstrom-etc/ this blog post] provide some helpful clarifications on various terminology. Have these handy as you read the manual.
 
 == Disclaimers ==
 
 The tools used in this page do have a significant learning curve. As such, you will need to practice independence and due diligence in reading manuals, mailing list archives, and searching the web.
 
-The bladeRF developers and maintainers of the layers used in this guide simply will not have enough time in the day to walk everyone through this process and debug the mistakes that are bound to happen while learning the tools.
-
-While you're certainly free to ask questions on the bladeRF IRC channel and forums, please do your homework first when encountering issues.  
+The bladeRF developers and maintainers of the layers used in this guide simply will not have enough time in the day to walk everyone through this process and debug the mistakes that one are bound to make while learning the tools. While you're certainly free to ask questions on the bladeRF IRC channel and forums, please do your homework first when encountering issues.  
 
 = Expectations vs. Capabilities ==
 
@@ -26,8 +24,8 @@ TODO: Describe common platform limitations, including interface bandwidths, powe
 
 == Platforms covered in on this page ==
 
-* [Wandboard Quad](http://www.wandboard.org/)
-* [Raspberry Pi 2 Model B](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/)
+* [http://www.wandboard.org/ Wandboard Quad]
+* [https://www.raspberrypi.org/products/raspberry-pi-2-model-b/ Raspberry Pi 2 Model B]
 
 
 = Fetching and Setting up Yocto =
