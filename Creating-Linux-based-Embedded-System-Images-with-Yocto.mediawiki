@@ -265,8 +265,8 @@ IMAGE_INSTALL_append = "\
 
 If you are working on a project that requires you develop and maintain firmware releases, <code>IMAGE_INSTALL_append</code> is not an appropriate means to add items to the build.
 
-Instead, you should develop a recipe (bitbake file) that describes the image. This is outside the scope of this wiki page. See the following examples as starting points:
+Instead, you should develop a recipe (bitbake file) that describes the image. You'll likely want to place this [http://www.yoctoproject.org/docs/current/mega-manual/mega-manual.html#understanding-and-creating-layers in a layer that you create] and maintain.  However, this is outside the scope of this wiki page. See the following examples as references:
 
-* 
+* [https://git.yoctoproject.org/cgit/cgit.cgi/meta-raspberrypi/tree/recipes-core/images Raspberry Pi Images]
 
 == gnuradio-demo-image ==
