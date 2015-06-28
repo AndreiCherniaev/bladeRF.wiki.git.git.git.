@@ -345,4 +345,4 @@ $ PLATFORM=wandboard-quad YOCTO_BUILD_DIR=~/builds/yocto/poky-fido-1.8/build/sdr
 $ PLATFORM=raspberrypi2 YOCTO_BUILD_DIR=~/builds/yocto/poky-fido-1.8/build/sdr make clean all
 </pre>
 
-Note that you can also [http://www.yoctoproject.org/docs/current/mega-manual/mega-manual.html#optionally-building-a-toolchain-installer create an SDK installer] that includes the toolchain you've built. This is handy when you're working with other developers, who may not want to setup and use Yocto.
+Note that you can also [http://www.yoctoproject.org/docs/current/mega-manual/mega-manual.html#optionally-building-a-toolchain-installer create a toolchain installer] for the cross toolchain you've built. This is handy when you're working with other developers, who may not want to setup and use Yocto.
