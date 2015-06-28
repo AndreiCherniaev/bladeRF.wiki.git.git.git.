@@ -85,7 +85,7 @@ Rinse and repeat!
 == Obligatory Quick Start Guide ==
 First, read and review the [http://www.yoctoproject.org/docs/current/yocto-project-qs/yocto-project-qs.html Yocto Quick Start Guide]. This page will assume you're familiar with the terms presented there, and may not make sense if you skip this.
 
-It is **highly** recommended that you work through the Quick Start Guide, including the parts where you build and "boot" images for a QEMU x86 target.
+It is '''highly recommended''' that you work through the Quick Start Guide, including the parts where you build and "boot" images for a QEMU x86 target.
 
 
 == Initial Setup ==
