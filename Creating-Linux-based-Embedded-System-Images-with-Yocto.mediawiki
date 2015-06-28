@@ -308,7 +308,9 @@ jynik is currently working on some patches to submit upstream, and may post a li
 
 == libbladeRF test programs ==
 
-The libbladeRF_test_* programs are currently not installed by the recipes in meta-sdr. If you'd like to run these, you can copy them out of the build directory and over to the embedded platform via the filesystem on the SD card, ssh, etc.
+The libbladeRF_test_* programs are currently not installed by the recipes in meta-sdr. 
+
+If you'd like to run these, you can copy them out of the build directory and over to the embedded platform via the filesystem on the SD card, ssh, etc.
 
 These are found in:
 <pre>
@@ -321,6 +323,7 @@ tmp/work/cortexa9hf-vfp-neon-poky-linux-gnueabi/libbladerf/1.2.1-r0/build/host/o
 tmp/work/cortexa7hf-vfp-vfpv4-neon-poky-linux-gnueabi/libbladerf/1.2.1-r0/build/host/output/ 
 </pre>
 
+In particular, the <code>libbladeRF_test_rx_discont</code> is handy for determining the RX sample rate at which the platform begins dropping samples.
 
 == Using the Yocto-generated Toolchains ==
 
