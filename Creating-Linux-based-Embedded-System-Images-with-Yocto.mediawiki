@@ -277,3 +277,13 @@ Instead, you should develop a recipe (bitbake file) that describes the image. Yo
 
 
 == gnuradio-demo-image ==
+
+The <code>gnuradio-demo-image</code> provided by [https://github.com/balister/meta-sdr meta-sdr] includes GNU Radio (with bladeRF support), X11, Matchbox, and a number of development and testing tools. This can be build via:
+
+<pre>
+bitbake gnuradio-demo-image
+</pre>
+
+As of 2015-06-27, some modifications of recipes in meta-sdr is required to build this image with Yocto fido.
+
+jynik is currently working on some patches to submit upstream, and may post a link to them here until they are ready for review and submission to the meta-sdr maintainer.
