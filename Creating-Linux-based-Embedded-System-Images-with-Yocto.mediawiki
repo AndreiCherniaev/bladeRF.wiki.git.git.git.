@@ -10,7 +10,7 @@ Yocto heavily leverages the build system provided and originally developed by [h
 
 The Yocto Project provides *excellent* [https://www.yoctoproject.org/documentation documentation].  Perhaps one of the most handy documents is the beloved "[http://www.yoctoproject.org/docs/current/mega-manual/mega-manual.html Mega-Manual]" that consists of all the documentation concatenated together into a single web page, for your searching pleasure.  In particular, this guide is handy for quickly searching for terms and various names.
 
-[http://www.yoctoproject.org/docs/current/mega-manual/mega-manual.html#yocto-project-terms this section of the manual], [http://elinux.org/images/d/de/Elc2011_kooi.pdf these slides], and [http://blogs.mentor.com/chrishallinan/blog/2012/04/13/yocto-versus-poky-versus-angstrom-etc/ this blog post] provide some helpful clarifications on various terminology. Have these handy as you read the manual.
+[http://www.yoctoproject.org/docs/current/mega-manual/mega-manual.html#yocto-project-terms This section of the manual], [http://elinux.org/images/d/de/Elc2011_kooi.pdf these slides], and [http://blogs.mentor.com/chrishallinan/blog/2012/04/13/yocto-versus-poky-versus-angstrom-etc/ this blog post] provide some helpful clarifications on various terminology. Have these handy as you read the manual.
 
 Lastly, there is plenty of information on [https://wiki.yoctoproject.org/wiki/Main_Page the Yocto Project Wiki].
 
