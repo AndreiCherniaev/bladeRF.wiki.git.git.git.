@@ -1,6 +1,6 @@
 ''NOTE:'' This page is a work in progress. It is not complete and is subject to (significant) change
 
-This page describes how to build Linux-based embedded system images with bladeRF support, using Yocto.
+This page describes how to build Linux-based embedded system images with bladeRF support, using Yocto. It is not intended to be a full Yocto tutorial, but rather a quick start or summary. 
 
 = Introduction =
 
@@ -11,6 +11,8 @@ Yocto heavily leverages the build system provided and originally developed by [h
 The Yocto Project provides *excellent* [https://www.yoctoproject.org/documentation documentation].  Perhaps one of the most handy documents is the beloved "[http://www.yoctoproject.org/docs/current/mega-manual/mega-manual.html Mega-Manual]" that consists of all the documentation concatenated together into a single web page, for your searching pleasure.  In particular, this guide is handy for quickly searching for terms and various names.
 
 [http://elinux.org/images/d/de/Elc2011_kooi.pdf These slides] and [http://blogs.mentor.com/chrishallinan/blog/2012/04/13/yocto-versus-poky-versus-angstrom-etc/ this blog post] provide some helpful clarifications on various terminology. Have these handy as you read the manual.
+
+Lastly, there is plenty of information on [https://wiki.yoctoproject.org/wiki/Main_Page the Yocto Project Wiki].
 
 = Platform Support =
 
@@ -157,6 +159,10 @@ Next, we'll ensure downloads are placed in the directory we created earlier. Fin
 
 <code>DL_DIR = "/home/jon/builds/yocto/downloads"</code>
 
+For Freescale platforms using the <code>meta-fsl-arm</code> layer, you must review the EULA supplied in that layer, and add the following line to the <code>conf/local.conf</code> to accept it. (This will have no effect for other platforms.)
+
+<code>ACCEPT_FSL_EULA = "1"</code>
+
 Review the rest of this file, as the template describes additional options. Also consider using the following parameters, if they are of interest to you:
 * [http://www.yoctoproject.org/docs/current/ref-manual/ref-manual.html#speeding-up-the-build Parallel build parameters]
 ** By default, all cores will be used. This may slow your machine down, so you may wish to limit the build to half of your cores.
@@ -193,7 +199,7 @@ BBLAYERS ?= " \
 
 == core-image-minimal ==
 
-As indicated by its name, ''core-image-minimal'' image is a minimalistic build that does little more than allow the platform to boot Linux and a barebones rootfs.  This is very useful in ensuring you have the build environment set up correctly, and verifying that the hardware is operating correctly.
+As indicated by its name, ''core-image-minimal'' image is a minimalistic build that does little more than allow the platform to boot Linux and a barebones rootfs.  This is very useful in ensuring you have the build environment set up correctly, and verifying that the hardware is operating correctly.  See [https://wiki.yoctoproject.org/wiki/Minimal_Image#Introduction this Yocto wiki page] for more information.
 
 Assuming you're still in the <code>builds/sdr</code> directory (from executing <code>oe-init-build-env</code>), invoke bitbake to build this image:
 
@@ -218,8 +224,49 @@ Below are some common issues:
 
 === Booting core-image-minimal ===
 
-== Adding Individual items to core-image-minimal ==
+Once the image has built, you may find the build artifacts in <code>tmp/deploy/images/$MACHINE/</code>. This directory will contain all previous build artifacts, with symlinks to the most recent items.
+
+This generally will include U-Boot, device tree files, the kernel, and a rootfs. Platforms that boot from SD cards will generally have an SD card image, which includes all of the aforementioned items properly staged.
+
+==== Wandboard Quad ====
+
+==== Raspberry Pi 2 ====
+
+Assuming an SD card is attached as <code>/dev/sdd</code>, you can write the image to the card as follows:
+<pre>
+$ dd if=tmp/deploy/images/raspberrypi2/core-image-minimal-raspberrypi2.rpi-sdimg of=/dev/sdd
+$ sync # Wait a few seconds after this completes
+</pre>
+
+* Insert the card into the SD card slot.
+* Connect a UART ([http://www.element14.com/community/docs/DOC-73950/l/raspberry-pi-2-model-b-gpio-40-pin-block-pinout pinout]) and open your favorite serial console program.
+** Configure your serial console for 115200 8N1, with no hardware flow control
+* Optionally, connect an Ethernet cable
+* Power on the platform. You should see output during the boot process.
+* Upon booting, you will be presented with a login.
+** Log in as ''root'' with no password.
+
+
+== Adding bladeRF and other items to core-image-minimal ==
+
+If you wish to add a few items to the image for quick testing, one way to do this is through defining a '''IMAGE_INSTALL_append''' variable in your <code>conf/local.conf</code>.
+
+To add bladeRF items and an ssh server add the following. Note that root login permitted when "debug-tweaks" is enabled in <code>conf/local.conf</code>.
+
+<pre>
+IMAGE_INSTALL_append = "\
+                        libbladerf-bin \
+                        bladerf-fpga \
+                        dropbear \
+                       "
+</pre>
 
 == Developing a custom image ==
+
+If you are working on a project that requires you develop and maintain firmware releases, <code>IMAGE_INSTALL_append</code> is not an appropriate means to add items to the build.
+
+Instead, you should develop a recipe (bitbake file) that describes the image. This is outside the scope of this wiki page. See the following examples as starting points:
+
+* 
 
 == gnuradio-demo-image ==
