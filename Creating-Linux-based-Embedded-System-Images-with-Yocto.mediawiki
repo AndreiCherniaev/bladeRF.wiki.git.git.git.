@@ -128,7 +128,7 @@ $ git clone git://github.com/balister/meta-sdr.git
 $ git clone -b fido git://github.com/openembedded/meta-openembedded.git
 </pre>
 
-''For Freescale platforms:''
+''For Freescale ARM platforms:''
 <pre>
 $ git clone -b fido git://git.yoctoproject.org/meta-fsl-arm
 $ git clone -b fido git@github.com:Freescale/meta-fsl-arm-extra.git
@@ -195,6 +195,7 @@ BBLAYERS ?= " \
   /home/jon/builds/yocto/poky-fido-1.8/meta-sdr \
   /home/jon/builds/yocto/poky-fido-1.8/meta-fsl-arm \
   /home/jon/builds/yocto/poky-fido-1.8/meta-fsl-arm-extra \
+  /home/jon/builds/yocto/poky-fido-1.8/meta-fsl-demos \
   "
 </pre>
 
