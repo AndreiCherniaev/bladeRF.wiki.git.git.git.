@@ -234,6 +234,22 @@ This generally will include U-Boot, device tree files, the kernel, and a rootfs.
 
 ==== Wandboard Quad ====
 
+Assuming an SD card is attached as <code>/dev/sdd</code>, you can write the image to the card as follows:
+
+<pre>
+$ sudo dd if=tmp/deploy/images/wandboard-quad/core-image-minimal-wandboard-quad.sdcard of=/dev/sdd bs=1M 
+$ sync # Wait a few seconds after this completes
+</pre>
+
+* Insert the card into the SD card slot on the ''top'' EDM module (that contains the processor).
+* Connect a serial cable to the UART and open your favorite serial console program.
+** Configure your serial console for 115200 8N1, with no hardware flow control
+* Optionally, connect an Ethernet cable
+* Power on the platform. You should see output during the boot process.
+* Upon booting, you will be presented with a login.
+** Log in as ''root'' with no password.
+
+
 ==== Raspberry Pi 2 ====
 
 Assuming an SD card is attached as <code>/dev/sdd</code>, you can write the image to the card as follows:
