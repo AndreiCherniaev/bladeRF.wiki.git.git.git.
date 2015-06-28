@@ -10,7 +10,7 @@ Yocto heavily leverages the build system provided and originally developed by [h
 
 The Yocto Project provides *excellent* [https://www.yoctoproject.org/documentation documentation].  Perhaps one of the most handy documents is the beloved "[http://www.yoctoproject.org/docs/current/mega-manual/mega-manual.html Mega-Manual]" that consists of all the documentation concatenated together into a single web page, for your searching pleasure.  In particular, this guide is handy for quickly searching for terms and various names.
 
-[http://elinux.org/images/d/de/Elc2011_kooi.pdf These slides] and [http://blogs.mentor.com/chrishallinan/blog/2012/04/13/yocto-versus-poky-versus-angstrom-etc/ this blog post] provide some helpful clarifications on various terminology. Have these handy as you read the manual.
+[http://www.yoctoproject.org/docs/current/mega-manual/mega-manual.html#yocto-project-terms this section of the manual], [http://elinux.org/images/d/de/Elc2011_kooi.pdf these slides], and [http://blogs.mentor.com/chrishallinan/blog/2012/04/13/yocto-versus-poky-versus-angstrom-etc/ this blog post] provide some helpful clarifications on various terminology. Have these handy as you read the manual.
 
 Lastly, there is plenty of information on [https://wiki.yoctoproject.org/wiki/Main_Page the Yocto Project Wiki].
 
@@ -303,3 +303,25 @@ bitbake gnuradio-demo-image
 As of 2015-06-27, some modifications of recipes in meta-sdr is required to build this image with Yocto fido.
 
 jynik is currently working on some patches to submit upstream, and may post a link to them here until they are ready for review and submission to the meta-sdr maintainer.
+
+= Misc. notes =
+
+== libbladeRF test programs ==
+
+The libbladeRF_test_* programs are currently not installed by the recipes in meta-sdr. If you'd like to run these, you can copy them out of the build directory and over to the embedded platform via the filesystem on the SD card, ssh, etc.
+
+These are found in:
+<pre>
+tmp/work/$ARCH-poky-linux-gnueabi/libbladerf/1.2.1-r0/build/host/output/
+
+# Example: Wandboard Quad
+tmp/work/cortexa9hf-vfp-neon-poky-linux-gnueabi/libbladerf/1.2.1-r0/build/host/output/
+
+# Example: Raspberry Pi 2
+tmp/work/cortexa7hf-vfp-vfpv4-neon-poky-linux-gnueabi/libbladerf/1.2.1-r0/build/host/output/ 
+</pre>
+
+
+== Using the Yocto-generated Toolchains ==
+
+After they're built, toolchains are stored in 
