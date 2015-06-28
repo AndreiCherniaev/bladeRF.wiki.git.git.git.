@@ -47,7 +47,7 @@ Problems have been experienced with the following platforms. Additional investig
 
 The tools used in this page do have a significant learning curve. As such, you will need to practice independence and due diligence in reading manuals, mailing list archives, and searching the web.
 
-The bladeRF developers and maintainers of the layers used in this guide simply will not have enough time in the day to walk everyone through this process and debug the mistakes that one are bound to make while learning the tools. While you're certainly free to ask questions on the bladeRF IRC channel and forums, please do your homework first when encountering issues.  
+The bladeRF developers and maintainers of the layers used in this guide simply will not have enough time in the day to walk everyone through this process and debug the mistakes that one are bound to make while learning the tools. While you're certainly free to ask questions on the bladeRF IRC channel and forums, please do your homework first when encountering issues.
 
 == Expectations vs. Capabilities ==
 
@@ -131,7 +131,10 @@ $ git clone -b fido git://github.com/openembedded/meta-openembedded.git
 ''For Freescale platforms:''
 <pre>
 $ git clone -b fido git://git.yoctoproject.org/meta-fsl-arm
-$ git clone -b fido git://git.yoctoproject.org/meta-fsl-arm-extra
+$ git clone -b fido git@github.com:Freescale/meta-fsl-arm-extra.git
+
+# This is optional, but includes some cool demo images
+$ git clone -b git@github.com:Freescale/meta-fsl-demos.git
 </pre>
 
 ''For the Raspberry Pi 2:''
