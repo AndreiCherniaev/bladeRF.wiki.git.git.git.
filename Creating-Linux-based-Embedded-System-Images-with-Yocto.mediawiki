@@ -329,6 +329,20 @@ In particular, the <code>libbladeRF_test_rx_discont</code> is handy for determin
 
 After they're built, toolchains are stored in <code>tmp/sysroots/x86-64-linux</code>. As you're developing code you can use these to build programs for your target platform, until you're ready to create a recipe for your software. 
 
-See [https://gist.github.com/jynik/573f4d48c791b5a3c45a this Makefile] for an example of how to use these toolchains to cross-compile [https://gist.github.com/jynik/e1b3fb544fd8e02c6067 this simple program].
+See [https://gist.github.com/jynik/573f4d48c791b5a3c45a this Makefile] for an example of how to use these toolchains to cross-compile [https://gist.github.com/jynik/e1b3fb544fd8e02c6067 this simple program]. 
+
+To follow the aforementioned example, copy <code>bladeRF-versions.mk</code> and <code>bladeRF-versions.c</code> to your machine. Rename <code>bladeRF-versions.mk</code> to <code>Makefile</code>.
+
+Below are example invocations, using the paths used throughout this page:
+
+''For a Wandboard Quad:''
+<pre>
+$ PLATFORM=wandboard-quad YOCTO_BUILD_DIR=~/builds/yocto/poky-fido-1.8/build/sdr make clean all
+</pre>
+
+''For a Raspberry Pi 2:''
+<pre>
+$ PLATFORM=raspberrypi2 YOCTO_BUILD_DIR=~/builds/yocto/poky-fido-1.8/build/sdr make clean all
+</pre>
 
 Note that you can also [http://www.yoctoproject.org/docs/current/mega-manual/mega-manual.html#optionally-building-a-toolchain-installer create an SDK installer] that includes the toolchain you've built. This is handy when you're working with other developers, who may not want to setup and use Yocto.
