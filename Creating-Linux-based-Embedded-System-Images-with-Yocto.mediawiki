@@ -69,7 +69,7 @@ Some platforms many not be able to supply sufficient power to the bladeRF via th
 
 = Recommended Workflow =
 
-In general, it is not recommended to perform you initial development using the embedded target.
+In general, it is not recommended to perform you perform your initial software development and testing on the embedded target.
 
 Instead, consider performing your initial development, testing, and benchmarking on a desktop machine. This will often ensure you can debug and benchmark code effectively, in a comfortable environment. (As a side effect, this requires that you develop reasonably portable code.)
 
