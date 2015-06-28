@@ -327,4 +327,6 @@ In particular, the <code>libbladeRF_test_rx_discont</code> is handy for determin
 
 == Using the Yocto-generated Toolchains ==
 
-After they're built, toolchains are stored in 
+After they're built, toolchains are stored in <code>tmp/sysroots/x86-64-linux</code>. As you're developing code you can use these to build programs for your target platform, until you're ready to create a recipe for your software.
+
+Note that you can also [http://www.yoctoproject.org/docs/current/mega-manual/mega-manual.html#optionally-building-a-toolchain-installer create an SDK installer] that includes the toolchain you've built. This is handy when you're working with other developers, who may not want to setup and use Yocto.
