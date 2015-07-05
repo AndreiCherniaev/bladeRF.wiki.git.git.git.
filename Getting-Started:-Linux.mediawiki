@@ -38,7 +38,7 @@ If your distribution does not provide a [[libtecla|http://www.astro.caltech.edu/
 === Debian-based distros (e.g., Ubuntu) ===
 
 Install dependent packages for the build:
-<pre>$ sudo apt-get install libusb-1.0-0-dev libusb-1.0-0 build-essential cmake libncurses5-dev libtecla1 libtecla1-dev pkg-config git wget</pre>
+<pre>$ sudo apt-get install libusb-1.0-0-dev libusb-1.0-0 build-essential cmake libncurses5-dev libtecla1 libtecla-dev pkg-config git wget</pre>
 
 You can check the libusb and libusb-dev versions installed on your system via:
 <pre>
