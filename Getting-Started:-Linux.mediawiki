@@ -45,10 +45,23 @@ You can check the libusb and libusb-dev versions installed on your system via:
 $ dpkg -s libusb-1.0-0 libusb-1.0-0-dev 
 </pre>
 
+''Optional:'' If you wish to build libbladeRF documentation and the bladeRF-cli man page, you'll need the following:
+<pre>
+$ sudo apt-get install doxygen help2man pandoc
+</pre>
+
 === Redhat-based distros (e.g., Fedora, CentOS) ===
 <pre>
 $ sudo yum groupinstall "Development Tools" "Development Libraries"
 $ sudo yum install libusbx libusbx-devel cmake wget gcc-c++
+</pre>
+
+''Optional:'' If you wish to buiIf you wish to build libbladeRF documentation and the bladeRF-cli man page, you'll need the following:
+<pre>
+$ sudo apt-get install doxygen help2man pandoc
+</pre>ld libbladeRF documentation and the bladeRF-cli man page, you'll need the following:
+<pre>
+$ sudo apt-get install doxygen help2man pandoc
 </pre>
 
 == Building bladeRF libraries and tools from source ==
