@@ -24,10 +24,10 @@ The bladeRF-cli program may be used in Linux, Mac OSX, and Windows (from cmd.exe
 $ bladeRF-cli -i
 bladeRF> version
 
-  bladeRF-cli version:        0.10.8-git-c4bb11d
-  libbladeRF version:         0.15.0-git-c4bb11d
+  bladeRF-cli version:        1.2.0
+  libbladeRF version:         1.4.0
 
-  Firmware version:           1.6.1-git-b7e6642
+  Firmware version:           1.8.0
   FPGA version:               Unknown (FPGA not loaded)
 </pre>
 
