@@ -200,9 +200,11 @@ bladeRF> q
 jon@example %
 ```
 
-== Using the Cypress Control Center ===
+== Using the Cypress Control Center ==
 
 [http://youtu.be/oolb9e_9qTc This video] also shows a procedure similar to that outlined above, but using the Cypress Control Center (provided with the FX3 SDK) to load firmware, instead of using the bladeRF-cli.
+
+Note that this Cypress software is only available for Windows.
 
 = Using the firmware upgrade included in the Windows installer = 
 
