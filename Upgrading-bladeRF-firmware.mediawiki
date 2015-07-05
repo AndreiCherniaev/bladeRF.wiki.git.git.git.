@@ -61,6 +61,7 @@ The bladeRF is configured to fall back to a USB bootloader if valid firmware is 
 ## A power cycle is required to boot the new firmware.
 
 Below is a bladeRF-cli log that shows example output for the above procedure:
+
 ```
 jon@example % bladeRF-cli -i
 
@@ -89,6 +90,10 @@ RAM, users should open the device with the "open" command, and write
 the firmware to flash via "load fx3 <firmware file>"
 
 
+bladeRF> echo "Remember to remove the jumper from J71 before continuing"
+Remember to remove the jumper from J71 before continuing
+
+
 bladeRF> recover
 
   FX3 bootloader devices:
@@ -109,7 +114,7 @@ bladeRF> open
 
 bladeRF> info
 
-  Serial #:                 00000000000000000000000000000000
+  Serial #:                 f12ce1037830a1b27f3ceeba1f521413
   VCTCXO DAC calibration:   0x9f50
   FPGA size:                40 KLE
   FPGA loaded:              yes
@@ -121,9 +126,8 @@ bladeRF> info
 
 bladeRF> version
 
-  bladeRF-cli version:        1.1.2-git-23dfcd1-dirty
-  libbladeRF version:         1.3.1-git-23dfcd1-dirty
-
+  bladeRF-cli version:        1.2.0
+  libbladeRF version:         1.4.0
   Firmware version:           1.8.0
   FPGA version:               0.3.1
 
@@ -146,7 +150,7 @@ bladeRF> q
 jon@example % dmesg
 
 <snip>
-[96232.958622] usb 2-1: SerialNumber: 00000000000000000000000000000000
+[96232.958622] usb 2-1: SerialNumber: f12ce1037830a1b27f3ceeba1f521413
 [96235.572759] usb 2-1: reset SuperSpeed USB device number 8 using xhci_hcd
 [96235.589353] usb 2-1: LPM exit latency is zeroed, disabling LPM.
 [96269.073285] usb 2-1: USB disconnect, device number 8
@@ -156,20 +160,20 @@ jon@example % dmesg
 [96270.715395] usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
 [96270.715399] usb 2-1: Product: bladeRF
 [96270.715402] usb 2-1: Manufacturer: Nuand
-[96270.715406] usb 2-1: SerialNumber: 00000000000000000000000000000000
+[96270.715406] usb 2-1: SerialNumber: f12ce1037830a1b27f3ceeba1f521413
 </snip>
 
 jon@example % bladeRF-cli -p
 
   Backend:        libusb
-  Serial:         00000000000000000000000000000000
+  Serial:         f12ce1037830a1b27f3ceeba1f521413
   USB Bus:        2
   USB Address:    9
 
 jon@example % bladeRF-cli -i
 bladeRF> info
 
-  Serial #:                 00000000000000000000000000000000
+  Serial #:                 f12ce1037830a1b27f3ceeba1f521413
   VCTCXO DAC calibration:   0x9f50
   FPGA size:                40 KLE
   FPGA loaded:              yes
@@ -181,8 +185,8 @@ bladeRF> info
 
 bladeRF> version
 
-  bladeRF-cli version:        1.1.2-git-23dfcd1-dirty
-  libbladeRF version:         1.3.1-git-23dfcd1-dirty
+  bladeRF-cli version:        1.2.0
+  libbladeRF version:         1.4.0
 
   Firmware version:           1.8.0
   FPGA version:               0.3.1
