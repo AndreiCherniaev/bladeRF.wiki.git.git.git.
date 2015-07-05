@@ -42,7 +42,7 @@ The bladeRF is configured to fall back to a USB bootloader if valid firmware is 
 
 # Unplug all bladeRF devices from your machine. 
 ## If you are powering the device(s) from a DC barrel jack, ensure this is disconnected.
-# Connect a jumper on J64, as shown in the below image. 
+# Connect a jumper on J64, as shown in the above image. 
 ## This forces the loading of firmware from SPI flash to fail, which results in the device falling back to the USB bootloader.
 # Power the board on. 
 ## You should see the bootloader enumerate as <code>04b4:00f3 Cypress Semiconductor Corp.</code> in dmesg output, or a Cypress <code>WestBridge</code> device in Device Manager.
