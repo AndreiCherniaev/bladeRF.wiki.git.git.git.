@@ -38,6 +38,8 @@ The bladeRF is configured to fall back to a USB bootloader if valid firmware is 
 
 [[http://nuand.com/J64.png|Jumper on J64 to boot from bootloader]]
 
+== Using the bladeRF-cli ==
+
 # Unplug all bladeRF devices from your machine. 
 ## If you are powering the device(s) from a DC barrel jack, ensure this is disconnected.
 # Connect a jumper on J64, as shown in the below image. 
@@ -196,7 +198,9 @@ bladeRF> q
 jon@example %
 ```
 
-[http://youtu.be/oolb9e_9qTc This video] also shows a procedure to that outlined above, but using the Cypress Control Center (provided with the FX3 SDK) to load firmware, instead of using the bladeRF-cli.
+== Using the Cypress Control Center ===
+
+[http://youtu.be/oolb9e_9qTc This video] also shows a procedure similar to that outlined above, but using the Cypress Control Center (provided with the FX3 SDK) to load firmware, instead of using the bladeRF-cli.
 
 = Using the firmware upgrade included in the Windows installer = 
 
