@@ -59,7 +59,7 @@ $ sudo yum install libusbx libusbx-devel cmake wget gcc-c++
 
 ''Optional:'' If you wish to build libbladeRF documentation and the bladeRF-cli man page, you'll need the following:
 <pre>
-$ sudo apt-get install doxygen help2man pandoc
+$ sudo yum install doxygen help2man pandoc
 </pre>
 
 == Building bladeRF libraries and tools from source ==
