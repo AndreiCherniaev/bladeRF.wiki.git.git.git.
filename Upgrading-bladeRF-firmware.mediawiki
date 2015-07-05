@@ -62,6 +62,8 @@ The bladeRF is configured to fall back to a USB bootloader if valid firmware is 
 # Unplug and replug the device. 
 ## A power cycle is required to boot the new firmware.
 
+
+=== Example Log ===
 Below is a bladeRF-cli log that shows example output for the above procedure:
 
 ```
@@ -92,8 +94,8 @@ RAM, users should open the device with the "open" command, and write
 the firmware to flash via "load fx3 <firmware file>"
 
 
-bladeRF> echo "Remember to remove the jumper from J71 before continuing"
-Remember to remove the jumper from J71 before continuing
+bladeRF> echo "Remember to remove the jumper from J64 before continuing"
+Remember to remove the jumper from J64 before continuing
 
 
 bladeRF> recover
