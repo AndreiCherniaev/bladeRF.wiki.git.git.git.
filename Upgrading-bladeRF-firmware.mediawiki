@@ -93,11 +93,6 @@ In most cases, after successfully loading firmware into the device's
 RAM, users should open the device with the "open" command, and write
 the firmware to flash via "load fx3 <firmware file>"
 
-
-bladeRF> echo "Remember to remove the jumper from J64 before continuing"
-Remember to remove the jumper from J64 before continuing
-
-
 bladeRF> recover
 
   FX3 bootloader devices:
@@ -108,6 +103,13 @@ bladeRF> recover
 
   Use 'recover <bus> <addr> <firmware>' to download and boot
   firmware to the specified device.
+
+
+bladeRF> echo "Remember to remove the jumper from J64 before continuing"
+Remember to remove the jumper from J64 before continuing
+
+bladeRF> echo "If you forget to remove the jumper, the following 'open' will fail"
+If you forget to remove the jumper, the following 'open' will fail
 
 bladeRF> recover 1 7 ~/.config/Nuand/bladeRF/bladeRF_fw_v1.8.0.img 
 
