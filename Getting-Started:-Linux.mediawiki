@@ -310,7 +310,7 @@ If you'd like to run a quick test in a full-duplex configuration, consider creat
 
 <pre>
 $ cd ~/software/gnuradio-build/
-$ git clone git@github.com:csete/gqrx.git 
+$ git clone https://github.com/csete/gqrx.git
 $ cd gqrx
 $ mkdir build
 $ cd build
