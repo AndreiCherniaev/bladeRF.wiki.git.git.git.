@@ -152,6 +152,161 @@ bladeRF> # Adjust parameters while viewing the spectrum in baudline!
 bladeRF> rx stop
 </pre>
 
+= Transmitting Pre-generated Samples =
+
+The bladeRF-cli provides the ability to transmit samples from either a binary or CSV SC16 Q11 file. It is generally very helpful during development/debugging stages to generate and write samples to a file, using one's language of choice, and then transmit them via the bladeRF-cli.   
+
+Run ```help tx``` from the CLI for a description of available parameters and other important notes.
+
+== Example: Transmitting Samples Generated in Octave/MATLAB ==
+
+This example shows how to use Octave or MATLAB to create samples for a simple sinusoids at +250 Khz,sampled at 2 Msps, and then transmit these sample with the bladeRF-cli.  The same procedure here can be followed for your language of choice, provided you implement a few simple conversion routines.
+
+Octave/MATLAB functions for loading/saving samples from/to the bladeRF SC16 Q11 binary and CSV formats are provided [https://github.com/Nuand/bladeRF/tree/master/host/misc/matlab here in the bladeRF repository].
+
+You can add these functions to your Octave/MATLAB path as follows:
+```
+>> addpath('~/projects/bladeRF/host/misc/matlab/');
+
+help save_sc16q11
+  save_sc16q11 Write a normalized complex signal to a binary file in the
+    bladeRF "SC16 Q11" format.
+ 
+    [RET] = save_sc16q11(FILENAME, SIGNAL)
+ 
+    RET is 1 on success, and 0 on failure.
+ 
+    FILENAME is the target filename. The file will be overwritten if it
+    already exists. The file data is written in little-endian format.
+ 
+    SIGNAL is a complex signal with the real and imaginary components
+    within the range [-1.0, 1.0).
+```
+
+Next, we create the signal:
+```
+% Our samples must be generated at the samplerate we plan to run the device at
+SAMPLE_RATE = 2e6;
+
+% Generate 10 seconds worth of samples. Bear in mind that when using the 
+% binary SC16 Q11 format, 1 sample consumes 4 bytes of memory/disk space.  
+% This quickly adds up - 10 seconds @ 2 Msps yields ~ 76.3 MiB. Be careful
+% when using higher sample rates!
+NUM_SECONDS = 10;
+NUM_SAMPLES = NUM_SECONDS * SAMPLE_RATE;
+
+% 250 kHz, in radians (ω = F_Hz * 2pi)
+SIGNAL_FREQ_RAD = 250e3 * 2 * pi;
+
+% Generate a vector "t" which represents time, in units of samples.
+% This starts at t=0, and creates NUM_SAMPLES samples in steps of 1/SAMPLE_RATE
+t = [ 0 : (1/SAMPLE_RATE) : (NUM_SECONDS - 1/SAMPLE_RATE) ];
+
+% Create a sinusoid (signal = e^(jωt) ) with a magnitude of 0.90
+signal = 0.90 * exp(1j * SIGNAL_FREQ_RAD * t);
+
+% Plot the FFT of our signal as a quick sanity check.
+% The NUM_SAMPLES denominator is just to normalize this for display purposes.
+f = linspace(-0.5 * SAMPLE_RATE, 0.5 * SAMPLE_RATE, length(signal));
+plot(f, 20*log10(abs(fftshift(fft(signal)))/NUM_SAMPLES));
+xlabel('Frequency (Hz)');
+ylabel('Power (dB)');
+title('250 kHz tone');
+```
+
+Here's an example of the expected plot:
+[[http://nuand.com/~jon/images/wiki/250_kHz_tone.png]]
+
+
+Next, we can write this signal out to a file.  It's generally recommended to
+save files to /tmp or a ramdisk location, rather than to a hard disk. For higher
+sample rates, reading samples from disk may cause underruns.
+
+```
+save_sc16q11('/tmp/signal.sc16q11', signal); 
+```
+
+Next, we'll enter the bladeRF command line interface:
+```
+$ bladeRF-cli -i
+bladeRF>
+```
+
+First, we configure the device. Ensure the sample rate matches the rate the rate you created your samples with!
+
+Note that the TXVGA1 and TXVGA2 gain values are dependent upon you're operating environment. You should
+start with setting these to low (e.g., TXVGA=1-20, TXVGA2=0) values if you're connecting directly to test equipment.
+
+```
+bladeRF> set frequency tx 925M
+
+  Set TX frequency:  925000000Hz
+
+bladeRF> set samplerate tx 2M
+
+  Setting TX sample rate - req:   2000000 0/1Hz, actual:   2000000 0/1Hz
+
+bladeRF> set bandwidth tx 1.5M
+
+  Set TX bandwidth - req:  1500000Hz actual:  1500000Hz
+
+bladeRF> set txvga1 -10
+bladeRF> set txvga2 0
+
+
+bladeRF> set bandwidth tx 1.5M
+
+  Set TX bandwidth - req:  1500000Hz actual:  1500000Hz
+
+bladeRF> set txvga1 -10
+bladeRF> set txvga2 0
+```
+
+Next, we configure the CLI to transmit out samples;
+
+```
+bladeRF> tx config file=/tmp/samples.sc16q11 format=bin
+```
+
+You can also repeat the transmission of a file. For example, if you'd like to repeat the file the file 3 times, with a 1 second delay between each repetition:
+```
+bladeRF> tx config repeat=3 delay=1000000
+```
+
+Now we'll transmit the file, and observe that it is running:
+bladeRF> tx start
+bladeRF> tx
+
+  State: Running
+  Last error: None
+  File: /tmp/samples.sc16q11
+  File format: SC16 Q11, Binary
+  Repetitions: 3
+  Repetition delay: 1000000 us
+  # Buffers: 32
+  # Samples per buffer: 32768
+  # Transfers: 16
+  Timeout (ms): 1000
+```
+
+We can wait for the transmission to complete, via the ```tx wait``` command. This command will block until either the transmission completes or a specified timeout occurs. You can also interrupt this command with Ctrl-C.
+
+```
+bladeRF> tx wait
+bladeRF> tx
+
+  State: Running
+  Last error: None
+  File: /tmp/samples.sc16q11
+  File format: SC16 Q11, Binary
+  Repetitions: 3
+  Repetition delay: 1000000 us
+  # Buffers: 32
+  # Samples per buffer: 32768
+  # Transfers: 16
+  Timeout (ms): 1000
+```
+
 = Getting the most out of libtecla =
 If you've built bladeRF-cli with support for [http://www.astro.caltech.edu/~mcs/tecla/index.html libtecla] (<i>highly</i> recommended), you'll have a number of great features available to you, including history, tab-completion (for filenames) and handy key bindings (including emacs and vi bindings).
 
