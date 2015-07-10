@@ -290,7 +290,7 @@ bladeRF> tx
   Timeout (ms): 1000
 ```
 
-We can wait for the transmission to complete, via the ```tx wait``` command. This command will block until either the transmission completes or a specified timeout occurs. You can also interrupt this command with Ctrl-C.
+We can wait for the transmission to complete, via the <code>tx wait</code> command. This command will block until either the transmission completes or a specified timeout occurs. You can also interrupt this command with Ctrl-C.
 
 ```
 bladeRF> tx wait
