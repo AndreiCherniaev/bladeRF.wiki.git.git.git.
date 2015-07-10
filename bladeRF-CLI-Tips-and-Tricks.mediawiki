@@ -308,7 +308,7 @@ bladeRF> tx
   Timeout (ms): 1000
 ```
 
-The following screenshot from a VSA shows this tone being transmitted at the desired 250 kHz offset from the center frequency (925MHz). Note that this is from a device with its DC offset and IQ imbalance compensated for. See [https://github.com/Nuand/bladeRF/wiki/DC-offset-and-IQ-Imbalance-Correction this wiki page] describing correction features if you see significant LO leakage at the center frequency, or a significant image at -250 kHz.
+The following screenshot from a VSA shows this tone being transmitted at the desired 250 kHz offset from the center frequency (925MHz). Note that this is from a device with its DC offset and IQ imbalance compensated for. See [https://github.com/Nuand/bladeRF/wiki/DC-offset-and-IQ-Imbalance-Correction#correcting-the-tx-module wiki page] describing correction features if you see significant LO leakage at the center frequency, or a significant image at -250 kHz.
 
 [[http://nuand.com/~jon/images/wiki/250kHz_tone_vsa.gif]]
 
