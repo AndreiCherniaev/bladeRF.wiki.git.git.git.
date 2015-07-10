@@ -66,7 +66,8 @@ Feel free to share your favorite projects or blogs containing bladeRF and/or SDR
 * Jiao Xianjun (BH1RXH)'s [http://sdr-x.github.io/ tech blog] and [http://www.researchgate.net/profile/Xianjun_Jiao/publications publications]
 ** [https://github.com/JiaoXianjun/LTE-Cell-Scanner Fork of an OpenCL accelerated TDD/FDD LTE Scanner, with bladeRF support added]
 ** [https://github.com/JiaoXianjun/BTLE A BTLE (Bluetooth Low energy)/BT4.0 radio packet transmitter]
-
+* GitHub: [https://github.com/pwarren/rtl-entropy rtl-entropy]: An entropy generator using SDR peripherals, including rtl-sdr and BladeRF]
+* Blog Post by [https://www.seancassidy.me Sean Cassidy]: [https://www.seancassidy.me/your-own-verifiable-hardware-rng-with-bladerf-sdr.html Your Own Verifiable Hardware RNG with bladeRF SDR]
 
 
 = Tutorials and Related Reading =
