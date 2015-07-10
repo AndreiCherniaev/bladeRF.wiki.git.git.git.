@@ -274,6 +274,7 @@ bladeRF> tx config repeat=3 delay=1000000
 ```
 
 Now we'll transmit the file, and observe that it is running:
+```
 bladeRF> tx start
 bladeRF> tx
 
@@ -306,6 +307,10 @@ bladeRF> tx
   # Transfers: 16
   Timeout (ms): 1000
 ```
+
+The following screenshot from a VSA shows this tone being transmitted at the desired 250 kHz offset from the center frequency (925MHz). Note that this is from a device with its DC offset and IQ imbalance compensated for. See [https://github.com/Nuand/bladeRF/wiki/DC-offset-and-IQ-Imbalance-Correction this wiki page] describing correction features if you see significant LO leakage at the center frequency, or a significant image at -250 kHz.
+
+[[http://nuand.com/~jon/images/wiki/250kHz_tone_vsa.gif]]
 
 = Getting the most out of libtecla =
 If you've built bladeRF-cli with support for [http://www.astro.caltech.edu/~mcs/tecla/index.html libtecla] (<i>highly</i> recommended), you'll have a number of great features available to you, including history, tab-completion (for filenames) and handy key bindings (including emacs and vi bindings).
