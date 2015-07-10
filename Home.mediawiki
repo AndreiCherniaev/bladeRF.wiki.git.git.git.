@@ -62,7 +62,7 @@ Feel free to share your favorite projects or blogs containing bladeRF and/or SDR
 ** [https://github.com/drmpeg/gr-dvbs2 A DVB-S2 and DVB-S2X transmitter for GNU Radio]
 ** [https://github.com/drmpeg/gr-atscmap Mapping block for bladeRF ATSC modulater and RRC filter FPGA image]
 * GitHub: [https://github.com/taroz/GNSS-SDRLIB#gnss-sdrlib-v20-beta GNSS-SDRLIB: An Open Source GNSS 
-* Blog: [http://sdr-x.github.io/] Jiao Xianjun (BH1RXH)'s tech blog
+* Blog, Publications: Jiao Xianjun (BH1RXH)'s [http://sdr-x.github.io/ tech blog] and [http://www.researchgate.net/profile/Xianjun_Jiao/publications publications]
 ** [https://github.com/JiaoXianjun/LTE-Cell-Scanner Fork of an OpenCL accelerated TDD/FDD LTE Scanner, with bladeRF support added]
 ** [https://github.com/JiaoXianjun/BTLE A BTLE (Bluetooth Low energy)/BT4.0 radio packet transmitter]
 Software Defined Radio Library]
