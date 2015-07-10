@@ -55,12 +55,19 @@ Feel free to share your favorite projects or blogs containing bladeRF and/or SDR
 * Blog: [http://www.irrational.net/ Clayton's Domain]
 ** [http://www.irrational.net/2014/03/22/reverse-engineering-a-ceiling-fan/ Reverse Engineering a Ceiling Fan]
 ** [http://www.irrational.net/2014/03/02/digital-atv/ Digital amateur TV on 70cm, 33cm, and 23cm]
-* Github: [https://github.com/argilo argilo's] [https://github.com/argilo/sdr-examples sdr-examples]
-* Github: [https://github.com/drmpegs drmpeg's] projects
+* GitHub: [https://github.com/argilo argilo's] [https://github.com/argilo/sdr-examples sdr-examples]
+* GitHub: [https://github.com/drmpegs drmpeg's] projects
 ** [https://github.com/drmpeg/dtv-utils Utilities for SDR digital television]
 ** [https://github.com/drmpeg/gr-dvbs A DVB-S transmitter for GNU Radio]
 ** [https://github.com/drmpeg/gr-dvbs2 A DVB-S2 and DVB-S2X transmitter for GNU Radio]
 ** [https://github.com/drmpeg/gr-atscmap Mapping block for bladeRF ATSC modulater and RRC filter FPGA image]
+* GitHub: [https://github.com/taroz/GNSS-SDRLIB#gnss-sdrlib-v20-beta GNSS-SDRLIB: An Open Source GNSS 
+* Blog: [http://sdr-x.github.io/] Jiao Xianjun (BH1RXH)'s tech blog
+** [https://github.com/JiaoXianjun/LTE-Cell-Scanner Fork of an OpenCL accelerated TDD/FDD LTE Scanner, with bladeRF support added]
+** [https://github.com/JiaoXianjun/BTLE A BTLE (Bluetooth Low energy)/BT4.0 radio packet transmitter]
+Software Defined Radio Library]
+* GitHub: [https://github.com/osqzss/gps-sdr-sim#gps-sdr-sim GPS-SDR-SIM Baseband signal generator for GPS]
+
 
 = Tutorials and Related Reading =
 Find or learn something interesting? Share it here!
