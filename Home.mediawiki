@@ -34,18 +34,18 @@ As shown by page 14 on the [http://nuand.com/bladerf.pdf bladeRF schematic], the
 ** [http://www.newark.com/artesyn-embedded-technologies/da12-050us-m/adaptor-ac-dc-medical-5v-2a/dp/68R2374?ost=68R2374&mckv=snlcgFYz2|pcrid|66379584501|plid|&CMP=KNC-GUSA-GEN-SHOPPING-ARTESYN_EMBEDDED_TECHNOLOGIES&CAGPSPN=pla&gclid=CLuThqWN4sUCFQ8waQodir0AOQ&CAWELAID=120185550001159808 Newark]
 ** [http://www.amazon.com/EMERSON-NETWORK-POWER-DA12-050US-M-EXTERNAL/dp/B00DLSM9F2/ref=sr_1_1?ie=UTF8&qid=1432735979&sr=8-1&keywords=DA12-050US-M Amazon]
 
-= Help! =
-* [[Troubleshooting]] - This guide lists common problems and issues, with some advice and potential fixes.
-* [[Upgrading-bladeRF-firmware|Upgrading the bladeRF firmware]] - This guide describes both the normal firmware and bootloader-based firmware upgrade procedures.
-
 = How-To's =
+* [[bladeRF CLI Tips and Tricks]]
 * [[FPGA Autoloading]]
 * [[DC offset and IQ Imbalance Correction ]]
-* [[bladeRF CLI Tips and Tricks]]
 * [[Debugging dropped samples and identifying achievable sample rates]]
 * OpenBTS
 ** [[Minimalistic build and run test for OpenBTS 5]]
 ** [https://imjuanpablo.wordpress.com/2015/02/14/should-you-need-openbts-on-your-bladerf/ "Should you need OpenBTS on your bladeRF"] on the ''The Sorrows of Interactive Media'' blog
+
+= Help! =
+* [[Troubleshooting]] - This guide lists common problems and issues, with some advice and potential fixes.
+* [[Upgrading-bladeRF-firmware|Upgrading the bladeRF firmware]] - This guide describes both the normal firmware and bootloader-based firmware upgrade procedures.
 
 = Projects and Blogs =
 Feel free to share your favorite projects or blogs containing bladeRF and/or SDR content! Be sure to also check out the  [https://www.nuand.com/forums/viewforum.php?f=8 Project Showcase] on the forums.
