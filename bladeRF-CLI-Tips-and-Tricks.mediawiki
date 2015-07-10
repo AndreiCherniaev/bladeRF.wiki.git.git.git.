@@ -160,7 +160,7 @@ Run <code>help tx</code> from the CLI for a description of available parameters 
 
 == Example: Transmitting Samples Generated in Octave/MATLAB ==
 
-This example shows how to use Octave or MATLAB to create samples for a simple sinusoids at +250 Khz,sampled at 2 Msps, and then transmit these sample with the bladeRF-cli.  The same procedure here can be followed for your language of choice, provided you implement a few simple conversion routines.
+This example shows how to use Octave or MATLAB to create samples for a simple sinusoids at +250 Khz, sampled at 2 Msps, and then transmit these sample with the bladeRF-cli.  The same procedure here can be followed for your language of choice, provided you implement a few simple conversion routines.
 
 Octave/MATLAB functions for loading/saving samples from/to the bladeRF SC16 Q11 binary and CSV formats are provided [https://github.com/Nuand/bladeRF/tree/master/host/misc/matlab here in the bladeRF repository].
 
@@ -296,7 +296,7 @@ We can wait for the transmission to complete, via the ```tx wait``` command. Thi
 bladeRF> tx wait
 bladeRF> tx
 
-  State: Running
+  State: Idle
   Last error: None
   File: /tmp/samples.sc16q11
   File format: SC16 Q11, Binary
