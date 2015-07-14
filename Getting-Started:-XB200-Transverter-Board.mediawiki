@@ -76,7 +76,7 @@ The general procedure for using the XB-200 programmatically, via libbladeRF is a
 ** To tune to the "normal" bladeRF ranges, bypass the XB-200 mixer by using the [https://github.com/Nuand/bladeRF/blob/15340770ca59d30b82109ad8670aa0fe027ca9fe/host/libraries/libbladeRF/include/libbladeRF.h#L498 BLADERF_XB200_BYPASS] value with the above function.
 
 == bladeRF-cli ==
-To tell the CLI that the XB-200 has been attached, simply run the command <code>xb 200 attach</code>.  This will expand the frequency range that the board is able to tune.
+To tell the CLI that the XB-200 has been attached, simply run the command <code>xb 200 enable 200</code>.  This will expand the frequency range that the board is able to tune.
 
 To select RX or TX filter banks, use the command <code>xb 200 filter <rx|tx> <50|144|222|custom
 auto_1db|auto_3db</code>. 
