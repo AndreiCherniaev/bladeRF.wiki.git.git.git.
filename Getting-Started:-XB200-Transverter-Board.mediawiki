@@ -61,6 +61,53 @@ GPIO pins are exposed on the XB-200 via <b>J1</b>, <b>J13</b>, and <b>J16</b>. l
 
 <b>TO DO:</b> provide jumper pinout and FPGA pin associations. 
 
+J7
+{|Pin||Signal
+|-
+|1||GPIO3
+|-
+|2||GPIO4
+|-
+|3||VCCIO_R
+|-
+|4||VCCIO_R
+|-
+|5||GPIO1
+|-
+|6||GPIO2
+})
+
+J13
+{|Pin||Signal
+|-
+|1||GPIO6
+|-
+|2||GPIO8
+|-
+|3||Ground
+|-
+|4||Ground
+|-
+|5||VCCIO_R
+|-
+|6||GPIO5
+})
+
+J16
+{|Pin||Signal
+|-
+|1||GPIO9
+|-
+|2||GPIO10
+|-
+|3||GPIO11
+|-
+|4||GPIO12
+|-
+|5||GPIO13
+|-
+|6||GPIO14
+})
 
 = Software Support =
 
