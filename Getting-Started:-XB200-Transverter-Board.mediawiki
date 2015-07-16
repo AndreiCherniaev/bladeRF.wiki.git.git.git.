@@ -60,6 +60,7 @@ These resistors may be found slightly above the J15 DAC SMA connector, and are n
 GPIO pins are exposed on the XB-200 via <b>J1</b>, <b>J13</b>, and <b>J16</b>. libbladeRF API calls to manipulate these pins are a work in progress.
 
 <b>TO DO:</b> provide jumper pinout and FPGA pin associations. 
+From page 7 of XB200 Schematic:
 
 J7
 {|Pin||Signal
@@ -75,7 +76,7 @@ J7
 |5||GPIO1
 |-
 |6||GPIO2
-})
+|}
 
 J13
 {|Pin||Signal
@@ -91,7 +92,7 @@ J13
 |5||VCCIO_R
 |-
 |6||GPIO5
-})
+|}
 
 J16
 {|Pin||Signal
@@ -107,7 +108,7 @@ J16
 |5||GPIO13
 |-
 |6||GPIO14
-})
+|}
 
 = Software Support =
 
