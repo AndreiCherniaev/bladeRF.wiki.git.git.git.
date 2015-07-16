@@ -3,3 +3,4 @@
 * Provide access to SPI flash through a header directly.  The MOSI and MISO are already brought out via the UART header.  Adding the CS and SCLK would allow direct programming of the FX3 SPI flash.
 * FX3 debug LED is not very bright
 * Align GPIF0-7 with DATA0-7.  Currently parallel programming of the FPGA via the FX3 required a weird mask translation.
+* Add plugin style board to product line with switchable band pass filters for higher ham bands (70cm/23cm/33cm/13cm) similar to the filters on the XB-200.
