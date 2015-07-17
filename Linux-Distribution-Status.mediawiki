@@ -57,6 +57,11 @@ Please feel free to update this page as needed, but please test [https://github.
 | Unknown
 | ''Incompatible libusb-1.0''
 |-
+| Ubuntu 15.04 (64-bit)
+| Yes
+| Yes
+| Linux 3.19.0, libusb 1.0.19.10903
+|-
 | Ubuntu 14.10 (64-bit)
 | Yes
 | Yes
