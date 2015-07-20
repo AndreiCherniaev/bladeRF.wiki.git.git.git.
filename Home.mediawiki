@@ -55,23 +55,22 @@ The mounting holes on the bladeRF and the add-on boards are intended for use wit
 ** [http://www.radioshack.com/2-56-round-head-machine-screws-42-pack/6403010.html 2-56 Round-Head Machine Screws] (Model: 64-3010 Catalog #: 6403010)
 ** [http://www.radioshack.com/2-56-hex-nuts-40-pack/6403017.html 2-56 Hex Nuts] (Model: 64-3017 Catalog #: 6403017).
 
-= How-To's =
+= Help and How-to's =
+* [[Troubleshooting]] - This guide lists common problems and issues, with some advice and potential fixes.
+* [[Upgrading-bladeRF-firmware|Upgrading the bladeRF firmware]] - This guide describes both the normal firmware and bootloader-based firmware upgrade procedures.
 * [[bladeRF CLI Tips and Tricks]]
 * [[FPGA Autoloading]]
 * [[DC offset and IQ Imbalance Correction ]]
 * [[Debugging dropped samples and identifying achievable sample rates]]
-* OpenBTS
-** [[Minimalistic build and run test for OpenBTS 5]]
-** [https://imjuanpablo.wordpress.com/2015/02/14/should-you-need-openbts-on-your-bladerf/ "Should you need OpenBTS on your bladeRF"] on the ''The Sorrows of Interactive Media'' blog
-
-= Help! =
-* [[Troubleshooting]] - This guide lists common problems and issues, with some advice and potential fixes.
-* [[Upgrading-bladeRF-firmware|Upgrading the bladeRF firmware]] - This guide describes both the normal firmware and bootloader-based firmware upgrade procedures.
 
 = Projects and Blogs =
 Feel free to share your favorite projects or blogs containing bladeRF and/or SDR content! Be sure to also check out the  [https://www.nuand.com/forums/viewforum.php?f=8 Project Showcase] on the forums.
-* [http://blog.yate.ro/ Yate Blog: Software Defined Mobile Network]
-** [http://blog.yate.ro/2015/05/20/ofdm-the-science-behind-lte/ OFDM - the science behind LTE]
+* [http://www.yatebts.com YateBTS]
+** [http://blog.yate.ro/ Yate Blog: Software Defined Mobile Network]
+*** [http://blog.yate.ro/2015/05/20/ofdm-the-science-behind-lte/ OFDM - the science behind LTE]
+* [http://openbts.org/ OpenBTS]
+** [[Minimalistic build and run test for OpenBTS 5]]
+** [https://imjuanpablo.wordpress.com/2015/02/14/should-you-need-openbts-on-your-bladerf/ "Should you need OpenBTS on your bladeRF"] on the ''The Sorrows of Interactive Media'' blog
 * [[ATSC Transmitter]]
 * Blog: [http://www.irrational.net/ Clayton's Domain]
 ** [http://www.irrational.net/2014/03/22/reverse-engineering-a-ceiling-fan/ Reverse Engineering a Ceiling Fan]
