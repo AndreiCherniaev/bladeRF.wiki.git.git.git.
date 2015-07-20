@@ -14,46 +14,10 @@ These guides describe the process of building and installing the bladeRF softwar
 * [[Getting Started: Mac OSX]]
 * [[Getting Started: Verifying Basic Device Operation]]
 
-== Expansion Boards ==
+== Expansion Boards and Accessories ==
 
 * [[Getting Started: XB200 Transverter Board|Getting Started: XB-200 Transverter Board]]
-
-== Accessories ==
-
-=== External DC Power ===
-The DC barrel jack on the bladeRF requires a 5V adapter, which should be rated to supply 1.5 to 2A.
-
-The inner plug on the receptacle (on the bladeRF) is 2.5 mm and is +V.  The diameter of the plug on the power supply is 5.5mm and is -V.
-
-As shown by page 14 on the [http://nuand.com/bladerf.pdf bladeRF schematic], the DC barrel jack is a  [http://www.mouser.com/ds/2/393/rapc712x_cd-371318.pdf Switchcraft RAPC712X]. Remember that both jumpers on J70 need to be moved when switching between USB power and the DC barrel input.
-
-==== Wall Mount AC Adapters ====
-
-* Artesyn [http://www.mouser.com/ds/2/633/da12-m_series_ds_06-04-14_79cfb80a76-520005.pdf DA12-050US-M]
-** [http://www.mouser.com/ProductDetail/Artesyn-Embedded-Technologies/DA12-050US-M/?qs=emAWHUWp%252blcZAFicGRINPQ%3D%3D&kpid=330909095&gclid=CL6GvIqK4sUCFQemaQodIjgASA Mouser]
-** [http://www.newark.com/artesyn-embedded-technologies/da12-050us-m/adaptor-ac-dc-medical-5v-2a/dp/68R2374?ost=68R2374&mckv=snlcgFYz2|pcrid|66379584501|plid|&CMP=KNC-GUSA-GEN-SHOPPING-ARTESYN_EMBEDDED_TECHNOLOGIES&CAGPSPN=pla&gclid=CLuThqWN4sUCFQ8waQodir0AOQ&CAWELAID=120185550001159808 Newark]
-** [http://www.amazon.com/EMERSON-NETWORK-POWER-DA12-050US-M-EXTERNAL/dp/B00DLSM9F2/ref=sr_1_1?ie=UTF8&qid=1432735979&sr=8-1&keywords=DA12-050US-M Amazon]
-
-=== Attenuators and Terminators ===
-
-You should never transmit without a 50 ohm load attached to the bladeRF's TX port, whether it be an antenna or a terminator. The same goes for the outputs on the XB-200.  
-
-Similarly, you should not connect the bladeRF TX port directly to the RX port. If you'd like to externally loop TX into RX, a 30 dB attenuator is recommended.
-
-''Suppliers:''
-* [http://www.minicircuits.com Minicircuits]
-** Attenuator Kits
-*** [http://www.minicircuits.com/MCLStore/ModelInfoDisplay?14370825282970.3565561872535449 K1-VAT+] ([http://www.minicircuits.com/pdfs/K1-VAT+.pdf Datasheet])
-** Terminators:
-*** [http://www.minicircuits.com/MCLStore/ModelInfoDisplay?14370827499700.7463667260602754 ANNE-50+] ([http://www.minicircuits.com/pdfs/ANNE-50+.pdf Datasheet])
-
-=== Mounting Hardware ===
-
-The mounting holes on the bladeRF and the add-on boards are intended for use with 2-56 machine screws.
-
-* Radio Shack
-** [http://www.radioshack.com/2-56-round-head-machine-screws-42-pack/6403010.html 2-56 Round-Head Machine Screws] (Model: 64-3010 Catalog #: 6403010)
-** [http://www.radioshack.com/2-56-hex-nuts-40-pack/6403017.html 2-56 Hex Nuts] (Model: 64-3017 Catalog #: 6403017).
+* [[bladeRF Accessories]
 
 = Help and How-to's =
 * [[Troubleshooting]]
