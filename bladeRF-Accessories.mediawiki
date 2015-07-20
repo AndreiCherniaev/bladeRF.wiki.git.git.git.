@@ -26,6 +26,12 @@ Similarly, you should not connect the bladeRF TX port directly to the RX port. I
 ** Terminators:
 *** [http://www.minicircuits.com/MCLStore/ModelInfoDisplay?14370827499700.7463667260602754 ANNE-50+] ([http://www.minicircuits.com/pdfs/ANNE-50+.pdf Datasheet])
 
+= Combiners =
+
+[http://www.radio-electronics.com/info/rf-technology-design/coupler-combiner-splitter/rf-splitter-combiner-basics.php Combiners] provide an excellent means to "hard-wire" multiple devices together for testing and evaluation. 
+
+* [http://www.jfwindustries.com/products/50PD_732_Resistive_Power_Divider_Combiner_from_JFW_Industries-1396-79.html 50PD-732 Resistive Power Divider/Combiner from JFW Industries]
+
 = Mounting Hardware =
 
 The mounting holes on the bladeRF and the add-on boards are intended for use with 2-56 machine screws.
