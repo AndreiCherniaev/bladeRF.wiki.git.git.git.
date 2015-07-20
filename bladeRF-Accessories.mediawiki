@@ -20,7 +20,6 @@ You should never transmit without a 50 ohm load attached to the bladeRF's TX por
 
 Similarly, you should not connect the bladeRF TX port directly to the RX port. If you'd like to externally loop TX into RX, a 30 dB attenuator is recommended.
 
-''Suppliers:''
 * [http://www.minicircuits.com Minicircuits]
 ** Attenuator Kits
 *** [http://www.minicircuits.com/MCLStore/ModelInfoDisplay?14370825282970.3565561872535449 K1-VAT+] ([http://www.minicircuits.com/pdfs/K1-VAT+.pdf Datasheet])
