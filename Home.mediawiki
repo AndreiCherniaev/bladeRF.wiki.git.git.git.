@@ -17,7 +17,7 @@ These guides describe the process of building and installing the bladeRF softwar
 == Expansion Boards and Accessories ==
 
 * [[Getting Started: XB200 Transverter Board|Getting Started: XB-200 Transverter Board]]
-* [[bladeRF Accessories]
+* [[bladeRF Accessories]]
 
 = Help and How-to's =
 * [[Troubleshooting]]
