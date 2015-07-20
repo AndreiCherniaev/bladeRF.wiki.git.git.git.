@@ -56,11 +56,16 @@ The mounting holes on the bladeRF and the add-on boards are intended for use wit
 ** [http://www.radioshack.com/2-56-hex-nuts-40-pack/6403017.html 2-56 Hex Nuts] (Model: 64-3017 Catalog #: 6403017).
 
 = Help and How-to's =
-* [[Troubleshooting]] - This guide lists common problems and issues, with some advice and potential fixes.
-* [[Upgrading-bladeRF-firmware|Upgrading the bladeRF firmware]] - This guide describes both the normal firmware and bootloader-based firmware upgrade procedures.
+* [[Troubleshooting]]
+** This guide lists common problems and issues, with some advice and potential fixes.
+* [[Upgrading-bladeRF-firmware|Upgrading the bladeRF firmware]]
+** This guide describes both the normal firmware and bootloader-based firmware upgrade procedures.
 * [[bladeRF CLI Tips and Tricks]]
+** This pages provides information regarding the use of the bladeRF-cli
 * [[FPGA Autoloading]]
+** Setting up the bladeRF to have its FPGA loaded automatically
 * [[DC offset and IQ Imbalance Correction ]]
+** Information about DC offset and IQ balance correction mechanisms
 * [[Debugging dropped samples and identifying achievable sample rates]]
 
 = Projects and Blogs =
