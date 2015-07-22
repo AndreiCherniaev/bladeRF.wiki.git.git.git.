@@ -24,6 +24,7 @@ Simply place (or symlink, for *nix users) the FPGA bitfile in one of these direc
 * <code>/usr/share/Nuand/bladeRF/</code> (libbladeRF v0.16.0 +)
 * <code>/etc/Nuand/bladeRF/</code> (libbladeRF v0.16.0 +)
 
+<br />
 The user's home directory is determined via <code>$HOME</code>, and then <code>/etc/passwd</code> (via <code>getpwuid()</code>) if <code>$HOME</code> is not valid.
 <br />
 
