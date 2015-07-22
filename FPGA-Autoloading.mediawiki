@@ -18,10 +18,14 @@ Simply place (or symlink, for *nix users) the FPGA bitfile in one of these direc
 * The directory containing the program being executed. (As of 2014-12-10)
 * <code>your_home_directory/.config/Nuand/bladeRF/</code> (libbladeRF v0.16.0 +)
 * <code>your_home_directory/.Nuand/bladeRF/</code> (libbladeRF v0.16.0 +)
-* <code>/etc/Nuand/bladeRF/</code> (libbladeRF v0.16.0 +)
+* <code>${CMAKE_INSTALL_PREFIX}/share/Nuand/bladeRF/</code> (libbladeRF v1.4.2 +)
+* <code>${CMAKE_INSTALL_PREFIX}/etc/Nuand/bladeRF/</code> (libbladeRF v1.4.2 +)
 * <code>/usr/share/Nuand/bladeRF/</code> (libbladeRF v0.16.0 +)
+* <code>/etc/Nuand/bladeRF/</code> (libbladeRF v0.16.0 +)
 
 The user's home directory is determined via $HOME, and then /etc/passwd (via getpwuid()) if $HOME is not valid.
+
+Note that the last two entries in the list may be duplicates of the two that precede them. This is intentional, and is intended to provide reverse compatibility and avoid breaking packaging scripts that were force to install files in to /usr/share/Nuand/bladeRF, even if a different `${CMAKE_INSTALL_PREFIX}` was used.
 
 == Windows ==
 * The directory specified by the <code>BLADERF_SEARCH_DIR</code> environment variable (As of 2014-12-10)
