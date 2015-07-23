@@ -22,9 +22,9 @@ Similarly, you should not connect the bladeRF TX port directly to the RX port. I
 
 * [http://www.minicircuits.com Minicircuits]
 ** Attenuator Kits
-*** [http://www.minicircuits.com/MCLStore/ModelInfoDisplay?14370825282970.3565561872535449 K1-VAT+] ([http://www.minicircuits.com/pdfs/K1-VAT+.pdf Datasheet])
+*** [http://www.minicircuits.com/MCLStore/ModelSearch?model=K1-VAT%2B&search_type=info K1-VAT+] ([http://www.minicircuits.com/pdfs/K1-VAT+.pdf Datasheet])
 ** Terminators:
-*** [http://www.minicircuits.com/MCLStore/ModelInfoDisplay?14370827499700.7463667260602754 ANNE-50+] ([http://www.minicircuits.com/pdfs/ANNE-50+.pdf Datasheet])
+*** [http://www.minicircuits.com/MCLStore/ModelSearch?model=ANNE-50%2B&search_type=info ANNE-50+] ([http://www.minicircuits.com/pdfs/ANNE-50+.pdf Datasheet])
 
 = Combiners =
 
