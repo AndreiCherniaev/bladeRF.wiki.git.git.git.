@@ -1,5 +1,5 @@
 
-This page serves as a place to document notes and developments in building libbladeRF for Android, which has spun off from discussions in Issue #386. It is expected that notes documented here will yield fine-grained tasks and patches that may be submitted to the [https://www.github.com/nuand/bladeRF/issues issue tracker].
+This page serves as a place to document notes and developments in building libbladeRF for Android, which has spun off from discussions in [https://github.com/Nuand/bladeRF/issues/386 issue #386]. It is expected that notes documented here will yield fine-grained tasks and patches that may be submitted to the [https://www.github.com/nuand/bladeRF/issues issue tracker].
 
 = Android NDK =
 The preferred approach for libbladeRF support on Android is via the [https://developer.android.com/tools/sdk/ndk/index.html Android NDK].  We would rathermaintain a single codebase that is portable, rather than introduce a Java reimplementation.
