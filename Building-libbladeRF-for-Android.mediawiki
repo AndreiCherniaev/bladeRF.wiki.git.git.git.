@@ -7,8 +7,8 @@ The preferred approach for libbladeRF support on Android is via the [https://dev
 = Toolchain files and build scripts =
 
 Below is a list of some reference CMake toolchain setups and build scripts
- - https://github.com/mambrus/mixedmisc/tree/master/posixtest_android
- - https://goo.gl/yfUatK
+- https://github.com/mambrus/mixedmisc/tree/master/posixtest_android
+- https://goo.gl/yfUatK
 
 
 = pthread_cancel() =
