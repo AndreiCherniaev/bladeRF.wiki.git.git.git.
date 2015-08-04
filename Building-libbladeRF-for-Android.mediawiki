@@ -1,0 +1,24 @@
+
+This page serves as a place to document notes and developments in building libbladeRF for Android, which has spun off from discussions in Issue #386. It is expected that notes documented here will yield fine-grained tasks and patches that may be submitted to the [https://www.github.com/nuand/bladeRF/issues issue tracker].
+
+= Android NDK =
+The preferred approach for libbladeRF support on Android is via the [https://developer.android.com/tools/sdk/ndk/index.html Android NDK].  We would rathermaintain a single codebase that is portable, rather than introduce a Java reimplementation.
+
+= Toolchain files and build scripts =
+
+Below is a list of some reference CMake toolchain setups and build scripts
+ - https://github.com/mambrus/mixedmisc/tree/master/posixtest_android
+ - https://goo.gl/yfUatK
+
+
+= pthread_cancel() =
+<code>pthread_cancel()</code> does not exist in Androi. This is used in the libbladeRF code base as a "last ditch effort" if an attempt to join a thread times out. We will need to be able to remove this at compile time.  One approach will be to add a <code>BLADERF_OS_ANDROID</code> definition and add the following to thread.h:
+
+<pre>
+#ifdef BLADERF_OS_ANDROID
+#    define THREAD_CANCEL(thread) do {} while (0)
+#else
+#    define THREAD_CANCEL(thread) pthread_cancel(thread)
+#endif
+</pre>
+
