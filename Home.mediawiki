@@ -32,8 +32,8 @@ These guides describe the process of building and installing the bladeRF softwar
 ** Information about DC offset and IQ balance correction mechanisms
 * [[Debugging dropped samples and identifying achievable sample rates]]
 
-= Projects and Blogs =
-Feel free to share your favorite projects or blogs containing bladeRF and/or SDR content! Be sure to also check out the  [https://www.nuand.com/forums/viewforum.php?f=8 Project Showcase] on the forums.
+= Projects, Papers, and Blogs =
+Feel free to share your favorite projects, papers, blogs, etc. containing bladeRF and/or SDR content! Be sure to also check out the  [https://www.nuand.com/forums/viewforum.php?f=8 Project Showcase] on the forums.
 * [http://www.yatebts.com YateBTS]
 ** [http://blog.yate.ro/ Yate Blog: Software Defined Mobile Network]
 *** [http://blog.yate.ro/2015/05/20/ofdm-the-science-behind-lte/ OFDM - the science behind LTE]
@@ -57,6 +57,8 @@ Feel free to share your favorite projects or blogs containing bladeRF and/or SDR
 ** [https://github.com/JiaoXianjun/BTLE A BTLE (Bluetooth Low energy)/BT4.0 radio packet transmitter]
 * GitHub: [https://github.com/pwarren/rtl-entropy rtl-entropy]: An entropy generator using SDR peripherals, including rtl-sdr and BladeRF
 * Blog Post by [https://www.seancassidy.me Sean Cassidy]: [https://www.seancassidy.me/your-own-verifiable-hardware-rng-with-bladerf-sdr.html Your Own Verifiable Hardware RNG with bladeRF SDR]
+* [https://balloonchallenge.org/winner_docs/SpaceTechDemo-MONSTER-team-Report.pdf An inter-balloon data relay using Software Defined Radios: Paving the way for distributed space systems]
+** Congratulations to team MONSTER for winning the "Best Space Technology Demonstration" prize in the [https://balloonchallenge.org/ Global Space Balloon Challenge]!
 
 
 = Tutorials and Related Reading =
