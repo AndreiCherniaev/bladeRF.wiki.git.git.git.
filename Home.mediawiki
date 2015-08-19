@@ -45,7 +45,7 @@ Feel free to share your favorite projects, papers, blogs, etc. containing bladeR
 ** [http://www.irrational.net/2014/03/22/reverse-engineering-a-ceiling-fan/ Reverse Engineering a Ceiling Fan]
 ** [http://www.irrational.net/2014/03/02/digital-atv/ Digital amateur TV on 70cm, 33cm, and 23cm]
 * GitHub: [https://github.com/argilo argilo's] [https://github.com/argilo/sdr-examples sdr-examples]
-* GitHub: [https://github.com/drmpegs drmpeg's] projects
+* GitHub: [https://github.com/drmpeg drmpeg's] projects
 ** [https://github.com/drmpeg/dtv-utils Utilities for SDR digital television]
 ** [https://github.com/drmpeg/gr-dvbs A DVB-S transmitter for GNU Radio]
 ** [https://github.com/drmpeg/gr-dvbs2 A DVB-S2 and DVB-S2X transmitter for GNU Radio]
