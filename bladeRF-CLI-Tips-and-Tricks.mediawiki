@@ -381,12 +381,12 @@ When transmitting or receiving from a shell script, one must ensure <code>rx wai
 
 <i>Example: RX 10 seconds of data</i>
 <pre>
-bladeRF-cli -e 'rx config file=/tmp/rx_10s.bin n=0; rx start; rx wait 10s'
+bladeRF-cli -e 'rx config file=/tmp/rx_10s.bin n=0; rx start; rx; rx wait 10s'
 </pre>
 
 <i>Example: Transmit a file to completion</i>
 <pre>
-bladeRF-cli -e 'tx config file=/tmp/tx_samples.bin; tx start; tx wait'
+bladeRF-cli -e 'tx config file=/tmp/tx_samples.bin; tx start; tx; tx wait'
 </pre>
 
 = Getting the most out of libtecla =
