@@ -62,11 +62,11 @@ Be sure to adjust samplerate and frequency parameters appropriately to ensure th
 === GNU Radio Flowgraph ===
 [https://www.nuand.com/~jon/gnuradio/grc/bladeRF_fifo_rx.grc This flowgraph] ([https://www.nuand.com/~jon/gnuradio/grc/bladeRF_fifo_rx.grc python]) converts bladeRF SC16 Q11 samples to GNU radio complex values and displays them with a Qt GUI sink.  Note that the same conversion approach can be taken for transmitting.
 
-[https://www.nuand.com/~jon/gnuradio/grc/bladeRF_fifo_rx.grc.png]
+[[https://www.nuand.com/~jon/gnuradio/grc/bladeRF_fifo_rx.grc.png]]
 
 <pre>bladeRF_fifo_rx.py --sample-rate=2e6 --frequency=433.92e6</pre>
 
-=== Step 3: Start receiving to FIFO in bladeRF-cli === 
+== Step 3: Start receiving to FIFO in bladeRF-cli ==
 
 <pre>
 bladeRF> set frequency 433.92M
