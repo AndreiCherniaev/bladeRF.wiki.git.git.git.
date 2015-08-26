@@ -330,6 +330,64 @@ bladeRF> flash_init_cal 40 0x9015 /tmp/new_cal_data.bin
 == Wiped your calibration data? All is not lost! ==
 If you've managed to wipe your calibration region and do not have the necessary tools to identify an appropriate VCTCXO trim value, you may look up that factory default on [https://www.nuand.com/calibration.php this page].
 
+= Using bladeRF-cli in shell scripts =
+
+== Detecting if devices are present ==
+
+<code>bladeRF-cli -p</code> returns 0 if one or more devices are detected, and a non-zero value if no devices are connected.  Below is a snippet you can use to exit a script if no bladeRF devices are detected:
+
+<pre>
+#!/bin/sh
+
+bladeRF-cli -p 1>/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "No bladeRF devices connected." >&2
+    exit 1
+fi
+</pre>
+
+== Reading device properties ==
+
+The bladeRF-cli <code>info</code> command can be used to fetch a device's serial number or FPGA size, as shown below:
+
+<pre>
+#!/bin/sh
+# Fetch device information
+DEVICE_INFO=$(bladeRF-cli -e 'info' 2>/dev/null)
+if [ -z "$DEVICE_INFO" ]; then
+    echo "Failed to open device and query info." >&2
+    exit 1
+fi
+
+# Read a device's serial number
+DEVICE_SERIAL=$(echo "$DEVICE_INFO" | grep 'Serial #:' | sed -e 's/.*Serial #:\s\+//') 
+
+# Check if the device has an FPGA loaded
+DEVICE_FPGA_LOADED=$(echo "$DEVICE_INFO" | grep "FPGA loaded:" | sed -e 's/.*FPGA loaded:\s\+//')
+
+# Read the device's FPGA size
+DEVICE_FPGA_SIZE=$(echo "$DEVICE_INFO" | grep "FPGA size:" | sed -e 's/.*FPGA size:\s\+//')
+
+echo ""
+echo "Found bladeRF"
+echo "    Serial #:    $DEVICE_SERIAL"
+echo "    FPGA type:   $DEVICE_FPGA_SIZE"
+echo "    FPGA loaded: $DEVICE_FPGA_LOADED"
+echo ""
+</pre>
+
+== Transmitting or receiving samples ==
+When transmitting or receiving from a shell script, one must ensure <code>rx wait</code> or <code>tx wait</code> is used to ensure the CLI is not exited prior to the completing the desired reception/transmission.
+
+<i>Example: RX 10 seconds of data</i>
+<pre>
+bladeRF-cli -e 'rx config file=/tmp/rx_10s.bin n=0; rx start; rx wait 10s'
+</pre>
+
+<i>Example: Transmit a file to completion</i>
+<pre>
+bladeRF-cli -e 'tx config file=/tmp/tx_samples.bin; tx start; tx wait'
+</pre>
 
 = Getting the most out of libtecla =
 If you've built bladeRF-cli with support for [http://www.astro.caltech.edu/~mcs/tecla/index.html libtecla] (<i>highly</i> recommended), you'll have a number of great features available to you, including history, tab-completion (for filenames) and handy key bindings (including emacs and vi bindings).
