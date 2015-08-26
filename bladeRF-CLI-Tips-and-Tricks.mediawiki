@@ -60,7 +60,7 @@ Be sure to adjust samplerate and frequency parameters appropriately to ensure th
 <pre>./baudline -reset -format le16 -channels 2 -quadrature -samplerate 2000000 -stdin < /tmp/rx_samples.bin</pre>
 
 === GNU Radio Flowgraph ===
-[https://www.nuand.com/~jon/gnuradio/grc/bladeRF_fifo_rx.grc This flowgraph] ([https://www.nuand.com/~jon/gnuradio/grc/bladeRF_fifo_rx.grc python]) converts bladeRF SC16 Q11 samples to GNU radio complex values and displays them with a Qt GUI sink.  Note that the same conversion approach can be taken for transmitting.
+[https://www.nuand.com/~jon/gnuradio/grc/bladeRF_fifo_rx.grc This flowgraph] ([https://www.nuand.com/~jon/gnuradio/grc/bladeRF_fifo_rx.py python]) converts bladeRF SC16 Q11 samples to GNU radio complex values and displays them with a Qt GUI sink.  Note that the same conversion approach can be taken for transmitting.
 
 [[https://www.nuand.com/~jon/gnuradio/grc/bladeRF_fifo_rx.grc.png]]
 
