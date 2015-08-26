@@ -47,8 +47,7 @@ Here's one way to view binary samples you've saved off using the bladeRF-cli pro
 
 = Live Viewing of Samples =
 
-
-When getting your bearings in the bladeRF-cli, it's handy to be able to see some data while you're dialing in settings. Having external program show the samples RX'd by the bladeRF-cli comes in quite handy.
+When getting your bearings in the bladeRF-cli, it's handy to be able to visualize data while you're dialing in settings. Having external program show the samples RX'd by the bladeRF-cli comes in quite handy.
 
 == Step 1: Create a FIFO ==
 <pre>$ mkfifo /tmp/rx_samples.bin</pre>
@@ -61,6 +60,10 @@ Be sure to adjust samplerate and frequency parameters appropriately to ensure th
 <pre>./baudline -reset -format le16 -channels 2 -quadrature -samplerate 2000000 -stdin < /tmp/rx_samples.bin</pre>
 
 === GNU Radio Flowgraph ===
+[https://www.nuand.com/~jon/gnuradio/grc/bladeRF_fifo_rx.grc This flowgraph] ([https://www.nuand.com/~jon/gnuradio/grc/bladeRF_fifo_rx.grc python]) converts bladeRF SC16 Q11 samples to GNU radio complex values and displays them with a Qt GUI sink.  Note that the same conversion approach can be taken for transmitting.
+
+[https://www.nuand.com/~jon/gnuradio/grc/bladeRF_fifo_rx.grc.png]
+
 <pre>bladeRF_fifo_rx.py --sample-rate=2e6 --frequency=433.92e6</pre>
 
 === Step 3: Start receiving to FIFO in bladeRF-cli === 
