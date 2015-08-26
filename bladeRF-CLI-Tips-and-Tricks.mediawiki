@@ -64,7 +64,7 @@ Be sure to adjust samplerate and frequency parameters appropriately to ensure th
 
 [[https://www.nuand.com/~jon/gnuradio/grc/bladeRF_fifo_rx.grc.png]]
 
-<pre>bladeRF_fifo_rx.py --sample-rate=2e6 --frequency=433.92e6</pre>
+<pre>./bladeRF_fifo_rx.py --sample-rate=2e6 --frequency=433.92e6</pre>
 
 == Step 3: Start receiving to FIFO in bladeRF-cli ==
 
