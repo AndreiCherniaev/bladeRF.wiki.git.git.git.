@@ -44,22 +44,33 @@ Here's one way to view binary samples you've saved off using the bladeRF-cli pro
 ## Channel: <b>2</b>, <b>quadrature</b>
 ## Decode Format: <b>16 bit linear</b>, <b>little endian</b>
 
-=== Live Viewing ===
 
-When getting your bearings in the bladeRF-cli, it's handy to be able to see some data while you're dialing in settings. Having baudline show the samples RX'd by the bladeRF-cli comes in quite handy.
+= Live Viewing of Samples =
 
-# Create a fifo: <pre>$ mkfifo /tmp/sample_fifo</pre>
-# Start up baudline, using the fifo as input. Adjust the <code>samplerate</code> parameter appropriately. <pre>./baudline -reset -format le16 -channels 2 -quadrature -samplerate 2000000 -stdin < /tmp/sample_fifo</pre>
-# Start up the CLI and configure the device.
+
+When getting your bearings in the bladeRF-cli, it's handy to be able to see some data while you're dialing in settings. Having external program show the samples RX'd by the bladeRF-cli comes in quite handy.
+
+<b>Step 1</b>: Create a FIFO:
+<pre>$ mkfifo /tmp/rx_samples.bin</pre>
+
+<b>Step 2</b>: Next, fire up your preferred viewer. Be sure to adjust samplerate and frequency parameters appropriately.
+
+<i>Baudline</i>
+<pre>./baudline -reset -format le16 -channels 2 -quadrature -samplerate 2000000 -stdin < /tmp/rx_samples.bin</pre>
+
+<i>GNU Radio Flowgraph<i>: bladeRF_fifo_rx.py --sample-rate=2e6 --frequency=433.92e6
+
+<b>Step 3</b>: Start up the CLI and configure the device.
 <pre>
 bladeRF> set frequency 433.92M
 bladeRF> set samplerate 2M
 bladeRF> set bandwidth 1.5M
-bladeRF> rx config file=/tmp/sample_fifo n=0
+bladeRF> rx config file=/tmp/rx_samples.bin n=0
 bladeRF> rx start
 bladeRF> # Adjust parameters while viewing the spectrum in baudline!
 bladeRF> rx stop
 </pre>
+
 
 = Transmitting Pre-generated Samples =
 
