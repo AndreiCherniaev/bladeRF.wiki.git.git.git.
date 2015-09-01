@@ -128,7 +128,7 @@ bladeRF> rx
 == Octave/MATLAB == 
 
 Routines for loading/saving samples from/to various formats are provided 
-[here in the bladeRF git repository](https://github.com/Nuand/bladeRF/tree/master/host/misc/matlab).
+[https://github.com/Nuand/bladeRF/tree/master/host/misc/matlab here in the bladeRF git repository].
 
 The below examples show how to plot the magnitude of samples received in the above example.
 
