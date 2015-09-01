@@ -126,28 +126,42 @@ bladeRF> rx
 
 
 == Octave/MATLAB == 
+
+Routines for loading/saving samples from/to various formats are provided 
+[here in the bladeRF git repository](https://github.com/Nuand/bladeRF/tree/master/host/misc/matlab).
+
+The below examples show how to plot the magnitude of samples received in the above example.
+
 === CSV data ===
 In the CSV format, samples are stored in rows of: <code>I, Q</code>. 
 
 To load these samples and reconstruct the complex signal:
 <pre>
-> samples = load("my_samples.csv"); 
-> samples_i = samples(:, 1);
-> samples_q = samples(:, 2);
-> signal = samples_i + j * samples_q;
-> % Plot the magnitude of the signal in the time domain
-> plot(abs(signal));
+% We must first tell MATLAB/Octave where to find our functions
+% by pointing it to the directory containing the conversion routines.
+% You will need to change this path as needed.
+addpath('~/projects/bladeRF/host/misc/matlab/')
+
+% Load the samples
+signal = load_csv('my_samples.csv');
+
+% Plot the magnitude of the signal in the time domain
+plot(abs(signal));
 </pre>
 
 === Binary Data (SC16Q11 format) ===
 Binary data in the SC16Q11 format is little-endian, sign-extended, and right-aligned. To load the samples and reconstruct the complex signal:
 <pre>
-> f = fopen("my_samples.sc16q11", "r", "ieee-le");
-> samples = fread(f, Inf, "int16");
-> samples_i = samples(1:2:end, :);
-> samples_q = samples(2:2:end, :);
-> % Plot the magnitude of the signal in the time domain
-> plot(abs(signal));
+% We must first tell MATLAB/Octave where to find our functions
+% by pointing it to the directory containing the conversion routines.
+% You will need to change this path as needed.
+addpath('~/projects/bladeRF/host/misc/matlab/')
+
+% Load the samples
+signal = load_sc16q11('my_samples.sc16q11');
+
+% Plot the magnitude of the signal in the time domain
+plot(abs(signal));
 </pre>
 
 == baudline ==
