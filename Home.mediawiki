@@ -60,7 +60,9 @@ Feel free to share your favorite projects, papers, blogs, etc. containing bladeR
 * [https://balloonchallenge.org/winner_docs/SpaceTechDemo-MONSTER-team-Report.pdf An inter-balloon data relay using Software Defined Radios: Paving the way for distributed space systems]
 ** Congratulations to team MONSTER for winning the "Best Space Technology Demonstration" prize in the [https://balloonchallenge.org/ Global Space Balloon Challenge]!
 * [http://repository.kaust.edu.sa/kaust/handle/10754/559316 Implementation of a Low-Latency Contention-Free Geographical Routing Scheme for Mobile Cyber-Physical Systems]
-* Microsoft Research: [http://research.microsoft.com/apps/video/dl.aspx?id=244847 Demo of an 802.11a/g sniffer implemented in Ziria]
+* Microsoft Research: 
+** [http://research.microsoft.com/en-US/projects/ziria/ziria-tutorial-summit-updated.pptx Ziria: Wireless Programming for Hardware Dummies]
+** [http://research.microsoft.com/apps/video/dl.aspx?id=244847 Demo of an 802.11a/g sniffer implemented in Ziria]
 
 
 = Tutorials and Related Reading =
