@@ -22,6 +22,11 @@ bladeRF> set bandwidth rx 5M
 bladeRF> set lnagain 6
 bladeRF> set rxvga1 30
 bladeRF> set rxvga2 10
+
+# Important note: 'print' with no arguments was added Aug 23, 2015.
+# If you're using an earlier version of the bladeRF-cli, you will
+# need to print properties individually, for example:
+#  'print bandwidth; print samplerate; print frequency;'
 bladeRF> print
 
   RX Bandwidth:   5000000 Hz
