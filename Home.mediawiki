@@ -52,6 +52,7 @@ Feel free to share your favorite projects, papers, blogs, etc. containing bladeR
 ** [https://github.com/drmpeg/gr-atscmap Mapping block for bladeRF ATSC modulater and RRC filter FPGA image]
 * GitHub: [https://github.com/osqzss/gps-sdr-sim#gps-sdr-sim GPS baseband signal generator]
 * GitHub: [https://github.com/taroz/GNSS-SDRLIB#gnss-sdrlib-v20-beta GNSS-SDRLIB: An Open Source GNSS Software Defined Radio Library]
+* DEF CON 23 Slides: [https://media.defcon.org/DEF%20CON%2023/DEF%20CON%2023%20presentations/Lin%20Huang%20&%20Qing%20Yang/DEFCON-23-Lin-Huang-Qing-Yang-GPS-Spoofing.pdf GPS Spoofing: Low Cost GPS Simulator] - Huang Lin & Yang Qing
 * Jiao Xianjun (BH1RXH)'s [http://sdr-x.github.io/ tech blog] and [http://www.researchgate.net/profile/Xianjun_Jiao/publications publications]
 ** [https://github.com/JiaoXianjun/LTE-Cell-Scanner Fork of an OpenCL accelerated TDD/FDD LTE Scanner, with bladeRF support added]
 ** [https://github.com/JiaoXianjun/BTLE A BTLE (Bluetooth Low energy)/BT4.0 radio packet transmitter]
