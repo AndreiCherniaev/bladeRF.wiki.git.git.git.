@@ -2,10 +2,8 @@ This guide shows how to exercise some very basic device operations using the [ht
 
 This guide shows invocations and prompts from a Linux system. Windows users may simply replace <code>bladeRF-cli</code> invocations with <code>bladeRF-cli.exe</code> and use the same commands.
 
-If you encounter errors, warnings, or unexpected output, be sure to check the [[Troubleshooting]] page before continuing in this guide.
+If you encounter errors, warnings, or unexpected output, be sure to check the [[Troubleshooting]] page before continuing in this guide. For additional information, be sure to check out the [[bladeRF-cli Tips and Tricks]] wiki page.
 <br><br>
-
-For additional information, be sure to check out the [[bladeRF-cli Tips and Tricks]] wiki page.
 
 = Detecting the bladeRF =
 First, take a look at bladeRF-cli's command-line options, via <code>bladeRF-cli --help</code>.
