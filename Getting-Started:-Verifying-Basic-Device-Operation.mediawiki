@@ -5,6 +5,8 @@ This guide shows invocations and prompts from a Linux system. Windows users may 
 If you encounter errors, warnings, or unexpected output, be sure to check the [[Troubleshooting]] page before continuing in this guide.
 <br><br>
 
+For additional information, be sure to check out the [bladeRF-cli: Tips and Tricks] wiki page/
+
 = Detecting the bladeRF =
 First, take a look at bladeRF-cli's command-line options, via <code>bladeRF-cli --help</code>.
 
