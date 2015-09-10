@@ -542,65 +542,13 @@ Support for manipulating these pins from a higher-level interface was introduced
 
 == Usage Information ==
 
-We can view some help text as follows:
+First, run the following commands to view the help and usage information for each.
+
 <pre>
 bladeRF> print xb_gpio
-
-Usage: print xb_gpio <name>
-
-<name> describes what to print. It may be one of the following:
-
-  "all" - Print the register value and the state of
-  individual pins. Note that the pin names shown
-  is dependent upon which expansion board has been
-  enabled.
-
-  "reg" or "register" - Print the GPIO register value.
-
-  "list" - Display available pins to print.
-
-  One of the pin names from the aforementioned list.
-
 bladeRF> print xb_gpio_dir
-
-Usage: print xb_gpiodir <name>
-
-<name> describes what to print. It may be one of the following:
-
-  "all" - Print the register value and the state of
-  individual pins. Note that the pin names shown
-  is dependent upon which expansion board has been
-  enabled.
-
-  "reg" or "register" - Print the GPIO direction register value.
-
-  "list" - Display available pins to print.
-
-  One of the pin names from the aforementioned list.
-
-
 bladeRF> set xb_gpio
-
-Usage: set xb_gpio <name> <value>
-
-<name> describes what to set. It may be one of the following:
-
-  "reg" or "register" - Set the entire GPIO register value.
-
-  One of the pin names listed by: "print xb_gpio list"
-
 bladeRF> set xb_gpio_dir
-
-Usage: set xb_gpio_dir <name> <value>
-
-<name> describes what to set. It may be one of the following:
-
-  "reg" or "register" - Set the entire GPIO direction register value.
-
-  One of the pin names listed by: "print xb_gpio_dir list"
-
-Specify <value> as "input" (0) or "output" (1).
-
 </pre>
 
 == Printing State ==
