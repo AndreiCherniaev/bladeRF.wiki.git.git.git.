@@ -532,6 +532,316 @@ bladeRF-cli -e 'rx config file=/tmp/rx_10s.bin n=0; rx start; rx; rx wait 10s'
 bladeRF-cli -e 'tx config file=/tmp/tx_samples.bin; tx start; tx; tx wait'
 </pre>
 
+= Manipulating Expansion I/O Pins =
+
+32 Pins are available for general use on the bladeRF's U74 expansion header.  A subset of these pins are exposed for general use on the XB-200 Transverter and XB-100 Expansion boards.
+
+Be careful with interacting with these pins -- they are directly connected to the 1.8V I/O pins on the FPGA. (Although some pins on the XB-200 are connected via a level translator.)  Ensure you review the schematics and use appropriate buffers or level converters when attaching devices to these pins!
+
+Support for manipulating these pins from a higher-level interface was introduced on September 1st, 2015.  You'll need to be using a version of libbladeRF, the bladeRF-cli, and an FPGA image from [https://github.com/Nuand/bladeRF/commit/94fed3d0cde61157097ff05f77cfc07a1c0ac1ef this commit] or later.
+
+== Usage Information ==
+
+We can view some help text as follows:
+<pre>
+bladeRF> print xb_gpio
+
+Usage: print xb_gpio <name>
+
+<name> describes what to print. It may be one of the following:
+
+  "all" - Print the register value and the state of
+  individual pins. Note that the pin names shown
+  is dependent upon which expansion board has been
+  enabled.
+
+  "reg" or "register" - Print the GPIO register value.
+
+  "list" - Display available pins to print.
+
+  One of the pin names from the aforementioned list.
+
+bladeRF> print xb_gpio_dir
+
+Usage: print xb_gpiodir <name>
+
+<name> describes what to print. It may be one of the following:
+
+  "all" - Print the register value and the state of
+  individual pins. Note that the pin names shown
+  is dependent upon which expansion board has been
+  enabled.
+
+  "reg" or "register" - Print the GPIO direction register value.
+
+  "list" - Display available pins to print.
+
+  One of the pin names from the aforementioned list.
+
+
+bladeRF> set xb_gpio
+
+Usage: set xb_gpio <name> <value>
+
+<name> describes what to set. It may be one of the following:
+
+  "reg" or "register" - Set the entire GPIO register value.
+
+  One of the pin names listed by: "print xb_gpio list"
+
+bladeRF> set xb_gpio_dir
+
+Usage: set xb_gpio_dir <name> <value>
+
+<name> describes what to set. It may be one of the following:
+
+  "reg" or "register" - Set the entire GPIO direction register value.
+
+  One of the pin names listed by: "print xb_gpio_dir list"
+
+Specify <value> as "input" (0) or "output" (1).
+
+</pre>
+
+== Printing State ==
+
+As described above, we can print the state of expansion I/O pins:
+<pre>
+bladeRF> print xb_gpio_dir all
+
+  Expansion GPIO direction register: 0x00000000
+
+      GPIO_1: input
+      GPIO_2: input
+      GPIO_3: input
+      GPIO_4: input
+      GPIO_5: input
+      GPIO_6: input
+      GPIO_7: input
+      GPIO_8: input
+      GPIO_9: input
+     GPIO_10: input
+     GPIO_11: input
+     GPIO_12: input
+     GPIO_13: input
+     GPIO_14: input
+     GPIO_15: input
+     GPIO_16: input
+     GPIO_17: input
+     GPIO_18: input
+     GPIO_19: input
+     GPIO_20: input
+     GPIO_21: input
+     GPIO_22: input
+     GPIO_23: input
+     GPIO_24: input
+     GPIO_25: input
+     GPIO_26: input
+     GPIO_27: input
+     GPIO_28: input
+     GPIO_29: input
+     GPIO_30: input
+     GPIO_31: input
+     GPIO_32: input
+
+bladeRF> print xb_gpio all
+
+  Expansion GPIO register: 0xffffffff
+
+      GPIO_1: 1
+      GPIO_2: 1
+      GPIO_3: 1
+      GPIO_4: 1
+      GPIO_5: 1
+      GPIO_6: 1
+      GPIO_7: 1
+      GPIO_8: 1
+      GPIO_9: 1
+     GPIO_10: 1
+     GPIO_11: 1
+     GPIO_12: 1
+     GPIO_13: 1
+     GPIO_14: 1
+     GPIO_15: 1
+     GPIO_16: 1
+     GPIO_17: 1
+     GPIO_18: 1
+     GPIO_19: 1
+     GPIO_20: 1
+     GPIO_21: 1
+     GPIO_22: 1
+     GPIO_23: 1
+     GPIO_24: 1
+     GPIO_25: 1
+     GPIO_26: 1
+     GPIO_27: 1
+     GPIO_28: 1
+     GPIO_29: 1
+     GPIO_30: 1
+     GPIO_31: 1
+     GPIO_32: 1
+</pre>
+
+Note that since neither the XB-200 or XB-100 is attached, the pin names are presented as they pertain to the U74 connector on the bladeRF board.
+
+If an expansion board has been enabled via <code>xb 100 enable</code> or <code>xb 200 enable</code>, then only the available I/O pins will be listed.  Additionally, the pins names will reflect their associated item on the board.
+
+== Examples ==
+
+The first example shows how to toggle pin 6 on header J7 of the XB-200 Transverter board.
+
+<pre>
+bladeRF> xb 200 enable
+
+  Enabling XB-200 transverter board
+  XB-200 Transverter board successfully enabled
+
+bladeRF> print xb_gpio all
+
+  Expansion GPIO register: 0xffffcfe9
+
+        J7_1: 1
+        J7_2: 1
+        J7_6: 1
+       J13_1: 1
+       J13_2: 1
+       J16_1: 1
+       J16_2: 1
+       J16_3: 1
+       J16_4: 1
+       J16_5: 1
+       J16_6: 1
+
+bladeRF> print xb_gpio_dir all
+
+  Expansion GPIO direction register: 0x3c00383e
+
+        J7_1: input
+        J7_2: input
+        J7_6: input
+       J13_1: input
+       J13_2: input
+       J16_1: input
+       J16_2: input
+       J16_3: input
+       J16_4: input
+       J16_5: input
+       J16_6: input
+
+bladeRF> set xb_gpio_dir J7_6 output
+
+        J7_6: output
+
+bladeRF> print xb_gpio J7_6
+
+        J7_6: 1
+
+bladeRF> set xb_gpio J7_6 0
+
+        J7_6: 0
+
+bladeRF> set xb_gpio J7_6 1
+
+        J7_6: 1
+</pre>
+
+When following the above, you'll see J7 pin 6 change from 1.8V to 0V, and then back to 1.8V.
+
+The next examples shows how to toggle one of the colors in the RGB LED on the XB-100 expansion board. On the current revision of these boards, voltage on the FPGA I/O pins (LED cathode) is not high enough to turn off LEDs on the XB-100.  As a workaround, set the LED pin's value to '1' and toggle its direction between 'input' and 'output' to turn the LEDs "off" and "on," respectively.
+
+<pre>
+bladeRF> xb 100 enable
+
+  Enabling XB-100 GPIO expansion board
+  XB-100 GPIO expansion board successfully enabled
+
+bladeRF> print xb_gpio all
+
+  Expansion GPIO register: 0xf9ff01bb
+
+        J2_3: 0
+        J2_4: 1
+        J3_3: 1
+        J3_4: 0
+        J4_3: 0
+        J4_4: 0
+        J5_3: 0
+        J5_4: 0
+       J11_2: 1
+       J11_3: 1
+       J11_4: 0
+       J11_5: 1
+       J12_5: 1
+      LED_D1: 1
+      LED_D2: 1
+      LED_D3: 1
+      LED_D4: 1
+      LED_D5: 1
+      LED_D6: 1
+      LED_D7: 1
+      LED_D8: 1
+    TLED_RED: 1
+  TLED_GREEN: 1
+   TLED_BLUE: 1
+     DIP_SW1: 0
+     DIP_SW2: 0
+     DIP_SW3: 0
+     DIP_SW4: 0
+      BTN_J6: 1
+      BTN_J7: 1
+      BTN_J8: 1
+
+bladeRF> print xb_gpio_dir all
+
+  Expansion GPIO direction register: 0xf9f80000
+
+        J2_3: input
+        J2_4: input
+        J3_3: input
+        J3_4: input
+        J4_3: input
+        J4_4: input
+        J5_3: input
+        J5_4: input
+       J11_2: input
+       J11_3: input
+       J11_4: input
+       J11_5: input
+       J12_5: input
+      LED_D1: output
+      LED_D2: output
+      LED_D3: output
+      LED_D4: output
+      LED_D5: output
+      LED_D6: output
+      LED_D7: output
+      LED_D8: output
+    TLED_RED: output
+  TLED_GREEN: output
+   TLED_BLUE: output
+     DIP_SW1: input
+     DIP_SW2: input
+     DIP_SW3: input
+     DIP_SW4: input
+      BTN_J6: input
+      BTN_J7: input
+      BTN_J8: input
+
+bladeRF> set xb_gpio_dir TLED_RED input
+
+    TLED_RED: input
+
+bladeRF> set xb_gpio_dir TLED_RED output
+
+    TLED_RED: output
+
+
+bladeRF> set xb_gpio_dir TLED_RED input
+
+    TLED_RED: input
+
+</pre>
+
 = Getting the most out of libtecla =
 If you've built bladeRF-cli with support for [http://www.astro.caltech.edu/~mcs/tecla/index.html libtecla] (<i>highly</i> recommended), you'll have a number of great features available to you, including history, tab-completion (for filenames) and handy key bindings (including emacs and vi bindings).
 
