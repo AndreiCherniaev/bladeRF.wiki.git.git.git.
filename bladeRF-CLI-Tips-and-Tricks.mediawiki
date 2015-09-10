@@ -538,7 +538,7 @@ bladeRF-cli -e 'tx config file=/tmp/tx_samples.bin; tx start; tx; tx wait'
 
 Be careful with interacting with these pins -- they are directly connected to the 1.8V I/O pins on the FPGA. (Although some pins on the XB-200 are connected via a level translator.)  Ensure you review the schematics and use appropriate buffers or level converters when attaching devices to these pins!
 
-Support for manipulating these pins from a higher-level interface was introduced on September 1st, 2015.  You'll need to be using a version of libbladeRF, the bladeRF-cli, and an FPGA image from [https://github.com/Nuand/bladeRF/commit/94fed3d0cde61157097ff05f77cfc07a1c0ac1ef this commit] or later.
+Support for manipulating these pins from a higher-level interface was introduced on September 1st, 2015.  You'll need to be using a version of libbladeRF, the bladeRF-cli, and an FPGA image (>= v0.4.1) from [https://github.com/Nuand/bladeRF/commit/94fed3d0cde61157097ff05f77cfc07a1c0ac1ef this commit] or later.
 
 == Usage Information ==
 
