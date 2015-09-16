@@ -39,3 +39,11 @@ The mounting holes on the bladeRF and the add-on boards are intended for use wit
 * Radio Shack
 ** [http://www.radioshack.com/2-56-round-head-machine-screws-42-pack/6403010.html 2-56 Round-Head Machine Screws] (Model: 64-3010 Catalog #: 6403010)
 ** [http://www.radioshack.com/2-56-hex-nuts-40-pack/6403017.html 2-56 Hex Nuts] (Model: 64-3017 Catalog #: 6403017).
+
+= RF Test Enclosures =
+
+An RF test enclosure is an excellent way to perform testing without causing interference. Use of a well-shielded test enclosure is ''highly'' recommended. (Unless, of course, you enjoy paying large fines to the FCC.)
+
+* [http://ramseytest.com/product_list.php?category=1 Ramsey RF Shielded Test Enclosures]
+
+
