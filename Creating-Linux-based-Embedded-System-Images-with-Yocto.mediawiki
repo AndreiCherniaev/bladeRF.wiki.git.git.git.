@@ -39,7 +39,8 @@ The associated user has this platform available to test and develop with.
 Problems have been experienced with the following platforms. Additional investigations and work is required.
 
 * [http://beagleboard.org/BLACK Beaglebone Black]
-** The musb driver was crashing with kernel OOPses. It may be related to the use of the USB reset request when libbladeRF opens a device. (jynik)
+** The musb driver was crashing with kernel OOPses. It may be related to the use of the USB reset request when libbladeRF opens a device. (jynik) 
+** ''Update: it's been reported that some kernel patches have resolved this, but I haven't yet verified it.'' (jynik)
 
 = Disclaimers =
 
