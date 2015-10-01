@@ -66,6 +66,10 @@ Feel free to share your favorite projects, papers, blogs, etc. containing bladeR
 ** [http://research.microsoft.com/apps/video/dl.aspx?id=244847 Demo of an 802.11a/g sniffer implemented in Ziria]
 * Beep Networks' [http://spectrum-map.beepnetworks.com/?sv=2891&df=400 Spectrum Viewer]
 ** Blog Post: [https://medium.com/@BeepLabs/fun-with-software-defined-radios-d547c83a7492 Fun with Software-Defined Radios]
+* [Pothosware](http://www.pothosware.com/)
+* [SoapySDR](https://github.com/pothosware/SoapySDR) - Vendor and platform neutral SDR support library
+** [QPSK Modem Demo](http://www.joshknows.com/blog/70/StatusUpdateBurstyQpskModem)
+** [Blog post:SoapySDR support for bladeRF timestamps](http://www.joshknows.com/blog/69/BladeRfSoapySupportWithTimestamps)
 
 
 = Tutorials and Related Reading =
