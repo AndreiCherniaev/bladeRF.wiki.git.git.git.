@@ -82,6 +82,10 @@ In order to access the bladeRF, Linux users must ensure:
 * The udev rules have been reloaded since the installation of the aforementioned rules file
 ** This can be done via <code>sudo udevadm control --reload-rules</code> and then re-plugging the device.
 
+If you have verified the above items and still cannot see the device:
+* Confirm that you see the device in the output of <code>lsusb -v</code>
+* Look for any information about the device's connection in the output of <code>dmesg</code>
+
 ==== PyBOMBS ====
 
 Because [http://gnuradio.org/redmine/projects/pybombs/wiki PyBOMBS] allows users to perform installations as non-root users, it uses <code>-DINSTALL_UDEV_RULES=OFF</code> when configuring the bladeRF project with CMake. (Copying a file to <code>/etc/udev/rules.d/</code> requires root access, which a PyBOMBS user may not have.)
