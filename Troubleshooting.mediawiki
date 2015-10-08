@@ -50,6 +50,50 @@ Removing all notion of <code>libgcc.a</code> from the <code>Makefile</code> appe
 
 == Failing to see or connect to the device ==
 
+=== Linux: udev and permissions ===
+
+If you are unable to access the bladeRF in Linux, it may be the case that your user does not have ample permissions to access the device.
+
+
+If <code>bladeRF-cli -p</code> or <code>bladeRF-cli --probe</code> reports <i>"No devices found,"</i> then running with <code>-v verbose</code> may provide some additional info as to why this is the case. In the below example, the <code>LIBUSB_ERROR_ACCESS</code> is the important clue to notice.
+<pre>
+$ bladeRF-cli -p -v verbose
+[VERBOSE @ libusb.c:240] Found a bladeRF
+[DEBUG @ libusb.c:134] Couldn't populate devinfo - LIBUSB_ERROR_ACCESS
+
+  probe: No devices found.
+</pre>
+
+
+When running <code>bladeRF-cli -i</code> without the <code>-d</code> option, the CLI will attempt to open any available device. As of [https://github.com/Nuand/bladeRF/commit/a8f5f71a9747720be82eb0fee35bcc3f3b19bc85 commit a8f5f7], libbladeRF prints an [INFO] message if a failure occurs due to insufficient permissions:
+
+<pre> 
+$ bladeRF-cli -i
+[INFO @ libusb.c:419] Found a bladeRF but could not query its information due to insufficient permissions.
+No device(s) attached.
+bladeRF> 
+</pre>
+
+In order to access the bladeRF, Linux users must ensure:
+* The <code>88-nuand.rules</code> file has been installed to <code>/etc/udev/rules.d/</code>
+** When building from source, the CMake option <code>INSTALL_UDEV_RULES</code> defaults to <code>ON</code>
+* The user is in the group specified by the CMake variable <code>BLADERF_GROUP</code>
+** <code>BLADERF_GROUP</code> defaults to `plugdev`, because Debian/Ubuntu users are typically in this group when allowed to access removable USB storage devices.  You may wish to change this to conform to your security policies or distribution.
+* The udev rules have been reloaded since the installation of the aforementioned rules file
+** This can be done via <code>sudo udevadm control --reload-rules</code> and then re-plugging the device.
+
+==== PyBOMBS ====
+
+Because [http://gnuradio.org/redmine/projects/pybombs/wiki PyBOMBS] allows users to perform installations as non-root users, it uses <code>-DINSTALL_UDEV_RULES=OFF</code> when configuring the bladeRF project with CMake. (Copying a file to <code>/etc/udev/rules.d/</code> requires root access, which a PyBOMBS user may not have.)
+
+Therefore, if you've installed bladeRF support via PyBOMBS you will need to manually install the udev rules:
+
+# Copy [https://github.com/Nuand/bladeRF/blob/master/host/misc/udev/88-nuand.rules.in this file] to a <code>88-nuand.rules</code> file.
+# In <code>88-nuand.rules</code>, replace <code>@BLADERF_GROUP@</code> with the name of a group your user is in.
+# Copy this file to the udev rules directory: <code>sudo cp 88-nuand.rules /etc/udev/rules.d/ && sudo chmod 644 /etc/udev/rules.d/88-nuand.rules</code>
+# Reload rules: <code>sudo udevadm control --reload-rules</code>
+# Replug the device.
+
 === Device may only be opened by one program ===
 Currently, only one program may have a device open at a time. Any additional calls to bladerf_open() or bladerf_open_with_devinfo() will fail with BLADERF_ERR_NODEV.
 
