@@ -54,25 +54,28 @@ Removing all notion of <code>libgcc.a</code> from the <code>Makefile</code> appe
 
 If you are unable to access the bladeRF in Linux, it may be the case that your user does not have ample permissions to access the device.
 
+As of git commit [https://github.com/Nuand/bladeRF/commit/0a2a3ace6bf6bd27d39821ea4ec6ce3ee9fae719 0a2a3ac] (2015-10-08), libbladeRF will print a warning if it is unable to probe/open a device due to insufficient permissions:
 
-If <code>bladeRF-cli -p</code> or <code>bladeRF-cli --probe</code> reports <i>"No devices found,"</i> then running with <code>-v verbose</code> may provide some additional info as to why this is the case. In the below example, the <code>LIBUSB_ERROR_ACCESS</code> is the important clue to notice.
 <pre>
-$ bladeRF-cli -p -v verbose
-[VERBOSE @ libusb.c:240] Found a bladeRF
-[DEBUG @ libusb.c:134] Couldn't populate devinfo - LIBUSB_ERROR_ACCESS
+jon@nocontrol % bladeRF-cli -p
+[WARNING @ libusb.c:292] Found a bladeRF via VID/PID, but could not open it due to insufficient permissions.
 
-  probe: No devices found.
+  probe: No devices are available. If one is attached, ensure it
+         is not in use by another program and that the current
+         user has permission to access it.
+
+jon@nocontrol [1] % bladeRF-cli -i
+[WARNING @ libusb.c:428] Found a bladeRF via VID/PID, but could not open it due to insufficient permissions.
+
+No bladeRF device(s) available.
+
+If one is attached, ensure it is not in use by another program
+and that the current user has permission to access it.
+
+bladeRF> q
 </pre>
 
-
-When running <code>bladeRF-cli -i</code> without the <code>-d</code> option, the CLI will attempt to open any available device. As of [https://github.com/Nuand/bladeRF/commit/a8f5f71a9747720be82eb0fee35bcc3f3b19bc85 commit a8f5f7], libbladeRF prints an [INFO] message if a failure occurs due to insufficient permissions:
-
-<pre> 
-$ bladeRF-cli -i
-[INFO @ libusb.c:419] Found a bladeRF but could not query its information due to insufficient permissions.
-No device(s) attached.
-bladeRF> 
-</pre>
+If using an older version, note that using the bladeRF-cli <code>-v verbose</code> will print out more information about error codes, and that setting <code>BLADERF_LOG_LEVEL=debug</code> in your environment will provide additional debug output.
 
 In order to access the bladeRF, Linux users must ensure:
 * The <code>88-nuand.rules</code> file has been installed to <code>/etc/udev/rules.d/</code>
