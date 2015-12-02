@@ -228,10 +228,15 @@ Note that you use <code>-v</code>, <code>-vv</code>, <code>-vvv</code>, and so o
 
 == Registering Devices ==
 
-One simple way to allow a device to register is by placing its IMSI in the <code>regexp=</code> field in <code>/usr/local/etc/yate/subscribers.conf</code>.  As noted by the comments in this file, using a regular expression for IMSIs prevents one from utilizing 2G/3G authentication features; thus, this is suitable only for initial testing.
+One simple way to allow a device to register is by placing its IMSI in the <code>regexp</code> field in <code>/usr/local/etc/yate/subscribers.conf</code>.  As noted by the comments in this file, using a regular expression for IMSIs prevents one from utilizing 2G/3G authentication features; thus, this is suitable only for initial testing.
 
-If you previously programmed your SIM, you should already know the IMSI such that you can place it in the <pre>regexp=</pre> field.
+If you previously programmed your SIM, you should already know the IMSI such that you can place it in the <code>regexp</code> field.
 
+== Testing Devices ==
+
+The Yate NIB setup includes an ELIZA chat bot that you can communicate with by sending SMS messages to <code>35492</code>. This is a good way to test use of a single device.
+
+After registering a second device, you should now be able to send SMS messages and complete a call between the two devices.
 If you are unsure or find that your device is not registering, you can use the NIB telnet interface to list rejected devices, as shown below.
 
 
