@@ -232,11 +232,6 @@ One simple way to allow a device to register is by placing its IMSI in the <code
 
 If you previously programmed your SIM, you should already know the IMSI such that you can place it in the <code>regexp</code> field.
 
-== Testing Devices ==
-
-The Yate NIB setup includes an ELIZA chat bot that you can communicate with by sending SMS messages to <code>35492</code>. This is a good way to test use of a single device.
-
-After registering a second device, you should now be able to send SMS messages and complete a call between the two devices.
 If you are unsure or find that your device is not registering, you can use the NIB telnet interface to list rejected devices, as shown below.
 
 
@@ -272,3 +267,9 @@ nib reload
 ```
 
 Within a few minutes of registering the device should receive a text message noting its assigned phone number. 
+
+== Testing Devices ==
+
+The Yate NIB setup includes an ELIZA chat bot that you can communicate with by sending SMS messages to <code>35492</code>. This is a good way to test use of a single device.
+
+After registering a second device, you should now be able to send SMS messages and complete a call between the two devices.
