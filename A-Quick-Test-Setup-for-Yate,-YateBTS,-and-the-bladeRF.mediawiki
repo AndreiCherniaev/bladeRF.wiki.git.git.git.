@@ -1,0 +1,278 @@
+= Overview =
+
+This guide is a quick and unofficial guide on creating a test setup of [http://www.null.ro/ Null Team's [http://yate.ro/ Yate] and [http://yatebts.com/ YateBTS] with the bladeRF. The goals of this guide are to:
+
+
+* Install Yate and YateBTS for use as non-root user in a <code>yate</code> group in <code>/usr/local/</code>
+** When running as a non-privileged user, not all functionality will be available, such as IP utilities that access /proc entries and perform ioctl() calls. Use of these features are outside the scope of this document.
+* Verify basic "Network-in-a-Box" functionality by placing a call or sending an SMS message between two devices. 
+
+This guide is not intended to be comprehensive nor a replacement for any of the official Yate documentation; it is only intended to test a small fraction of the plethora of features provided by Yate.
+
+
+While the Nuand team and bladeRF community are generally willing to help answer Yate & YateBTS questions, please note that the official resources listed below may better help expedite the process of answering any questions or issues one may have:
+
+
+* [http://yate.ro/ Yate website]
+* [http://docs.yate.ro/wiki/Main_Page Yate wiki]
+* [http://yatebts.com/ YateBTS website]
+* [http://wiki.yatebts.com/index.php/Main_Page YateBTS wiki]
+* [http://forum.yate.ro/ Yate forums]
+* [http://yate.ro/community.php?page=irc #yate] IRC channel on Freenode
+* [http://yatebts.com/products.php YateBTS lab kit] - A complete 2.5G network in a box!
+
+
+= Disclaimer =
+
+As with all SDR development, you are responsible for ensuring that you operate only within bands for which you are licensed. When performing laboratory experiments, an [http://ramseytest.com/product.php?pid=10 RF test enclosure] is ***highly*** recommended to ensure a system under test does not yield out-of-band emissions that might interfere with neighboring bands.
+
+= Prerequisites =
+
+== USB 3 ==
+
+A USB 3.0 connection is highly recommended. If you are on a USB 2.0 port and encounter errors (as evidenced by varying timestamp "jumps"), it may be the case that the system is not keeping up with the sample rate. In this case, check the log output for more details.
+
+== SIM card & Handset ==
+
+A simple and inexpensive setup test setup can be achieved using a blank SIM card, a SIM card writer, and low-cost cellular device.
+
+This [http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dcomputers&field-keywords=16+in+1+SIM+Super "16 in 1 Super SIM"] has been verified to work properly. These all appear to come preprogrammed with the IMSI <code>001010123456789</code>.  To configure the sim card, please see [http://wiki.yatebts.com/index.php/PySIM this page] about PySIM.
+
+Plenty of quad-band GSM devices are available online. One such device that has been tested with the above SIM card is the [http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dmobile&field-keywords=BLU+Q170T&rh=n%3A2335752011%2Ck%3ABLU+Q170T_ BLU Q170T].
+
+== Build tools ==
+
+To build Yate and YateBTS, basic knowledge of how to use GNU Autotools and GCC is required. Please refer to your Linux distribution's documentation for information on how to install these. If you plan to check out the latest source code, [https://subversion.apache.org/ Subversion]  is required.
+
+== libbladeRF is no longer required ==
+
+In the past, a transceiver implementation was provided with Yate-BTS that was dependent upon libbladeRF. Yate now provides bladeRF support that is *not* dependent upon libbladeRF. Additionally, Yate provides tested bladeRF FPGA images. Therefore,
+it is no longer required to build and install libbladeRF, the bladeRF-cli, or download FPGA images. Experience with these items is certainly beneficial to understanding the hardware and verifying its basic operation, however.
+
+Users familiar with Yate-BTS will note that there is no transceiver-bladerf to place in the <code>ybts.conf</code> file. Instead, the <code>ybladerf.conf</code> file may be used to performed fine-grained configuration of the bladeRF, with respect to Yate.
+
+If you do not have libbladeRF installed, you will still need to create and add an <code>/etc/udev/rules.d/88-nuand.rules</code> file to ensure your user has permissions to access a bladeRF device. Below is an example file, which assumes your
+user is in the <code>plugdev</code> group. (Using a <code>yate</code> group could also suffice, as this group is used later in this guide.)
+
+== Setting up a <code>yate</code> group ==
+
+This guide assumes one wants to run Yate as a non-root user, and uses a <code>yate</code> group to allow a non-root user to edit the various configuration files that will be manipulated at runtime.
+
+First create a <code>yate</code> group:
+
+```
+sudo addgroup yate
+```
+
+Add your user to this group. Change <code>myuser</code> to your user name.
+
+```
+sudo usermod -A -G yate myuser
+```
+
+== udev rule ==
+
+A udev rule is required to ensure a user can access the bladeRF hardware.
+
+If you have previously installed and used libbladeRF and/or the bladeRF-cli, you may skip this. These provide an 88-nuand.rules udev rule.
+
+Otherwise, create an <code>/etc/udev/rules.d/90-yate.rules</code> file, containing:
+
+```
+# nuand bladeRF
+ATTR{idVendor}=="1d50", ATTR{idProduct}=="6066", MODE="660", GROUP="yate"
+```
+
+After creating this file, run the following command:
+
+```
+sudo udevadm control --reload-rules
+```
+
+If the device is plugged in prior to this, ensure it is unplugged and re-connected at this time.
+
+After logging out and back in, you should see <code>yate</code> listed when you run the <code>groups</code> command.
+
+= Fetching Yate and Yate-BTS =
+
+== Download pages ==
+
+You can download the latest releases here:
+* [http://yate.ro/links/dl Yate download]
+* [http://yatebts.com/download.php YateBTS download]
+
+== SVN ==
+
+The below commands may be used to check out the Yate and YateBTS repositories into a <code>~/software/null</code> directory:
+
+```
+mkdir ~/software/null/
+cd ~/software/null
+svn checkout http://yate.null.ro/svn/yate/trunk yate
+svn checkout http://voip.null.ro/svn/yatebts/trunk yatebts
+```
+
+If you already have the repositories checked out from a previous build, you can simply update them:
+
+```
+cd ~/software/null/yate
+svn update
+
+cd ~/software/null/yate-bts
+svn update
+```
+
+= Building and Installing Yate & YateBTS =
+
+== Yate ==
+
+First, configure the build to install into <code>usr/local</code>:
+
+```
+cd ~/software/null/yate
+./autogen.sh
+./configure --prefix=/usr/local
+```
+
+Next, build Yate:
+
+```
+make
+```
+
+If all went well, install it:
+
+```
+sudo make install
+sudo ldconfig
+```
+
+== YateBTS ==
+
+This procedure should look quite similar.
+
+```
+cd ~/software/null/yatebts
+./autogen.sh
+./configure --prefix=/usr/local
+```
+
+Build:
+
+```
+make
+```
+
+Install:
+
+```
+sudo make install
+sudo ldconfig
+```
+
+= Configuring Yate & YateBTS =
+
+To configure Yate & YateBTS to run as a non-root user, we need to change a few permissions and configuration options.
+
+
+== Group Write Permissions ==
+
+First, we'll create a few files that Yate will fill in with defaults:
+
+```
+sudo touch /usr/local/etc/yate/snmp_data.conf /usr/local/etc/yate/tmsidata.conf
+```
+
+Next, allow users of the <code>yate</code> group to modify configuration files:
+
+```
+sudo chown root:yate /usr/local/etc/yate/*.conf
+sudo chmod g+w /usr/local/etc/yate/*.conf
+```
+
+== SNMP Port Numbers ==
+
+Non-privileged users cannot bind sockets on ports lower than 1024. Therefore, we must change the SNMP ports. (Note that clients will need to be aware of this, if you plan to use SNMP.)
+
+To do this, edit <code>/usr/local/etc/yate/ysnmpagent.conf</code> and look for the following lines:
+
+```
+;port=161
+```
+
+```
+;remote_port=162
+```
+
+Uncomment these by removing the preceding <code>;</code> character, and set these to available ports greater than or equal to 1024. For example:
+
+```
+port=20161
+remote_port=20162
+```
+
+== Required Configuration Items ==
+
+While a majority of the configuration items will fall back to default values, there are a few items that the BTS operator is responsible for configuring correctly in <code>/usr/local/etc/yate/ybts.conf</code>
+
+* <code>Radio.Band</code>
+* <code>Radio.C0</code>
+* <code>Identity.MCC</code>
+
+See the comments above each of these items for valid values. If not already clear, these are required to configure for the BTS to operate in the correct band, ARFCN, and country code.
+
+= Running Yate =
+
+== Startup ==
+
+At this point, you should be able to plug in a bladeRF and run <code>yate</code>. When doing so, you should see LEDs on the bladeRF begin to blink. This indicates that the device's FPGA has been loaded and is in use.
+
+Note that you use <code>-v</code>, <code>-vv</code>, <code>-vvv</code>, and so on to enable increasing degrees of verbosity.
+
+== Registering Devices ==
+
+One simple way to allow a device to register is by placing its IMSI in the <code>regexp=</code> field in <code>/usr/local/etc/yate/subscribers.conf</code>.  As noted by the comments in this file, using a regular expression for IMSIs prevents one from utilizing 2G/3G authentication features; thus, this is suitable only for initial testing.
+
+If you previously programmed your SIM, you should already know the IMSI such that you can place it in the <pre>regexp=</pre> field.
+
+If you are unsure or find that your device is not registering, you can use the NIB telnet interface to list rejected devices, as shown below.
+
+
+With yate running:
+
+```
+telnet localhost 5038
+```
+
+Once connected, one can list registered devices.
+
+```
+nib list registered
+```
+
+Rejected devices can also be listed. If your device is not registering
+and is in this list, it implies that it is not properly entered in <code>subscribers.conf</code>
+
+```
+nib list rejected
+```
+
+For example, suppose your devices have IMSIs ranging from 001010123456780 to 001010123456789. You could use the following regexp:
+
+```
+regexp=^00101012345678[0-9]$
+```
+
+While Yate is running, this change can be applied via the telnet interface, using the following command:
+
+```
+nib reload
+```
+
+Within a few minutes of registering the device should receive a text message noting its assigned phone number. 
+
+== Testing Devices ==
+
+The Yate NIB setup includes an ELIZA chat bot that you can communicate with by sending SMS messages to <code>35492</code>. This is a good way to test use of a single device.
+
+After registering a second device, you should now be able to send SMS messages and complete a call between the two devices. 
