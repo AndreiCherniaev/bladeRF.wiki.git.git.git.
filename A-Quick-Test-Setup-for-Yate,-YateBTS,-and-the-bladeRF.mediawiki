@@ -271,3 +271,5 @@ Within a few minutes of registering the device should receive a text message not
 == Testing Devices ==
 
 The Yate NIB setup includes an ELIZA chat bot that you can communicate with by sending SMS messages to <code>35492</code>. This is a good way to test use of a single device.
+
+After registering a second device, you should not be able to send SMS messages and connect a call between two devices.
