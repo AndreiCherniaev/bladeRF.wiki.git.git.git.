@@ -208,7 +208,8 @@ On some slower machines or when using USB 2.0 ports, you may see reports of "tim
 Increasing the priority (i.e., decreasing its [https://en.wikipedia.org/wiki/Nice_%28Unix%29 niceness]) of a process generally requires additional privileges.  We can edit the <code>/etc/security/limits.conf</code> file to grant users of the <code>yate</code> this ability by adding the following lines:
 
 ```
-@yate -
+@yate hard nice -20
+@yate hard rtprio 99
 ```
 
 Note that you may need to adjust these values per your situation, preferences, or policies. The below graphic, from [https://atipaday.wordpress.com/2008/08/19/atad-21-linux-process-priority-range/ ATAD #21], illustrates the meaning of the priority values:
