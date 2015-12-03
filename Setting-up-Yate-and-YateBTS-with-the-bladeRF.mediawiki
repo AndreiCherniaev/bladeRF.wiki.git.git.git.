@@ -6,9 +6,9 @@ This guide is a quick and unofficial guide on creating a test setup of [http://w
 * Verify basic "Network-in-a-Box" functionality by placing a call or sending an SMS message between two devices.
 
 This guide is not intended to be comprehensive nor a replacement for any of the official Yate documentation; it is only intended to test a small fraction of the plethora of features provided by Yate.
-
+<br /><br />
 While the Nuand team and bladeRF community are generally willing to help answer Yate & YateBTS questions, please note that the official resources listed below will likely better expedite any troubleshooting you need to do.
-
+<br /><br />
 * [http://yate.ro/ Yate website]
 * [http://docs.yate.ro/wiki/Main_Page Yate wiki]
 * [http://yatebts.com/ YateBTS website]
@@ -20,7 +20,7 @@ While the Nuand team and bladeRF community are generally willing to help answer 
 
 = Disclaimer =
 
-As with all SDR development, you are responsible for ensuring that you operate only within bands for which you are licensed. When performing laboratory experiments, an [http://ramseytest.com/product.php?pid=10 RF test enclosure] is <b>highly</b> recommended to ensure a system under test does not yield out-of-band emissions that might interfere with neighboring bands.
+As with all SDR development, you are responsible for ensuring that you operate only within bands for which you are licensed. When performing laboratory experiments, an [http://ramseytest.com/product.php?pid=10 RF test enclosure] is <b>highly</b> recommended to ensure a system under test does not yield out-of-band emissions that might interfere with licensed network operators. 
 
 = Prerequisites =
 
