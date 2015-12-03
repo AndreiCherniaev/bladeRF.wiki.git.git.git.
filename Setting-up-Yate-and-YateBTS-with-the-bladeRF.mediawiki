@@ -27,7 +27,9 @@ As with all SDR development, you are responsible for ensuring that you operate o
 
 == USB 3 ==
 
-A USB 3.0 connection is highly recommended. If you are on a USB 2.0 port and encounter errors (as evidenced by varying timestamp "jumps"), it may be the case that the system is not keeping up with the sample rate. In this case, check the log output for more details.
+A USB 3.0 connection is preferred.
+
+If you are on a USB 2.0 port and encounter errors (as evidenced by varying timestamp "jumps"), it may be the case that the system is not keeping up with the sample rate. Be sure to review the <b>Transceiver Scheduling Priority</b> section below, if you plan on using USB 2.0.
 
 == SIM card & Handset ==
 
@@ -189,6 +191,41 @@ sudo chown root:yate /usr/local/etc/yate/*.conf
 sudo chmod g+w /usr/local/etc/yate/*.conf
 ```
 
+== Required Configuration Items ==
+
+While a majority of the configuration items will fall back to default values, there are a few items that the BTS operator is responsible for configuring correctly in <code>/usr/local/etc/yate/ybts.conf</code>
+
+* <code>Radio.Band</code>
+* <code>Radio.C0</code>
+* <code>Identity.MCC</code>
+
+See the comments above each of these items for valid values. If not already clear, these are required to configure for the BTS to operate in the correct band, ARFCN, and country code.
+
+== Scheduling Priority ==
+
+On some slower machines or when using USB 2.0 ports, you may see reports of "timestamp jumps" resulting from RX overruns. To address this, YateBTS provides the ability to increase the scheduling priority of the transceiver tasks.
+
+Increasing the priority (i.e., decreasing its [https://en.wikipedia.org/wiki/Nice_%28Unix%29 niceness]) of a process generally requires additional privileges.  We can edit the <code>/etc/security/limits.conf</code> file to grant users of the <code>yate</code> this ability by adding the following lines:
+
+```
+@yate -
+```
+
+Note that you may need to adjust these values per your situation, preferences, or policies. The below graphic, from [https://atipaday.wordpress.com/2008/08/19/atad-21-linux-process-priority-range/ ATAD #21], illustrates the meaning of the priority values:
+
+```
+HIGH PRIORITY – – – – – > – – – – – > – – – – – > – – – – – > – – – – LEAST PRIORITY
+| real time priority (static priority) |       nice value (dynamic priority)       |
+|   99 ............ 50 ............ 1  | -20 ..... -10 ..... 0 ...... 10 ...... 19 |
+```
+
+The transceiver scheduling priority can be set in the <code>[transceiver]</code> of the <code>/usr/local/etc/yate/ybts.conf</code> file:
+
+```
+radio_read_priority=highest
+radio_send_priority=high
+```
+
 == SNMP Port Numbers ==
 
 Non-privileged users cannot bind sockets on ports lower than 1024. Therefore, we must change the SNMP ports. (Note that clients will need to be aware of this, if you plan to use SNMP.)
@@ -210,15 +247,6 @@ port=20161
 remote_port=20162
 ```
 
-== Required Configuration Items ==
-
-While a majority of the configuration items will fall back to default values, there are a few items that the BTS operator is responsible for configuring correctly in <code>/usr/local/etc/yate/ybts.conf</code>
-
-* <code>Radio.Band</code>
-* <code>Radio.C0</code>
-* <code>Identity.MCC</code>
-
-See the comments above each of these items for valid values. If not already clear, these are required to configure for the BTS to operate in the correct band, ARFCN, and country code.
 
 = Running Yate =
 
