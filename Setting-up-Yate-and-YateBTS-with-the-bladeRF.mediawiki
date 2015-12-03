@@ -44,7 +44,9 @@ To build Yate and YateBTS, basic knowledge of how to use GNU Autotools and GCC i
 == libbladeRF is no longer required ==
 
 In the past, a transceiver implementation was provided with Yate-BTS that was dependent upon libbladeRF. Yate now provides bladeRF support that is <b>not</b> dependent upon libbladeRF. Additionally, Yate provides tested bladeRF FPGA images. Therefore,
-it is no longer required to build and install libbladeRF, the bladeRF-cli, or download FPGA images. Experience with these items is certainly beneficial to understanding the hardware and verifying its basic operation, however.
+it is no longer <i>required</i> to build and install libbladeRF, the bladeRF-cli, or download FPGA images. 
+
+However, bladeRF-cli and libbladeRF installation is useful for diagnostics, to verify basic device operation, and to update firmware.
 
 Users familiar with Yate-BTS will note that there is no transceiver-bladerf to place in the <code>ybts.conf</code> file. Instead, the <code>ybladerf.conf</code> file may be used to performed fine-grained configuration of the bladeRF, with respect to Yate.
 
