@@ -203,7 +203,7 @@ See the comments above each of these items for valid values. If not already clea
 
 == Scheduling Priority ==
 
-On some slower machines or when using USB 2.0 ports, you may see reports of "timestamp jumps" resulting from RX overruns. To address this, YateBTS provides the ability to increase the scheduling priority of the transceiver tasks.
+On some slower machines or when using USB 2.0 ports, you may see reports of "timestamp jumps" resulting from RX overruns. If this is the case, first ensure your CPU Governor is set to "performance" and that power settings are not limiting your CPU frequency.  If problems persist, note that YateBTS provides the ability to increase the scheduling priority of the transceiver tasks.
 
 Increasing the priority (i.e., decreasing its [https://en.wikipedia.org/wiki/Nice_%28Unix%29 niceness]) of a process generally requires additional privileges.  We can edit the <code>/etc/security/limits.conf</code> file to grant users of the <code>yate</code> this ability by adding the following lines:
 
