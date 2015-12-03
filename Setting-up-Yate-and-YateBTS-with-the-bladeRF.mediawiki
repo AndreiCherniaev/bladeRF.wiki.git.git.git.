@@ -11,12 +11,13 @@ While the Nuand team and bladeRF community are generally willing to help answer 
 <br /><br />
 * [http://yate.ro/ Yate website]
 * [http://docs.yate.ro/wiki/Main_Page Yate wiki]
+* [http://wiki.yatebts.com/index.php/Prerequisites Installing Yate and its prerequisites]
 * [http://yatebts.com/ YateBTS website]
 * [http://wiki.yatebts.com/index.php/Main_Page YateBTS wiki]
+* [http://wiki.yatebts.com/index.php/Installing Installing YateBTS and its prerequisites]
 * [http://forum.yate.ro/ Yate forums]
 * The [http://yate.ro/community.php?page=irc #yate] IRC channel on Freenode
 * [http://yatebts.com/products.php YateBTS lab kit] - A complete 2.5G network in a box!
-
 
 = Disclaimer =
 
