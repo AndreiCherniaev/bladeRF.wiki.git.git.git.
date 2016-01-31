@@ -38,8 +38,9 @@ Feel free to share your favorite projects, papers, blogs, etc. containing bladeR
 ** [[Setting up Yate and YateBTS with the bladeRF]]
 ** [http://blog.yate.ro/ Yate Blog: Software Defined Mobile Network]
 *** [http://blog.yate.ro/2015/05/20/ofdm-the-science-behind-lte/ OFDM - the science behind LTE]
-* [http://www.softwareradiosystems.com/ Software Radio System's] [https://github.com/srsLTE/srsUE srsUE]
-** [http://www.softwareradiosystems.com/new-srslte-srsue-releases-announced/ bladeRF support added in 1.1]
+* [http://www.softwareradiosystems.com/ Software Radio System] 
+** [https://github.com/srsLTE/srsUE srsUE] -- [http://www.softwareradiosystems.com/new-srslte-srsue-releases-announced/ bladeRF support added in 1.1]
+** [https://github.com/srsLTE/srsLTE srsLTE]
 * [http://openbts.org/ OpenBTS]
 ** [[Minimalistic build and run test for OpenBTS 5]]
 ** [https://imjuanpablo.wordpress.com/2015/02/14/should-you-need-openbts-on-your-bladerf/ "Should you need OpenBTS on your bladeRF"] on the ''The Sorrows of Interactive Media'' blog
