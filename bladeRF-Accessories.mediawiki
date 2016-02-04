@@ -28,7 +28,7 @@ Similarly, you should not connect the bladeRF TX port directly to the RX port. I
 
 = Cables =
 
-== SMB (for MIMO synchronization) ===
+== SMB (for MIMO synchronization) ==
 
 * Amphenol-RF Division 145101-01-12.00
 ** [http://www.digikey.com/product-search/en?mpart=145101-01-12.00&vendor=115 via Digikey]
