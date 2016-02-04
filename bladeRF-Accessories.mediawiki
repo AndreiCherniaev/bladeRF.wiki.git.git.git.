@@ -26,6 +26,13 @@ Similarly, you should not connect the bladeRF TX port directly to the RX port. I
 ** Terminators:
 *** [http://www.minicircuits.com/MCLStore/ModelSearch?model=ANNE-50%2B&search_type=info ANNE-50+] ([http://www.minicircuits.com/pdfs/ANNE-50+.pdf Datasheet])
 
+= Cables =
+
+== SMB (for MIMO synchronization) ===
+
+* Amphenol-RF Division 145101-01-12.00
+** [http://www.digikey.com/product-search/en?mpart=145101-01-12.00&vendor=115 via Digikey]
+
 = Combiners =
 
 [http://www.radio-electronics.com/info/rf-technology-design/coupler-combiner-splitter/rf-splitter-combiner-basics.php Combiners] provide an excellent means to "hard-wire" multiple devices together for testing and evaluation. 
