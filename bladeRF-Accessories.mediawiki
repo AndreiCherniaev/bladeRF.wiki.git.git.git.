@@ -30,6 +30,7 @@ Similarly, you should not connect the bladeRF TX port directly to the RX port. I
 
 == SMB (for MIMO synchronization) ==
 
+* [http://www.jameco.com/1/1/2376-smb-174mm-12-r-female-smb-plug-female-smb-plug-cable-assembly.html Jameco SMB-174MM-12-R]
 * Amphenol-RF Division 145101-01-12.00
 ** [http://www.digikey.com/product-search/en?mpart=145101-01-12.00&vendor=115 via Digikey]
 
