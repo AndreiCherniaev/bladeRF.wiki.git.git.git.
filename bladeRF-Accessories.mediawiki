@@ -50,7 +50,7 @@ The mounting holes on the bladeRF and the add-on boards are intended for use wit
 * Home Depot
 ** [http://www.homedepot.com/p/Crown-Bolt-2-56-x-3-8-in-Phillips-Slotted-Round-Head-Machine-Screws-37011/203085930] (includes 10 screws and 10 nuts)
 
-= Programmer/Debugger Devices =
+= Programming and Debug Tools =
 
 == Altera Cyclone IV FPGA ==
 
@@ -64,7 +64,7 @@ The mounting holes on the bladeRF and the add-on boards are intended for use wit
 
 == Cypress FX3 ==
 
-* Segger [J-Link https://www.segger.com/jlink-debug-probes.html]
+* Segger [https://www.segger.com/jlink-debug-probes.html J-Link]
 ** The J-Link PLUS (or J-Link EDU for students) are recommended
 ** See Segger's distributor page for a distributor near you!
 
