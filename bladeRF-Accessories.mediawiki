@@ -50,6 +50,24 @@ The mounting holes on the bladeRF and the add-on boards are intended for use wit
 * Home Depot
 ** [http://www.homedepot.com/p/Crown-Bolt-2-56-x-3-8-in-Phillips-Slotted-Round-Head-Machine-Screws-37011/203085930] (includes 10 screws and 10 nuts)
 
+= Programmer/Debugger Devices =
+
+== Altera Cyclone IV FPGA ==
+
+* Terasic Blaster Cable
+** via [http://www.terasic.com.tw/cgi-bin/page/archive.pl?No=46 terasIC website]
+** via [http://www.digikey.com/en/product-highlight/t/terasic-tech/usb-blaster-cable Digi-Key]
+** via [http://www.mouser.com/new/terasic-technologies/terasic-USBblaster/ Mouser]
+
+* Altera USB Blaster
+** via [https://www.buyaltera.com/PartDetail?partId=1212940 Altera]
+
+== Cypress FX3 ==
+
+* Segger [J-Link https://www.segger.com/jlink-debug-probes.html]
+** The J-Link PLUS (or J-Link EDU for students) are recommended
+** See Segger's distributor page for a distributor near you!
+
 = RF Test Enclosures =
 
 An RF test enclosure is an excellent way to perform testing without causing interference. Use of a well-shielded test enclosure is ''highly'' recommended. (Unless, of course, you enjoy paying large fines to the FCC.)
