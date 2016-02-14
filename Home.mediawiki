@@ -75,6 +75,10 @@ Feel free to share your favorite projects, papers, blogs, etc. containing bladeR
 ** [https://github.com/pothosware/SoapySDR SoapySDR] - Vendor and platform neutral SDR support library
 ** [http://www.joshknows.com/blog/70/StatusUpdateBurstyQpskModem QPSK Modem Demo]
 ** [http://www.joshknows.com/blog/69/BladeRfSoapySupportWithTimestamps SoapySDR support for bladeRF timestamps]
+* [http://devpost.com/software/ramear RAMEAR] - Receive signals from an air-gapped computer
+** [http://www.thedp.com/article/2016/01/ramear-wins-thirteenth-pennapps PennApps 2016 winner] based upon [https://www.usenix.org/system/files/conference/usenixsecurity15/sec15-paper-guri-update.pdf GSMem paper]
+** [https://github.com/fyquah95/ramear GitHub project page]
+
 
 
 = Tutorials and Related Reading =
