@@ -16,17 +16,17 @@ The inner plug on the receptacle (on the bladeRF) is 2.5 mm and is +V.  The diam
 As shown by page 14 on the [http://nuand.com/bladerf.pdf bladeRF schematic], the DC barrel jack is a  [http://www.mouser.com/ds/2/393/rapc712x_cd-371318.pdf Switchcraft RAPC712X]. Remember that both jumpers on J70 need to be moved when switching between USB power and the DC barrel input:
 
 * Power from USB Cable:
-  * Jumper J70 pins 2 and 3
-  * Jumper J70 pins 4 and 5
+** Jumper J70 pins 2 and 3
+** Jumper J70 pins 4 and 5
 
 * Power from external DC supply
-  * Jumper J70 pins 1 and 2
-  * Jumper J70 pins 5 and 6
+** Jumper J70 pins 1 and 2
+** Jumper J70 pins 5 and 6
 
 Below is diagram showing these configurations
 
 ```
-Pin out:
+J70 Pinout:
  4 3
  5 2
  6 1 <| (Pin 1 silkscreen annotation) 
