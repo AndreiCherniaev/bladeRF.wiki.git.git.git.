@@ -95,36 +95,25 @@ It is '''highly recommended''' that you work through the Quick Start Guide, incl
 
 These builds can become quite large. Some vendors providing Yocto-based BSPs recommend a minimum of 50 GiB of available space. With that said, you may want to perform these builds in a directory on a large disk.
 
-These instructions will assume the user's home directory is on a sufficiently large disk. We first create a "builds" directory: 
+These instructions will assume the user's home directory is on a sufficiently large disk. We first create a location to perform builds. Change <code>~/software/yocto</code> as you'd prefer.
 
 <pre>
-$ mkdir ~/builds
-$ cd ~/builds
+$ mkdir -p ~/software/yocto/builds/sdr
 </pre>
 
 Lots of software will be downloaded during this process. It's handy to store it all in one common place, so we'll now make a directory for it.
 
 <pre>
-$ mkdir downloads
-</pre>
-
-Next, make a directory where we'll actually perform the build:
-
-<pre>
-$ mkdir -p build/sdr
+$ mkdir ~/software/yocto/downloads
 </pre>
 
 === Cloning Repositories ===
 
 Now we'll clone the Yocto from the project's git repository. See [https://www.yoctoproject.org/downloads the Yocto downloads] page for more information and any new releases.
 
-This guide assumes we you a <code>~/software/yocto</code> directory in which to store the build scripts and layers. Change this as you'd prefer:
 <pre>
-$ mkdir -p ~/software/yocto/
 $ cd ~/software/yocto
 </pre>
-
-Note that the following commands are executed from withing the <code>~/software/yocto</code> directory.
 
 First, we check out the Yocto's core codebase:
 <pre>
@@ -167,10 +156,10 @@ First, we'll open and edit the <code>conf/local.conf</code> file. Search for ''M
 * <code>MACHINE = "wandboard-quad"</code>
 * <code>MACHINE = "raspberrypi2"</code>
 
-Next, we'll ensure downloads are placed in the directory we created earlier. Find the line containing ''DL_DIR'' and change as needed, using a full path. There will be a large number of downloads, so it is recommended you store this on a larger disk.
+Next, we'll ensure downloads are placed in the directory we created earlier. Find the line containing ''DL_DIR'' and change as needed, using a full path.
 
 <pre>
-DL_DIR = "/home/jon/software/yocto/downloads"
+DL_DIR = "/home/jon/builds/downloads"
 </code>
 
 For Freescale platforms using the <code>meta-fsl-arm</code> layer, you must review the EULA supplied in that layer, and add the following line to the <code>conf/local.conf</code> to accept it. (This will have no effect for other platforms.)
@@ -206,7 +195,6 @@ BBLAYERS ?= " \
   /home/jon/software/yocto/meta-sdr \
   /home/jon/software/yocto/meta-fsl-arm \
   /home/jon/software/yocto/meta-fsl-arm-extra \
-  /home/jon/software/yocto/meta-fsl-demos \
   "
 </pre>
 
@@ -234,7 +222,6 @@ Below are some common issues:
 * Typos in the config files
 ** Check for missing quotes around variable assignments
 ** Check for missing or extra line continuation characters (<code>\</code> at the end of a line)
-
 * Forgot to include a layer in <code>conf/bblayers.conf</code>
 
 === Booting core-image-minimal ===
@@ -348,12 +335,12 @@ Below are example invocations, using the paths used throughout this page:
 
 ''For a Wandboard Quad:''
 <pre>
-$ PLATFORM=wandboard-quad YOCTO_BUILD_DIR=~/software/yocto/poky-fido-2.0/build/sdr make clean all
+$ PLATFORM=wandboard-quad YOCTO_BUILD_DIR=~/software/yocto/builds/sdr make clean all
 </pre>
 
 ''For a Raspberry Pi 2:''
 <pre>
-$ PLATFORM=raspberrypi2 YOCTO_BUILD_DIR=~/software/yocto/poky-jethro-2.0/build/sdr make clean all
+$ PLATFORM=raspberrypi2 YOCTO_BUILD_DIR=~/software/yocto/builds/sdr make clean all
 </pre>
 
 Note that you can also [http://www.yoctoproject.org/docs/current/mega-manual/mega-manual.html#optionally-building-a-toolchain-installer create a toolchain installer] for the cross toolchain you've built. This is handy when you're working with other developers, who may not want to setup and use Yocto.
