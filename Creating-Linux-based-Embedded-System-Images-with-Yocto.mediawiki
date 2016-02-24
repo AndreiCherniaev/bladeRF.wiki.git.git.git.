@@ -146,7 +146,7 @@ When entering your build directory, you must always do it via the '''oe-init-bui
 your environment is set up. The argument here is the target build directory, which we created earlier:
 
 <pre>
-$ source ~/software/yocto/poky-jethro-2.0/oe-init-build-en ~/software/yocto/builds/sdr
+$ source ~/software/yocto/poky-jethro-2.0/oe-init-build-env ~/software/yocto/builds/sdr
 </pre>
 
 ==== conf/local.conf ====
