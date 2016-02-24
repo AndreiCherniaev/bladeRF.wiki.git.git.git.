@@ -118,29 +118,37 @@ $ mkdir -p build/sdr
 
 Now we'll clone the Yocto from the project's git repository. See [https://www.yoctoproject.org/downloads the Yocto downloads] page for more information and any new releases.
 
+This guide assumes we you a <code>~/software/yocto</code> directory in which to store the build scripts and layers. Change this as you'd prefer:
 <pre>
-$ git clone -b fido git://git.yoctoproject.org/poky.git poky-fido-1.8
-$ cd poky-fido-1.8
+$ mkdir -p ~/software/yocto/
+$ cd ~/software/yocto
+</pre>
+
+Note that the following commands are executed from withing the <code>~/software/yocto</code> directory.
+
+First, we check out the Yocto's core codebase:
+<pre>
+$ git clone -b jethro git://git.yoctoproject.org/poky.git poky-jethro-2.0
 </pre>
 
 Next, we'll check out the layers we'll need for our SDR-related items:
 <pre>
 $ git clone git://github.com/balister/meta-sdr.git
-$ git clone -b fido git://github.com/openembedded/meta-openembedded.git
+$ git clone -b jethro git://github.com/openembedded/meta-openembedded.git
 </pre>
 
 ''For Freescale ARM platforms:''
 <pre>
-$ git clone -b fido git://git.yoctoproject.org/meta-fsl-arm
-$ git clone -b fido git@github.com:Freescale/meta-fsl-arm-extra.git
+$ git clone -b jethro git://git.yoctoproject.org/meta-fsl-arm
+$ git clone -b jethro git@github.com:Freescale/meta-fsl-arm-extra.git
 
 # This is optional, but includes some cool demo images
-$ git clone -b git@github.com:Freescale/meta-fsl-demos.git
+$ git clone -b jethro git@github.com:Freescale/meta-fsl-demos.git
 </pre>
 
 ''For the Raspberry Pi 2:''
 <pre>
-$ git clone -b fido http://git.yoctoproject.org/git/meta-raspberrypi
+$ git clone -b jethro http://git.yoctoproject.org/git/meta-raspberrypi
 </pre>
 
 === Initial Configuration ===
@@ -159,9 +167,11 @@ First, we'll open and edit the <code>conf/local.conf</code> file. Search for ''M
 * <code>MACHINE = "wandboard-quad"</code>
 * <code>MACHINE = "raspberrypi2"</code>
 
-Next, we'll ensure downloads are placed in the directory we created earlier. Find the line containing ''DL_DIR'' and change as needed, using a full path: 
+Next, we'll ensure downloads are placed in the directory we created earlier. Find the line containing ''DL_DIR'' and change as needed, using a full path. There will be a large number of downloads, so it is recommended you store this on a larger disk.
 
-<code>DL_DIR = "/home/jon/builds/yocto/downloads"</code>
+<pre>
+DL_DIR = "/home/jon/software/yocto/downloads"
+</code>
 
 For Freescale platforms using the <code>meta-fsl-arm</code> layer, you must review the EULA supplied in that layer, and add the following line to the <code>conf/local.conf</code> to accept it. (This will have no effect for other platforms.)
 
@@ -186,17 +196,17 @@ Also, add any of the layers you fetched for your specific hardware platform.  Fo
 
 <pre>
 BBLAYERS ?= " \
-  /home/jon/builds/yocto/poky-fido-1.8/meta \
-  /home/jon/builds/yocto/poky-fido-1.8/meta-yocto \
-  /home/jon/builds/yocto/poky-fido-1.8/meta-yocto-bsp \
-  /home/jon/builds/yocto/poky-fido-1.8/meta-openembedded/meta-oe \
-  /home/jon/builds/yocto/poky-fido-1.8/meta-openembedded/meta-filesystems \
-  /home/jon/builds/yocto/poky-fido-1.8/meta-openembedded/meta-networking \
-  /home/jon/builds/yocto/poky-fido-1.8/meta-openembedded/meta-python \
-  /home/jon/builds/yocto/poky-fido-1.8/meta-sdr \
-  /home/jon/builds/yocto/poky-fido-1.8/meta-fsl-arm \
-  /home/jon/builds/yocto/poky-fido-1.8/meta-fsl-arm-extra \
-  /home/jon/builds/yocto/poky-fido-1.8/meta-fsl-demos \
+  /home/jon/software/yocto/poky-jethro-2.0/meta \
+  /home/jon/software/yocto/poky-jethro-2.0/meta-yocto \
+  /home/jon/software/yocto/poky-jethro-2.0/meta-yocto-bsp \
+  /home/jon/software/yocto/meta-openembedded/meta-oe \
+  /home/jon/software/yocto/meta-openembedded/meta-filesystems \
+  /home/jon/software/yocto/meta-openembedded/meta-networking \
+  /home/jon/software/yocto/meta-openembedded/meta-python \
+  /home/jon/software/yocto/meta-sdr \
+  /home/jon/software/yocto/meta-fsl-arm \
+  /home/jon/software/yocto/meta-fsl-arm-extra \
+  /home/jon/software/yocto/meta-fsl-demos \
   "
 </pre>
 
@@ -301,7 +311,7 @@ The <code>gnuradio-demo-image</code> provided by [https://github.com/balister/me
 bitbake gnuradio-demo-image
 </pre>
 
-As of 2015-06-27, some modifications of recipes in meta-sdr is required to build this image with Yocto fido.
+As of 2015-06-27, some modifications of recipes in meta-sdr is required to build this image with Yocto jethro.
 
 jynik is currently working on some patches to submit upstream, and may post a link to them here until they are ready for review and submission to the meta-sdr maintainer.
 
@@ -338,12 +348,12 @@ Below are example invocations, using the paths used throughout this page:
 
 ''For a Wandboard Quad:''
 <pre>
-$ PLATFORM=wandboard-quad YOCTO_BUILD_DIR=~/builds/yocto/poky-fido-1.8/build/sdr make clean all
+$ PLATFORM=wandboard-quad YOCTO_BUILD_DIR=~/software/yocto/poky-fido-2.0/build/sdr make clean all
 </pre>
 
 ''For a Raspberry Pi 2:''
 <pre>
-$ PLATFORM=raspberrypi2 YOCTO_BUILD_DIR=~/builds/yocto/poky-fido-1.8/build/sdr make clean all
+$ PLATFORM=raspberrypi2 YOCTO_BUILD_DIR=~/software/yocto/poky-jethro-2.0/build/sdr make clean all
 </pre>
 
 Note that you can also [http://www.yoctoproject.org/docs/current/mega-manual/mega-manual.html#optionally-building-a-toolchain-installer create a toolchain installer] for the cross toolchain you've built. This is handy when you're working with other developers, who may not want to setup and use Yocto.
