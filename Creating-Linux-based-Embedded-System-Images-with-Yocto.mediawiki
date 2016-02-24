@@ -1,7 +1,7 @@
 ''NOTE:'' This page is a work in progress. It is not complete and is subject to (significant) change
 
 This page describes how to build Linux-based embedded system images with bladeRF support, using Yocto. It is not intended to be a full Yocto tutorial, but rather a quick start or summary. 
-
+F
 = Introduction =
 
 Per its website,  "''The [https://www.yoctoproject.org Yocto Project] is an open source collaboration project that provides templates, tools and methods to help you create custom Linux-based systems for embedded products regardless of the hardware architecture.''"
@@ -153,7 +153,7 @@ $ source ~/software/yocto/poky-jethro-2.0/oe-init-build-env ~/software/yocto/bui
 
 First, we'll open and edit the <code>conf/local.conf</code> file. Search for ''MACHINE ?= ...'' and change it to one of the following, per your target platform:
 
-* <code>MACHINE = "wandboard-quad"</code>
+* <code>MACHINE = "wandboard"</code>
 * <code>MACHINE = "raspberrypi2"</code>
 
 Next, we'll ensure downloads are placed in the directory we created earlier. Find the line containing ''DL_DIR'' and change as needed, using a full path.
@@ -235,7 +235,7 @@ This generally will include U-Boot, device tree files, the kernel, and a rootfs.
 Assuming an SD card is attached as <code>/dev/sdd</code>, you can write the image to the card as follows:
 
 <pre>
-$ sudo dd if=tmp/deploy/images/wandboard-quad/core-image-minimal-wandboard-quad.sdcard of=/dev/sdd bs=1M 
+$ sudo dd if=tmp/deploy/images/wandboard/core-image-minimal-wandboard.sdcard of=/dev/sdd bs=1M 
 $ sync # Wait a few seconds after this completes
 </pre>
 
@@ -335,7 +335,7 @@ Below are example invocations, using the paths used throughout this page:
 
 ''For a Wandboard Quad:''
 <pre>
-$ PLATFORM=wandboard-quad YOCTO_BUILD_DIR=~/software/yocto/builds/sdr make clean all
+$ PLATFORM=wandboard YOCTO_BUILD_DIR=~/software/yocto/builds/sdr make clean all
 </pre>
 
 ''For a Raspberry Pi 2:''
