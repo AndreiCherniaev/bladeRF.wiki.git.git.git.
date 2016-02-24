@@ -23,9 +23,8 @@ As shown by page 14 on the [http://nuand.com/bladerf.pdf bladeRF schematic], the
 ** Jumper J70 pins 1 and 2
 ** Jumper J70 pins 5 and 6
 
-Below is diagram showing these configurations. Note that <code>o</code> represents a pin that is <b>NOT<b> jumpered, while <code>|</code> denotes pins that are jumpered.
-
 ```
+
 J70 Pinout:
  4 3
  5 2
@@ -43,6 +42,10 @@ External DC power
  o o
  | |
  | | <| (Pin 1 silkscreen annotation) 
+
+Legend:
+o: Denotes non-jumpered pin
+|: Denotes jumpered pin
 ```
 
 
