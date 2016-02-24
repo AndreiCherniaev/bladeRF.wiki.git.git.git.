@@ -159,8 +159,8 @@ First, we'll open and edit the <code>conf/local.conf</code> file. Search for ''M
 Next, we'll ensure downloads are placed in the directory we created earlier. Find the line containing ''DL_DIR'' and change as needed, using a full path.
 
 <pre>
-DL_DIR = "/home/jon/builds/downloads"
-</code>
+DL_DIR = "/home/jon/software/yocto/downloads"
+</pre>
 
 For Freescale platforms using the <code>meta-fsl-arm</code> layer, you must review the EULA supplied in that layer, and add the following line to the <code>conf/local.conf</code> to accept it. (This will have no effect for other platforms.)
 
