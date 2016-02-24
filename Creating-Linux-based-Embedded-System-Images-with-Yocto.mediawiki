@@ -298,9 +298,19 @@ The <code>gnuradio-demo-image</code> provided by [https://github.com/balister/me
 bitbake gnuradio-demo-image
 </pre>
 
-As of 2015-06-27, some modifications of recipes in meta-sdr is required to build this image with Yocto jethro.
+=== qwt QA Error Workaround (2016-02-24) ===
+It has been reported that some recipes result in QA errors, such as the following:
+```
+ERROR: QA Issue: File '/usr/lib/libqwt.so.6.0.1' from qwt was already stripped, this will prevent future debugging! [already-stripped]
+ERROR: QA Issue: File '/usr/lib/libqwtmathml.so.6.0.1' from qwt was already stripped, this will prevent future debugging! [already-stripped]
+ERROR: QA Issue: File '/usr/lib/qt4/plugins/designer/libqwt_designer_plugin.so' from qwt was already stripped, this will prevent future debugging! [already-stripped]
+```
 
-jynik is currently working on some patches to submit upstream, and may post a link to them here until they are ready for review and submission to the meta-sdr maintainer.
+If you experience errors such as the following, add <code>INSANE_SKIP_${PN}_append = "already-stripped"</code> where <code>${PN}</code> is the associated package name.  For the above errors this would be:
+
+```
+INSANE_SKIP_qwt_append = "already-stripped"
+```
 
 = Misc. notes =
 
