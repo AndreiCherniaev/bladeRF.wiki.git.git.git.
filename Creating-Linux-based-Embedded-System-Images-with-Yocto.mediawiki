@@ -306,7 +306,7 @@ ERROR: QA Issue: File '/usr/lib/libqwtmathml.so.6.0.1' from qwt was already stri
 ERROR: QA Issue: File '/usr/lib/qt4/plugins/designer/libqwt_designer_plugin.so' from qwt was already stripped, this will prevent future debugging! [already-stripped]
 ```
 
-If you experience errors such as the following, add <code>INSANE_SKIP_${PN}_append = "already-stripped"</code> where <code>${PN}</code> is the associated package name.  For the above errors this would be:
+If you experience errors such as the following, add <code>INSANE_SKIP_${PN}_append = "already-stripped"</code> to your <code>local.conf</code> file, where <code>${PN}</code> is the associated package name.  For the above errors this would be:
 
 ```
 INSANE_SKIP_qwt_append = "already-stripped"
