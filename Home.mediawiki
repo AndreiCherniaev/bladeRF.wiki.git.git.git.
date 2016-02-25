@@ -14,6 +14,7 @@ These guides describe the process of building and installing the bladeRF softwar
 * [[Getting Started: Mac OSX]]
 * [[Getting Started: Verifying Basic Device Operation]]
 
+
 == Expansion Boards and Accessories ==
 
 * [[Getting Started: XB200 Transverter Board|Getting Started: XB-200 Transverter Board]]
@@ -31,6 +32,8 @@ These guides describe the process of building and installing the bladeRF softwar
 * [[DC offset and IQ Imbalance Correction]]
 ** Information about DC offset and IQ balance correction mechanisms
 * [[Debugging dropped samples and identifying achievable sample rates]]
+*[https://github.com/pothosware/SoapyBladeRF/wiki#soapy-sdr-plugin-for-blade-rf Soapy SDR plugin for the bladeRF]
+** See the [https://github.com/pothosware/SoapySDR/wiki SoapySDR project] for additional information!
 
 = Projects, Papers, and Blogs =
 Feel free to share your favorite projects, papers, blogs, etc. containing bladeRF and/or SDR content! Be sure to also check out the  [https://www.nuand.com/forums/viewforum.php?f=8 Project Showcase] on the forums.
