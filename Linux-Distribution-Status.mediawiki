@@ -21,6 +21,11 @@ Please feel free to update this page as needed, but please test [https://github.
 | Performance issues
 | USB 3.0 performance reported to be worse than 2.0 port. Kernel is 3.2.0-4-686-pae
 |-
+| Fedora 23 (64-bit)
+| Yes
+| Yes
+| 
+|-
 | Fedora 20 (32-bit & 64-bit)
 | Yes
 | Yes
