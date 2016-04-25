@@ -21,7 +21,7 @@ The population of resistors R8, R10, and R23 select the input to the RX LNA. Use
 
 == TX ==
 
-# Connect the bladeRF <b>TX</b> SMA connector (<i>J54</i>) to the XB-300 <b>TXIF</b> SMA (<b>J4</b>) with an SMA cable.
+# Connect the bladeRF <b>TX</b> SMA connector (<i>J54</i>) to the XB-300 <b>TXIF</b> SMA (<i>J4</i>) with an SMA cable.
 # Connect a cable or antenna to the XB-300 <b>TRX ANT</b> SMA connector (<i>J3</i>).
 
 == TRX ==
