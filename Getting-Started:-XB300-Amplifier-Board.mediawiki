@@ -1,0 +1,96 @@
+= Overview = 
+
+The [https://www.nuand.com/blog/product/amplifier/ Nuand XB-300] is an amplifier expansion card that greatly expands the bladeRF’s RF performance. The amplifier card features an a LNA, and diversity combiner for RX,
+and a Power Amplifier, TRX switch, and highly accurate Power Out Measurement ADC for TX. The schematic for the XB300 [https://nuand.com/xb300  may be found here].
+
+The [http://www.minicircuits.com/pdfs/TSS-53LNB+.pdf TSS-53LNB wideband (0.5-5 GHz) LNA] found on the RX path provides a low noise figure and a max gain of 20 dB. 
+
+The [http://www.skyworksinc.com/uploads/documents/SE2623L_202397E.pdf SE2623L PA] in the TX path offers up to 33 dBm of gain in the 2.4 GHz ISM band. It features an integrated temperature-compensated power detector.
+
+The XB-300 ships in a configuration designed for separate RX and TX paths. Thus, if you are using
+an XB-300 in its "out of the box" state, follow the <b>RX</b> and <b>TX</b> instructions below.
+
+The population of resistors R8, R10, and R23 select the input to the RX LNA. Users may adjust the resistor population options to instead use a single antenna and the on-board TRX switch, or add an additional RX antenna input to a combiner.
+
+= Hardware Configuration =
+
+== RX ==
+
+# Connect the bladeRF <b>RX</b> SMA connector (<i>J53</i>) to the XB-300 <i>RXIF</i> SMA (<i>J7</i>) with an SMA cable.
+# Connect a cable or antenna to the XB-300 <i>RX ANT</i> SMA connector (<i>J5</i>).
+
+== TX ==
+
+# Connect the bladeRF <b>TX</b> SMA connector (<b>J54</b>) to the XB-300 <i>TXIF</i> SMA (<b>J4</b>) with an SMA cable.
+# Connect a cable or antenna to the XB-300 <i>TRX ANT</i> SMA connector (<i>J3</i>).
+
+== TRX ==
+
+Follow the above instructions for <b>TX</b>
+
+= Usage =
+
+The general steps for using the XB-300 are as follows:
+
+# Enable the board. This configures and initializes the expansion port GPIOs.
+# Enable the LNA and/or PA.
+
+== libbladeRF ==
+
+Enable the XB-300:
+
+```
+int status = bladerf_expansion_attach(device_handle, BLADERF_XB_300);
+```
+
+
+Enable the the LNA or PA:
+
+```
+bladerf_xb300_amplifier amp = BLADERF_XB300_AMP_LNA; /* Or BLADERF_XB300_AMP_PA */
+bool enable = true;
+int status = bladerf_xb300_set_amplifier_enable(device_handle, amp, enable);
+```
+
+For users that have performed the TRX resistor modification, the TRX switch can be configured as follows:
+
+```
+bladerf_xb300_trx trx = BLADERF_XB300_TRX_RX; /* Or BLADERF_XB300_TRX_TX */
+int status = bladerf_xb300_set_trx(state->dev, trx);
+```
+
+== bladeRF-cli ==
+
+The below snippet lists the commands needed to enable the XB-300, turn on the
+TX PA, and to turn on the RX LNA:
+
+```
+bladeRF> xb 300 enable
+
+  Enabling XB-300 Amplifier board
+  XB-300 Amplifier board successfully enabled
+
+bladeRF> xb 300 pa on
+
+  PA: Enabled
+
+bladeRF> xb 300 lna on
+
+  LNA: Enabled
+```
+
+For users that have performed the TRX resistor modification, the TRX switch can be configure as followed:
+
+```
+# Set switch to TX
+bladeRF> xb 300 trx tx
+
+# Set switch to RX
+bladeRF> xb 300 trx rx
+```
+
+== Recommendations ==
+
+An [https://www.nuand.com/blog/product/power-supply/ external DC power supply] is highly recommended when using the XB-300. See [https://github.com/Nuand/bladeRF/wiki/bladeRF-Accessories#bladerf-jumper-configuration this page] for instructions on how to power the bladeRF from an external DC supply instead of the USB connection.
+
+When using the TX PA, additional external filtering for the band/channel of interest is also <b>highly</b> recommended.
