@@ -146,3 +146,14 @@ The stream tends to be somewhat more unstable in this case, perhaps due to netwo
 Props to [https://github.com/argilo argilo] for atsc-blade.py and drmpeg for the advatsc.ts transport stream, both of which provided a foundation for making this a thing.
 
 Also, to take the next step, try implementing a DVB-T transmitter and making contacts over the air!  (Yes, you can use the low-cost RTL-SDR USB fob as a television receiver.)  http://www.irrational.net/2014/03/02/digital-atv/
+
+= FPGA Acceleration =
+
+== FPGA bitstream == 
+To save cycles on his host machine, <code>modus_tollens</code> [https://github.com/Nuand/bladeRF/commit/35e5a6ee06f625608ee5e11e12fba418ac0d54d5 developed an FPGA image for ATSC transmission] that offloads the modulation, pilot insertion, filtering, and shift to baseband. The host simply needs to provide the 4-bt ATSC symbols.
+
+This FPGA can be built using the <code>atsc_tx</code> revision with the FPGA [https://github.com/Nuand/bladeRF/blob/master/hdl/quartus/build_bladerf.sh build_bladerf.sh] script.
+
+== GNU Radio Support ==
+
+As [https://nuand.com/forums/viewtopic.php?f=8&t=3503&sid=76a189e9eb3c5d603ae476e2d2908f77&start=20#p6050 detailed in this forum post], <code>drmpeg</code> leveraged this FPGA bitstream and added an FPGA symbol mapper block to allow an ATSC stream to be written directly to an <code>Osmocom Sink</code> block.
