@@ -156,4 +156,4 @@ This FPGA can be built using the <code>atsc_tx</code> revision with the FPGA [ht
 
 == GNU Radio Support ==
 
-As [https://nuand.com/forums/viewtopic.php?f=8&t=3503&sid=76a189e9eb3c5d603ae476e2d2908f77&start=20#p6050 detailed in this forum post], <code>drmpeg</code> leveraged this FPGA bitstream and added an FPGA symbol mapper block to allow an ATSC stream to be written directly to an <code>Osmocom Sink</code> block.
+As [https://nuand.com/forums/viewtopic.php?f=8&t=3503&sid=76a189e9eb3c5d603ae476e2d2908f77&start=20#p6050 detailed in this forum post], <code>drmpeg</code> leveraged this FPGA bitstream and added an FPGA symbol mapper block to allow an ATSC stream to be written directly to an <code>Osmocom Sink</code> block.  This allows one to utilize the ATSC TX FPGA image in conjunction with GNU Radio.
