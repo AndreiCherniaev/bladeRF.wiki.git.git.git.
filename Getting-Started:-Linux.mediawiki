@@ -181,7 +181,7 @@ $ wget http://www.sbrac.org/files/build-gnuradio
 $ chmod +x ./build-gnuradio
 $ ./build-gnuradio -m prereqs gitfetch
 </pre>
-Note that this takes a bit of time, depending on how many dependencies you need to have installed. Run <code>top</code> periodically to see what's currently going on.
+The <code>build-gnuradio</code> script will prompt you a few times before proceeding; type 'y' and press enter to continue. Note that this script takes a bit of time, depending on how many dependencies you need to have installed. Run <code>top</code> periodically to see what's currently going on.
 
 === Compile GNU Radio ===
 <pre>
