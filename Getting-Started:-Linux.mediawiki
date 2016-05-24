@@ -306,7 +306,8 @@ If you'd like to run a quick test in a full-duplex configuration, consider creat
 
 === Build and install GQRX ===
 
-[http://gqrx.dk/ GQRX] is a software defined radio receiver powered by GNU Radio and Qt. The bladeRF is supported via gr-osmosdr.  The latest and greatest of GQRX can be built from source as follows, assuming you have Qt5 libraries (and development headers) already installed:
+[http://gqrx.dk/ GQRX] is a software defined radio receiver powered by GNU Radio and Qt. The bladeRF is supported via gr-osmosdr. The latest and greatest of GQRX can be built from source as follows, assuming you have Qt5 libraries (and development headers) already installed: 
+(Note: On Debian-based distros, you will need to <code>sudo apt-get install libqt5svg5-dev</code> if you don't already have it. Also ensure that you have <code>qt5-qmake</code> installed.)
 
 <pre>
 $ cd ~/software/gnuradio-build/
