@@ -68,7 +68,7 @@ sudo addgroup yate
 Add your user to this group. Change <code>myuser</code> to your user name.
 
 ```
-sudo usermod -A -G yate myuser
+sudo usermod -a -G yate myuser
 ```
 
 == udev rule ==
