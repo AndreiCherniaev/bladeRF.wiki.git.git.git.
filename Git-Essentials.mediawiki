@@ -9,3 +9,4 @@ If your pull requests are squashed to a single commit or very few commits that a
 * [http://gitimmersion.com/index.html Git Immersion - A Guided tour through Gitland]
 * [http://www-cs-students.stanford.edu/~blynn/gitmagic/ Git manual from Stanford]
 * [http://41j.com/blog/2015/02/common-git-screwupsquestions-solutions/ Most common git screwups/questions and solutions]
+* [https://www.atlassian.com/git/tutorials Git tutorial from Atlassian]
