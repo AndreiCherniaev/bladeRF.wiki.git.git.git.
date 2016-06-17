@@ -102,7 +102,7 @@ The mounting holes on the bladeRF and the add-on boards are intended for use wit
 
 = RF Test Enclosures =
 
-An RF test enclosure is an excellent way to perform testing without causing interference. Use of a well-shielded test enclosure is ''highly'' recommended. (Unless, of course, you enjoy paying large fines to the FCC.)
+An RF test enclosure is an excellent way to perform testing without causing interference. Use of a well-shielded test enclosure is ''highly'' recommended.
 
 * [http://ramseytest.com/product_list.php?category=1 Ramsey RF Shielded Test Enclosures]
 
