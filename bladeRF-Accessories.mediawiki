@@ -1,4 +1,4 @@
-This page lists accessories, tools, and parts that bladeRF may find useful.  Please feel free to add your favorites!
+This page lists accessories, tools, and parts that bladeRF users may find useful.  Please feel free to add your favorites!
 
 = External DC Power =
 The DC barrel jack on the bladeRF requires a 5V adapter, which should be rated to supply 1.5 to 2A.
