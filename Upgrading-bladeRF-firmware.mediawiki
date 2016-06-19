@@ -1,6 +1,6 @@
 This page describes how to update the firmware on the bladeRF.
 
-Pre-built firmware is hosted [http://www.nuand.com/fx3 on the nuand website]. The latest firmware is pointed to by: [http://nuand.com/fx3/bladeRF_fw_latest.img]. [b]Make note of any library or FPGA dependencies provided on the FX3 firmware download page.[/b]
+Pre-built firmware is hosted [http://www.nuand.com/fx3 on the nuand website]. The latest firmware is pointed to by: [http://nuand.com/fx3/bladeRF_fw_latest.img]. **Make note of any library or FPGA version dependencies provided on the FX3 firmware download page.**
 
 Below are a few approaches for upgrading the bladeRF firmware.  The first method listed here is the easiest method. 
 
