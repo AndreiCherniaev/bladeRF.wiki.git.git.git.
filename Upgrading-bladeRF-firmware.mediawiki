@@ -1,6 +1,6 @@
 This page describes how to update the firmware on the bladeRF.
 
-Pre-built firmware is hosted [http://www.nuand.com/fx3 on the nuand website]. The latest firmware is pointed to by: [http://nuand.com/fx3/bladeRF_fw_latest.img]. Make note of any library or FPGA dependencies provided on the FX3 firmware download page.
+Pre-built firmware is hosted [http://www.nuand.com/fx3 on the nuand website]. The latest firmware is pointed to by: [http://nuand.com/fx3/bladeRF_fw_latest.img]. [b]Make note of any library or FPGA dependencies provided on the FX3 firmware download page.[/b]
 
 Below are a few approaches for upgrading the bladeRF firmware.  The first method listed here is the easiest method. 
 
@@ -17,7 +17,9 @@ Before continuing, ensure you've...
 
 The bladeRF-cli program may be used in Linux, Mac OSX, and Windows (from cmd.exe) to upgrade firmware.  
 
-# Write the firmware to the bladeRF's SPI flash. Enabling verbose output here will result in the SPI flash block erases and page read/write operations being printed out. Remove the <code>-v verbose</code> portion of this command to suppress that information. <pre>$ bladeRF-cli -f bladeRF_fw_latest.img -v verbose</pre>
+# Write the firmware to the bladeRF's SPI flash using one of the two approaches:
+## From the command line: <pre>$ bladeRF-cli -f bladeRF_fw_latest.img</pre>
+## From within the bladeRF-cli: <pre>bladeRF> load fx3 bladeRF_fw_latest.img</pre>
 # When the write operation completes, power-cycle the device.
 # The interactive mode command, <code>version</code> should now reflect the new firmware version:
 <pre>
@@ -27,7 +29,7 @@ bladeRF> version
   bladeRF-cli version:        1.2.0
   libbladeRF version:         1.4.0
 
-  Firmware version:           1.8.0
+  Firmware version:           1.9.1
   FPGA version:               Unknown (FPGA not loaded)
 </pre>
 
