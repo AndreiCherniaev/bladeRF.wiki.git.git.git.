@@ -20,9 +20,9 @@ For more information, see the [https://github.com/msysgit/msysgit/wiki/InstallMS
 
 === Installing libusb ===
 
-# Download the latest Windows binary release of libusb, which also include development headers [https://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.19/libusb-1.0.19.7z/download libusb-1.0.19.7z]
+# Download the latest Windows binary release of libusb, which also include development headers [http://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.20/libusb-1.0.20.7z/download]
 ## Note: you may need to download and install [http://www.7-zip.org/ 7-zip from 7-zip.org] to open this file.
-# Extract the contents to a location of your choice. Make note of this location so that you can later provide it to CMake. The default configuration assumes that files will be in '''C:/Program Files (x86)/libusb-1.0.19''' If you wish to change the directory, use the -DLIBUSB_PATH= option for CMake.
+# Extract the contents to a location of your choice. Make note of this location so that you can later provide it to CMake. The default configuration assumes that files will be in '''C:/Program Files (x86)/libusb-1.0.20''' If you wish to change the directory, use the -DLIBUSB_PATH= option for CMake.
 # Get the device driver installer (zadig): http://sourceforge.net/projects/libwdi/files/zadig/
 # Open Zadig. 
 # Go to Device->Create New Device. 
