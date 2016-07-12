@@ -14,6 +14,9 @@ These guides describe the process of building and installing the bladeRF softwar
 * [[Getting Started: Mac OSX]]
 * [[Getting Started: Verifying Basic Device Operation]]
 
+== bladeRF firmware images ==
+* [http://nuand.com/fx3.php FX3 firmware images]
+* [http://nuand.com/fpga.php FPGA images]
 
 == Expansion Boards and Accessories ==
 
