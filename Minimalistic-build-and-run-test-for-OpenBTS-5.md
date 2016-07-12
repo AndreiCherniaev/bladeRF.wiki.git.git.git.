@@ -121,6 +121,25 @@ This is done very traditionally but spelled out here because of the configure fl
 
 *Please do take care about following local regulations.*
 
+## History of the bladeRF compatible GSM transceiver
+* In march 2014 @robertghilduta (Robert Ghilduta, Nuand LLC) released the initial transceiver code based on Tranceiver52M
+  * https://github.com/Nuand/YateBTS/commit/d0cb6b2863abb5d0ffadd1cd4770b3df52365317
+* In april 2014 @robertghilduta switched to TransceiverRAD1 since there were some problems with Transceiver52M
+  * https://github.com/Nuand/YateBTS/commit/36cb7dd06dcf33647ba3307781ff9cf1a271872a
+* In November 2014 l-fy (Diana Cionoiu, Null.ro) gave a notice that the Yate-team will deprecate the RAD1 based transceiver soon
+  * `2014-11-07 18:06:22" < l-fy> and we will deprecate transciever rad1`
+* Revision 1 - 2014-11-06 15:33:57 GMT - initial version of the **new** yate-transceiver (**not compatible with bladeRF!**)
+  * http://yate.null.ro/websvn/listing.php?repname=bladeRF  (repository now depreciated)
+* On 30.01.2015 The Yate team officially announced that there will be a **new** transceiver written from scratch
+* On 24.06.2016 The **new** yate transceiver made it into their yatebts-repo and at the same time the they deleted the old transceivers (Transceiver52M and TransceiverRAD1)
+  * delete commit http://yate.null.ro/websvn/revision.php?repname=yatebts&path=%2F&rev=504
+  * The **new transceiver only works with YateBTS** since they made the transceiver interface (for some unknown reason) incompatible to OpenBTS and OsmoBTS from the osmocom project. :/
+
+
+
+
+
+
 ## Updates
 
 * 2014-11-04 fbe0b6a8 breaks YateBTS transceiver
