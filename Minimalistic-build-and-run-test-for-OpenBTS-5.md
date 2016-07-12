@@ -78,7 +78,9 @@ make && \
 cd ..;
 ```
 
-* In the same root directory clone [YateBTS](http://wiki.yatebts.com/index.php/SVN)
+* In the same root directory clone YateBTS
+  * `svn checkout --revision 503 http://voip.null.ro/svn/yatebts/trunk yatebts`
+  * *Note:* **You need YateBTS SVN revision 503 or older!** In later SVN revisions the RAD1 based transceiver that can be used with OpenBTS or OsmoBTS was removed.
   * *Note:* you don't need the Yate tool
   * Remove loading of fpga in YateBTS
     * `vim ./yatebts/mbts/TransceiverRAD1/bladeRFDevice.cpp +108` and onward to line 129. `#ifdef NEVER` it...
