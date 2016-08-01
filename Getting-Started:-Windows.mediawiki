@@ -47,12 +47,16 @@ Download and install CMake for Windows:
 http://www.cmake.org/cmake/resources/software.html
 
 == Building with CMake and Visual Studio 2013 ==
-
+=== Cloning the bladeRF git repository ===
+# Right click on the Desktop and click "Git clone..."
+# Paste https://github.com/Nuand/bladeRF.git into the URL field
+# Select your preferred directory to clone the repository to. TortoiseGit requires this to be an empty folder.
+# Click OK and let it run. The bladeRF code is now on your computer.
 === Configuring with CMake ===
 # Run the CMake GUI utility. 
-# Under "Where is the source code", browse to '''preferred_directory/bladeRF/host'''. 
-# Create a new directory, '''preferred_directory/bladeRF/host/build'''. 
-# Under "Where to build the binaries", browse to the newly created '''preferred_directory/bladeRF/host/build'''. Click the Configure button. 
+# Under "Where is the source code", browse to '''[preferred_directory]/bladeRF/host'''. 
+# Create a new directory, '''[preferred_directory]/bladeRF/host/build'''. 
+# Under "Where to build the binaries", browse to the newly created '''[preferred_directory]/bladeRF/host/build'''. Click the Configure button. 
 # Select your appropriate version of Visual Studio.  For Visual Studio 2013, select "Visual Studio 12" or "Visual Studio 12 Win64".  Select "Use default native compilers", then click "Finish". 
 # If the configuration fails, double check the values for ''LIBUSB_PATH'' and ''LIBPTHREADSWIN32_PATH'', and re-run the configuration.
 # Click on the Generate button.
