@@ -13,7 +13,7 @@
 For more information, see the [https://github.com/msysgit/msysgit/wiki/InstallMSysGit mysysgit] and [http://code.google.com/p/tortoisegit/wiki/SetupHowTo tortoisegit] wiki pages about their install procedures.
 
 === Installing Visual Studio Express 2013 for Windows Desktop ===
-# Download [http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-windows-desktop Visual Studio Express 2013 for Windows Desktop] from Microsoft.
+# Download Visual Studio Express 2013 for Windows Desktop from Microsoft, which can be found [https://www.visualstudio.com/downloads/download-visual-studio-vs here] under Visual Studio 2013.
 # Follow the installation instructions, including any post-install updates.
 
 ''Note:'' Visual Studio Express 2013 for Windows Desktop corresponds to Visual Studio 12 in CMake.
@@ -60,7 +60,7 @@ http://www.cmake.org/cmake/resources/software.html
 # Select your appropriate version of Visual Studio.  For Visual Studio 2013, select "Visual Studio 12" or "Visual Studio 12 Win64".  Select "Use default native compilers", then click "Finish". 
 # If the configuration fails, double check the values for ''LIBUSB_PATH'' and ''LIBPTHREADSWIN32_PATH'', and re-run the configuration.
 # Click on the Generate button.
-# A visual studio solution should now be available, '''build/host/bladeRF.sln'''
+# A visual studio solution should now be available, '''host/build/bladeRF.sln'''
 
 === Compiling ===
 # CMake has created a ''bladeRF.sln'' file.  Open Visual Studio, and open this file.
@@ -68,7 +68,7 @@ http://www.cmake.org/cmake/resources/software.html
 ## bladeRF-cli
 ## libbladerf_shared
 # Run <code>Build -> Build Solution</code>
-# After the build completes, you should see an '''host\output''' directory in the build directory, containing either a Debug or Release subdirectory. These directories will contain generated executables, libraries, and will contain copies of the required DLLs.
+# After the build completes, you should see an '''host/build/output''' directory in the build directory, containing either a Debug or Release subdirectory. These directories will contain generated executables, libraries, and will contain copies of the required DLLs.
 
 == Verifying basic functionality ==
 Open up a '''cmd.exe''' window and navigate to the output directory associated with your build:
