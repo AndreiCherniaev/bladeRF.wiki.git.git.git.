@@ -16,7 +16,7 @@ For more information, see the [https://github.com/msysgit/msysgit/wiki/InstallMS
 
 ''Note:'' Visual Studio 2015 is currently not supported due to [https://github.com/Nuand/bladeRF/issues/447 Issue #447]
 
-# Download Visual Studio Express 2013 for Windows Desktop from Microsoft, which can be found [https://www.visualstudio.com/downloads/download-visual-studio-vs here] under Visual Studio 2013.
+# Download Visual Studio Express 2013 for Windows Desktop from Microsoft, which can be found [https://www.visualstudio.com/downloads/download-visual-studio-vs here] under Visual Studio 2013. ''Note:'' This link may become obsolete in the future. Click [https://go.microsoft.com/fwlink/?LinkId=532500&clcid=0x409 here] for the direct link from the page (VS Express 2013 with Update 5 for Windows Desktop).
 # Follow the installation instructions, including any post-install updates.
 
 ''Note:'' Visual Studio Express 2013 for Windows Desktop corresponds to Visual Studio 12 in CMake.
