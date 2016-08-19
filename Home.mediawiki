@@ -38,6 +38,10 @@ These guides describe the process of building and installing the bladeRF softwar
 * [[Debugging dropped samples and identifying achievable sample rates]]
 *[https://github.com/pothosware/SoapyBladeRF/wiki#soapy-sdr-plugin-for-blade-rf Soapy SDR plugin for the bladeRF]
 ** See the [https://github.com/pothosware/SoapySDR/wiki SoapySDR project] for additional information. Be sure to check out the [https://github.com/pothosware/SoapySDR/wiki/PythonSupport Python] bindings!
+* [[FX3 Firmware]]
+** Information about FX3 firmware development
+* [[FPGA Development]]
+** Information about Altera Cyclone IV FPGA development
 
 = Projects, Papers, and Blogs =
 Feel free to share your favorite projects, papers, blogs, etc. containing bladeRF and/or SDR content! Be sure to also check out the  [https://www.nuand.com/forums/viewforum.php?f=8 Project Showcase] on the forums.
