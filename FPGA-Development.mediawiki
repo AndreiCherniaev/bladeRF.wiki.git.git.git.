@@ -1,0 +1,99 @@
+This page contains information pertaining to digital logic development for the bladeRF's Altera Cyclone IV FPGA. See http://www.nuand.com/fpga.php for available FPGA bitstreams. "Hosted" is the default bitstream for the bladeRF.
+
+= Overview =
+
+The Altera Cyclone IV FPGA interfaces with the Cypress FX3 USB3.0 controller (CYUSB3014-BZXC), the Lime Micro LMS6002D RF transceiver, the Si5338 clock generator chip, the VCTCXO DAC. The primary purpose of the default "hosted" image is to shuffle I/Q samples between the FX3 and the LMS6002D, and configure the LMS6002D via SPI based on commands received from the FX3 via UART. Other purposes include controlling to the Si5338 clock generator chip and VCTCXO DAC, controlling the SPDT RF switches lying in between the LMS6002D and the SMA RX/TX ports, and interfacing with expansion boards.
+
+The VHDL source code is separated into [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/platforms/bladerf/vhdl platform-specific code] and [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/ip IP cores]. IP is separated into nuand IP, OpenCores IP, and IP created from Altera tools. 
+
+The top level bladerf entity ([https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/platforms/bladerf/vhdl/bladerf.vhd bladerf.vhd]) defines the ports which are connected to external pins. Architectures for the bladerf entity are kept in different files for different designs. The hosted_bladerf architecture ([https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/platforms/bladerf/vhdl/bladerf-hosted.vhd bladerf-hosted.vhd]) corresponds to the default bladeRF image. Other existing architectures include the [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/platforms/bladerf/vhdl/bladerf-adsb.vhd ADSB decoder] which performs signal processing to decode ADSB signals instead of shuffling IQ samples (more info [https://github.com/Nuand/bladeRF-adsb here]).
+
+= Architecture =
+This section will describe the structure of the default FPGA architecture [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/platforms/bladerf/vhdl/bladerf-hosted.vhd bladerf-hosted.vhd].
+
+The FPGA consists of an Altera NIOS II soft processor for command+control and custom logic for sample shuffling+everything else. The code for the soft processor is found in [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/ip/altera/nios_system/software bladeRF/hdl/fpga/ip/altera/nios_system/software]. The "nios_system" component inside bladerf-hosted.vhd contains everything needed for command+control, including the NIOS II processor. IQ sample shuffling is kept separate from command+control. Samples are transferred between the FX3 and the FPGA via the FX3's GPIF II interface.
+
+== Samples Architecture ==
+The following diagram illustrates the modules that IQ samples flow through in the FPGA. Modules outside of the sample path have been omitted. Signals that do not carry IQ samples have also been omitted for simplicity.
+
+[https://raw.githubusercontent.com/ifrasch/files/master/bladeRF-FPGA-samples-architecture.png [[https://raw.githubusercontent.com/ifrasch/files/master/bladeRF-FPGA-samples-architecture.png|bladeRF-FPGA-samples-architecture]]]
+
+''Note: to reduce confusion, signals/ports will be italicized and modules/processes will be code formatted.''
+
+At the LMS6002D chip interface, each "IQ sample" consists of one 12-bit signed I sample and one 12-bit signed Q sample. Inside the FPGA, I and Q samples are either sign extended or sign contracted so that the FX3 sees a 16-bit I sample and a 16-bit Q sample. This was done for ease of integration with FX3 firmware.
+
+=== Transmit side ===
+Samples are sent from the FX3 to the FPGA over the bidirectional ''fx3_gpif'' bus to the <code>fx3_gpif</code> module. The <code>register_gpif</code> process inside the hosted_bladerf architecture handles the output enable for the ''fx3_gpif'' bus and interfaces with ''fx3_gpif_in'' and ''fx3_gpif_out'' from the <code>fx3_gpif</code> module. Samples then go to <code>tx_sample_fifo</code> via ''tx_sample_fifo.wdata''. Sample metadata passes through <code>tx_meta_fifo</code> via ''tx_meta_fifo.wdata'' when metadata is enabled. A clock domain crossing happens inside these FIFOs. Samples then pass to <code>fifo_reader</code> through ''tx_sample_fifo.rdata'' which separates them into the I sample (''tx_sample_raw_i'') and the Q sample (''tx_sample_raw_q''). Corrections for DC offset and other imperfections are done in <code>tx_iq_correction</code>. The sign contraction from 16 bits to 12 bits happens just before ''tx_sample_i'' and ''tx_sample_q'' go into the <code>lms6002d</code> module. This module creates the time-multiplexed ''lms_tx_data'' output signal which goes directly to the LMS6002D chip. The I sample is driven during one clock cycle and the Q sample on the next clock cycle.
+
+=== Receive side ===
+Samples are received from the LMS6002D chip via ''lms_rx_data''. The <code>lms6002d</code> module extracts the time-multiplexed I and Q samples and outputs them to the <code>rx_mux</code> process. Sign extension happens just before the signals pass into the mux. In RX_MUX_NORMAL mode, the mux passes the raw I and Q samples to the output. The RX_MUX_12BIT_COUNTER and RX_MUX_32BIT_COUNTER modes pass either 12-bit or 32-bit counter signals ''rx_gen_i'' and ''rx_gen_q'' to the output. These modes are useful for debugging, to find out if samples are being lost in the bladeRF's USB connection (especially USB 2.0). If the host PC side receives a stream of sample values that have discontinuities (e.g. 1 2 3 15 16 17), then samples were lost. RX_MUX_DIGITAL_LOOPBACK mode performs loopback by outputting ''rx_loopback_i'' and ''rx_loopback_q'', which originate from the <code>rx_loopback_fifo</code> module (not shown). After the RX mux the rest of receive path is essentially the reverse of the transmit path.
+
+=== Where to place custom code ===
+Typical FPGA applications involve placing some signal processing in the RX and/or TX path. The code can be modified so that all IQ sample processing happens inside the FPGA (e.g. modulation/demodulation, filtering, etc) and the FX3 transmits/receives some sort of data instead of IQ samples. These types of modifications/additions should go in between the iq_correction blocks and the sample/meta fifos. <code>fifo_reader</code> and <code>fifo_writer</code> can be rewritten or removed. See the Examples section for some examples of this.
+
+= Development =
+== Getting Started ==
+=== Building FPGA image from source ===
+Once you have cloned the [https://github.com/Nuand/bladeRF bladeRF repository] to your local machine, instructions for installing the required Quartus II free software and building the FPGA image and Quartus project file can be found in the README of [https://github.com/Nuand/bladeRF/tree/master/hdl bladeRF/hdl].
+=== Tutorial: Blinking some LEDs ===
+This can be thought of as a "hello world" for the FPGA. We will simply modify the FPGA code to blink some LEDs. Quartus GUI does not need to be open for this tutorial.
+
+The bladeRF board has 3 LEDs accessible from the FPGA: D11, D12, and D13 controlled by bladerf entity output pins led(1), led(2), and led(3) respectively. The default FPGA image uses these LEDs for status indicators. We are going to use them for an LED blinking pattern instead. 
+
+Open [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/platforms/bladerf/vhdl/bladerf-hosted.vhd bladerf-hosted.vhd]. CTRL-F for "led(" and you should find these lines that control the LEDs:
+
+<pre>
+led(1) <= led1_blink        when nios_gpio(15) = '0' else not nios_gpio(12);
+led(2) <= tx_underflow_led  when nios_gpio(15) = '0' else not nios_gpio(13);
+led(3) <= rx_overflow_led   when nios_gpio(15) = '0' else not nios_gpio(14);
+</pre>
+
+Comment out these lines. We are going to instead insert a <code>blink_leds</code> process to control the LEDs. This process will make the LEDs blink one at a time for 0.5 seconds each, in order. Paste this code into the file above the commented-out code:
+
+<pre>
+blink_leds : process (c4_clock)
+    variable counter : natural range 0 to 57_600_000 := 57_600_000;
+begin
+    if (rising_edge(c4_clock)) then
+        counter := counter - 1;
+        if (counter = 0) then
+            counter := 57_600_000;
+        elsif (counter < 19_200_000) then
+            led(2) <= '0';
+            led(1) <= '1';
+            led(3) <= '1';
+        elsif (counter < 38_400_000) then
+            led(2) <= '1';
+            led(1) <= '0';
+            led(3) <= '1';
+        else
+            led(2) <= '1';
+            led(1) <= '1';
+            led(3) <= '0';
+        end if;
+    end if;
+end process;
+</pre>
+
+This process involves a counter which counts clock cycles of the 38.4MHz c4_clock. The LED pattern outputted is based on the value of the counter. The LEDs are active low, [https://nuand.com/bladerf.pdf#page=3 as seen in the bladeRF schematic]. Also note that the LEDs are placed in the order D12 D11 D13 on the board.
+
+Now lets build the FPGA bitstream. Instructions are the same as in the "Building FPGA image from source" section. Run <br>
+<code>[quartus install directory]/nios2eds/nios2_command_shell.sh</code> to get into the appropriate Quartus II environment. From the same terminal, go to the bladeRF/hdl/quartus directory and run build_bladerf.sh like so:
+
+<code>./build_bladerf.sh -r hosted -s <size></code>, where <nowiki><size></nowiki> is replaced with your bladeRF FPGA size (40 or 115).
+
+This will take ~10 minutes to build. Once finished, <code>cd</code> into the newly created build folder which contains the <code>hostedx<size>.rbf</code> FPGA bitstream. From there you can plug in your bladeRF and use bladeRF-cli to load the FPGA with your bitstream:
+
+<code>bladeRF-cli -l hostedx<size>.rbf</code>
+
+Once loaded, you should see the LEDs blinking on your board.
+
+== Examples ==
+* [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/platforms/bladerf/vhdl/bladerf-adsb.vhd ADSB decoder] (source code below the top-level is [https://github.com/Nuand/bladeRF-adsb here])
+* [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/platforms/bladerf/vhdl/bladerf-atsc_tx.vhd ATSC transmitter]
+
+= Related Resources =
+* [https://nuand.com/bladerf.pdf bladeRF schematic]
+* [http://www.limemicro.com/download/LMS6002Dr2-DataSheet-1.2r0.pdf LMS6002D RF transceiver datasheet]
+* [http://www.cypress.com/file/140296/download Cypress FX3 USB 3.0 controller datasheet]
+* [https://www.silabs.com/Support%20Documents/TechnicalDocs/Si5338.pdf Si5338 clock generator datasheet]
