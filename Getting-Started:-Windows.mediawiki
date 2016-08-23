@@ -69,6 +69,7 @@ http://www.cmake.org/cmake/resources/software.html
 # CMake has created a ''bladeRF.sln'' file.  Open Visual Studio, and open this file.
 # A number of projects should show up in the Solution Explorer, including:
 ## bladeRF-cli
+## bladeRF-fsk
 ## libbladerf_shared
 # Select Debug or Release build from the drop down menu at the top
 # Run <code>Build -> Build Solution</code>
