@@ -34,6 +34,13 @@ bladeRF> version
 </pre>
 
 
+= Using the firmware upgrade included in the Windows installer = 
+
+When running the Windows installer (see the [https://nuand.com/bladeRF-doc/guides/bladeRF_windows_installer.html bladeRF Windows Install Guide]), an option to upgrade the firmware is provided.  Under the hood, this runs the bladeRF-cli as described above.
+
+Thus, it is possible to upgrade firmware by re-running the installer, but using the bladeRF-cli remains the simplest approach.
+
+
 = Upgrading using the FX3 bootloader =
 
 The bladeRF is configured to fall back to a USB bootloader if valid firmware is not in SPI flash. By placing a jumper across one of the SPI communication pins, it is possible to force the SPI boot to fail and place the device into bootloader mode. From there, one can load and execute bladeRF firmware, and then follow the above procedure to write the firmware to SPI flash.
@@ -209,13 +216,3 @@ jon@example %
 [http://youtu.be/oolb9e_9qTc This video] also shows a procedure similar to that outlined above, but using the Cypress Control Center (provided with the FX3 SDK) to load firmware, instead of using the bladeRF-cli.
 
 Note that this Cypress software is only available for Windows.
-
-= Using the firmware upgrade included in the Windows installer = 
-
-When running the Windows installer (see the [https://github.com/Nuand/bladeRF/wiki/Getting-Started%3A-Windows Windows Getting Started] guide), the option to upgrade the firmware is provided:
-
-[[http://nuand.com/upgrade.png|Firmware upgrade screenshot]]
-
-To upgrade firmware at a later time, the '''bladerf_winflasher.exe''' program, included with the installation, may be used. This program uses CyUSB API, so an unsigned driver is required for it to work. It is generally located in: <code>C:\Program Files (x86)\bladeRF\bladerf_winflasher.exe</code>.
-
-Remember to power cycle the device after running this program.
