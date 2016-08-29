@@ -11,7 +11,7 @@ The top level bladerf entity ([https://github.com/Nuand/bladeRF/tree/master/hdl/
 = Architecture =
 This section will describe the structure of the default FPGA architecture [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/platforms/bladerf/vhdl/bladerf-hosted.vhd bladerf-hosted.vhd].
 
-The FPGA consists of an Altera NIOS II soft processor for command+control and custom logic for sample shuffling+everything else. The code for the soft processor is found in [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/ip/altera/nios_system/software bladeRF/hdl/fpga/ip/altera/nios_system/software]. The "nios_system" component inside bladerf-hosted.vhd contains everything needed for command+control, including the NIOS II processor. IQ sample shuffling is kept separate from command+control. Samples are transferred between the FX3 and the FPGA via the FX3's GPIF II interface.
+The FPGA consists of an Altera NIOS II soft processor for command+control and custom logic for sample shuffling+everything else. The C code for the soft processor is found in [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/ip/altera/nios_system/software bladeRF/hdl/fpga/ip/altera/nios_system/software]. The "nios_system" component inside bladerf-hosted.vhd contains everything needed for command+control, including the NIOS II processor. IQ sample shuffling is kept separate from command+control. Samples are transferred between the FX3 and the FPGA via the FX3's GPIF II interface.
 
 == Samples Architecture ==
 The following diagram illustrates the modules that IQ samples flow through in the FPGA. Modules outside of the sample path have been omitted. Signals that do not carry IQ samples have also been omitted for simplicity.
