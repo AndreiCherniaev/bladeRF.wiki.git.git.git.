@@ -6,7 +6,7 @@ Below are a few approaches for upgrading the bladeRF firmware.  The first method
 
 However, some firmware versions are incompatible with the current tools.  If know or suspect your firmware to be earlier than version 1.5.3 or run into errors while trying to upgrade the firmware, it is recommended that you try the second approach of upgrading via the bootloader.
 
-'''"Don't Panic!"''' - Unless you're loading custom firmware that incorrectly configures device pins, it's generally not possible to "brick" the device. If a failure occurs during he firmware update process, you should always be able to recover via the FX3 bootloader. 
+'''"Don't Panic!"''' - Unless you're loading custom firmware that incorrectly configures device pins, it's generally not possible to "brick" the device. If a failure occurs during the firmware update process, you should always be able to recover via the FX3 bootloader. 
 
 = Prerequisites =
 Before continuing, ensure you've...
