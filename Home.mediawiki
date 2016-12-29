@@ -105,6 +105,9 @@ Find or learn something interesting? Share it here!
 * [http://vanilla.ceat.okstate.edu/assume_synchronized.pdf Let's Assume the System Is Synchronized] by [http://electrical.sdsu.edu/faculty/frederick_harris.html Fredric J. Harris]
 * Presentations:
 ** [https://wireless.vt.edu/symposium/2011/tutorials/Session%20A3_Part%203_Multirate_DSP_Wireless_2011.pdf Multirate Digital Signal Processing] by [http://electrical.sdsu.edu/faculty/frederick_harris.html Fredric J. Harris]
+* Videos:
+** [https://www.youtube.com/watch?v=h_7d-m1ehoY Basics of IQ Signals Part I]
+** [https://www.youtube.com/watch?v=5GGD99Qi1PA Basics of IQ Signals Part II]
 * Books:
 ** [http://www.amazon.com/Understanding-Digital-Signal-Processing-Edition/dp/0137027419/ Understanding Digital Signal Processing] by Richard G. Lyons
 ** [http://www.amazon.com/SOFTWARE-RECEIVER-DESIGN-COMMUNICATIONS-Hardcover/dp/B00IJ7FX44/ Software Receiver Design: Build Your Own Digital Communication System In Five Easy Steps] by C. Richard Johnson, Jr., William A. Sethares, & Andrew G. Klein
