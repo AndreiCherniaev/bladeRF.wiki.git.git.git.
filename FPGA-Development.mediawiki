@@ -91,13 +91,11 @@ This will take ~10 minutes to build. Once finished, <code>cd</code> into the new
 
 Once loaded, you should see the LEDs blinking on your board.
 
-== Adding custom VHDL modules or Altera IP ==
-If you want to instantiate a custom VHDL/IP module in bladerf-hosted.vhd, you will need to also reference the source of that module in bladerf-hosted.qip so that the build script will find it. Follow the steps below:
-# Write/obtain a VHDL file for your custom module, or generate Altera IP using Quartus.
+== Adding custom VHDL modules ==
+If you want to instantiate a custom VHDL in bladerf-hosted.vhd, you will need to also reference the source of that module in bladerf-hosted.qip so that the build script will find it. Follow the steps below:
+# Write/obtain a VHDL file for your custom module
 # Instantiate the module in bladerf-hosted.vhd using the same syntax of other instantiated modules <pre><instance name>: entity work.<entity name of module></pre>
-# Open [https://github.com/Nuand/bladeRF/blob/master/hdl/fpga/platforms/bladerf/bladerf-hosted.qip bladerf-hosted.qip] and add the path to your module.
-#: For a custom VHDL module, add <pre>set_global_assignment -name VHDL_FILE [file normalize [file join $here <path_to_your_VHDL_file>.vhd]]</pre>
-#: For a Altera-generated IP, add <pre>set_global_assignment -name QIP_FILE [file normalize [file join $here <path_to_your_IP_file>.qip]]</pre>
+# Open [https://github.com/Nuand/bladeRF/blob/master/hdl/fpga/platforms/bladerf/bladerf-hosted.qip bladerf-hosted.qip] and add the path to your module, like so: <pre>set_global_assignment -name VHDL_FILE [file normalize [file join $here <path_to_your_VHDL_file>.vhd]]</pre>
 # Run the build script to build the FPGA bitstream.
 
 == Examples ==
