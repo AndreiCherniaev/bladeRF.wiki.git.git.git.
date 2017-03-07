@@ -91,12 +91,16 @@ This will take ~10 minutes to build. Once finished, <code>cd</code> into the new
 
 Once loaded, you should see the LEDs blinking on your board.
 
-== Adding custom VHDL modules ==
-If you want to instantiate a custom VHDL in bladerf-hosted.vhd, you will need to also reference the source of that module in bladerf-hosted.qip so that the build script will find it. Follow the steps below:
-# Write/obtain a VHDL file for your custom module
+== Adding custom VHDL modules or Altera IP ==
+If you want to instantiate a custom VHDL/IP module in bladerf-hosted.vhd, you will need to also reference the source of that module in bladerf-hosted.qip so that the build script will find it. Follow the steps below:
+# Write/obtain a VHDL file for your custom module, or generate Altera IP using Quartus.
 # Instantiate the module in bladerf-hosted.vhd using the same syntax of other instantiated modules <pre><instance name>: entity work.<entity name of module></pre>
-# Open [https://github.com/Nuand/bladeRF/blob/master/hdl/fpga/platforms/bladerf/bladerf-hosted.qip bladerf-hosted.qip] and add the path to your module, like so: <pre>set_global_assignment -name VHDL_FILE [file normalize [file join $here <path_to_your_VHDL_file>.vhd]]</pre>
+# Open [https://github.com/Nuand/bladeRF/blob/master/hdl/fpga/platforms/bladerf/bladerf-hosted.qip bladerf-hosted.qip] and add the relative path to your module.
+#: For a custom VHDL module, add <pre>set_global_assignment -name VHDL_FILE [file normalize [file join $here <relative_path_to_your_VHDL_file>.vhd]]</pre>
+#: For Altera-generated IP, add <pre>set_global_assignment -name QIP_FILE [file normalize [file join $here <relative_path_to_your_IP_file>.qip]]</pre>
 # Run the build script to build the FPGA bitstream.
+
+Note: If you are generating Altera IP cores using a free version of Quartus (i.e. Quartus II Web Edition) without an IP license, you may not be able to generate a .rbf bitstream file to load the bladeRF FPGA with. Instead you will be required to use Altera's OpenCore Plus evaluation feature to load the FPGA. This means that a time-limited .sof file will be generated (placed in hdl/quartus/work/output_files) and must be loaded on to the FPGA using the USB Blaster cable (available [http://www.digikey.com/product-detail/en/terasic-inc/P0302/P0302-ND/2003484 here]) connected to the FPGA's JTAG header (J38). This can be done in Quartus. You can either keep the cable attached after you program the FPGA, and the IP core will work without a time limit, or you can detach the cable and the IP core will work for a limited time (ex: For the FFT core, the time limit is 1 hour).
 
 == Examples ==
 * [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/platforms/bladerf/vhdl/bladerf-adsb.vhd ADSB decoder] (source code below the top-level is [https://github.com/Nuand/bladeRF-adsb here])
