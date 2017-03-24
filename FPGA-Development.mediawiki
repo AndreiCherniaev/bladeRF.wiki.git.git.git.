@@ -2,7 +2,7 @@ This page contains information pertaining to digital logic development for the b
 
 = Overview =
 
-The Altera Cyclone IV FPGA interfaces with the Cypress FX3 USB3.0 controller (CYUSB3014-BZXC), the Lime Micro LMS6002D RF transceiver, the Si5338 clock generator chip, the VCTCXO DAC. The primary purpose of the default "hosted" image is to shuffle I/Q samples between the FX3 and the LMS6002D, and configure the LMS6002D via SPI based on commands received from the FX3 via UART. Other purposes include controlling to the Si5338 clock generator chip and VCTCXO DAC, controlling the SPDT RF switches lying in between the LMS6002D and the SMA RX/TX ports, and interfacing with expansion boards.
+The Altera Cyclone IV FPGA interfaces with the Cypress FX3 USB3.0 controller (CYUSB3014-BZXC), the Lime Micro LMS6002D RF transceiver, the Si5338 clock generator chip, the VCTCXO DAC. The primary purpose of the default "hosted" image is to shuffle I/Q samples between the FX3 (via GPIF II interface) and the LMS6002D, and configure the LMS6002D via SPI based on commands received from the FX3 via UART. Other purposes include controlling to the Si5338 clock generator chip and VCTCXO DAC, controlling the SPDT RF switches lying in between the LMS6002D and the SMA RX/TX ports, and interfacing with expansion boards.
 
 The VHDL source code is separated into [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/platforms/bladerf/vhdl platform-specific code] and [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/ip IP cores]. IP is separated into nuand IP, OpenCores IP, and IP created from Altera tools. 
 
@@ -11,7 +11,7 @@ The top level bladerf entity ([https://github.com/Nuand/bladeRF/tree/master/hdl/
 = Architecture =
 This section will describe the structure of the default FPGA architecture [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/platforms/bladerf/vhdl/bladerf-hosted.vhd bladerf-hosted.vhd].
 
-The FPGA consists of an Altera NIOS II soft processor for command+control and custom logic for sample shuffling+everything else. The NIOS II is clocked at 80 MHz. The C code for the NIOS II is found in [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/ip/altera/nios_system/software bladeRF/hdl/fpga/ip/altera/nios_system/software]. The "nios_system" component inside bladerf-hosted.vhd contains everything needed for command+control, including the NIOS II processor. IQ sample shuffling is kept separate from command+control. Samples are transferred between the FX3 and the FPGA via the FX3's GPIF II interface.
+The FPGA consists of an Altera Nios II soft processor for command+control and custom logic for sample shuffling+everything else. The Nios II is clocked at 80 MHz. The C code for the Nios II is found in [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/ip/altera/nios_system/software bladeRF/hdl/fpga/ip/altera/nios_system/software]. The "nios_system" component inside bladerf-hosted.vhd contains everything needed for command+control, which includes the Nios II processor and attached IP such as RAM, I2C, and SPI controller. IQ sample shuffling is kept separate from command+control. Samples are transferred between the FX3 and the FPGA via the FX3's GPIF II interface.
 
 == Samples Architecture ==
 The following diagram illustrates the modules that IQ samples flow through in the FPGA. Modules outside of the sample path have been omitted. Signals that do not carry IQ samples have also been omitted for simplicity.
@@ -31,8 +31,8 @@ Samples are received from the LMS6002D chip via ''lms_rx_data''. The <code>lms60
 === Where to place custom code ===
 Typical FPGA applications involve placing some signal processing in the RX and/or TX path. The code can be modified so that all IQ sample processing happens inside the FPGA (e.g. modulation/demodulation, filtering, etc) and the FX3 transmits/receives some sort of data instead of IQ samples. These types of modifications/additions should go in between the iq_correction blocks and the sample/meta fifos. <code>fifo_reader</code> and <code>fifo_writer</code> can be rewritten or removed. See the Examples section for some examples of this.
 
-== NIOS II Software ==
-Software running on the NIOS II soft processor handles all command/control. The software receives packetized requests (originating from host software) from the FX3 chip via UART. It then performs the appropriate configuration/control action. For example, writing registers on the LMS6002D via SPI to set the frequency/gains, setting IQ imbalance correction, setting the sample rate, writing/reading expansion or configuration GPIO, etc. The NIOS system communicates with the rest of the FPGA logic via the input/output ports of the nios_system component (instantiated in bladerf-hosted.vhd). For more information, view the readme for the NIOS software [https://github.com/Nuand/bladeRF/blob/master/hdl/fpga/ip/altera/nios_system/software/README.md here].
+== Nios II Software ==
+Software running on the Nios II soft processor handles all command/control. The software receives packetized requests (originating from host software) from the FX3 chip via UART. It then performs the appropriate configuration/control action. For example, writing registers on the LMS6002D via SPI to set the frequency/gains, setting IQ imbalance correction, setting the sample rate, writing/reading expansion or configuration GPIO, etc. The Nios system communicates with the rest of the FPGA logic via the input/output ports of the nios_system component (instantiated in bladerf-hosted.vhd). For more information, view the readme for the Nios software [https://github.com/Nuand/bladeRF/blob/master/hdl/fpga/ip/altera/nios_system/software/README.md here].
 
 = Development =
 == Getting Started ==
@@ -100,7 +100,26 @@ If you want to instantiate a custom VHDL/IP module in bladerf-hosted.vhd, you wi
 #: For Altera-generated IP, add <pre>set_global_assignment -name QIP_FILE [file normalize [file join $here <relative_path_to_your_IP_file>.qip]]</pre>
 # Run the build script to build the FPGA bitstream.
 
-Note: If you are generating Altera IP cores using a free version of Quartus (i.e. Quartus II Web Edition) without an IP license, you may not be able to generate a .rbf bitstream file to load the bladeRF FPGA with. Instead you will be required to use Altera's OpenCore Plus evaluation feature to load the FPGA. This means that a time-limited .sof file will be generated (placed in hdl/quartus/work/output_files) and must be loaded on to the FPGA using the USB Blaster cable (available [http://www.digikey.com/product-detail/en/terasic-inc/P0302/P0302-ND/2003484 here]) connected to the FPGA's JTAG header (J38). This can be done in Quartus. You can either keep the cable attached after you program the FPGA, and the IP core will work without a time limit, or you can detach the cable and the IP core will work for a limited time (ex: For the FFT core, the time limit is 1 hour).
+Adding these custom modules also be done in the Quartus GUI (project file will be located at hdl/quartus/work/bladeRF.qpf after initially running the build script). Be sure that the bladerf-hosted.qip file is updated if you want to build script to work.
+:
+Note: If you are generating Altera IP cores using a free version of Quartus (i.e. Quartus II Web Edition) without an IP license, you may not be able to generate a .rbf bitstream file to load the bladeRF FPGA with. Instead you will be required to use Altera's OpenCore Plus evaluation feature to load the FPGA. This means that a time-limited .sof file will be generated (placed in hdl/quartus/work/output_files) and must be loaded on to the FPGA using the USB Blaster cable connected to the FPGA's JTAG header (see "Debugging" section). This can be done in Quartus. You can either keep the cable attached after you program the FPGA, and the IP core will work without a time limit, or you can detach the cable and the IP core will work for a limited time (ex: For the FFT core, the time limit is 1 hour).
+
+== Nios Software Development ==
+Code for the Nios II processor is found in [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/ip/altera/nios_system/software bladeRF/hdl/fpga/ip/altera/nios_system/software]. The Quartus II installation includes an edition of Eclipse IDE which can be used to build, load, and debug the Nios program independently. View the [https://github.com/Nuand/bladeRF/blob/master/hdl/fpga/ip/altera/nios_system/software/README.md README] for instructions on getting set up with Eclipse. An Altera/Terasic USB Blaster cable is required for manually loading/debugging the code (See the "Debugging" section).
+
+== Debugging ==
+FPGA designs can be debugged using an Altera/Terasic USB Blaster cable which connects to the bladeRF's FPGA JTAG header (J38 on the board). The [http://www.terasic.com.tw/cgi-bin/page/archive.pl?No=46 Terasic cable] is recommended since it is significantly cheaper than the cable sold by Altera and works the same. Designs can be debugged in the following ways: 
+* Probe internal signals of the FPGA logic using Altera's SignalTap II internal logic analyzer (located in the Tools menu in Quartus). SignalTap .stp files can also be passed into the build_bladerf.sh script using the '-a' flag and the '-f' flag.
+* Step through your Nios program line-by-line using the debugger built into Eclipse. Instructions for doing this are [https://github.com/Nuand/bladeRF/blob/master/hdl/fpga/ip/altera/nios_system/software/README.md here].
+
+== Tips ==
+* If you previously compiled an FPGA bitstream (.rbf/.sof file) in Quartus, but have edited code for the Nios program and want to regenerate the bitstream, you do not need to perform the full 10-15 minute Quartus recompilation. Follow these steps to quickly regenerate the bitstream with your updated Nios program:
+*# In Eclipse, rebuild the program by selecting Project > Build All.
+*# Right click on the bladeRF_nios project and select Make Targets > Build.
+*# Select mem_init_generate and click Build. This will update the memory initialization file nios_system_ram.hex.
+*# In Quartus, select Processing > "Update Memory Initialization File" and wait for it to complete.
+*# In the compilation view, double click "Assembler (Generate programming files)" to regenerate the bitstream. The new bitstream file will be located in quartus/work/output_files. From here you can load the FPGA as usual.
+* When using SignalTap, be sure that the clock you are using corresponds to the clock domain of the signals you are probing.
 
 == Examples ==
 * [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/platforms/bladerf/vhdl/bladerf-adsb.vhd ADSB decoder] (source code below the top-level is [https://github.com/Nuand/bladeRF-adsb here])
