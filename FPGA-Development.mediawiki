@@ -112,6 +112,8 @@ FPGA designs can be debugged using an Altera/Terasic USB Blaster cable which con
 * Probe internal signals of the FPGA logic using Altera's SignalTap II internal logic analyzer (located in the Tools menu in Quartus). SignalTap .stp files can also be passed into the build_bladerf.sh script using the '-a' flag and the '-f' flag.
 * Step through your Nios program line-by-line using the debugger built into Eclipse. Instructions for doing this are [https://github.com/Nuand/bladeRF/blob/master/hdl/fpga/ip/altera/nios_system/software/README.md here].
 
+NOTE: If you are using the USB blaster cable to load the FPGA with a .sof configuration file in Quartus, you must first initialize the FPGA with the default bladeRF .rbf bitstream using bladeRF-cli or libbladeRF. Otherwise, the .sof bitstream will not work after being loaded onto the FPGA (not sure why this happens).
+
 == Tips ==
 * If you previously compiled an FPGA bitstream (.rbf/.sof file) in Quartus, but have edited code for the Nios program and want to regenerate the bitstream, you do not need to perform the full 10-15 minute Quartus recompilation. Follow these steps to quickly regenerate the bitstream with your updated Nios program:
 *# In Eclipse, rebuild the program by selecting Project > Build All.
