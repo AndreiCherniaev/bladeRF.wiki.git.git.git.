@@ -35,7 +35,7 @@ If you are on a USB 2.0 port and encounter errors (as evidenced by varying times
 
 A simple and inexpensive test setup can be achieved using a blank SIM card, a SIM card writer, and low-cost cellular device.
 
-This [http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dcomputers&field-keywords=16+in+1+SIM+Super "16 in 1 Super SIM"] has been verified to work properly. These all appear to come preprogrammed with the IMSI <code>001010123456789</code>.  To configure the sim card, please see [http://wiki.yatebts.com/index.php/PySIM this page] about PySIM.
+This [http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dcomputers&field-keywords=16+in+1+SIM+Super "16 in 1 Super SIM"] has been verified to work properly (alternative source on [https://rover.ebay.com/rover/1/711-53200-19255-0/1?icep_id=114&ipn=icep&toolid=20004&campid=5338067550&mpre=http%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_odkw%3D16%2Bin%2B1%2Bsuper%2Bsim%2B%252Breader%2B%252Bwriter%26_osacat%3D0%26_from%3DR40%26_trksid%3Dp2045573.m570.l1313.TR0.TRC0.H0.X%2Bsuper%2Bsim%2B%252Breader%2B%252Bwriter.TRS0%26_nkw%3D%2Bsuper%2Bsim%2B%252Breader%2B%252Bwriter%26_sacat%3D0 ebay]). These all appear to come preprogrammed with the IMSI <code>001010123456789</code>.  To configure the sim card, please see [http://wiki.yatebts.com/index.php/PySIM this page] about PySIM.
 
 Plenty of quad-band GSM devices are available online. One such device that has been tested with the above SIM card is the [http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dmobile&field-keywords=BLU+Q170T&rh=n%3A2335752011%2Ck%3ABLU+Q170T_ BLU Q170T].
 
