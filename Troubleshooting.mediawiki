@@ -211,6 +211,21 @@ Below is a list of configurations that people have reported success on. Feel fre
 |VL805 Chipset (VIA Technologies, Inc. Device 3483 (rev 01))
 |Ubuntu 13.04 x86_64. osmocom_fft runs without issue at 40Msps
 |-
+|bglod's desktop
+|MSI X99A SLI Plus
+|VIA VL805 (VID=2109, PID=3431)
+|Arch Linux 4.10.6-1-ARCH
+|-
+|bglod's desktop
+|MSI X99A SLI Plus
+|Intel X99 (VID=8087, PID=8002 and PID=800a)
+|Arch Linux 4.10.6-1-ARCH
+|-
+|bglod's desktop
+|MSI X99A SLI Plus
+|ASMedia ASM1142 USB 3.1 (PCIe VID=1b21, PID=1242)
+|Arch Linux 4.10.6-1-ARCH
+|-
 |scancapecod's at work desktop
 |Dell Optiplex 9020 / i5-4570 @ 3.20GHz
 |Intel 8 Series/C220 Series USB Enhanced Host Controller, Intel USB 3.0 eXtensible Host Controller
