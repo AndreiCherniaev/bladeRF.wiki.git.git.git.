@@ -104,6 +104,17 @@ Adding these custom modules also be done in the Quartus GUI (project file will b
 :
 Note: If you are generating Altera IP cores using a free version of Quartus (i.e. Quartus II Web Edition) without an IP license, you may not be able to generate a .rbf bitstream file to load the bladeRF FPGA with. Instead you will be required to use Altera's OpenCore Plus evaluation feature to load the FPGA. This means that a time-limited .sof file will be generated (placed in hdl/quartus/work/output_files) and must be loaded on to the FPGA using the USB Blaster cable connected to the FPGA's JTAG header (see "Debugging" section). This can be done in Quartus. You can either keep the cable attached after you program the FPGA, and the IP core will work without a time limit, or you can detach the cable and the IP core will work for a limited time (ex: For the FFT core, the time limit is 1 hour).
 
+== Adding your own platform revision ==
+Working on bladerf-hosted.vhd is not a good idea if you plan to implement your own signal processing for the bladeRF, as you might want to go back to the original functionality without hassle. For this reason, the bladeRF codebase uses Quartus revisions to allow different FPGA design implementations to coexist.
+
+To add your own revision to the bladeRF project, perform the following steps:
+* In <code>hdl/fpga/platforms/bladerf/vhdl/</code>, create a new vhdl file for your top level architecture. It is possible to copy bladerf-hosted.vhd to bladerf-<i>revision_name</i>.vhd as a start.
+* In <code>hdl/fpga/platforms/bladerf/</code>, create a new QIP file containing the necessary IP files, including your top level design file. Again, you can copy bladerf-hosted.qip to bladerf-<i>revision_name</i>.qip and just change the top level VHDL design file name to fit.
+* In <code>hdl/quartus/bladerf.tcl</code>, where all the revisions are created, add your revision by adding a line such as "make_revision <i>revision_name</i>" to make your revision known to the Quartus project.
+* In <code>hdl/quartus/build_bladerf.sh</code>, you need to add your revision to the list of allowed revisions. This can be accomplished by finding where the script checks if a correct revision name was passed (it's right after command line options are parsed) and adding your revision as an exception there. Don't forget to change the help message in usage() to list your revision as well.
+
+At this point, you should be able to build your revision using the <code>build_bladerf.sh</code> script, passing it your revision name as a parameter.
+
 == Nios Software Development ==
 Code for the Nios II processor is found in [https://github.com/Nuand/bladeRF/tree/master/hdl/fpga/ip/altera/nios_system/software bladeRF/hdl/fpga/ip/altera/nios_system/software]. The Quartus II installation includes an edition of Eclipse IDE which can be used to build, load, and debug the Nios program independently. View the [https://github.com/Nuand/bladeRF/blob/master/hdl/fpga/ip/altera/nios_system/software/README.md README] for instructions on getting set up with Eclipse. An Altera/Terasic USB Blaster cable is required for manually loading/debugging the code (See the "Debugging" section).
 
