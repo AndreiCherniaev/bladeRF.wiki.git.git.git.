@@ -271,7 +271,7 @@ If you get a pop-up with errors about ''PYTHONPATH'' or ''LD_LIBRARY_PATH'', che
 This step is optional, but will make additional IQ balance functionality available for gr-osmosdr.
 
 <pre>
-$ cd ~/software/gnuradio-builds/gr-iqbal
+$ cd ~/software/gnuradio-build/gr-iqbal
 $ mkdir build
 $ cd build
 $ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.9.2 ../
