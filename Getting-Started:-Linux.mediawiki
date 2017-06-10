@@ -282,7 +282,7 @@ $ make -j8 && sudo make install && sudo ldconfig
 [http://sdr.osmocom.org/trac/wiki/GrOsmoSDR gr-osmosdr] was checked out during the build-gnuradio execution. This provides GNU Radio support for a number of devices, including the bladeRF.
 
 <pre>
-$ cd ~/software/gnuradio-builds/gr-osmosdr
+$ cd ~/software/gnuradio-build/gr-osmosdr
 $ mkdir build
 $ cd build
 $ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.9.2 ../
