@@ -119,7 +119,7 @@ If you already have the repositories checked out from a previous build, you can 
 cd ~/software/null/yate
 svn update
 
-cd ~/software/null/yate-bts
+cd ~/software/null/yatebts
 svn update
 ```
 
