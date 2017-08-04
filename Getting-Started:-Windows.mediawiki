@@ -26,16 +26,17 @@ For more information, see the [https://github.com/msysgit/msysgit/wiki/InstallMS
 # Download the latest Windows binary release of libusb, which also include development headers [http://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.20/libusb-1.0.20.7z/download]
 ## Note: you may need to download and install [http://www.7-zip.org/ 7-zip from 7-zip.org] to open this file.
 # Extract the contents to a location of your choice. Make note of this location so that you can later provide it to CMake. The default configuration assumes that files will be in '''C:/Program Files (x86)/libusb-1.0.20''' If you wish to change the directory, use the -DLIBUSB_PATH= option for CMake.
-# Get the device driver installer (zadig): http://sourceforge.net/projects/libwdi/files/zadig/
+# Get the device driver installer (zadig): http://zadig.akeo.ie (older versions: http://sourceforge.net/projects/libwdi/files/zadig/)
 # Open Zadig. 
-# Go to Device->Create New Device. 
-# Type a device name (i.e., "bladeRF") in the text box. In the driver spinbox, select libusbK. Specify the VID/PID (''2cf0''/''5246'') in the USB ID fields.
-# Plug the device into the computer and open Device Manager.  A new device called ''bladeRF'' should show up with a yellow bang next to it in device manager.
-# Right-click on the ''bladeRF'' entry and select "Update Driver Software...".  
-## Choose "Browse my computer for driver software"
-## "Let me pick from a list of device drivers on my computer".  
-## Click "Have Disk..." and point it to the location that Zadig installed the driver to (C:\usb_driver).  
-## Select "bladeRF" and continue through the wizard.
+# If the bladeRF is not already listed in the dropdown box, go to Device->Create New Device, type a device name (i.e., "bladeRF") in the text box, and specify the VID/PID (''2cf0''/''5246'') in the USB ID fields.
+# In the driver spinbox, select libusbK.
+# Click "Install Driver"
+# Open Device Manager.  A new device called ''bladeRF'' should show up. If there is a yellow bang next to it in device manager:
+## Right-click on the ''bladeRF'' entry and select "Update Driver Software...".  
+### Choose "Browse my computer for driver software"
+### "Let me pick from a list of device drivers on my computer".  
+### Click "Have Disk..." and point it to the location that Zadig installed the driver to (C:\usb_driver).  
+### Select "bladeRF" and continue through the wizard.
 # Device Manager should now show ''bladeRF'' under ''libusbK USB Devices''.
 
 === Installing pthreads-win32 ===
