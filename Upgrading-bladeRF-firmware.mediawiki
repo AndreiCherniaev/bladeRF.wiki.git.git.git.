@@ -59,10 +59,12 @@ The bladeRF is configured to fall back to a USB bootloader if valid firmware is 
 #  <u>'''Remove the jumper on J64.'''</u>
 ## This is very important, as otherwise the SPI flash writes will not be able to succeed in the following steps.
 # From a shell (or cmd.exe), run <code>bladeRF-cli -i</code>.
-## You should now be at a ''bladeRF>'' prompt, with a message indicating that the bootloader detected via a string like: ''[INFO] Found FX3 bootloader device on bus=1 addr=10. This may be a bladeRF.'' 
+## You should now be at a ''bladeRF>'' prompt, with a message indicating that the bootloader detected via a string like: ''NOTE: One or more FX3-based devices operating in bootloader mode were detected.'' 
 ## All of the following commands should be entered in the bladeRF-cli's prompt -- not from your shell.
+#  Run <code>recover</code> with no arguments
+## This will get the ''Bus'' and ''Address'' that you'll need for the next step.
 #  Run <code>recover <bus> <addr> <path to firmware></code>
-## ''bus'' and ''addr'' are the values shown in your [INFO] message, and ''path to firmware'' is the path to the firmware you want to load. 
+## ''bus'' and ''addr'' are the values shown as ''Bus'' and ''Address'' above, and ''path to firmware'' is the path to the firmware you want to load. 
 ## This command does not write the firmware to flash; it only loads it into RAM. We will write the firmware to the SPI flash in the next two steps.
 # Run <code>open</code>. 
 ## This will attach to the first available bladeRF. Specifically, this will attach to the device that you just booted bladeRF firmware on via the ''recover'' command.
