@@ -63,27 +63,27 @@ GPIO pins are exposed on the XB-200 via <b>J1</b>, <b>J13</b>, and <b>J16</b>. l
 From page 7 of XB200 Schematic:
 
 J7
-{|Pin||Signal
+{|Pin||Signal||FPGA pin
 |-
-|1||GPIO3
+|1||GPIO3||EXP_GPIO_10
 |-
-|2||GPIO4
+|2||GPIO4||EXP_GPIO_11
 |-
 |3||VCCIO_R
 |-
 |4||VCCIO_R
 |-
-|5||GPIO1
+|5||GPIO1||EXP_GPIO_8
 |-
-|6||GPIO2
+|6||GPIO2||EXP_GPIO_9
 |}
 
 J13
-{|Pin||Signal
+{|Pin||Signal||FPGA pin
 |-
-|1||GPIO6
+|1||GPIO6||EXP_GPIO_17
 |-
-|2||GPIO8
+|2||GPIO8||EXP_GPIO_18
 |-
 |3||Ground
 |-
@@ -91,23 +91,23 @@ J13
 |-
 |5||VCCIO_R
 |-
-|6||GPIO5
+|6||GPIO5||EXP_SPI_MOSI
 |}
 
 J16
-{|Pin||Signal
+{|Pin||Signal||FPGA pin
 |-
-|1||GPIO9
+|1||GPIO9||EXP_GPIO_31
 |-
-|2||GPIO10
+|2||GPIO10||EXP_GPIO_32
 |-
-|3||GPIO11
+|3||GPIO11||EXP_GPIO_19
 |-
-|4||GPIO12
+|4||GPIO12||EXP_GPIO_20
 |-
-|5||GPIO13
+|5||GPIO13||EXP_GPIO_21
 |-
-|6||GPIO14
+|6||GPIO14||EXP_GPIO_24
 |}
 
 = Software Support =
