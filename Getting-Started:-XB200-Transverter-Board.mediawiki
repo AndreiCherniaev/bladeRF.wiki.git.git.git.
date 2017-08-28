@@ -69,9 +69,9 @@ From page 7 of XB200 Schematic:
 |-
 |2||GPIO4||EXP_GPIO_11
 |-
-|3||VCCIO_R
+|3||VCCIO_R||1.8 V ref (FPGA right banks)
 |-
-|4||VCCIO_R
+|4||VCCIO_R||1.8 V ref (FPGA right banks)
 |-
 |5||GPIO1||EXP_GPIO_8
 |-
@@ -90,7 +90,7 @@ From page 7 of XB200 Schematic:
 |-
 |4||Ground
 |-
-|5||VCCIO_R
+|5||VCCIO_R||1.8 V ref (FPGA right banks)
 |-
 |6||GPIO5||EXP_SPI_MOSI
 |}
