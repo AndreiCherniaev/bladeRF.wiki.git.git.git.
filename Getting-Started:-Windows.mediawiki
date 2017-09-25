@@ -5,6 +5,9 @@
 ** [http://nuand.com/forums/viewtopic.php?f=5&t=3498 bladeRF, Windows 8, and SDR-Console] (Thanks to Drew)
 
 = Building from source =
+== Warning ==
+'''NOTE!!:''' This document is '''out-of-date'''... see host/README.md for more specific info, and also https://github.com/Nuand/bladeRF/issues/528 ... Visual Studio 2017 works just fine with the pthread modifications mentioned above.
+
 == Tools and Dependencies ==
 === Installing git for Windows ===
 # Download and install [http://msysgit.github.io/ msysgit]. If you plan to submit patches to the bladeRF project, please select the ''Checkout as-is, commit Unix-style line endings'' option in the installer.
