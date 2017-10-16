@@ -16,20 +16,18 @@
 
 For more information, see the [https://github.com/msysgit/msysgit/wiki/InstallMSysGit mysysgit] and [http://code.google.com/p/tortoisegit/wiki/SetupHowTo tortoisegit] wiki pages about their install procedures.
 
-=== Installing Visual Studio Express 2013 for Windows Desktop ===
+=== Installing Visual Studio Community 2017 for Windows Desktop ===
 
-''Note:'' Visual Studio 2015 is currently not supported due to [https://github.com/Nuand/bladeRF/issues/447 Issue #447]
-
-# Download Visual Studio Express 2013 for Windows Desktop from Microsoft, which can be found [https://www.visualstudio.com/downloads/download-visual-studio-vs here] under Visual Studio 2013. ''Note:'' This link may become obsolete in the future. Click [https://go.microsoft.com/fwlink/?LinkId=532500&clcid=0x409 here] for the direct link from the page (VS Express 2013 with Update 5 for Windows Desktop).
+# Download Visual Studio Community 2017 for Windows Desktop from Microsoft, which can be found at https://www.visualstudio.com/downloads/
 # Follow the installation instructions, including any post-install updates.
 
-''Note:'' Visual Studio Express 2013 for Windows Desktop corresponds to Visual Studio 12 in CMake.
+''Note:'' Visual Studio Community 2017 is also known as Visual Studio 15.2.
 
 === Installing libusb ===
 
-# Download the latest Windows binary release of libusb, which also include development headers [http://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.20/libusb-1.0.20.7z/download]
+# Download the latest Windows binary release of [http://libusb.info/ libusb], which also include development headers. As of this writing, [https://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.21/libusb-1.0.21.7z/download version 1.0.21] is the latest
 ## Note: you may need to download and install [http://www.7-zip.org/ 7-zip from 7-zip.org] to open this file.
-# Extract the contents to a location of your choice. Make note of this location so that you can later provide it to CMake. The default configuration assumes that files will be in '''C:/Program Files (x86)/libusb-1.0.20''' If you wish to change the directory, use the -DLIBUSB_PATH= option for CMake.
+# Extract the contents to a location of your choice. Make note of this location so that you can later provide it to CMake. The default configuration assumes that files will be in '''C:/Program Files (x86)/libusb-1.0.21''' If you wish to change the directory, use the -DLIBUSB_PATH= option for CMake.
 # Get the device driver installer (zadig): http://zadig.akeo.ie (older versions: http://sourceforge.net/projects/libwdi/files/zadig/)
 # Open Zadig. 
 # If the bladeRF is not already listed in the dropdown box, go to Device->Create New Device, type a device name (i.e., "bladeRF") in the text box, and specify the VID/PID (''2cf0''/''5246'') in the USB ID fields.
@@ -46,9 +44,23 @@ For more information, see the [https://github.com/msysgit/msysgit/wiki/InstallMS
 === Installing pthreads-win32 ===
 The pthreads library is required to build libbladeRF and its utilities. A few steps are required to install this pthreads implementation. See [http://www.sourceware.org/pthreads-win32/ the pthreads-win32 website] for more information.
 
-# Download the latest release. Currently this is [ftp://sourceware.org/pub/pthreads-win32/pthreads-w32-2-9-1-release.zip the pthreads-win32 website].
+# Download the latest release. Currently this is [ftp://sourceware.org/pub/pthreads-win32/pthreads-w32-2-9-1-release.zip version 2.9.1].
 # Extract the contents of the release zip.
 # Copy the contents of the <code>Pre-built.2</code> directory to <code>C:\Program Files (x86)\pthreads-win32</code>
+
+==== pthreads-win32 patch and recompile ====
+If you are using a newer version of Windows / Visual Studio and are getting <code>error C0211: 'timespec': 'struct' type redefinition</code> when trying to build bladeRF, you will need to rebuild pthreads-win32. The below process seems to work with pthreads-win32 2.9.1.
+
+# Get full source tree from [http://www.sourceware.org/pthreads-win32/ the pthreads-win32 website], and unpack someplace convenient
+# In Visual Studio, open <code>pthreads-w32-2-9-1-release\pthreads.2\pthread.dsw</code> (if prompted, a one-way upgrade is OK)
+# Right-click the solution, select "Retarget solution", hit OK.
+# Change "Solution Configurations" dropdown to "Release" ("Debug" doesn't work, but that's OK)
+# Edit pthread.h to add <code>#define HAVE_STRUCT_TIMESPEC</code> and <code>#define PTW32_ARCHx64</code> near the top, just below the include guard
+# Build the solution
+# If you've already tried building bladeRF, CMake will need attention:
+## File -> Delete Cache
+## Redo the "Configure" dance as before
+## Point <code>LIBPTHREADSWIN32_PATH</code> to the <code>pthreads-w32-2-9-1-release\pthreads.2</code> directory you were just working in
 
 === Installing CMake ===
 Download and install CMake for Windows: 
@@ -65,10 +77,10 @@ http://www.cmake.org/cmake/resources/software.html
 # Under "Where is the source code", browse to '''[preferred_directory]/bladeRF/host'''. 
 # Create a new directory, '''[preferred_directory]/bladeRF/host/build'''. 
 # Under "Where to build the binaries", browse to the newly created '''[preferred_directory]/bladeRF/host/build'''. Click the Configure button. 
-# Select your appropriate version of Visual Studio.  For Visual Studio 2013, select "Visual Studio 12" or "Visual Studio 12 Win64".  Select "Use default native compilers", then click "Finish". 
+# Select your appropriate version of Visual Studio.  For Visual Studio 2013, select "Visual Studio 12" or "Visual Studio 12 Win64".  Select "Use default native compilers", then click "Finish". (TODO: Verify this setting with VS2017/15.2)
 # If the configuration fails, double check the values for ''LIBUSB_PATH'' and ''LIBPTHREADSWIN32_PATH'', and re-run the configuration.
 # Click on the Generate button.
-# A visual studio solution should now be available, '''host/build/bladeRF.sln'''
+# A Visual Studio solution should now be available, '''host/build/bladeRF.sln'''
 
 === Compiling ===
 # CMake has created a ''bladeRF.sln'' file.  Open Visual Studio, and open this file.
