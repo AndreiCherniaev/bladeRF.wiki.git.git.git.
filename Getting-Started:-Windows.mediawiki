@@ -10,9 +10,6 @@ From here, you can continue on with the [[Getting Started: Verifying Basic Devic
 == Note ==
 Unless you specifically need to modify libbladeRF itself, it is '''strongly recommended''' to '''use the bladeRF for Windows installer''' (linked above).  If you have already installed it, you can proceed to [[Getting Started: Verifying Basic Device Operation]].
 
-== Warning ==
-'''NOTE!!:''' This document is '''out-of-date'''... see host/README.md for more specific info, and also https://github.com/Nuand/bladeRF/issues/528 ... Visual Studio 2017 works just fine with the pthread modifications mentioned above.
-
 == Tools and Dependencies ==
 === Installing git for Windows ===
 # Download and install [http://msysgit.github.io/ msysgit]. If you plan to submit patches to the bladeRF project, please select the ''Checkout as-is, commit Unix-style line endings'' option in the installer.
@@ -26,6 +23,8 @@ For more information, see the [https://github.com/msysgit/msysgit/wiki/InstallMS
 # Follow the installation instructions, including any post-install updates.
 
 ''Note:'' Visual Studio Community 2017 is also known as Visual Studio 15.2.
+
+''Tip:'' You can download time-limited virtual machine images from Microsoft, which have the latest Windows 10 and Visual Studio builds, from https://developer.microsoft.com/en-us/windows/downloads/virtual-machines
 
 === Installing libusb ===
 
@@ -70,7 +69,7 @@ If you are using a newer version of Windows / Visual Studio and are getting <cod
 Download and install CMake for Windows: 
 http://www.cmake.org/cmake/resources/software.html
 
-== Building with CMake and Visual Studio 2013 ==
+== Building with CMake and Visual Studio Community 2017 ==
 === Cloning the bladeRF git repository ===
 # Right click on the Desktop and click "Git clone..."
 # Paste https://github.com/Nuand/bladeRF.git into the URL field
@@ -81,13 +80,13 @@ http://www.cmake.org/cmake/resources/software.html
 # Under "Where is the source code", browse to '''[preferred_directory]/bladeRF/host'''. 
 # Create a new directory, '''[preferred_directory]/bladeRF/host/build'''. 
 # Under "Where to build the binaries", browse to the newly created '''[preferred_directory]/bladeRF/host/build'''. Click the Configure button. 
-# Select your appropriate version of Visual Studio.  For Visual Studio 2013, select "Visual Studio 12" or "Visual Studio 12 Win64".  Select "Use default native compilers", then click "Finish". (TODO: Verify this setting with VS2017/15.2)
+# Select your appropriate version of Visual Studio.  For Visual Studio 2017, select "Visual Studio 15" or "Visual Studio 15 Win64".  Select "Use default native compilers", then click "Finish".
 # If the configuration fails, double check the values for ''LIBUSB_PATH'' and ''LIBPTHREADSWIN32_PATH'', and re-run the configuration.
 # Click on the Generate button.
 # A Visual Studio solution should now be available, '''host/build/bladeRF.sln'''
 
 === Compiling ===
-# CMake has created a ''bladeRF.sln'' file.  Open Visual Studio, and open this file.
+# CMake has created a ''bladeRF.sln'' file.  Open Visual Studio, and open this file. (You can also click "Open Project" in CMake)
 # A number of projects should show up in the Solution Explorer, including:
 ## bladeRF-cli
 ## bladeRF-fsk
