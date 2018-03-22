@@ -49,10 +49,7 @@ If you are using a newer version of Windows / Visual Studio and/or are getting <
 # Change "Solution Configurations" dropdown to "Release" ("Debug" doesn't work, but that's OK)
 # Edit pthread.h to add <code>#define HAVE_STRUCT_TIMESPEC</code> and <code>#define PTW32_ARCHx64</code> near the top, just below the include guard
 # Build the solution
-# If you've already tried building bladeRF, CMake will need attention:
-## File -> Delete Cache
-## Redo the "Configure" dance as before
-## Point <code>LIBPTHREADSWIN32_PATH</code> to the <code>pthreads-w32-2-9-1-release\pthreads.2</code> directory you were just working in
+# Copy the contents of the <code>pthreads.2</code> directory to <code>C:\Program Files (x86)\pthreads-win32</code>.
 
 === Installing CMake ===
 Download and install CMake for Windows: 
@@ -86,6 +83,8 @@ http://www.cmake.org/cmake/resources/software.html
 # Select Debug or Release build from the drop down menu at the top
 # Run Build -> Build Solution
 # After the build completes, you should see a <code>host/build/output</code> directory in the build directory, containing either a Debug or Release subdirectory. These directories will contain generated executables, libraries, and will contain copies of the required DLLs.
+
+''Note'': If the build fails with <code>error C0211: 'timespec': 'struct' type redefinition</code>, see "pthreads-win32 patch and recompile" above.  You may need to delete the <code>[preferred_directory]/bladeRF/host/build</code> directory and restart from the "Configuring with CMake" step.
 
 == Verifying basic functionality ==
 Open up a <code>cmd.exe</code> window and navigate to the output directory associated with your build:
