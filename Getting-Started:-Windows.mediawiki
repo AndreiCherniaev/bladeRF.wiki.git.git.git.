@@ -1,4 +1,8 @@
-= Option 1: Using an Installer (RECOMMENDED) =
+There are two ways to install bladeRF for Windows: using a pre-built, signed installer executable, or building libbladeRF and its associated tools from source.
+
+= Using an Installer  =
+The installer includes libbladeRF, the bladeRF-cli utility, firmware and FPGA images, and signed drivers for communicating with the hardware.  If you have MATLAB installed, it will also install the necessary bindings and prepare them for use with MATLAB.
+
 * [https://www.nuand.com/windows.php Nuand Windows Installer Guide and Download]
 * Community guides:
 ** [http://www.scan-ne.net/bladerf/bladerfwin7.html  bladeRF, Windows 7, and SDR-Radio] (Courtesy of [http://nuand.com/forums/viewtopic.php?f=9&t=3526 Scott] from [http://www.scan-ne.net Scan New England])
@@ -6,111 +10,5 @@
 
 From here, you can continue on with the [[Getting Started: Verifying Basic Device Operation]] wiki page. If you encounter any errors or warnings, please see the [[Troubleshooting]] guide.
 
-= Option 2: Building from source (ADVANCED) =
-== Note ==
-Unless you specifically need to modify libbladeRF itself, it is '''strongly recommended''' to '''use the bladeRF for Windows installer''' (linked above).  If you have already installed it, you can proceed to [[Getting Started: Verifying Basic Device Operation]].
-
-== Tools and Dependencies ==
-=== Installing git for Windows ===
-# Download and install [http://msysgit.github.io/ msysgit]. If you plan to submit patches to the bladeRF project, please select the ''Checkout as-is, commit Unix-style line endings'' option in the installer.
-# Download and install [http://code.google.com/p/tortoisegit/wiki/Download tortoisegit].
-
-For more information, see the [https://github.com/msysgit/msysgit/wiki/InstallMSysGit mysysgit] and [http://code.google.com/p/tortoisegit/wiki/SetupHowTo tortoisegit] wiki pages about their install procedures.
-
-=== Installing Visual Studio Community 2017 for Windows Desktop ===
-
-# Download Visual Studio Community 2017 for Windows Desktop from Microsoft, which can be found at https://www.visualstudio.com/downloads/
-# Follow the installation instructions, including any post-install updates.
-
-''Note:'' Visual Studio Community 2017 is also known as Visual Studio 15.2.
-
-''Tip:'' You can download time-limited virtual machine images from Microsoft, which have the latest Windows 10 and Visual Studio builds, from https://developer.microsoft.com/en-us/windows/downloads/virtual-machines
-
-=== Installing libusb ===
-
-# Download the latest Windows binary release of [http://libusb.info/ libusb], which also include development headers. As of this writing, [https://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.21/libusb-1.0.21.7z/download version 1.0.21] is the latest
-## Note: you may need to download and install [http://www.7-zip.org/ 7-zip from 7-zip.org] to open this file.
-# Extract the contents to a location of your choice. Make note of this location so that you can later provide it to CMake. The default configuration assumes that files will be in '''C:/Program Files (x86)/libusb-1.0.21''' If you wish to change the directory, use the -DLIBUSB_PATH= option for CMake.
-# Get the device driver installer (zadig): http://zadig.akeo.ie (older versions: http://sourceforge.net/projects/libwdi/files/zadig/)
-# Open Zadig. 
-# If the bladeRF is not already listed in the dropdown box, go to Device->Create New Device, type a device name (i.e., "bladeRF") in the text box, and specify the VID/PID (''2cf0''/''5246'') in the USB ID fields.
-# In the driver spinbox, select libusbK.
-# Click "Install Driver"
-# Open Device Manager.  A new device called ''bladeRF'' should show up. If there is a yellow bang next to it in device manager:
-## Right-click on the ''bladeRF'' entry and select "Update Driver Software...".  
-### Choose "Browse my computer for driver software"
-### "Let me pick from a list of device drivers on my computer".  
-### Click "Have Disk..." and point it to the location that Zadig installed the driver to (C:\usb_driver).  
-### Select "bladeRF" and continue through the wizard.
-# Device Manager should now show ''bladeRF'' under ''libusbK USB Devices''.
-
-=== Installing pthreads-win32 ===
-The pthreads library is required to build libbladeRF and its utilities. A few steps are required to install this pthreads implementation. See [http://www.sourceware.org/pthreads-win32/ the pthreads-win32 website] for more information.
-
-# Download the latest release. Currently this is [ftp://sourceware.org/pub/pthreads-win32/pthreads-w32-2-9-1-release.zip version 2.9.1].
-# Extract the contents of the release zip.
-# Copy the contents of the <code>Pre-built.2</code> directory to <code>C:\Program Files (x86)\pthreads-win32</code>
-
-==== pthreads-win32 patch and recompile ====
-If you are using a newer version of Windows / Visual Studio and are getting <code>error C0211: 'timespec': 'struct' type redefinition</code> when trying to build bladeRF, you will need to rebuild pthreads-win32. The below process seems to work with pthreads-win32 2.9.1.
-
-# Get full source tree from [http://www.sourceware.org/pthreads-win32/ the pthreads-win32 website], and unpack someplace convenient
-# In Visual Studio, open <code>pthreads-w32-2-9-1-release\pthreads.2\pthread.dsw</code> (if prompted, a one-way upgrade is OK)
-# Right-click the solution, select "Retarget solution", hit OK.
-# Change "Solution Configurations" dropdown to "Release" ("Debug" doesn't work, but that's OK)
-# Edit pthread.h to add <code>#define HAVE_STRUCT_TIMESPEC</code> and <code>#define PTW32_ARCHx64</code> near the top, just below the include guard
-# Build the solution
-# If you've already tried building bladeRF, CMake will need attention:
-## File -> Delete Cache
-## Redo the "Configure" dance as before
-## Point <code>LIBPTHREADSWIN32_PATH</code> to the <code>pthreads-w32-2-9-1-release\pthreads.2</code> directory you were just working in
-
-=== Installing CMake ===
-Download and install CMake for Windows: 
-http://www.cmake.org/cmake/resources/software.html
-
-== Building with CMake and Visual Studio Community 2017 ==
-=== Cloning the bladeRF git repository ===
-# Right click on the Desktop and click "Git clone..."
-# Paste https://github.com/Nuand/bladeRF.git into the URL field
-# Select your preferred directory to clone the repository to. TortoiseGit requires this to be an empty folder.
-# Click OK and let it run. The bladeRF code is now on your computer.
-=== Configuring with CMake ===
-# Run the CMake GUI utility. 
-# Under "Where is the source code", browse to '''[preferred_directory]/bladeRF/host'''. 
-# Create a new directory, '''[preferred_directory]/bladeRF/host/build'''. 
-# Under "Where to build the binaries", browse to the newly created '''[preferred_directory]/bladeRF/host/build'''. Click the Configure button. 
-# Select your appropriate version of Visual Studio.  For Visual Studio 2017, select "Visual Studio 15" or "Visual Studio 15 Win64".  Select "Use default native compilers", then click "Finish".
-# If the configuration fails, double check the values for ''LIBUSB_PATH'' and ''LIBPTHREADSWIN32_PATH'', and re-run the configuration.
-# Click on the Generate button.
-# A Visual Studio solution should now be available, '''host/build/bladeRF.sln'''
-
-=== Compiling ===
-# CMake has created a ''bladeRF.sln'' file.  Open Visual Studio, and open this file. (You can also click "Open Project" in CMake)
-# A number of projects should show up in the Solution Explorer, including:
-## bladeRF-cli
-## bladeRF-fsk
-## libbladerf_shared
-# Select Debug or Release build from the drop down menu at the top
-# Run <code>Build -> Build Solution</code>
-# After the build completes, you should see an '''host/build/output''' directory in the build directory, containing either a Debug or Release subdirectory. These directories will contain generated executables, libraries, and will contain copies of the required DLLs.
-
-== Verifying basic functionality ==
-Open up a '''cmd.exe''' window and navigate to the output directory associated with your build:
-
-<pre>
-C:\Users\jon\Documents\projects\bladeRF\host\build\host\output\Debug>dir
-
-10/19/2013  05:36 PM           122,880 bladeRF-cli.exe
-10/19/2013  05:36 PM           139,776 bladeRF.dll
-
-... Snipped out some other items ...
-
-10/19/2013  05:35 PM            92,160 libusb-1.0.dll
-10/19/2013  05:35 PM            55,808 pthreadVC2.dll
-
-</pre>
-
-Note the presence of the libusb-1.0.dll and pthreadVC2.dll in this directory. These are placed here so that the bladeRF-cli and other tests may be run from this directory.
-
-From here, you can continue on with the [[Getting Started: Verifying Basic Device Operation]] wiki page. If you encounter any errors or warnings, please see the [[Troubleshooting]] guide.
+= Building from source (ADVANCED) =
+If you need to modify libbladeRF, or simply want to build it from source, you can follow the directions at [[Building libbladeRF for Windows]].
