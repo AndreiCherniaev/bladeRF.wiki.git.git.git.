@@ -2,16 +2,7 @@ Be advised that building libbladeRF for Windows is a somewhat difficult process 
 
 == Tools and Dependencies ==
 === Installing git for Windows ===
-Choose one of the following options:
-
-==== Option 1: Git for Windows ====
 # Download and install [https://git-scm.com/ Git for Windows] from their [https://git-scm.com/downloads Downloads page].
-
-==== Option 2: msysgit / tortoisegit ====
-# Download and install [http://msysgit.github.io/ msysgit]. If you plan to submit patches to the bladeRF project, please select the ''Checkout as-is, commit Unix-style line endings'' option in the installer.
-# Download and install [http://code.google.com/p/tortoisegit/wiki/Download tortoisegit].
-
-For more information, see the [https://github.com/msysgit/msysgit/wiki/InstallMSysGit mysysgit] and [http://code.google.com/p/tortoisegit/wiki/SetupHowTo tortoisegit] wiki pages about their install procedures.
 
 === Installing Visual Studio Community 2017 for Windows Desktop ===
 
@@ -67,20 +58,11 @@ http://www.cmake.org/cmake/resources/software.html
 
 == Building with CMake and Visual Studio Community 2017 ==
 === Cloning the bladeRF git repository ===
-This process is slightly different, depending on whether you're using Git for Windows or TortoiseGit.  The general workflow is the same, though: you want to do the equivalent of <code>git clone https://github.com/Nuand/bladeRF.git</code>.
-
-==== Using Git for Windows ====
 # Right click on the Desktop and select "Git GUI Here"
 # Select "Clone Existing Repository"
 # Paste <code>https://github.com/Nuand/bladeRF.git</code> into the Source Location field.
 # Select your preferred directory to clone the repository to, in the Target Directory field. This must be a directory that does not yet exist.
 # Click "Clone" and let it run. When it's done, close the Git Gui window. The bladeRF code is now on your computer.
-
-==== Using TortoiseGit ====
-# Right click on the Desktop and click "Git clone..."
-# Paste <code>https://github.com/Nuand/bladeRF.git</code> into the URL field
-# Select your preferred directory to clone the repository to. TortoiseGit requires this to be an empty folder.
-# Click OK and let it run. The bladeRF code is now on your computer.
 
 === Configuring with CMake ===
 # Run the CMake GUI utility. 
