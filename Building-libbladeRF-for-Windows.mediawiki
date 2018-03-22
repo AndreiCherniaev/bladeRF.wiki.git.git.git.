@@ -20,13 +20,13 @@ For more information, see the [https://github.com/msysgit/msysgit/wiki/InstallMS
 
 ''Note:'' Visual Studio Community 2017 is also known as Visual Studio 15.2.
 
-''Tip:'' You can download time-limited virtual machine images from Microsoft, which have the latest Windows 10 and Visual Studio builds, from https://developer.microsoft.com/en-us/windows/downloads/virtual-machines
+''Tip:'' You can download time-limited virtual machine images from Microsoft with the latest Windows 10 and Visual Studio builds from https://developer.microsoft.com/en-us/windows/downloads/virtual-machines
 
 === Installing libusb ===
 
 # Download the latest Windows binary release of [http://libusb.info/ libusb], which also include development headers. As of this writing, [https://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.21/libusb-1.0.21.7z/download version 1.0.21] is the latest
 ## Note: you may need to download and install [http://www.7-zip.org/ 7-zip from 7-zip.org] to open this file.
-# Extract the contents to a location of your choice. Make note of this location so that you can later provide it to CMake. The default configuration assumes that files will be in '''C:/Program Files (x86)/libusb-1.0.21''' If you wish to change the directory, use the -DLIBUSB_PATH= option for CMake.
+# Extract the contents to a location of your choice. Make note of this location so that you can later provide it to CMake. The default configuration assumes that files will be in <code>C:/Program Files (x86)/libusb-1.0.21</code>, but if you wish to change the directory, you can change the <code>LIBUSB_PATH</code> in CMake.
 # Get the device driver installer (zadig): http://zadig.akeo.ie (older versions: http://sourceforge.net/projects/libwdi/files/zadig/)
 # Open Zadig. 
 # If the bladeRF is not already listed in the dropdown box, go to Device->Create New Device, type a device name (i.e., "bladeRF") in the text box, and specify the VID/PID (''2cf0''/''5246'') in the USB ID fields.
@@ -67,43 +67,43 @@ http://www.cmake.org/cmake/resources/software.html
 
 == Building with CMake and Visual Studio Community 2017 ==
 === Cloning the bladeRF git repository ===
-This process is slightly different, depending on whether you're using Git for Windows or TortoiseGit.  The general workflow is the same, though: you want to do the equivalent of "git clone https://github.com/Nuand/bladeRF.git".
+This process is slightly different, depending on whether you're using Git for Windows or TortoiseGit.  The general workflow is the same, though: you want to do the equivalent of <code>git clone https://github.com/Nuand/bladeRF.git</code>.
 
 ==== Using Git for Windows ====
 # Right click on the Desktop and select "Git GUI Here"
 # Select "Clone Existing Repository"
-# Paste https://github.com/Nuand/bladeRF.git into the Source Location field.
+# Paste <code>https://github.com/Nuand/bladeRF.git</code> into the Source Location field.
 # Select your preferred directory to clone the repository to, in the Target Directory field. This must be a directory that does not yet exist.
 # Click "Clone" and let it run. When it's done, close the Git Gui window. The bladeRF code is now on your computer.
 
 ==== Using TortoiseGit ====
 # Right click on the Desktop and click "Git clone..."
-# Paste https://github.com/Nuand/bladeRF.git into the URL field
+# Paste <code>https://github.com/Nuand/bladeRF.git</code> into the URL field
 # Select your preferred directory to clone the repository to. TortoiseGit requires this to be an empty folder.
 # Click OK and let it run. The bladeRF code is now on your computer.
 
 === Configuring with CMake ===
 # Run the CMake GUI utility. 
-# Under "Where is the source code", browse to '''[preferred_directory]/bladeRF/host'''. 
-# Create a new directory, '''[preferred_directory]/bladeRF/host/build'''. 
-# Under "Where to build the binaries", browse to the newly created '''[preferred_directory]/bladeRF/host/build'''. Click the Configure button. 
+# Under "Where is the source code", browse to <code>[preferred_directory]/bladeRF/host</code>. 
+# Create a new directory, <code>[preferred_directory]/bladeRF/host/build</code>. 
+# Under "Where to build the binaries", browse to the newly created <code>[preferred_directory]/bladeRF/host/build</code>. Click the Configure button. 
 # Select your appropriate version of Visual Studio.  For Visual Studio 2017, select "Visual Studio 15" or "Visual Studio 15 Win64".  Select "Use default native compilers", then click "Finish".
-# If the configuration fails, double check the values for ''LIBUSB_PATH'' and ''LIBPTHREADSWIN32_PATH'', and re-run the configuration.
+# If the configuration fails, double check the values for <code>LIBUSB_PATH</code> and <code>LIBPTHREADSWIN32_PATH</code>, and re-run the configuration.
 # Click on the Generate button.
-# A Visual Studio solution should now be available, '''host/build/bladeRF.sln'''
+# A Visual Studio solution should now be available, <code>host/build/bladeRF.sln</code>.
 
 === Compiling ===
-# CMake has created a ''bladeRF.sln'' file.  Open Visual Studio, and open this file. (You can also click "Open Project" in CMake)
+# CMake has created a <code>bladeRF.sln</code> file.  Open Visual Studio, and open this file. (You can also click "Open Project" in CMake)
 # A number of projects should show up in the Solution Explorer, including:
 ## bladeRF-cli
 ## bladeRF-fsk
 ## libbladerf_shared
 # Select Debug or Release build from the drop down menu at the top
-# Run <code>Build -> Build Solution</code>
-# After the build completes, you should see an '''host/build/output''' directory in the build directory, containing either a Debug or Release subdirectory. These directories will contain generated executables, libraries, and will contain copies of the required DLLs.
+# Run Build -> Build Solution
+# After the build completes, you should see a <code>host/build/output</code> directory in the build directory, containing either a Debug or Release subdirectory. These directories will contain generated executables, libraries, and will contain copies of the required DLLs.
 
 == Verifying basic functionality ==
-Open up a '''cmd.exe''' window and navigate to the output directory associated with your build:
+Open up a <code>cmd.exe</code> window and navigate to the output directory associated with your build:
 
 <pre>
 C:\Users\jon\Documents\projects\bladeRF\host\build\host\output\Debug>dir
@@ -118,6 +118,6 @@ C:\Users\jon\Documents\projects\bladeRF\host\build\host\output\Debug>dir
 
 </pre>
 
-Note the presence of the libusb-1.0.dll and pthreadVC2.dll in this directory. These are placed here so that the bladeRF-cli and other tests may be run from this directory.
+Note the presence of the <code>libusb-1.0.dll</code> and <code>pthreadVC2.dll</code> in this directory. These are placed here so that the bladeRF-cli and other tests may be run from this directory.
 
 From here, you can continue on with the [[Getting Started: Verifying Basic Device Operation]] wiki page. If you encounter any errors or warnings, please see the [[Troubleshooting]] guide.
