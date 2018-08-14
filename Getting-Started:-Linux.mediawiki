@@ -186,10 +186,10 @@ The <code>build-gnuradio</code> script will prompt you a few times before procee
 === Compile GNU Radio ===
 <pre>
 $ cd ~/software/gnuradio-build/gnuradio/
-$ git checkout -b gnuradio-v3.7.9.2 v3.7.9.2
+$ git checkout -b gnuradio-v3.7.13.4 v3.7.13.4
 $ mkdir build
 $ cd build
-$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.9.2 ../
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.13.4 ../
 $ make -j8 && sudo make install
 </pre>
 
@@ -204,7 +204,7 @@ Put the following into it:
 #!/bin/bash
 
 # Add GNU Radio binaries to the search path
-GNURADIO_PATH=/opt/gnuradio-3.7.9.2
+GNURADIO_PATH=/opt/gnuradio-3.7.13.4
 export PATH=$PATH:$GNURADIO_PATH/bin
 
 # Add GNU Radio python libraries to python search path
@@ -215,7 +215,7 @@ else
 fi
 </pre>
 
-'''Note:''' Be sure to update <code>GNURADIO_PATH</code> if you deviated from gnuradio-3.7.9.2
+'''Note:''' Be sure to update <code>GNURADIO_PATH</code> if you deviated from gnuradio-3.7.13.4
 
 '''Note:''' If you're on a non-Debian based distro, you might need to replace "dist-packages" with "site-packages".
 
@@ -224,7 +224,7 @@ Again, with your favorite text editor, create a new file called `/etc/ld.so.conf
 
 Put this in the new file:
 
-<pre>/opt/gnuradio-3.7.9.2/lib</pre>
+<pre>/opt/gnuradio-3.7.13.4/lib</pre>
 '''Note:''' on some 64 bit systems, you might need a lib64 directory in this file as well.
 
 * Update your library cache again
@@ -232,28 +232,28 @@ Put this in the new file:
 
 You should see something akin to the following:
 <pre>
-/opt/gnuradio-3.7.9.2/lib:
-        libgnuradio-analog-3.7.9.2.so.0.0.0 -> libgnuradio-analog.so
-        libgnuradio-trellis-3.7.9.2.so.0.0.0 -> libgnuradio-trellis.so
-        libgnuradio-fft-3.7.9.2.so.0.0.0 -> libgnuradio-fft.so
-        libgnuradio-fec-3.7.9.2.so.0.0.0 -> libgnuradio-fec.so
-        libgnuradio-qtgui-3.7.9.2.so.0.0.0 -> libgnuradio-qtgui.so
-        libgnuradio-channels-3.7.9.2.so.0.0.0 -> libgnuradio-channels.so
-        libgnuradio-wavelet-3.7.9.2.so.0.0.0 -> libgnuradio-wavelet.so
-        libgnuradio-pmt-3.7.9.2.so.0.0.0 -> libgnuradio-pmt.so
-        libgnuradio-atsc-3.7.9.2.so.0.0.0 -> libgnuradio-atsc.so
-        libgnuradio-video-sdl-3.7.9.2.so.0.0.0 -> libgnuradio-video-sdl.so
-        libgnuradio-vocoder-3.7.9.2.so.0.0.0 -> libgnuradio-vocoder.so
-        libgnuradio-fcd-3.7.9.2.so.0.0.0 -> libgnuradio-fcd.so
-        libgnuradio-zeromq-3.7.9.2.so.0.0.0 -> libgnuradio-zeromq.so
-        libgnuradio-blocks-3.7.9.2.so.0.0.0 -> libgnuradio-blocks.so
-        libgnuradio-audio-3.7.9.2.so.0.0.0 -> libgnuradio-audio.so
-        libgnuradio-dtv-3.7.9.2.so.0.0.0 -> libgnuradio-dtv.so
-        libgnuradio-pager-3.7.9.2.so.0.0.0 -> libgnuradio-pager.so
-        libgnuradio-noaa-3.7.9.2.so.0.0.0 -> libgnuradio-noaa.so
-        libgnuradio-filter-3.7.9.2.so.0.0.0 -> libgnuradio-filter.so
-        libgnuradio-digital-3.7.9.2.so.0.0.0 -> libgnuradio-digital.so
-        libgnuradio-runtime-3.7.9.2.so.0.0.0 -> libgnuradio-runtime.so
+/opt/gnuradio-3.7.13.4/lib:
+        libgnuradio-analog-3.7.13.4.so.0.0.0 -> libgnuradio-analog.so
+        libgnuradio-trellis-3.7.13.4.so.0.0.0 -> libgnuradio-trellis.so
+        libgnuradio-fft-3.7.13.4.so.0.0.0 -> libgnuradio-fft.so
+        libgnuradio-fec-3.7.13.4.so.0.0.0 -> libgnuradio-fec.so
+        libgnuradio-qtgui-3.7.13.4.so.0.0.0 -> libgnuradio-qtgui.so
+        libgnuradio-channels-3.7.13.4.so.0.0.0 -> libgnuradio-channels.so
+        libgnuradio-wavelet-3.7.13.4.so.0.0.0 -> libgnuradio-wavelet.so
+        libgnuradio-pmt-3.7.13.4.so.0.0.0 -> libgnuradio-pmt.so
+        libgnuradio-atsc-3.7.13.4.so.0.0.0 -> libgnuradio-atsc.so
+        libgnuradio-video-sdl-3.7.13.4.so.0.0.0 -> libgnuradio-video-sdl.so
+        libgnuradio-vocoder-3.7.13.4.so.0.0.0 -> libgnuradio-vocoder.so
+        libgnuradio-fcd-3.7.13.4.so.0.0.0 -> libgnuradio-fcd.so
+        libgnuradio-zeromq-3.7.13.4.so.0.0.0 -> libgnuradio-zeromq.so
+        libgnuradio-blocks-3.7.13.4.so.0.0.0 -> libgnuradio-blocks.so
+        libgnuradio-audio-3.7.13.4.so.0.0.0 -> libgnuradio-audio.so
+        libgnuradio-dtv-3.7.13.4.so.0.0.0 -> libgnuradio-dtv.so
+        libgnuradio-pager-3.7.13.4.so.0.0.0 -> libgnuradio-pager.so
+        libgnuradio-noaa-3.7.13.4.so.0.0.0 -> libgnuradio-noaa.so
+        libgnuradio-filter-3.7.13.4.so.0.0.0 -> libgnuradio-filter.so
+        libgnuradio-digital-3.7.13.4.so.0.0.0 -> libgnuradio-digital.so
+        libgnuradio-runtime-3.7.13.4.so.0.0.0 -> libgnuradio-runtime.so
 </pre>
 
 If so, you're all set!
@@ -274,7 +274,7 @@ This step is optional, but will make additional IQ balance functionality availab
 $ cd ~/software/gnuradio-build/gr-iqbal
 $ mkdir build
 $ cd build
-$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.9.2 ../
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.13.4 ../
 $ make -j8 && sudo make install && sudo ldconfig
 </pre>
 
@@ -285,7 +285,7 @@ $ make -j8 && sudo make install && sudo ldconfig
 $ cd ~/software/gnuradio-build/gr-osmosdr
 $ mkdir build
 $ cd build
-$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.9.2 ../
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.13.4 ../
 $ make -j8 && sudo make install && sudo ldconfig
 </pre>
 
@@ -315,7 +315,7 @@ $ git clone https://github.com/csete/gqrx.git
 $ cd gqrx
 $ mkdir build
 $ cd build
-$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.9.2 ../ 
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.13.4 ../ 
 $ make -j8 && sudo make install && sudo ldconfig
 </pre>
 
