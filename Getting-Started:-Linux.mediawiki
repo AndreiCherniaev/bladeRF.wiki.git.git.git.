@@ -8,9 +8,12 @@ Install PyBOMBS (using pip, but other methods are listed on the PyBOMBS README.m
 
 <pre>
 $ pip install PyBOMBS
+$ pip install ruamel.yaml==0.15.44
 $ pybombs auto-config
 $ pybombs recipes add-defaults
 </pre>
+
+NOTE: raumel.yaml ( the latest version installed by PyBOMBS ) is incompatible with PyBOMBS as of version 0.15.45. You must downgrade to 0.15.44 before running pybombs.
 
 Now, let's create a prefix, or a directory in which to install all the GNU Radio components. In this case, we set the prefix directory to <code>~/pybombs/bladeRF</code>. We also specify the alias, <code>bladeRF</code>, for easy reference later, and install the default GNU Radio setup.
 
