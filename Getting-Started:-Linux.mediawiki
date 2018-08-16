@@ -1,5 +1,51 @@
 This guide describes the process of building and installing the bladeRF host libraries and tool for a Linux system, and quickly getting a device up and running using pre-built firmware and FPGA images.
 
+== Easy installation: PyBOMBS ==
+
+[https://github.com/gnuradio/pybombs PyBOMBS] is essentially a package manager and build system for GNU Radio. It handles the fetching, building, and installation of GNU Radio and dependencies, and is largely system independent. The installation steps are listed on the [https://github.com/gnuradio/pybombs PyBOMBS GitHub] page, but the following is a list of steps and basic packages needed to get up and running with the bladeRF.
+
+Install PyBOMBS (using pip, but other methods are listed on the PyBOMBS README.md), apply the default configuration, and add the default recipes:
+
+<pre>
+$ pip install PyBOMBS
+$ pybombs auto-config
+$ pybombs recipes add-defaults
+</pre>
+
+Now, let's create a prefix, or a directory in which to install all the GNU Radio components. In this case, we set the prefix directory to <code>~/pybombs/bladeRF</code>. We also specify the alias, <code>bladeRF</code>, for easy reference later, and install the default GNU Radio setup.
+
+<pre>
+$ pybombs prefix init ~/pybombs/bladeRF -a bladeRF -R gnuradio-default
+</pre>
+
+At this point, GNU Radio has been installed into <code>~/pybombs/bladeRF</code>. Now, install useful applications such as bladeRF and gqrx:
+
+<pre>
+$ pybombs -p bladeRF install bladeRF gr-iqbal gr-osmosdr gqrx
+</pre>
+
+Once each component has been successfully built, they may be run using <code>pybombs -p bladeRF run <command></code>, some examples follow:
+
+<pre>
+$ pybombs -p bladeRF run bladeRF-cli -- -i
+</pre>
+
+<pre>
+$ pybombs -p bladeRF run gqrx
+</pre>
+
+Alternatively, the GNU Radio environment may be "sourced" into the active console, allowing applications to be run directly.
+
+<pre>
+$ source ~/pybombs/bladeRF/setup_env.sh
+$ bladeRF-cli -i
+$ gqrx
+</pre>
+
+=== PyBOMBS and gr-fosphor ===
+
+WIP
+
 == Easy installation for Ubuntu: The bladeRF PPA ==
 If you're running '''Ubuntu 14.04 (trusty) or later''', a release PPA is available at [[ppa:bladerf/bladerf|https://launchpad.net/~bladerf/+archive/bladerf/+packages]].  New builds will appear occasionally as bladeRF releases (and release candidates) are tagged.  (Package signing key is [[1024R/2FB21B35|http://keyserver.ubuntu.com:11371/pks/lookup?search=0x188FE585DD24922CE9CD1EE9BE99746B2FB21B35&op=index]].)
 
