@@ -18,6 +18,7 @@ NOTE: raumel.yaml ( the latest version installed by PyBOMBS ) is incompatible wi
 Now, let's create a prefix, or a directory in which to install all the GNU Radio components. In this case, we set the prefix directory to <code>~/pybombs/bladeRF</code>. We also specify the alias, <code>bladeRF</code>, for easy reference later, and install the default GNU Radio setup.
 
 <pre>
+$ mkdir ~/pybombs/
 $ pybombs prefix init ~/pybombs/bladeRF -a bladeRF -R gnuradio-default
 </pre>
 
