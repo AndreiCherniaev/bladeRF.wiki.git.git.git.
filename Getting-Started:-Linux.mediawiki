@@ -7,13 +7,12 @@ This guide describes the process of building and installing the bladeRF host lib
 Install PyBOMBS (using pip, but other methods are listed on the PyBOMBS README.md), apply the default configuration, and add the default recipes:
 
 <pre>
-$ pip install PyBOMBS
-$ pip install ruamel.yaml==0.15.44
+$ pip install --upgrade git+https://github.com/gnuradio/pybombs.git
 $ pybombs auto-config
 $ pybombs recipes add-defaults
 </pre>
 
-NOTE: raumel.yaml ( the latest version installed by PyBOMBS ) is incompatible with PyBOMBS as of version 0.15.45. You must downgrade to 0.15.44 before running pybombs.
+NB: If the pybombs command is not found after pip install ensure that ~/.local/bin is part of your path. If it is not, run (and also add the following command to your .bashrc): <pre>export PATH=$PATH:$HOME/.local/bin</pre>
 
 Now, let's create a prefix, or a directory in which to install all the GNU Radio components. In this case, we set the prefix directory to <code>~/pybombs/bladeRF</code>. We also specify the alias, <code>bladeRF</code>, for easy reference later, and install the default GNU Radio setup.
 
