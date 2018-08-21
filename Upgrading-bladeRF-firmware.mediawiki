@@ -45,13 +45,13 @@ Thus, it is possible to upgrade firmware by re-running the installer, but using 
 
 The bladeRF is configured to fall back to a USB bootloader if valid firmware is not in SPI flash. By placing a jumper across one of the SPI communication pins, it is possible to force the SPI boot to fail and place the device into bootloader mode. From there, one can load and execute bladeRF firmware, and then follow the above procedure to write the firmware to SPI flash.
 
-For '''bladeRF Classic''', short pins 1 and 2 of the J64 header:
+For '''bladeRF Classic''', short pins 1 and 2 of the '''J64''' header:
 
 [[http://nuand.com/J64.png|bladeRF Classic: Jumper on '''J64''' to boot from bootloader]]
 
 For '''bladeRF2-micro''', short pins 1 and 2 of the '''J6''' header (may not be populated):
 
-[http://nuand.com/forums/download/file.php?id=295 bladeRF2-micro: short pins 1-2 of J6 to boot from bootloader]
+[[https://www.nuand.com/images/bladeRF-micro-J6.jpg|bladeRF2-micro: short pins 1-2 of '''J6''' to boot from bootloader]]
 
 == The bladeRF-cli 'recovery' command ==
 
