@@ -11,10 +11,11 @@ The inner plug on the receptacle (on the bladeRF) is 2.5 mm and is +V.  The diam
 
 == bladeRF2-micro ==
 
-The bladeRF2-micro features a power multiplexer that will automatically select the appropriate voltage source. If 5&nbsp;V is present on the DC power jack, the power mux will select the DC jack as the voltage source. Otherwise, it will use the 5&nbsp;V from the USB host. If using, it is recommended to insert and power the DC jack first, followed by the USB plug.
+Shown on page 17 of the [http://www.nuand.com/bladeRF-micro.pdf schematic], the bladeRF-micro features a TPS2115A power multiplexer that will automatically select the appropriate voltage source. If 5&nbsp;V is present on the DC power jack, the power mux will select the DC jack as the voltage source. Otherwise, it will use the 5&nbsp;V from the USB host. If using, it is recommended to insert and power the DC jack first, followed by the USB plug.
 
 == bladeRF Classic Jumper Configuration ==
-As shown on page 14 on the [http://nuand.com/bladerf.pdf bladeRF schematic], the DC barrel jack is a  [http://www.mouser.com/ds/2/393/rapc712x_cd-371318.pdf Switchcraft RAPC712X]. Remember that both jumpers on J70 need to be moved when switching between USB power and the DC barrel input:
+
+Shown on page 14 of the [http://nuand.com/bladerf.pdf bladeRF schematic], the DC barrel jack is a  [http://www.mouser.com/ds/2/393/rapc712x_cd-371318.pdf Switchcraft RAPC712X]. Remember that both jumpers on J70 need to be moved when switching between USB power and the DC barrel input:
 
 * Power from USB Cable:
 ** Jumper J70 pins 2 and 3
