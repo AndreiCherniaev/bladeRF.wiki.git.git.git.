@@ -51,7 +51,7 @@ For '''bladeRF Classic''', short pins 1 and 2 of the J64 header:
 
 For '''bladeRF2-micro''', short pins 1 and 2 of the '''J6''' header (may not be populated):
 
-[[http://nuand.com/bladeRF-micro-J6.jpg|bladeRF2-micro: short pins 1-2 to boot from bootloader]]
+[[http://nuand.com/forums/download/file.php?id=295|bladeRF2-micro: short pins 1-2 to boot from bootloader]]
 
 == The bladeRF-cli 'recovery' command ==
 
