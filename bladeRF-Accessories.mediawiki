@@ -89,15 +89,15 @@ The mounting holes on the bladeRF and the add-on boards are intended for use wit
 
 = Programming and Debug Tools =
 
-== Altera Cyclone IV FPGA ==
+== Intel (formerly Altera) FPGAs ==
 
 * Terasic Blaster Cable
 ** via [http://www.terasic.com.tw/cgi-bin/page/archive.pl?No=46 terasIC website]
 ** via [http://www.digikey.com/en/product-highlight/t/terasic-tech/usb-blaster-cable Digi-Key]
 ** via [http://www.mouser.com/new/terasic-technologies/terasic-USBblaster/ Mouser]
 
-* Altera USB Blaster
-** via [https://www.buyaltera.com/PartDetail?partId=1212940 Altera]
+* IntelFPGA USB Blaster
+** via [https://buyfpga.intel.com/PartDetail?partId=1212940 Intel]
 
 == Cypress FX3 ==
 
