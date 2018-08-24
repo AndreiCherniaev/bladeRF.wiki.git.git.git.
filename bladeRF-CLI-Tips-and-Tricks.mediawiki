@@ -841,3 +841,27 @@ bladeRF> print clock_sel
 
   Clock input:     Onboard VCTCXO
 ```
+
+= Using the External Clock Output =
+
+== bladeRF Classic ==
+
+WIP, basically the SMB port acts as an input ''or'' output, but not both simultaneously.
+
+== bladeRF2-micro ==
+
+One of the outputs of the bladeRF2-micro clock buffer is connected to an external U.FL port labeled <code>CLKOUT (U92)</code>. This may be used to supply a 38.4&nbsp;MHz, 3.3&nbsp;V CMOS clock to other devices. This output may be enabled or disabled using the bladeRF-cli:
+
+```
+bladeRF> set clock_out enable
+
+  Clock output:    Enabled via CLKOUT
+
+bladeRF> set clock_out disable
+
+  Clock output:    Disabled
+
+bladeRF> print clock_out
+
+  Clock output:    Disabled
+```
