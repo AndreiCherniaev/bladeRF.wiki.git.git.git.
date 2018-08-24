@@ -283,4 +283,4 @@ bladeRF> version
 bladeRF> quit
 ```
 
-If updating the host software is not possible, the only way to correct this is to force the FX3 into bootloader mode and update the firmware using the [https://github.com/Nuand/bladeRF/wiki/Upgrading-bladeRF-firmware/_edit#Upgrading_using_the_FX3_bootloader_Recovery_Method recovery procedure]
+If updating the host software is not possible, the only way to correct this is to force the FX3 into bootloader mode and update the firmware using the [[Upgrading bladeRF FX3 Firmware#Upgrading_using_the_FX3_bootloader_Recovery_Method|recovery procedure]].
