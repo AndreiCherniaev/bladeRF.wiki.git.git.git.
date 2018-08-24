@@ -4,7 +4,7 @@ This page provides an overview of the <b>XB-200</b> and provides some informatio
 
 The <b>XB-200 transverter board</b> is a block up-down converter that expands the bladeRF’s lower frequency range, allowing the bladeRF to be used in HF/VHF applications. 
 
-The RX and TX paths each have a set of 3 filters, at the 50MHz-54MHz (6 meter) band, 149MHz-159MHz (2 meter) band, and 206-235MHz (includes 1.25m) bands. There are also pairs of SMA connectors that will let users plug their own band filters into the RF path.
+The RX and TX paths each have a set of 3&nbsp;filters, at the 50&nbsp;MHz&nbsp;&#8209;&nbsp;54&nbsp;MHz (6&nbsp;meter) band, 149&nbsp;MHz&nbsp;&#8209;&nbsp;159&nbsp;MHz (2&nbsp;meter) band, and 206&nbsp;MHz&nbsp;&#8209;&nbsp;235&nbsp;MHz (includes 1.25&nbsp;m) bands. There are also pairs of SMA connectors that will let users plug their own band filters into the RF path.
 
 The XB-200 mates to the top of the bladeRF as follows. (There is only one possible orientation)
 * XB-200 <b>U20</b> to bladeRF <b>U74</b>
@@ -22,13 +22,13 @@ For additional information, please see:
 
 The transverter was meant to extend the range of the bladeRF without impairing the current frequency capabilities.  As such, the transverter has a bypass path as well as a mixed path.  The bypass path just connects the antenna port to the IF port directly without any modification to the signal.
 
-The mixed path first has a filterbank for selectivity filtering.  This filterbank consists of 4 separate paths: 50MHz filter, 144MHz filter, 222MHz filter and a custom filter.  The custom filter can be put in line using the filter SMA connections on the transverter.
+The mixed path first has a filterbank for selectivity filtering.  This filterbank consists of 4 separate paths: 50&nbsp;MHz filter, 144&nbsp;MHz filter, 222&nbsp;MHz filter and a custom filter.  The custom filter can be put in line using the filter SMA connections on the transverter.
 
 Each of the filters was designed to try to notch the terrestrial FM band as much as possible.  To be able to receive normal FM, the simplest way is to put an SMA jumper in the custom path (i.e., between the RX/TX <b>FILT</b> and <b>FILT-ANT</b> SMA connectors).
 
-The block converter stage uses an ADF4351 to produce a 1248MHz high-side injection tone.  The mixing frequency was chosen because of it being about 3x higher than the 300MHz highest frequency we want to use and we can run the ADF4351 in integer-N mode, reducing spurs which may have resulted from a fractional-N mode of operation.  The output of the ADF4351 is always divided by 2x, so 38.4MHz*32.5 = 1248MHz.
+The block converter stage uses an ADF4351 to produce a 1248&nbsp;MHz high-side injection tone.  The mixing frequency was chosen because of it being about 3x higher than the 300&nbsp;MHz highest frequency we want to use and we can run the ADF4351 in integer-N mode, reducing spurs which may have resulted from a fractional-N mode of operation.  The output of the ADF4351 is always divided by 2x, so 38.4&nbsp;MHz&nbsp;*&nbsp;32.5&nbsp;=&nbsp;1248&nbsp;MHz.
 
-Since high side injection is used, the LMS6002D on the bladeRF is tuning to 1248MHz - (desired frequency).  Moreover, there is a spectral inversion that is occurring due to the choice of high-side injection.  The LMS6002D is programmed to swap I and Q on the data bus being presented to the FPGA to correct for the flip.
+Since high side injection is used, the LMS6002D on the bladeRF is tuning to 1248&nbsp;MHz - (desired frequency).  Moreover, there is a spectral inversion that is occurring due to the choice of high-side injection.  The LMS6002D is programmed to swap I and Q on the data bus being presented to the FPGA to correct for the flip.
 
 == SMA Connectors ==
 
@@ -120,40 +120,40 @@ This section is intended to provide information regarding support for the XB-200
 
 The general procedure for using the XB-200 programmatically, via libbladeRF is as follows:
 * With an open device handle, enable support for the XB-200 via: <br>[https://github.com/Nuand/bladeRF/blob/15340770ca59d30b82109ad8670aa0fe027ca9fe/host/libraries/libbladeRF/include/libbladeRF.h#L980 bladerf_expansion_attach(dev, BLADERF_XB_200)]
-* Select the desired filter bank for the RX and TX paths. For example, to configure the RX module to use the 149-159MHz filter: <br>[https://github.com/Nuand/bladeRF/blob/15340770ca59d30b82109ad8670aa0fe027ca9fe/host/libraries/libbladeRF/include/libbladeRF.h#L1012 bladerf_xb200_set_filterbank(dev, BLADERF_MODULE_RX, BLADERF_XB200_144M)]
+* Select the desired filter bank for the RX and TX paths. For example, to configure the RX module to use the 149&nbsp;MHz&nbsp;&#8209;&nbsp;159&nbsp;MHz filter: <br>[https://github.com/Nuand/bladeRF/blob/15340770ca59d30b82109ad8670aa0fe027ca9fe/host/libraries/libbladeRF/include/libbladeRF.h#L1012 bladerf_xb200_set_filterbank(dev, BLADERF_MODULE_RX, BLADERF_XB200_144M)]
 ** See the [https://github.com/Nuand/bladeRF/blob/15340770ca59d30b82109ad8670aa0fe027ca9fe/host/libraries/libbladeRF/include/libbladeRF.h#L492 bladerf_xb200_filter] enumeration for other options.
 * Specify that the XB-200 mixer path should be used: <br>[https://github.com/Nuand/bladeRF/blob/15340770ca59d30b82109ad8670aa0fe027ca9fe/host/libraries/libbladeRF/include/libbladeRF.h#L1041 bladerf_xb200_set_path(dev, BLADERF_MODULE_RX, BLADERF_XB200_MIX)]
 ** To tune to the "normal" bladeRF ranges, bypass the XB-200 mixer by using the [https://github.com/Nuand/bladeRF/blob/15340770ca59d30b82109ad8670aa0fe027ca9fe/host/libraries/libbladeRF/include/libbladeRF.h#L498 BLADERF_XB200_BYPASS] value with the above function.
 
 == bladeRF-cli ==
-To tell the CLI that the XB-200 has been attached, simply run the command <code>xb 200 enable 200</code>.  This will expand the frequency range that the board is able to tune.
+To tell the CLI that the XB-200 has been attached, simply run the command <code>xb 200 enable</code>.  This will expand the frequency range that the board is able to tune.
 
 To select RX or TX filter banks, use the command <code>xb 200 filter <rx|tx> <50|144|222|custom
 auto_1db|auto_3db</code>. 
 
-"50" refers to the 50-54 MHz (6 meter) band, "144" refers to the 144-148 MHz (2 meter) band, and "222" refers to the 222-225 MHz (1.25 meter) band.  Technically, the filter associated with the "222" options covers 206-235 MHz.  
+"50" refers to the 50&#8209;54&nbsp;MHz (6&nbsp;meter) band, "144" refers to the 144&#8209;148&nbsp;MHz (2&nbsp;meter) band, and "222" refers to the 222&#8209;225&nbsp;MHz (1.25&nbsp;meter) band.  Technically, the filter associated with the "222" options covers 206&#8209;235&nbsp;MHz.
 
 The "custom" option enables the custom filter bank path. 
 
-The "auto_1db" and "auto_3b" options instruct libbladeRF to automatically select the appropriate filterbank based upon the filters' 1dB and 3dB points based upon the current device frequency.  Outside of these regions, the custom filter path will be selected.
+The "auto_1db" and "auto_3b" options instruct libbladeRF to automatically select the appropriate filterbank based upon the filters' 1&nbsp;dB and 3&nbsp;dB points based upon the current device frequency.  Outside of these regions, the custom filter path will be selected.
 
 == gr-osmosdr ==
 As of commit [http://cgit.osmocom.org/gr-osmosdr/commit/?id=9cb023b00a36d04ad8ea7e0bf08ad0623ab3e95f 9cb023], gr-osmosdr supports natively the XB-200.  Note that the way to enable the board has changed slightly from the previous patched method, so be sure to read the next section very carefully and make appropriate modifications to the device string.
 
 === Enabling the XB-200 and Selecting Filters ===
-To enable the XB200 in software that utilizes gr-osmosdr, add '''xb200''' to the source/sink arguments string. By default, the filter bank selected will automatically tune with the tuned frequency at the 1dB points. Therefore, you must have the <b>FILT</b> and <b>FILT-ANT</b> connected through a filter, or directly connected together (no filter).
+To enable the XB-200 in software that utilizes gr-osmosdr, add '''xb200''' to the source/sink arguments string. By default, the filter bank selected will automatically tune with the tuned frequency at the 1&nbsp;dB points. Therefore, you must have the <b>FILT</b> and <b>FILT-ANT</b> connected through a filter, or directly connected together (no filter).
 
 If you wish to select one of the other filter paths, append one of the following to the source/sink arguments string:
 * <code>xb200=50M</code>
 * <code>xb200=144M</code>
 * <code>xb200=222M</code>
 * <code>xb200=auto</code>
-** This option will select an appropriate filter path based upon the selected center frequency with 1dB corners.  This is the default if no filter is selected.
+** This option will select an appropriate filter path based upon the selected center frequency with 1&nbsp;dB corners.  This is the default if no filter is selected.
 * <code>xb200=auto3db</code>
-** This option will select an appropriate file path based upon the selected center frequency with 3dB corners.
+** This option will select an appropriate file path based upon the selected center frequency with 3&nbsp;dB corners.
 * <code>xb200=custom</code>
 <br>
-Below is an example device string that enables the XB-200 and selects the 144MHz - 148MHz filter:
+Below is an example device string that enables the XB-200 and selects the 144&nbsp;MHz&nbsp;&#8209;&nbsp;148&nbsp;MHz filter:
 <pre>
 bladerf=0,xb200=144M
 </pre>
