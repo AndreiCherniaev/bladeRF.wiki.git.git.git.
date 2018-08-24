@@ -48,6 +48,10 @@ There are 10 SMA connectors on the XB-200. Below are brief descriptions of each.
 * <b>TXFILT-ANT</b> (<i>J10</i>): Antenna-side of the TX custom filter path.
 * <b>DAC</b> (<i>J15</i>): This SMA exposes the DAC direct sampling path (skipping the LMS6002). This can also be accessed without the XB-200 via <i>J60</i> on the bladeRF.
 
+=== Example Connection ===
+
+Note SMA cables on the top are just shorting the custom filter path SMA ports together (i.e. no filtering is being done). Depending on the application, it may be desirable to insert a filter instead. If the custom path is not used, the <code>RXFILT</code>/<code>RXFILT-ANT</code> and/or <code>TXFILT</code>/<code>TXFILT-ANT</code> may be left floating. The DAC and ADC SMA ports on the XB-200 may be left floating.
+
 == Important Note: Removal of R62 and R63 ==
 Resistors R62 and R63 on the XB-200 were populated for early production boards.  
 
