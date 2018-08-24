@@ -803,3 +803,41 @@ or
 <pre>
 edit-mode emacs
 </pre>
+
+= Using an External Clock Input =
+
+== bladeRF Classic ==
+
+WIP, basically the SMB port acts as an input ''or'' output, but not both simultaneously.
+
+== bladeRF2-micro ==
+
+The bladeRF-micro features a dual-input clock buffer that can select either the on-board VCTCXO, or an external 38.4&nbsp;MHz clock to be fanned out to the various components on the board. The on-board VCTCXO is selected by default.
+
+Certain applications (e.g. MIMO, RADAR, etc.) may require multiple bladeRFs to be synchronized using the exact same clock source. For best results, an external clock distribution network with matched cables is used so the frequency and phase differences between each board is as close to zero as possible. The bladeRF2-micro can receive such an external clock using the U.FL port labeled, <code>CLKIN (U93)</code>. The external clock must be 38.4&nbsp;MHz and 3.3&nbsp;V CMOS logic.
+
+It is important to note that the FX3 requires the clock to be within 150&nbsp;ppm (5&nbsp;kHz) of its ideal frequency of 38.4&nbsp;MHz. While Nuand has been able to deviate by as much as 100&nbsp;kHz before experiencing stability issues, it is recommended to stay as close to 38.4&nbsp;MHz as possible due to temperature and process variations.
+
+Using the bladeRF-cli, select the external clock input port:
+
+```
+bladeRF> set clock_sel external
+
+  Clock input:     External via CLKIN
+```
+
+To return to the onboard VCTCXO:
+
+```
+bladeRF> set clock_sel onboard
+
+  Clock input:     Onboard VCTCXO
+```
+
+To view the clock selection at any time:
+
+```
+bladeRF> print clock_sel
+
+  Clock input:     Onboard VCTCXO
+```
