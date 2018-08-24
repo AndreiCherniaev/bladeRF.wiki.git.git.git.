@@ -1,0 +1,1 @@
+This page has moved to [[Upgrading bladeRF FX3 Firmware]].
