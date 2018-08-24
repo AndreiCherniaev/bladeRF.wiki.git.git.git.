@@ -49,7 +49,7 @@ For '''bladeRF Classic''', short pins 1 and 2 of the '''J64''' header:
 
 [[http://nuand.com/J64.png|bladeRF Classic: Jumper on '''J64''' to boot from bootloader]]
 
-For '''bladeRF2-micro''', short pins 1 and 2 of the '''J6''' header (may not be populated):
+For '''bladeRF2&#8209;micro''', short pins 1 and 2 of the '''J6''' header (may not be populated):
 
 [[https://www.nuand.com/images/bladeRF-micro-J6.jpg|bladeRF2-micro: short pins 1-2 of '''J6''' to boot from bootloader]]
 
@@ -227,7 +227,7 @@ Note that this Cypress software is only available for Windows.
 
 = Flashed Old Firmware on New Device =
 
-While newer FX3 images (v2.2.0 and newer) will work on both bladeRF Classic and bladeRF-micro, it is possible to flash an older image onto a bladeRF-micro. These older firmware versions only know about the bladeRF Classic and simply report a USB device ID of <code>0x5246</code> to the host without first checking the underlying hardware. Newer firmware versions perform this check and report either <code>0x5246</code> for bladeRF Classic or <code>0x5250</code> for bladeRF-micro. Host software older than Git hash [https://github.com/Nuand/bladeRF/commit/e5fb3e9c20368dcee85f22e3b9a5c106f1d49c83 e5fb3e9 (8/21/2018)] will fail to open the device and immediately fall back to the command shell:
+While newer FX3 images (v2.2.0 and newer) will work on both bladeRF Classic and bladeRF2&#8209;micro, it is possible to flash an older image onto a bladeRF2&#8209;micro. These older firmware versions only know about the bladeRF Classic and simply report a USB device ID of <code>0x5246</code> to the host without first checking the underlying hardware. Newer firmware versions perform this check and report either <code>0x5246</code> for bladeRF Classic or <code>0x5250</code> for bladeRF2&#8209;micro. Host software older than Git hash [https://github.com/Nuand/bladeRF/commit/e5fb3e9c20368dcee85f22e3b9a5c106f1d49c83 e5fb3e9 (8/21/2018)] will fail to open the device and immediately fall back to the command shell:
 
 ```
 $ ./bladeRF-cli -i
@@ -236,7 +236,7 @@ Failed to open device (first available): An unexpected error occurred
 $
 ```
 
-This can be confirmed using the <code>lsusb</code> command and filtering for vendor ID <code>0x2cf0</code>. If a bladeRF-micro is connected, and <code>2cf0:5246</code> shows up, then old firmware was flashed and it needs to be updated.
+This can be confirmed using the <code>lsusb</code> command and filtering for vendor ID <code>0x2cf0</code>. If a bladeRF2&#8209;micro is connected, and <code>2cf0:5246</code> shows up, then old firmware was flashed and it needs to be updated.
 
 ```
 $ lsusb -d 2cf0:
@@ -283,4 +283,4 @@ bladeRF> version
 bladeRF> quit
 ```
 
-If updating the host software is not possible, the only way to correct this is to force the FX3 into bootloader mode and update the firmware from there using the [https://github.com/Nuand/bladeRF/wiki/Upgrading-bladeRF-firmware/_edit#Upgrading_using_the_FX3_bootloader_Recovery_Method recovery procedure]
+If updating the host software is not possible, the only way to correct this is to force the FX3 into bootloader mode and update the firmware using the [https://github.com/Nuand/bladeRF/wiki/Upgrading-bladeRF-firmware/_edit#Upgrading_using_the_FX3_bootloader_Recovery_Method recovery procedure]
