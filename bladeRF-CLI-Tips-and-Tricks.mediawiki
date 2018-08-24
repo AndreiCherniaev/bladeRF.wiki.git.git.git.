@@ -865,3 +865,33 @@ bladeRF> print clock_out
 
   Clock output:    Disabled
 ```
+
+= The 'print hardware' Command Group =
+
+The <code>print</code> command of <code>bladeRF-cli</code> has been updated to include a hardware convenience parameter that groups what would otherwise be multiple status commands into a single command. Currently, only the bladeRF2-micro has this hardware group, but it will eventually include the bladeRF Classic.
+
+An example usage of this command is shown below for a bladeRF2-micro.
+
+```
+bladeRF> print hardware
+
+  Hardware status:
+    RFIC status:
+      Temperature:  19.3 °C
+      CTRL_OUT:     0xf8 (0x035=0x00, 0x036=0xff)
+    Power source:   USB Bus
+    Power monitor:  4.78 V, 0.6 A, 2.88 W
+    RF switch config:
+      TX1: RFIC 0x0 (TXA    ) => SW 0x0 (OPEN   )
+      TX2: RFIC 0x0 (TXA    ) => SW 0x0 (OPEN   )
+      RX1: RFIC 0x0 (A_BAL  ) <= SW 0x0 (OPEN   )
+      RX2: RFIC 0x0 (A_BAL  ) <= SW 0x0 (OPEN   )
+```
+
+Under the RFIC status section, there is a temperature readout and a status of the <code>CTRL_OUT</code> pins. The RFIC used on the bladeRF-micro has an on-chip thermocouple allowing it to measure the die temperature. The <code>CTRL_OUT</code> pins are a set of eight real-time status outputs that can be configured to represent many different options, as dictated by the [http://www.analog.com/en/products/ad9361.html AD9361] RFIC's register contents at addresses <code>0x035</code> and <code>0x036</code>. To view the available options, review the [http://www.analog.com/en/design-center/landing-pages/001/integrated-rf-agile-transceiver-design-resources.html AD9361 Reference Manual (UG-570)].
+
+The power source is reported by the on-board automatic power multiplexer. The device above was using USB power at the time of the reading, but DC barrel power would be reported as such.
+
+The bladeRF2-micro also has a power sensor module that reports instantaneous voltage, current, and power on the main 5&nbsp;V rail.
+
+Finally, the print hardware command will report the RF switch configuration. The RFIC on the bladeRF2-micro has two TX channels and two RX channels (2R2T MIMO). Each RX channel has three band selection options (A, B, and C), and each TX channel has two band selection options (A and B). An external RF switch is used to select which band is active on the SMA port.
