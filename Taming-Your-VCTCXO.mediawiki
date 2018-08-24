@@ -1,0 +1,48 @@
+= Background =
+
+All Software Defined Radios require an oscillator of some kind to provide a stable clock to the RF transceiver and any microcontrollers or FPGAs on the radio, the bladeRF is no exception. There are many types of oscillators, each having their own benefits and drawbacks -- cost, accuracy, stability, phase noise, power requirements, among others.
+
+At the factory, the DAC output voltage is adjusted while the VCTCXO output frequency is measured using a frequency counter. Over time, and with changes in ambient conditions (e.g. morning shade and afternoon sunlight), this factory-calibrated DAC value may stop producing a sufficiently accurate clock frequency, or the accuracy may drift throughout the day. Although the clock will remain accurate enough for most applications, some applications have very strict clock accuracy requirements and this drift may violate specifications. In these scenarios, it is especially important to keep the VCTCXO stable and accurate. This is typically accomplished by comparing the local oscillator to a more accurate reference oscillator.
+
+== bladeRF Classic ==
+
+WIP, essentially this [https://www.nuand.com/2016-01-rc1-release/ blog post]
+
+== bladeRF2&#8209;micro ==
+
+The bladeRF2&#8209;micro features an on-board analog PLL ([http://www.analog.com/en/adf4002 ADF4002]) that may be used to lock the on-board 38.4&nbsp;MHz VCTCXO to an external reference of nearly any frequency up to 300&nbsp;MHz. The reference input is ac-coupled and internally biased to support either 3.3&nbsp;V CMOS or sinusoidal reference inputs. The default frequency is 10&nbsp;MHz in <code>libbladeRF</code> because it is a commonly used reference frequency in test equipment.
+
+Once locked to its reference, the PLL will send pulses to its charge pump output. The pulses are proportional to the difference in frequency and phase between the scaled versions of the reference input and VCTCXO output. The result is a mostly steady-state DC voltage that supplies the tune input of the VCTCXO to hold it at "exactly" 38.4&nbsp;MHz, and phase-locked to the 10&nbsp;MHz reference input. The reference input must remain active at all times while using this PLL.
+
+=== Configuring the on-board PLL ===
+
+Apply a reference clock to the REFIN (J95) U.FL connector located along the top right edge of the bladeRF2&#8209;micro, then issue the following <code>bladeRF-cli</code> command:
+
+```
+bladeRF> set clock_ref enable
+```
+
+The command will return the locked status of the PLL. It may initially report unlocked, but subsequent status readings should report locked:
+
+```
+bladeRF> print clock_ref
+
+  Clock reference: REFIN to ADF4002 (locked)
+```
+
+If using a non-default reference frequency, it may be changed only after enabling the PLL. The following command shows how to set the reference frequency to 20&nbsp;MHz:
+
+```
+bladeRF> set refin_freq 20M
+
+  REFIN frequency: 20000000 Hz
+```
+
+== Reference Oscillators ==
+
+While it is possible to design a radio with the most accurate oscillator in the world, the frequency options are limited (usually just 10&nbsp;MHz), very few entities would be able to afford it, and quite simply it's just not needed in the vast majority of use cases. Instead, a cheaper (but still highly accurate) oscillator is selected and it is tamed by an external, more accurate oscillator dictated by the application requirements. Some examples include:
+
+* [https://en.wikipedia.org/wiki/GPS_disciplined_oscillator GPS Disciplined Oscillator (GPSDO)] (~$200+)
+* [https://en.wikipedia.org/wiki/Crystal_oven Oven-controlled XO (OCXO)] (~$500+)
+* [https://en.wikipedia.org/wiki/Atomic_clock Atomic clock] or chip-scale atomic clock (CSAC), typically cesium or rubidium (~$1000+)
+* Ethernet ([https://www.ohwr.org/projects/white-rabbit White Rabbit], [https://en.wikipedia.org/wiki/Precision_Time_Protocol IEEE 1588 PTP]) (>>$1000 due to infrastructure)
