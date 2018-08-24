@@ -47,7 +47,7 @@ The bladeRF is configured to fall back to a USB bootloader if valid firmware is 
 
 For '''bladeRF Classic''', short pins 1 and 2 of the '''J64''' header:
 
-[[http://nuand.com/J64.png|bladeRF Classic: Jumper on '''J64''' to boot from bootloader]]
+[[https://nuand.com/images/bladeRF-J64-FX3-Bootloader.jpg|bladeRF Classic: Jumper on '''J64''' to boot from bootloader]]
 
 For '''bladeRF2&#8209;micro''', short pins 1 and 2 of the '''J6''' header (may not be populated):
 
