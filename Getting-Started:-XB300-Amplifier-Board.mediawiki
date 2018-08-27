@@ -98,4 +98,4 @@ bladeRF> xb 300 trx rx
 
 An [https://www.nuand.com/blog/product/power-supply/ external DC power supply] is highly recommended when using the XB-300. See [https://github.com/Nuand/bladeRF/wiki/bladeRF-Accessories#bladerf-jumper-configuration this page] for instructions on how to power the bladeRF from an external DC supply instead of the USB connection.
 
-When using the TX PA, additional external filtering for the band/channel of interest is also <b>highly</b> recommended. The connectorized filter options provided by [https://www.minicircuits.com/WebStore/Filters.html Mini-Circuits] are a great option, but there are many other vendors and options available.
+When using the TX PA, additional external filtering for the band/channel of interest is also <b>highly</b> recommended. The connectorized filters provided by [https://www.minicircuits.com/WebStore/Filters.html Mini-Circuits] are a great option, but there are many other vendors and options available.
