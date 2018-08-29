@@ -117,6 +117,10 @@ An additional 4KiB one-time programmable (OTP) section is provided by the device
 = Verifying USB Functionality =
 * [http://www.usb.org/developers/ssusb/ssusbtools/ SuperSpeed USB Hardware/Software tools]
 
+= Building FX3 Firmware =
+
+Instructions for building the FX3 firmware for the bladeRF are available in the [https://github.com/Nuand/bladeRF/blob/master/fx3_firmware/README.md README.md] in the code base.
+
 = Open tasks =
 There are several issues in the FX3 firmware that should be resolved. 
 * UART errors are not detected (framing/overflow)
