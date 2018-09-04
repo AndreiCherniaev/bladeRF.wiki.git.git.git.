@@ -88,8 +88,6 @@ Note: Ubuntu's repositories have an older version of the bladeRF libraries and t
 
 '''NOTE:''' If your distribution provides libusb-1.0 packages earlier than 1.0.16, you may want to consider to manually installing libusb >= 1.0.16, either from source or from upstream packages. Issues have been reported with earlier versions.
 
-If your distribution does not provide a [[libtecla|http://www.astro.caltech.edu/~mcs/tecla]] package (e.g., Fedora), it's recommended that you build it from source, as it makes the bladeRF-cli interactive mode much nicer to use!
-
 === Debian-based distros (e.g., Ubuntu) ===
 
 Install dependent packages for the build:
