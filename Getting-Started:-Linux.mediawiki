@@ -109,7 +109,7 @@ $ sudo apt-get install doxygen help2man pandoc
 === Redhat-based distros (e.g., Fedora, CentOS) ===
 <pre>
 $ sudo yum groupinstall "Development Tools" "Development Libraries"
-$ sudo yum install libusbx libusbx-devel cmake wget gcc-c++
+$ sudo yum install libusbx libusbx-devel cmake wget gcc-c++ libedit libedit-devel
 </pre>
 
 ''Optional:'' If you wish to build libbladeRF documentation and the bladeRF-cli man page, you'll need the following:
