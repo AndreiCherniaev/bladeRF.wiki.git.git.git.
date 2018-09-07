@@ -895,3 +895,19 @@ The power source is reported by the on-board automatic power multiplexer. The de
 The bladeRF2-micro also has a power sensor module that reports instantaneous voltage, current, and power on the main 5&nbsp;V rail.
 
 Finally, the print hardware command will report the RF switch configuration. The RFIC on the bladeRF2-micro has two TX channels and two RX channels (2R2T MIMO). Each RX channel has three band selection options (A, B, and C), and each TX channel has two band selection options (A and B). An external RF switch is used to select which band is active on the SMA port.
+
+= Open a Device by Serial Number =
+
+The <code>bladeRF-cli</code> allows the user to specify the device to open by passing a device string with the <code>-d <device_string></code> option. The format of <code>device_string</code> is outlined in the <code>bladerf_open()</code> section of the [http://nuand.com/libbladeRF-doc/v2.0.0/group%5F%5F%5Ff_n%5F%5F%5Fi_n_i_t.html#gab341ac98615f393da9158ea59cdb6a24 libbladeRF API].
+
+When multiple bladeRFs are used, it is often very useful to specify the serial number of the desired board to use when opening bladeRF-cli. For example, to open serial number <code>1337...beef</code> using any available backend, the following command may be used. Note that the full serial number is not required; only the first few digits to (reasonably) ensure its uniqueness.
+
+```
+$ bladeRF-cli -d "*:serial=1337" -e version
+
+  bladeRF-cli version:        1.6.1-git-911387a3-dirty
+  libbladeRF version:         2.0.1-git-911387a3-dirty
+
+  Firmware version:           2.2.0-git-4bcdd6ec
+  FPGA version:               Unknown (FPGA not loaded)
+```
