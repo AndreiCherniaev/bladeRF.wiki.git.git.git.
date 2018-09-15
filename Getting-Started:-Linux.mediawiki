@@ -70,8 +70,8 @@ Firmware and FPGA images can be installed from this PPA as well.  Firmware shoul
 $ sudo apt-get install bladerf-firmware-fx3     # firmware for all models of bladeRF
 $ sudo apt-get install bladerf-fpga-hostedx40   # for bladeRF x40
 $ sudo apt-get install bladerf-fpga-hostedx115  # for bladeRF x115
-$ sudo apt-get install bladerf-fpga-hostedxA4   # for bladeRF 2.0 Micro A4
-$ sudo apt-get install bladerf-fpga-hostedxA9   # for bladeRF 2.0 Micro A9
+$ sudo apt-get install bladerf-fpga-hostedxa4   # for bladeRF 2.0 Micro A4
+$ sudo apt-get install bladerf-fpga-hostedxa9   # for bladeRF 2.0 Micro A9
 </pre>
 
 Note: All of the FPGA images can be installed simultaneously without issue.
