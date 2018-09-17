@@ -1,9 +1,17 @@
 This page lists accessories, tools, and parts that bladeRF users may find useful.  Please feel free to add your favorites!
 
 = External DC Power =
-The DC barrel jack on the bladeRF requires a 5&nbsp;V adapter, which should be rated to supply 1.5&nbsp;A to 2&nbsp;A.
+The DC barrel jack on the bladeRF requires a 5&nbsp;V adapter, which should be rated to supply at least 1.5&nbsp;A. Many supplies will experience significant voltage droop as the current draw approaches as little as 50% of the rated maximum. If the voltage droops too low, it will degrade the performance of the bladeRF.
 
-The inner plug on the receptacle (on the bladeRF) is 2.5&nbsp;mm and is +V.  The diameter of the plug on the power supply is 5.5&nbsp;mm and is -V.
+When selecting a power supply, look for a load current / output voltage plot. For best results, the voltage should remain above 4.5 V at the expected current draw. If such a plot is not available, it is advisable to choose a supply with more output current to compensate. The recommended OMNIHIL supply can source 3&nbsp;A, which is more than enough for any application. It is also a medical-grade supply and the voltage droop occurs much closer to the rated maximum current draw compared to typical power supplies with similar specifications.
+
+== Specifications ==
+
+* Voltage: 5 V
+* Current: 1.5 - 3 A
+* Plug inner diameter: 2.5 mm (V+)
+* Plug outer diameter: 5.5 mm (GND)
+* Over-voltage, over-current, short-circuit protection: recommended
 
 == Wall Mount AC Adapters ==
 * [https://www.nuand.com/blog/product/power-supply Power supply on Nuand shop]
