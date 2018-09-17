@@ -17,10 +17,6 @@ When selecting a power supply, look for a load current / output voltage plot. Fo
 * [https://www.nuand.com/blog/product/power-supply Power supply on Nuand shop]
 * OMNIHIL [http://www.omnihil.com/products/ac-dc-power-adapter-adaptor-5v-sk02g-0500300u-with-plug-size-5-5mm-x-2-5mm-replacement-switching-power-supply-cord-cable-ps-wall-home-charger-mains-psu?variant=1494981313 SK02G-0500300U]
 
-== bladeRF2-micro ==
-
-Shown on page&nbsp;17 of the [http://www.nuand.com/bladeRF-micro.pdf schematic], the bladeRF-micro features a TPS2115A power multiplexer that will automatically select the appropriate voltage source. If 5&nbsp;V is present on the DC power jack, the power mux will select the DC jack as the voltage source. Otherwise, it will use the 5&nbsp;V from the USB host. If using, it is recommended to insert and power the DC jack first, followed by the USB plug.
-
 == bladeRF Classic Jumper Configuration ==
 
 Shown on page&nbsp;14 of the [http://nuand.com/bladerf.pdf bladeRF schematic], the DC barrel jack is a [http://www.mouser.com/ds/2/393/rapc712x_cd-371318.pdf Switchcraft Inc RAPC712X]. Remember that both jumpers on J70 need to be moved when switching between USB power and the DC barrel input.
@@ -43,6 +39,10 @@ J70 Pinout:
 # Jumper J70 pins 5 and 6
 
 [[http://nuand.com/images/bladeRF-J70-DC-power.jpg|DC Power]]
+
+== bladeRF 2.0 Micro ==
+
+Shown on page&nbsp;17 of the [http://www.nuand.com/bladeRF-micro.pdf schematic], the bladeRF&nbsp;2.0 Micro features a TPS2115A power multiplexer that will automatically select the appropriate voltage source. If 5&nbsp;V is present on the DC power jack, the power mux will select the DC jack as the voltage source. Otherwise, it will use the 5&nbsp;V from the USB host. If using, it is recommended to insert and power the DC jack first, followed by the USB plug.
 
 = Attenuators and Terminators =
 
