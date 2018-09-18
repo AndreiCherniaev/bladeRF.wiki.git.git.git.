@@ -432,6 +432,86 @@ This has been patched in [https://git.kernel.org/cgit/linux/kernel/git/stable/li
 
 If you've used ports to get libusb installed, there is a high likelihood that it is version 1.0.9.  Unfortunately, libusb didn't add superspeed support until version 1.0.15 for OSX. libusb v1.0.17+, works on OSX.
 
+= Hardware =
+
+== Power Rails ==
+
+When first plugging in the bladeRF, a single LED should illuminate to indicate power is being delivered to the board. On the bladeRF Classic, this is <code>D1</code>. On the bladeRF&nbsp;2.0&nbsp;micro, this is <code>D4</code>. If the power indicator does not turn on and 5&nbsp;V is being supplied, then it is likely there is something wrong with the power supply rails on the board. However, it is also possible for this LED to be illuminated and still have a power issue.
+
+With the board power connected and a voltmeter (multi-meter set to Volts) in hand, proceed with the following probe points to narrow down the source of the power failure. Remember to pick a solid ground reference for the black probe. A good place is the body of the SMA or SMB ports.
+
+For the purposes of positioning consistency, orient the board so the USB port is on the left and the component side is facing up.
+
+=== bladeRF Classic ===
+
+Open the [https://nuand.com/bladerf.pdf bladeRF Classic schematic].
+
+Page 1 shows the general power architecture. The main 5&nbsp;V rail feeds a 1.2&nbsp;V SMPS and a 3.58&nbsp;V SMPS. The 1.2&nbsp;V switcher provides the core voltage to the FX3 and FPGA. The 3.58&nbsp;V switcher supplies several low-dropout linear regulators that drop the voltage down to 3.3&nbsp;V, 2.5&nbsp;V, and 1.8&nbsp;V for various components including the LMS6.
+
+# Probe the 5&nbsp;V rail at J70 pin 2 or 5. Top side, near DC barrel jack. It should read at least 4.5&nbsp;V.
+# Probe <code>VBUS_IN</code> at J70 pin 3 or 4. Top side, near DC barrel jack. It should read at least 4.5&nbsp;V.
+# Probe the 1.2&nbsp;V switcher output at C368. Top side, top-middle, center-left. It should read ~1.2&nbsp;V, same with each sub-point below.
+## Probe each side of FB4 (bottom side, near USB port)
+## Probe each side of FB5 (bottom side, near USB port)
+## Probe each side of FB6 (bottom side, near USB port)
+## Probe each side of FB7 (top side, between USB port and U43/FPGA)
+# Probe the 3.58&nbsp;V switcher output at C329. Top side, top-middle, center-left. It should read ~3.58&nbsp;V.
+# U49 <code>VA1P8</code>: top side, top right corner
+## Pin 1 should read ~3.58&nbsp;V
+## Pin 5 should read ~1.8&nbsp;V
+# U50 <code>VD1P8</code>: top side, bottom center-right
+## Pin 1 should read ~3.58&nbsp;V
+## Pin 5 should read ~1.8&nbsp;V
+# U66 <code>VA2P5</code>: top side, left of GPIO connector U74
+## Pin 1 should read ~3.58&nbsp;V
+## Pin 5 should read ~2.5&nbsp;V
+# U55 <code>VD3P0_CLK</code>: top side, top center board
+## Pin 1 should read ~3.58&nbsp;V
+## Pin 5 should read ~3.0&nbsp;V
+# U53 <code>V3P3_RX_LMS</code>: top side, top right corner
+## Pin 1 should read ~3.58&nbsp;V
+## Pin 4 should read ~3.3&nbsp;V
+# U54 <code>V3P3_TX_LMS</code>: top side, bottom right corner
+## Pin 1 should read ~3.58&nbsp;V
+## Pin 4 should read ~3.3&nbsp;V
+# U65 <code>VD3P3</code>: top side, bottom center-right
+## Pin 1 should read ~3.58&nbsp;V
+## Pin 5 should read ~3.3&nbsp;V
+# U37: top side, middle-top, center-left
+## Pin 5 <code>USB3_VBUS</code> should read at least ~4.5&nbsp;V
+## Pin 4 <code>FLAG</code> should read at least ~4.5&nbsp;V.
+
+If any of these rails seem lower than nominal, please contact Nuand via e-mail for assistance. Please include a brief description of the problem, expected results, any relevant log information, and the voltage rail(s) that seem suspect.
+
+=== bladeRF 2.0 micro ===
+
+TODO
+
+== Clocks ==
+
+If the device is not detected by the host and the voltage rails are within their nominal ranges, it is possible there is an issue with the main 38.4&nbsp;MHz clock or its distribution to the FX3. Armed with an oscilloscope and a fine-tipped probe, proceed with the following debug steps.
+
+=== bladeRF Classic ===
+
+# U42 is the VCTCXO crystal itself, the raw source of the 38.4&nbsp;MHz clock. Probe U42 pin 3 with the oscilloscope. A 3.0&nbsp;V clock at 38.4&nbsp;MHz should be visible.
+# U67 is a 1:2 clock buffer. Pin A2 (<code>CLK_OUT1</code>) goes to the FX3. Pin D2 (<code>CLK_OUT2</code>) goes to U68, the Si5338 clock generator.
+## Pin A2: the only way to probe this clock output is to scrape off the solder mask on a via along the trace. This can damage your board and may void your warranty. If you suspect this clock output to be problematic, please contact Nuand via e-mail.
+## Pin D2: probe at U68 pin 3 (<code>IN3</code>). A 3.0&nbsp;V clock at 38.4&nbsp;MHz should be visible.
+# U68 is the Si5338 clock generator. It has 7 clock outputs in use. None are critical for initial board detection by the host. For proper operation, all clocks should be functional.
+## Pin 21 (<code>OUT0B</code>): <code>LMS_CLK</code> LMS6 PLL clock
+## Pin 22 (<code>OUT0A</code>): <code>C4_CLK</code> main FPGA clock
+## Pin 18 (<code>OUT1A</code>): <code>LMS_RX_CLK</code> LMS6 RX data interface clock<nowiki>*</nowiki>
+## Pin 14 (<code>OUT2A</code>): <code>LMS_TX_CLK</code> LMS6 TX data interface clock<nowiki>*</nowiki>
+## Pin 13 (<code>OUT2B</code>): <code>C4_TX_CLK</code> FPGA TX data interface clock<nowiki>*</nowiki>
+## Pin 10 (<code>OUT3A</code>): <code>SMB_CAP</code> off-board SMB connector<nowiki>*</nowiki>
+## Pin 9 (<code>OUT3B</code>): <code>EXP_CLK</code> Expansion interface clock<nowiki>*</nowiki>
+
+<nowiki>*</nowiki> Clock may toggle unless it is in use.
+
+=== bladeRF 2.0 micro ===
+
+TODO
+
 = Getting help =
 If you're really stuck, join the #bladeRF channel on [http://webchat.freenode.net/ Freenode] or post to the [http://nuand.com/forums/viewforum.php?f=4 Nuand Troubleshooting forum].
 
