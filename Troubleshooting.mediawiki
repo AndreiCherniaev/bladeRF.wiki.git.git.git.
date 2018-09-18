@@ -506,7 +506,7 @@ If the device is not detected by the host and the voltage rails are within their
 ## Pin 10 (<code>OUT3A</code>): <code>SMB_CAP</code> off-board SMB connector<nowiki>*</nowiki>
 ## Pin 9 (<code>OUT3B</code>): <code>EXP_CLK</code> Expansion interface clock<nowiki>*</nowiki>
 
-<nowiki>*</nowiki> Clock may toggle unless it is in use.
+<nowiki>*</nowiki> Clock may not toggle unless it is enabled or in use.
 
 === bladeRF 2.0 micro ===
 
