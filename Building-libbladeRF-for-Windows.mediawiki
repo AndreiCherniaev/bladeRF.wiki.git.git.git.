@@ -21,9 +21,11 @@ Unless you specifically need to modify libbladeRF itself, it is '''strongly reco
 ## Note: download the libusb-1.0.xx.7z file from the GitHub release
 ## Note: you may need to download and install [http://www.7-zip.org/ 7-zip from 7-zip.org] to open this file.
 # Extract the contents to a location of your choice. Make note of this location so that you can later provide it to CMake. The default configuration assumes that files will be in <code>C:/Program Files (x86)/libusb-1.0.22</code>, but if you wish to change the directory, you can change the <code>LIBUSB_PATH</code> in CMake.
+
+=== Installing and configuring zadig ===
 # Get the device driver installer (zadig): http://zadig.akeo.ie (older versions: http://sourceforge.net/projects/libwdi/files/zadig/)
 # Open Zadig. 
-# If the bladeRF is not already listed in the dropdown box, go to Device->Create New Device, type a device name (i.e., "bladeRF") in the text box, and specify the VID/PID (''2cf0''/''5246'') in the USB ID fields.
+# If the bladeRF is not already listed in the dropdown box, go to Device->Create New Device, type a device name (i.e., "bladeRF") in the text box, and specify the VID/PID (''2cf0''/''5246'' for bladeRF x40/x115, ''2cf0''/''5250'' for bladeRF xA4/xA9, ''04b4''/''00f3'' for any bladeRF device in bootloader/recovery mode) in the USB ID fields.
 # In the driver spinbox, select libusbK.
 # Click "Install Driver"
 # Open Device Manager.  A new device called ''bladeRF'' should show up. If there is a yellow bang next to it in device manager:
@@ -33,6 +35,7 @@ Unless you specifically need to modify libbladeRF itself, it is '''strongly reco
 ### Click "Have Disk..." and point it to the location that Zadig installed the driver to (C:\usb_driver).  
 ### Select "bladeRF" and continue through the wizard.
 # Device Manager should now show ''bladeRF'' under ''libusbK USB Devices''.
+# Repeat the Create New Device steps for any other bladeRF VID/PID combinations you expect to encounter.
 
 === Installing pthreads-win32 ===
 ==== Using pre-built pthreads-win32 ====
