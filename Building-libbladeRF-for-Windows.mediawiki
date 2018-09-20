@@ -1,4 +1,7 @@
-Be advised that building libbladeRF for Windows is a somewhat difficult process with a lot of manual steps.  Unless you specifically need to modify libbladeRF itself, it is '''strongly recommended''' to use the pre-built, signed installer.  See [[Getting Started: Windows]] for information on installing this.  If you have already installed it, you can proceed to [[Getting Started: Verifying Basic Device Operation]].
+== A warning ==
+'''Be advised that building libbladeRF for Windows is a somewhat difficult process with a lot of manual steps, and this documentation may not be up-to-date with all of the necessary preparations.'''
+
+Unless you specifically need to modify libbladeRF itself, it is '''strongly recommended''' to use our pre-built, signed installer.  See [[Getting Started: Windows]] for information on getting and installing this.  If you have already installed it, you can proceed to [[Getting Started: Verifying Basic Device Operation]].
 
 == Tools and Dependencies ==
 
