@@ -14,9 +14,10 @@ Be advised that building libbladeRF for Windows is a somewhat difficult process 
 ''Tip:'' You can download time-limited virtual machine images from Microsoft with the latest Windows 10 and Visual Studio builds from https://developer.microsoft.com/en-us/windows/downloads/virtual-machines
 
 === Installing libusb ===
-# Download the latest Windows binary release of [http://libusb.info/ libusb], which also include development headers. As of this writing, [https://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.21/libusb-1.0.21.7z/download version 1.0.21] is the latest
+# Download the latest Windows binary release of [http://libusb.info/ libusb], which also include development headers. As of this writing, [https://github.com/libusb/libusb/releases/tag/v1.0.22 version 1.0.22] is the latest.
+## Note: download the libusb-1.0.xx.7z file from the GitHub release
 ## Note: you may need to download and install [http://www.7-zip.org/ 7-zip from 7-zip.org] to open this file.
-# Extract the contents to a location of your choice. Make note of this location so that you can later provide it to CMake. The default configuration assumes that files will be in <code>C:/Program Files (x86)/libusb-1.0.21</code>, but if you wish to change the directory, you can change the <code>LIBUSB_PATH</code> in CMake.
+# Extract the contents to a location of your choice. Make note of this location so that you can later provide it to CMake. The default configuration assumes that files will be in <code>C:/Program Files (x86)/libusb-1.0.22</code>, but if you wish to change the directory, you can change the <code>LIBUSB_PATH</code> in CMake.
 # Get the device driver installer (zadig): http://zadig.akeo.ie (older versions: http://sourceforge.net/projects/libwdi/files/zadig/)
 # Open Zadig. 
 # If the bladeRF is not already listed in the dropdown box, go to Device->Create New Device, type a device name (i.e., "bladeRF") in the text box, and specify the VID/PID (''2cf0''/''5246'') in the USB ID fields.
