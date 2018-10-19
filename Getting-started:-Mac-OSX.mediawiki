@@ -1,6 +1,26 @@
-This guide describes the process of building and installing the bladeRF host libraries and tool for a Mac OSX system, and quickly getting a device up and running using pre-built firmware and FPGA images.
+This guide describes the process of building and installing the bladeRF host libraries and tool for a macOS system, and quickly getting a device up and running using pre-built firmware and FPGA images.
 
-= Installing Dependencies =
+= The Easy Way: MacPorts =
+
+As of this writing, [http://www.macports.org/ MacPorts] contains quite up-to-date builds of the bladeRF libraries and utilities, and supports all bladeRF boards.
+
+With MacPorts, the bladeRF utilities can be installed with:
+
+<pre>$ sudo port install bladeRF +tecla</pre>
+
+Ensure that your shell configuration (e.g., .bash_profile, .bashrc, .zshrc) contains the following items (adjusted accordingly):
+<pre>
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PYTHONPATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages:/opt/local/lib/python2.7/site-packages:${PYTHONPATH}
+</pre>
+
+You may need to log out and log back in to ensure this change is applied to all of your terminal sessions.
+
+Next, proceed to the "Checking basic device operation" section (below), and then "GNU Radio and gr-osmosdr" if you wish to use the bladeRF with GNU Radio.
+
+= The Harder Way: compiling from scratch =
+
+== Installing Dependencies ==
 
 Install XCode from Apple, as you will need a compiler. This is available in the App Store.
 
@@ -8,34 +28,19 @@ If you plan to use graphical tools (i.e., GNU Radio Companion), ensure you have 
 
 Next, install a package management system, such as [http://www.macports.org/ MacPorts] or [http://brew.sh/ Homebrew].
 
-= Fetching bladeRF packages =
-
-== MacPorts ==
-
-With MacPorts, the bladeRF utilities can be installed with:
-
-<pre>$ sudo port install bladeRF +tecla</pre>
-
-Ensure that your shell configuration (e.g., .bashrc, .zshrc) contains the following items (adjusted accordingly):
-<pre>
-export DISPLAY=:0.0
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export MANPATH=/opt/local/share/man:$MANPATH
-export PYTHONPATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages:/opt/local/lib/python2.7/site-packages:${PYTHONPATH}
-</pre>
-
-== Homebrew==
+=== Homebrew ===
 
 If you're using Homebrew, install the dependencies via the following command. Older homebrew versions required using libusbx which has now been merged into libusb. Homebrew no longer has a libusbx formula.
 
 <pre>$ brew install libusb pkgconfig cmake libtecla</pre>
 
-= Building bladeRF libraries and tools from source =
+== Building bladeRF libraries and tools from source ==
+
 If you've installed bladeRF items via a package manager, you can skip this section.  However, if you're interested in diving into the host-side code, continue on!
 
 Required dependencies include: libusb(x), CMake.  libtecla is optional, but highly recommended for bladeRF-cli.  MacPorts and Homebrew provide packages for all of these. 
 
-== Clone the bladeRF git repository ==
+=== Clone the bladeRF git repository ===
 
 To obtain the latest source code for the first time, clone the Nuand git repository via:
 <pre>
@@ -48,7 +53,7 @@ In the future, you can update the repository via:
 $ git pull
 </pre>
 
-== Configure the build ==
+=== Configure the build ===
 
 First enter the directory containing the host source. Then create and enter a directory to perform the build in. By working out of the a 'build' directory, it's easy to later clean up, by simply removing 'build/'.
 
@@ -67,7 +72,7 @@ Next, configure the build. In the below example, we:
 $ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/local ..
 </pre>
 
-== Perform the build and installation ==
+=== Perform the build and installation ===
 
 Kick off the build and install to the location specified by ''CMAKE_INSTALL_PREFIX''.
 
@@ -76,7 +81,7 @@ $ make
 $ sudo make install
 </pre>
 
-== Uninstalling later ==
+=== Uninstalling later ===
 Note that from this same directory, you can run the following to uninstall the files place on your system in the previous step. <pre>sudo make uninstall</pre> 
 
 The ''install_manifest.txt'' file, created after running the install step successfully, lists all the files installed.  It is a good idea to back up this file if you plan on removing this build directory later.
@@ -124,6 +129,7 @@ $ sudo port install gr-fosphor
 </pre>
 
 == Homebrew ==
+
 The following is a bit vague, but it is assured to be workable.
 As of Jan 2014 it seems that that gnuradio is still not yet part of the supported tree for Homebrew.
 There are, however, several 3rd-party scripts.  One of them by user "titanous."
