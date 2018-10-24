@@ -61,7 +61,7 @@ Before going further, the devices FPGA must be configured.
 
 = Loading the FPGA =
 
-FPGA images can be obtained from [[the Nuand website|http://www.nuand.com/fpga]] or from a [[continuous build of "bleeding edge" images|http://hoopycat.com/bladerf_builds/]].  If you are using Ubuntu, the [[bladeRF PPA|https://launchpad.net/~bladerf/+archive/ubuntu/bladerf]] has <code>bladerf-fpga-hostedx40</code> and <code>bladerf-fpga-hostedx115</code> packages which will auto-download a recent FPGA image from the Nuand website.
+FPGA images can be obtained from [[the Nuand website|http://www.nuand.com/fpga]].  If you are using Ubuntu, the [[bladeRF PPA|https://launchpad.net/~bladerf/+archive/ubuntu/bladerf]] has <code>bladerf-fpga-hostedx40</code>, <code>bladerf-fpga-hostedx115</code>, <code>bladerf-fpga-hostedxa4</code>, and <code>bladerf-fpga-hostedxa4</code> packages which will auto-download a recent FPGA image from the Nuand website.
 
 Ensure you download [https://github.com/Nuand/bladeRF/wiki/Troubleshooting#FPGA_load_failures the correct image for your FPGA size].
 
@@ -83,47 +83,98 @@ A number of device parameters can be printed and set via the bladeRF-cli <code>p
 
 == Gain ==
 
+Gain is implemented using one or more gain stages, depending on the model.  In libbladeRF 2.0.0 and later, the recommended method is to let the system apportion gain between the various gain stages.
+
+Note that the range of available gain may vary depending on frequency.
+
 === RX Gain ===
 
-The <code>lnagain</code>, <code>rxvga1</code>, and <code>rxvga2</code> parameters may be used to view and adjust RX gains:
+An overall RX gain of 60 dB is defined as the maximum.
+
+Note: FPGA v0.7.0 / libbladeRF v1.8.0 and later support automatic gain control, and it is enabled by default. This will automatically adjust the gain to maintain maximum dynamic range and minimum clipping. <code>print agc [channel]</code> will display the current status, and <code>set agc [channel] <on|off></code> will toggle it on or off.
 
 <pre>
-bladeRF> print lnagain
+bladeRF> print gain
 
-   LNA Gain: 6 dB
+  Gain RX1 overall:   60 dB (Range: [-15, 60])
+              full:   71 dB (Range: [-4, 71])
+  Gain RX2 overall:   60 dB (Range: [-15, 60])
+              full:   71 dB (Range: [-4, 71])
+  Gain TX1 overall:   56 dB (Range: [-23.75, 66])
+               dsa:  -10 dB (Range: [-89.75, 0])
+  Gain TX2 overall:   56 dB (Range: [-23.75, 66])
+               dsa:  -10 dB (Range: [-89.75, 0])
 
-bladeRF> print rxvga1
-
-  RXVGA1 Gain:  30dB
-
-bladeRF> print rxvga2
-
-  RXVGA2 Gain:   3dB
-
-bladeRF> set rxvga2 6 
-bladeRF> print rxvga2
-
-  RXVGA2 Gain:   6dB
+bladeRF> set gain rx1 42
 </pre>
+
+If you receive an error like <code>Gain on RX1 cannot be changed while AGC is enabled</code>, use <code>set agc off</code> to turn off the automatic gain control:
+
+<pre>
+bladeRF> set gain rx1 42
+
+  Gain on RX1 cannot be changed while AGC is enabled.
+
+
+  Error: Operation invalid in current state
+
+bladeRF> set agc rx1 off
+
+  RX1 AGC: Disabled  
+
+bladeRF> set gain rx1 42
+
+Note: This change will not be visible until the channel is enabled.
+Setting RX1 overall gain to 42 dB
+  Gain RX1 overall:   42 dB (Range: [-15, 60])
+              full:   53 dB (Range: [-4, 71])
+</pre>
+
+If you receive a note like <code>Note: This change will not be visible until the channel is enabled</code>, note that the new gain value will not appear if you do <code>print gain</code>, but will appear after you start receiving:
+
+<pre>
+bladeRF> set gain rx1 42
+
+Note: This change will not be visible until the channel is enabled.
+Setting RX1 overall gain to 42 dB
+  Gain RX1 overall:   60 dB (Range: [-15, 60])
+              full:   71 dB (Range: [-4, 71])
+
+bladeRF> rx config file=/dev/null n=0
+bladeRF> rx start
+bladeRF> print gain rx1
+
+  Gain RX1 overall:   42 dB (Range: [-15, 60])
+              full:   53 dB (Range: [-4, 71])
+
+</pre>
+
+On the bladeRF x40/x115, RX gain is implemented using three gain stages: <code>lna</code>, <code>rxvga1</code>, and <code>rxvga2</code>.  On the bladeRF xA4/xA9, there is one gain stage, <code>full</code>.
 
 === TX Gain ===
 
-The <code>txvga1</code> and <code>txvga2</code> parameters may be used to view and adjust TX gains.
+An overall TX gain of 60 dB is defined as <i>approximately</i> 0 dBm output power.
 
 <pre>
-bladeRF> print txvga1
+bladeRF> print gain
 
-  TXVGA1 Gain: -14dB
+  Gain RX1 overall:   42 dB (Range: [-15, 60])
+              full:   53 dB (Range: [-4, 71])
+  Gain RX2 overall:   60 dB (Range: [-15, 60])
+              full:   71 dB (Range: [-4, 71])
+  Gain TX1 overall:   56 dB (Range: [-23.75, 66])
+               dsa:  -10 dB (Range: [-89.75, 0])
+  Gain TX2 overall:   56 dB (Range: [-23.75, 66])
+               dsa:  -10 dB (Range: [-89.75, 0])
 
-bladeRF> print txvga2
+bladeRF> set gain tx1 60
 
-  TXVGA2 Gain: 0dB
-
-bladeRF> set txvga1 -18
-bladeRF> print txvga1
-
-  TXVGA1 Gain: -18dB
+Setting TX1 overall gain to 60 dB
+  Gain TX1 overall:   60 dB (Range: [-23.75, 66])
+               dsa:   -6 dB (Range: [-89.75, 0])
 </pre>
+
+On the bladeRF x40/x115, TX gain is implemented using two gain stages: <code>txvga1</code> and <code>txvga2</code>.  On the bladeRF xA4/xA9, there is one gain stage, <code>dsa</code>.
 
 == Bandwidth ==
 
