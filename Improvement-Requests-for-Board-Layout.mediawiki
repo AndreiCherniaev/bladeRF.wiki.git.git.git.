@@ -4,3 +4,6 @@
 * FX3 debug LED is not very bright
 * Align GPIF0-7 with DATA0-7.  Currently parallel programming of the FPGA via the FX3 required a weird mask translation.
 * Add plugin style board to product line with switchable band pass filters for higher ham bands (70cm/23cm/33cm/13cm) similar to the filters on the XB-200.
+
+= Errata =
+* The order of the LEDs is incorrect. From left-to-right, they are actually: LED2, LED1, LED3. (The locations of LED1 (D11) and LED2 (D12) need to be swapped so the silkscreen labels read correctly).
