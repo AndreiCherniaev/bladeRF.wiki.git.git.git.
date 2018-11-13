@@ -14,6 +14,12 @@
 | xb200[=filter]                          | Automatic filter selection will be enabled if no value is given to the xb200 parameter. Otherwise, a specific filter may be selected per the list presented below. |
 | smb=\<frequency\>                       | Enable frequency output on SMB connector (named CLK) |
 | tamer=[internal,external,external_1pps] | Set one of the clock input modes |
+| enable_metadata=\<0\|1\>                | |
+| rxmux=[baseband\|12bit\|32bit\|digital] | Configure the RX mux for a given source. Only valid on sources (RX). |
+| biastee=[0\|1]                          | Enable or disable the bias-tee power on the given set of ports. Only valid on bladeRF 2.0 micro family. |
+| sampling=[internal\|external] | |
+| agc_mode=[automatic\|manual\|fast\|slow\|hybrid] | Set a specific gain control mode. fast, slow, and hybrid are only valid on bladeRF 2.0 micro family. Only valid on sources (RX). |
+| agc=[0\|1]                              | Enable or disable automatic gain control. Only valid on sources (RX). |
 
 The following values are valid for the xb200 parameter:
 
