@@ -15,14 +15,18 @@ These guides describe the process of building and installing the bladeRF softwar
 * [[Getting Started: Verifying Basic Device Operation]]
 
 == bladeRF firmware images ==
-* [http://nuand.com/fx3.php FX3 firmware images]
-* [http://nuand.com/fpga.php FPGA images]
+* [https://www.nuand.com/fx3_images/ FX3 firmware images]
+* [https://www.nuand.com/fpga_images/ FPGA images]
 
 == Expansion Boards and Accessories ==
 
 * [[Getting Started: XB200 Transverter Board|Getting Started: XB-200 Transverter Board]]
 * [[Getting Started: XB300 Amplifier Board|Getting Started: XB-300 Amplifier Board]]
 * [[bladeRF Accessories]]
+
+== Developing with libbladeRF ==
+
+* [https://www.nuand.com/bladeRF-doc/libbladeRF/ libbladeRF API documentation]
 
 = Help and How-to's =
 * [[Troubleshooting]]
