@@ -19,14 +19,18 @@ bladeRF> set bandwidth rx 5M
 
   Set RX bandwidth - req:  5000000 Hz actual:  5000000 Hz
 
-bladeRF> set lnagain 6
-bladeRF> set rxvga1 30
-bladeRF> set rxvga2 10
+# Automatic gain control is enabled by default with libbladeRF 2.0.0 and later.
+# If you wish to disable it and set gains manually:
+#
+# bladeRF> set agc off
+#
+# Before libbladeRF 2.0.0, 'set lnagain', 'set rxvga1', and 'set rxvga2' were
+# used to individually set the gain stages on the bladeRF x40/x115. With
+# libbladeRF 2.0.0 and later, on any bladeRF, 'set gain rx 60' will set maximum
+# gain, and values less than 60 will be less than that:
+#
+# bladeRF> set gain rx 60
 
-# Important note: 'print' with no arguments was added Aug 23, 2015.
-# If you're using an earlier version of the bladeRF-cli, you will
-# need to print properties individually, for example:
-#  'print bandwidth; print samplerate; print frequency;'
 bladeRF> print
 
   RX Bandwidth:   5000000 Hz
