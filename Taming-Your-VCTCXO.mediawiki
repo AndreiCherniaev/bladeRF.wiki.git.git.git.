@@ -42,7 +42,11 @@ bladeRF> set refin_freq 20M
 
 While it is possible to design a radio with the most accurate oscillator in the world, the frequency options are limited (usually just 10&nbsp;MHz), very few entities would be able to afford it, and quite simply it's just not needed in the vast majority of use cases. Instead, a cheaper (but still highly accurate) oscillator is selected and it is tamed by an external, more accurate oscillator dictated by the application requirements. Some examples include:
 
+* Most test equipment has a 10&nbsp;MHz reference output
+** '''bladeRF2&#8209;micro''': In most situations, this can be directly connected to the analog PLL reference input. The reference waveform may be either a square wave or a sinusoid, do not exceed 3.3&nbsp;Vpp.
+** '''bladeRF Classic''': The VCTCXO taming is performed digitally and has a 1.8&nbsp;V CMOS input (3.3&nbsp;V compatible). The reference oscillator must be a square wave; a sinusoid will result in ''significant'' phase noise.
 * [https://en.wikipedia.org/wiki/GPS_disciplined_oscillator GPS Disciplined Oscillator (GPSDO)] (~$200+)
+** [http://www.leobodnar.com/shop/index.php?main_page=product_info&products_id=234 Leo Bodnar GPSDO]
 * [https://en.wikipedia.org/wiki/Crystal_oven Oven-controlled XO (OCXO)] (~$500+)
 * [https://en.wikipedia.org/wiki/Atomic_clock Atomic clock] or chip-scale atomic clock (CSAC), typically cesium or rubidium (~$1000+)
 * Ethernet ([https://www.ohwr.org/projects/white-rabbit White Rabbit], [https://en.wikipedia.org/wiki/Precision_Time_Protocol IEEE 1588 PTP]) (>>$1000 due to infrastructure)
