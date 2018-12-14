@@ -44,7 +44,7 @@ While it is possible to design a radio with the most accurate oscillator in the 
 
 * Most test equipment has a 10&nbsp;MHz reference output
 ** '''bladeRF2&#8209;micro''': In most situations, this can be directly connected to the analog PLL reference input. The reference waveform may be either a square wave or a sinusoid, do not exceed 3.3&nbsp;Vpp.
-** '''bladeRF Classic''': The VCTCXO taming is performed digitally and has a 1.8&nbsp;V CMOS input (3.3&nbsp;V compatible). The reference oscillator must be a square wave; a sinusoid will result in ''significant'' phase noise.
+** '''bladeRF Classic''': The VCTCXO taming is performed digitally and has a 1.8&nbsp;V CMOS input (3.3&nbsp;V tolerant). The reference oscillator must be a square wave; a sinusoid will result in ''significant'' phase noise.
 * [https://en.wikipedia.org/wiki/GPS_disciplined_oscillator GPS Disciplined Oscillator (GPSDO)] (~$200+)
 ** [http://www.leobodnar.com/shop/index.php?main_page=product_info&products_id=234 Leo Bodnar GPSDO]
 * [https://en.wikipedia.org/wiki/Crystal_oven Oven-controlled XO (OCXO)] (~$500+)
