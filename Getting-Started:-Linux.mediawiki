@@ -45,18 +45,9 @@ $ bladeRF-cli -i
 $ gqrx
 </pre>
 
-=== udev rules ===
+=== PyBOMBS udev rules ===
 
-You may get a permissions error when trying to access the bladeRF. This is typically because of a lack of, or incorrect udev rule.
-
-Nuand has [https://github.com/Nuand/bladeRF/tree/master/host/misc/udev a set of rules] for the bladeRF1, bladeRF2, and the FX3 bootloader. These rules are inputs to cmake and contain cmake variables. When building normally, these variables are replaced according to defaults or command options provided to cmake. PyBOMBS does not install udev rules, so this operation is skipped and will need to be done manually.
-
-One way to do this is as follows:
-# Copy the rule files from <code>~/pybombs/bladeRF/src/bladeRF/host/misc/udev</code> to <code>/etc/udev/rules.d</code>
-# Rename the rule file names so they end in <code>.rules</code> (remove the <code>.in</code> postfix)
-# Edit each file so that all instances of <code>GROUP="@BLADERF_GROUP@"</code> becomes <code>GROUP="plugdev"</code>.
-## This will only work if your user is in the <code>plugdev</code> (default) group. Change as needed.
-# Refresh udev: <code>sudo udevadm control --reload-rules && sudo udevadm trigger</code>
+You may get a permissions error when trying to access the bladeRF. This is typically from lack of, or incorrect, udev rule(s) and may be remedied by following the [https://github.com/Nuand/bladeRF/wiki/Troubleshooting#pybombs udev installation instructions].
 
 === PyBOMBS and gr-fosphor ===
 
