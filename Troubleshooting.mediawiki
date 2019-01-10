@@ -95,10 +95,11 @@ Because [http://gnuradio.org/redmine/projects/pybombs/wiki PyBOMBS] allows users
 
 Therefore, if you've installed bladeRF support via PyBOMBS you will need to manually install the udev rules:
 
-# Copy [https://github.com/Nuand/bladeRF/blob/master/host/misc/udev/88-nuand.rules.in this file] to a <code>88-nuand.rules</code> file.
-# In <code>88-nuand.rules</code>, replace <code>@BLADERF_GROUP@</code> with the name of a group your user is in.
-# Copy this file to the udev rules directory: <code>sudo cp 88-nuand.rules /etc/udev/rules.d/ && sudo chmod 644 /etc/udev/rules.d/88-nuand.rules</code>
-# Reload rules: <code>sudo udevadm control --reload-rules</code>
+# Copy each [https://github.com/Nuand/bladeRF/blob/master/host/misc/udev/88-nuand.rules.in 88-nuand-*.rules.in] to <code>88-nuand-*.rules</code>.
+# Edit each <code>88-nuand-*.rules</code> file and replace all instances of <code>GROUP="@BLADERF_GROUP@"</code> to <code>GROUP="plugdev"</code>.
+## This assumes your user is in the <code>plugdev</code> (default) group. Change as needed.
+# Copy this file to the udev rules directory: <code>sudo cp 88-nuand-*.rules /etc/udev/rules.d/ && sudo chmod 644 /etc/udev/rules.d/88-nuand-*.rules</code>
+# Reload rules: <code>sudo udevadm control --reload-rules && sudo udevadm trigger</code>
 # Replug the device.
 
 === Device may only be opened by one program ===
