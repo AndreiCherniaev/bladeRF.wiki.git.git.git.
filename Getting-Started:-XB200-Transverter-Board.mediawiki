@@ -57,7 +57,7 @@ Resistors R62 and R63 on the XB-200 were populated for early production boards.
 
 Unfortunately, this causes unbalanced loading on the analog signals feeding the RF chain and will <b>severely degrade</b> performance.  It is highly recommended to <b>remove</b> R62 and R63 on the XB-200 if they are populated.
 
-These resistors may be found slightly above the J15 DAC SMA connector, and are near the pins of J6 ([https://www.nuand.com/~jon/images/wiki/xb200_R62_R63.png image], [https://www.nuand.com/xb200.pdf schematic]).
+These resistors may be found slightly above the J15 DAC SMA connector, and are near the pins of J6 ([https://www.nuand.com/images/xb200_R62_R63.png image], [https://www.nuand.com/xb200.pdf schematic]).
 
 == GPIO ports ==
 

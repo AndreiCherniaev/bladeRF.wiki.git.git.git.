@@ -207,9 +207,9 @@ Be sure to adjust samplerate and frequency parameters appropriately to ensure th
 <pre>./baudline -reset -format le16 -channels 2 -quadrature -samplerate 2000000 -stdin < /tmp/rx_samples.bin</pre>
 
 === GNU Radio Flowgraph ===
-[https://www.nuand.com/~jon/gnuradio/grc/bladeRF_fifo_rx.grc This flowgraph] ([https://www.nuand.com/~jon/gnuradio/grc/bladeRF_fifo_rx.py python]) converts bladeRF SC16 Q11 samples to GNU radio complex values and displays them with a Qt GUI sink.  Note that the same conversion approach can be taken for transmitting.
+[https://www.nuand.com/gnuradio/grc/bladeRF_fifo_rx.grc This flowgraph] ([https://www.nuand.com/~jon/gnuradio/grc/bladeRF_fifo_rx.py python]) converts bladeRF SC16 Q11 samples to GNU radio complex values and displays them with a Qt GUI sink.  Note that the same conversion approach can be taken for transmitting.
 
-[[https://www.nuand.com/~jon/gnuradio/grc/bladeRF_fifo_rx.grc.png]]
+[[https://www.nuand.com/gnuradio/grc/bladeRF_fifo_rx.grc.png]]
 
 <pre>./bladeRF_fifo_rx.py --sample-rate=2e6 --frequency=433.92e6</pre>
 
@@ -292,7 +292,7 @@ save_sc16q11('/tmp/samples.sc16q11', signal);
 ```
 
 Here's an example of the expected plot:
-[[http://nuand.com/~jon/images/wiki/250_kHz_tone.png]]
+[[http://nuand.com/images/wiki/250_kHz_tone.png]]
 
 
 It's generally recommended to save files to /tmp or a ramdisk location, rather than to a hard disk. For higher sample rates, reading samples from disk may cause underruns.
@@ -384,7 +384,7 @@ bladeRF> tx
 
 The following screenshot from a VSA shows this tone being transmitted at the desired 250 kHz offset from the center frequency (925MHz). Note that this is from a device with its DC offset and IQ imbalance compensated for. See [https://github.com/Nuand/bladeRF/wiki/DC-offset-and-IQ-Imbalance-Correction#correcting-the-tx-module wiki page] describing correction features if you see significant LO leakage at the center frequency, or a significant image at -250 kHz.
 
-[[http://nuand.com/~jon/images/wiki/250kHz_tone_vsa.gif]]
+[[http://nuand.com/images/wiki/250kHz_tone_vsa.gif]]
 
 = Backing up and restoring calibration data =
 Currently, the following information is stored in a user-modifiable "calibration region":

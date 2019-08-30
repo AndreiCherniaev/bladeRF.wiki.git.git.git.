@@ -146,7 +146,7 @@ It is also possible to manually dial in the correction parameters required for a
 
 Below is am image showing a spectrum containing a tone before (left) and after (right) manually adjusting the DC offset and IQ imbalance correction parameters.
 
-[[http://nuand.com/~jon/images/wiki/dc_iq_cal_before_after.png]]
+[[http://nuand.com/images/wiki/dc_iq_cal_before_after.png]]
 
 == Using a spectrum analyzer and osmocom_siggen ==
 
