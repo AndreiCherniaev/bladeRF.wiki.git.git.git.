@@ -4,24 +4,24 @@ This guide describes the process of building and installing the bladeRF host lib
 
 [https://github.com/gnuradio/pybombs PyBOMBS] is essentially a package manager and build system for GNU Radio. It handles the fetching, building, and installation of GNU Radio and dependencies, and is largely system independent. The installation steps are listed on the [https://github.com/gnuradio/pybombs PyBOMBS GitHub] page, but the following is a list of steps and basic packages needed to get up and running with the bladeRF.
 
-Install PyBOMBS (using pip, but other methods are listed on the PyBOMBS README.md), apply the default configuration, and add the default recipes:
-
+Before compiling on Ubuntu systems, ensure the following packages are installed.
 <pre>
-$ pip install --upgrade git+https://github.com/gnuradio/pybombs.git
-$ pybombs auto-config
-$ pybombs recipes add-defaults
+$ sudo apt-get install python3-six python-six python-mako python3-lxml python-lxml python-numpy python3-numpy python3-pip git
 </pre>
 
 NB: If the pybombs command is not found after pip install ensure that ~/.local/bin is part of your path. If it is not, run (and also add the following command to your .bashrc): <pre>export PATH=$PATH:$HOME/.local/bin</pre>
 
+Install PyBOMBS (using pip, but other methods are listed on the PyBOMBS README.md), apply the default configuration, and add the default recipes:
+
+<pre>
+$ pip3 install --upgrade git+https://github.com/gnuradio/pybombs.git
+$ pybombs auto-config
+$ pybombs recipes add-defaults
+</pre>
+
 To use Nuand's experimental gr-osmo, consider running the following:
 <pre>
 $ sed -i 's/git.osmocom.org/github.com\/Nuand/g' ~/.pybombs/recipes/gr-recipes/gr-osmosdr.lwr
-</pre>
-
-Before compiling on Ubuntu systems, ensure the following packages are installed.
-<pre>
-$ sudo apt-get install python3-six python-six python-mako python3-lxml python-lxml python-numpy python3-numpy
 </pre>
 
 If building default or latest GNURadio (>=3.8), try to remove the following Qt4 and PyGTK dependencies by trying:
@@ -68,6 +68,23 @@ $ source ~/pybombs/bladeRF/setup_env.sh
 $ bladeRF-cli -i
 $ gqrx
 </pre>
+
+==== PYTHONPATH Errors ====
+If any PYTHONPATH warning or errors appear while launching gnuradio-companion, ensure all of the Python package library paths in ~/pybombs/bladeRF/lib/ are present in $PYTHONPATH.
+
+To have <code>setup_env.sh</code> try to fix missing PYTHONPATH paths, first backup the <code>setup_env.sh</code> then try:
+<pre>
+$ echo "export PYTHONPATH=$(echo ~/pybombs/bladeRF/lib/*/*-packages | sed 's/ /:/g')":'$PYTHONPATH' >> ~/pybombs/bladeRF/setup_env.sh
+</pre>
+
+If everything went correctly, something similar should appear:
+<pre>
+$ tail -n 1 ~/pybombs/bladeRF/setup_env.sh
+export PYTHONPATH=/home/user/pybombs/bladeRF/lib/python3.8/site-packages:/home/user/pybombs/bladeRF/lib/python3/dist-packages:$PYTHONPATH
+</pre>
+Note: the paths should be absolute paths, and they should appear on the very last line of the <code>setup_env.sh</code> file. If things match, try sourcing the file again <code>source ~/pybombs/bladeRF/setup_env.sh</code>
+
+If these outputs do not appear or do not match, it might be good to restore the backup of the <code>setup_env.sh</code> file and manually add the missing Python package paths to the file.
 
 === PyBOMBS udev rules ===
 
