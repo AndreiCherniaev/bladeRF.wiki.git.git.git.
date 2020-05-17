@@ -24,10 +24,23 @@ Before compiling on Ubuntu systems, ensure the following packages are installed.
 $ sudo apt-get install python3-six python-six python-mako python3-lxml python-lxml python-numpy python3-numpy
 </pre>
 
+If building default or latest GNURadio (>=3.8), try to remove the following Qt4 and PyGTK dependencies by trying:
+<pre>
+$ sed -i '/^- pygtk/d' ~/.pybombs/recipes/gr-recipes/gnuradio.lwr ~/.pybombs/recipes/gr-recipes/gnuradio38.lwr
+$ sed -i '/^- qt4/d' ~/.pybombs/recipes/gr-recipes/gqrx.lwr
+</pre>
+
+Optionally to enable gr-video-sdl, try:
+<pre>
+$ sudo apt-get install libsdl1.2-dev libsdl2-dev
+$ sed -i 's/-DENABLE_VOLK=ON/-DENABLE_VOLK=ON -DENABLE_GR_VIDEO_SDL=ON/g' ~/.pybombs/recipes/gr-recipes/gnuradio.lwr ~/.pybombs/recipes/gr-recipes/gnuradio38.lwr
+</pre>
+
 Now, let's create a prefix, or a directory in which to install all the GNU Radio components. In this case, we set the prefix directory to <code>~/pybombs/bladeRF</code>. We also specify the alias, <code>bladeRF</code>, for easy reference later, and install the default GNU Radio setup.
 
 <pre>
 $ mkdir ~/pybombs/
+$ pybombs config --package gnuradio gitrev v3.8.1.0
 $ pybombs config --package gr-osmosdr gitrev dev-gr-3.8
 $ pybombs prefix init ~/pybombs/bladeRF -a bladeRF -R gnuradio-default
 </pre>
