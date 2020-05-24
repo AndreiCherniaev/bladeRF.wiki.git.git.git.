@@ -100,13 +100,11 @@ $ pybombs -p bladeRF install bladeRF gr-fosphor
 </pre>
 
 == Easy installation for Ubuntu: The bladeRF PPA ==
-If you're running '''Ubuntu 14.04 (trusty) or later''', a release PPA is available at [[ppa:bladerf/bladerf|https://launchpad.net/~bladerf/+archive/bladerf/+packages]].  New builds will appear occasionally as bladeRF releases (and release candidates) are tagged.  (Package signing key is [[1024R/2FB21B35|http://keyserver.ubuntu.com:11371/pks/lookup?search=0x188FE585DD24922CE9CD1EE9BE99746B2FB21B35&op=index]].)
+If you're running '''Ubuntu 20.04 (focal) or later''', a PPA is available at [[ppa:nuand/bladerf|https://launchpad.net/~nuandllc/+archive/bladerf/+packages]].  New builds will appear occasionally as bladeRF releases (and release candidates) are tagged.
 
-Want something fresher?  There is also a [[ppa:bladerf/bladerf-snapshots|https://launchpad.net/~bladerf/+archive/bladerf-snapshots/+packages]] PPA for more frequent, bleeding-edge builds from the master branch.  Same process, just change the <code>ppa:</code> target below.
+To activate the PPA, simply:
 
-To activate the release PPA, simply:
-
-<pre>$ sudo add-apt-repository ppa:bladerf/bladerf
+<pre>$ sudo add-apt-repository ppa:nuandllc/bladerf
 $ sudo apt-get update
 $ sudo apt-get install bladerf</pre>
 
