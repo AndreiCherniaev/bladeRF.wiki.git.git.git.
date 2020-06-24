@@ -57,10 +57,15 @@ Please feel free to update this page as needed, but please test [https://github.
 | Yes
 |
 |-
-| SuSE 12.1 (32-bit and 64-bit)
-| '''No'''
-| Unknown
-| ''Incompatible libusb-1.0''
+| openSUSE Leap 15.2 (64-bit)
+| Yes
+| Yes
+| 
+|-
+| openSUSE Tumbleweed (32-bit & 64-bit)
+| Yes
+| Yes
+| 
 |-
 | Ubuntu 15.04 (64-bit)
 | Yes
