@@ -67,6 +67,16 @@ Please feel free to update this page as needed, but please test [https://github.
 | Yes
 | 
 |-
+| Ubuntu 20.10 (64-bit)
+| Yes
+| Yes
+|
+|-
+| Ubuntu 19.10 (64-bit)
+| Yes
+| Yes
+|
+|-
 | Ubuntu 15.04 (64-bit)
 | Yes
 | Yes
