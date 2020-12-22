@@ -43,18 +43,6 @@ Plenty of quad-band GSM devices are available online. One such device that has b
 
 To build Yate and YateBTS, basic knowledge of how to use GNU Autotools and GCC is required. Please refer to your Linux distribution's documentation for information on how to install these. If you plan to check out the latest source code, [https://subversion.apache.org/ Subversion]  is required.
 
-== libbladeRF is no longer required ==
-
-In the past, a transceiver implementation was provided with Yate-BTS that was dependent upon libbladeRF. Yate now provides bladeRF support that is <b>not</b> dependent upon libbladeRF. Additionally, Yate provides tested bladeRF FPGA images. Therefore,
-it is no longer <i>required</i> to build and install libbladeRF, the bladeRF-cli, or download FPGA images. 
-
-However, bladeRF-cli and libbladeRF installation is useful for diagnostics, to verify basic device operation, and to update firmware.
-
-Users familiar with Yate-BTS will note that there is no transceiver-bladerf to place in the <code>ybts.conf</code> file. Instead, the <code>ybladerf.conf</code> file may be used to performed fine-grained configuration of the bladeRF, with respect to Yate.
-
-If you do not have libbladeRF installed, you will still need to create and add an <code>/etc/udev/rules.d/88-nuand.rules</code> file to ensure your user has permissions to access a bladeRF device. Below is an example file, which assumes your
-user is in the <code>plugdev</code> group. (Using a <code>yate</code> group could also suffice, as this group is used later in this guide.)
-
 == Setting up a <code>yate</code> group ==
 
 This guide assumes one wants to run Yate as a non-root user, and uses a <code>yate</code> group to allow a non-root user to edit the various configuration files that will be manipulated at runtime.
@@ -100,14 +88,14 @@ After logging out and back in, you should see <code>yate</code> listed when you 
 
 The following tarball includes YateBTS, Yate, and the latest RBFs.
 ```
-mkdir ~/software
-cd ~/software
+mkdir ~/software/bts/
+cd ~/software/bts/
 wget https://nuand.com/downloads/yate-rc-2.tar.gz
 tar xfz yate-rc-2.tar.gz
 ```
-
-This step is recommended for using libbladeRF 2.0 (commit 3a411c8) with YateBTS and a bladeRF x40, bladeRF x115, bladeRF 2.0 micro xA4, or a bladeRF 2.0 micro xA9.
-
+A <code>yate</code> and <code>yatebts</code> directory should contain Yate and YateBTS, respectively. Remember to select and load RBF the appropriate v0.11.1 FPGA RBF.
+ 
+This step is recommended for using libbladeRF 2.0 (commit 3a411c8) with YateBTS and the bladeRF 2.0 micro.
 
 == Download pages (Alternative) ==
 
@@ -140,7 +128,7 @@ svn update
 
 == Yate ==
 
-First, configure the build to install into <code>usr/local</code>:
+First, configure the build to install into <code>/usr/local</code>:
 
 ```
 cd ~/software/bts/yate
