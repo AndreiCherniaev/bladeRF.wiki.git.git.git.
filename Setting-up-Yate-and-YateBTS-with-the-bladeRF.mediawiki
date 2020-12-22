@@ -267,7 +267,7 @@ remote_port=20162
 
 == Startup ==
 
-If using the Nuand tarball, prior to starting yate in load the appropriate bladeRF device and size specific v0.11.1 FPGA RBF included in the tarball.
+If using the Nuand tarball, prior to starting yate load the appropriate bladeRF device and size specific v0.11.1 FPGA RBF included in the tarball.
 
 At this point, you should be able to plug in a bladeRF and run <code>yate</code>. When doing so, you should see LEDs on the bladeRF begin to blink. This indicates that the device's FPGA has been loaded and is in use.
 
