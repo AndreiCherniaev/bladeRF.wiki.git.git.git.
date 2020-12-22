@@ -82,19 +82,32 @@ If the device is plugged in prior to this, ensure it is unplugged and re-connect
 
 After logging out and back in, you should see <code>yate</code> listed when you run the <code>groups</code> command.
 
+= Install bladeRF =
+
+Fetch the bladeRF library and tools from source from commit 3a411c87c2416dc68030d5823d73ebf3f797a145 by cloning the Nuand git repository and going to commit 3a411c87c2416dc68030d5823d73ebf3f797a145 via:
+<pre>
+$ git clone https://github.com/Nuand/bladeRF.git ./bladeRF
+$ cd ./bladeRF
+$ git reset --hard 3a411c87c2416dc68030d5823d73ebf3f797a145
+$ ls  
+</pre>
+
+Once fetched, continue following the rest of the building from source instructions, continuing at the [https://github.com/Nuand/bladeRF/wiki/Getting-Started%3A-Linux#Configure_the_build Configure the build step]
+
 = Fetching Yate and Yate-BTS =
 
 == Download the libbladeRF 2.0 based Yate and YateBTS source tarball ==
 
 The following tarball includes YateBTS, Yate, and the latest RBFs.
+
 ```
 mkdir ~/software/bts/
 cd ~/software/bts/
 wget https://nuand.com/downloads/yate-rc-2.tar.gz
 tar xfz yate-rc-2.tar.gz
 ```
-A <code>yate</code> and <code>yatebts</code> directory should contain Yate and YateBTS, respectively. Remember to select and load RBF the appropriate v0.11.1 FPGA RBF.
- 
+
+A <code>yate</code> and <code>yatebts</code> directory should contain Yate and YateBTS, respectively. Remember to select and load the device and size appropriate v0.11.1 FPGA RBF included in the tarball.
 This step is recommended for using libbladeRF 2.0 (commit 3a411c8) with YateBTS and the bladeRF 2.0 micro.
 
 == Download pages (Alternative) ==
