@@ -118,7 +118,7 @@ You can download the latest releases here:
 
 == Yate and YateBTS SVN (Alternative) ==
 
-The below commands may be used to check out the Yate and YateBTS repositories into a <code>~/software/null</code> directory:
+The below commands may be used to check out the Yate and YateBTS repositories into a <code>~/software/bts</code> directory:
 
 ```
 mkdir ~/software/bts
