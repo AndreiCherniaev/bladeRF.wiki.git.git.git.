@@ -96,19 +96,32 @@ After logging out and back in, you should see <code>yate</code> listed when you 
 
 = Fetching Yate and Yate-BTS =
 
-== Download pages ==
+== Download the libbladeRF 2.0 based Yate and YateBTS source tarball ==
+
+The following tarball includes YateBTS, Yate, and the latest RBFs.
+```
+mkdir ~/software
+cd ~/software
+wget https://nuand.com/downloads/yate-rc-2.tar.gz
+tar xfz yate-rc-2.tar.gz
+```
+
+This step is recommended for using libbladeRF 2.0 (commit 3a411c8) with YateBTS and a bladeRF x40, bladeRF x115, bladeRF 2.0 micro xA4, or a bladeRF 2.0 micro xA9.
+
+
+== Download pages (Alternative) ==
 
 You can download the latest releases here:
 * [http://yate.ro/links/dl Yate download]
 * [http://yatebts.com/download.php YateBTS download]
 
-== SVN ==
+== Yate and YateBTS SVN (Alternative) ==
 
 The below commands may be used to check out the Yate and YateBTS repositories into a <code>~/software/null</code> directory:
 
 ```
-mkdir ~/software/null/
-cd ~/software/null
+mkdir ~/software/bts
+cd ~/software/bts
 svn checkout http://yate.null.ro/svn/yate/trunk yate
 svn checkout http://voip.null.ro/svn/yatebts/trunk yatebts
 ```
@@ -116,10 +129,10 @@ svn checkout http://voip.null.ro/svn/yatebts/trunk yatebts
 If you already have the repositories checked out from a previous build, you can simply update them:
 
 ```
-cd ~/software/null/yate
+cd ~/software/bts/yate
 svn update
 
-cd ~/software/null/yatebts
+cd ~/software/bts/yatebts
 svn update
 ```
 
@@ -130,7 +143,7 @@ svn update
 First, configure the build to install into <code>usr/local</code>:
 
 ```
-cd ~/software/null/yate
+cd ~/software/bts/yate
 ./autogen.sh
 ./configure --prefix=/usr/local
 ```
@@ -153,7 +166,7 @@ sudo ldconfig
 This procedure should look quite similar.
 
 ```
-cd ~/software/null/yatebts
+cd ~/software/bts/yatebts
 ./autogen.sh
 ./configure --prefix=/usr/local
 ```
