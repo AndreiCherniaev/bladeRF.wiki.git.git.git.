@@ -6,7 +6,7 @@ This guide describes the process of building and installing the bladeRF host lib
 
 Before compiling on Ubuntu systems, ensure the following packages are installed.
 <pre>
-$ sudo apt-get install python3-six python-six python3-mako python3-lxml python3-lxml python3-numpy python3-numpy python3-pip git
+$ sudo apt-get install python3-six python-six python3-mako python3-lxml python3-lxml python3-numpy python3-numpy python3-pip git python3-pybind11 libsndfile1-dev
 </pre>
 
 NB: If the pybombs command is not found after pip install ensure that ~/.local/bin is part of your path. If it is not, run (and also add the following command to your .bashrc): <pre>export PATH=$PATH:$HOME/.local/bin</pre>
@@ -24,12 +24,6 @@ To use Nuand's experimental gr-osmo, consider running the following:
 $ sed -i 's/git.osmocom.org/github.com\/Nuand/g' ~/.pybombs/recipes/gr-recipes/gr-osmosdr.lwr
 </pre>
 
-If building default or latest GNURadio (>=3.8), try to remove the following Qt4 and PyGTK dependencies by trying:
-<pre>
-$ sed -i '/^- pygtk/d' ~/.pybombs/recipes/gr-recipes/gnuradio.lwr ~/.pybombs/recipes/gr-recipes/gnuradio38.lwr
-$ sed -i '/^- qt4/d' ~/.pybombs/recipes/gr-recipes/gqrx.lwr
-</pre>
-
 Optionally to enable gr-video-sdl, try:
 <pre>
 $ sudo apt-get install libsdl1.2-dev libsdl2-dev
@@ -40,8 +34,8 @@ Now, let's create a prefix, or a directory in which to install all the GNU Radio
 
 <pre>
 $ mkdir ~/pybombs/
-$ pybombs config --package gnuradio gitrev v3.8.1.0
-$ pybombs config --package gr-osmosdr gitrev dev-gr-3.8
+$ pybombs config --package gnuradio gitrev v3.9.0.0
+$ pybombs config --package gr-osmosdr gitrev dev-gr-3.9
 $ pybombs prefix init ~/pybombs/bladeRF -a bladeRF -R gnuradio-default
 </pre>
 
