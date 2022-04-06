@@ -234,7 +234,7 @@ bladeRF> set samplerate rx 40M
 
 It's often ''very'' handy to be able to internally loopback signals from the TX module back to the RX module, without an external cable and [http://www.fairviewmicrowave.com/10db-fixed-attenuator-sma-male-sma-female-2-watts-sa3015-10-p.aspx?gclid=CJS5jZiZ3b8CFfA-MgodFQQAJA attenuator]. (Generally, it's recommended to keep an attenuator on an unconnected TX port, just to be cautious.)
 
-The LMS6002D RFIC (used on the bladeRF x40 and x115) provides internal loopback modes, which loopback the analog signals; this means you will not receive the exact data you transmit.  See the ''Loopback and Bypass Modes'' section of the [http://www.limemicro.com/download/LMS6002Dr2-Programming_and_Calibration_Guide-1.1r1.pdf LMS6002D Programming and Calibration Guide] to understand how each loopback mode is achieved. The LMS-based loopback modes have a ''bb_'' (baseband) or ''rf_'' (Post-mixer RF path) prefixes.
+The LMS6002D RFIC (used on the bladeRF x40 and x115) provides internal loopback modes, which loopback the analog signals; this means you will not receive the exact data you transmit.  See the ''Loopback and Bypass Modes'' section of the [https://limemicro.com/app/uploads/2015/04/LMS6002Dr2-Programming-and-Calibration-Guide-1_1r5.pdf LMS6002D Programming and Calibration Guide] to understand how each loopback mode is achieved. The LMS-based loopback modes have a ''bb_'' (baseband) or ''rf_'' (Post-mixer RF path) prefixes.
 
 The AD9361 RFIC (used on the bladeRF xA4 and xA9) provides a single loopback mode, <code>rfic_bist</code>, which is an internal digital loopback within the RFIC.
 
