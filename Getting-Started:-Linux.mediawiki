@@ -21,8 +21,9 @@ $ pybombs recipes add-defaults
 
 To use Nuand's experimental gr-osmo, consider running the following:
 <pre>
-$ sed -i 's/git.osmocom.org/github.com\/Nuand/g' ~/.pybombs/recipes/gr-recipes/gr-osmosdr.lwr
+$ sed -i 's/gitea.osmocom.org.sdr/github.com\/Nuand/g' ~/.pybombs/recipes/gr-recipes/gr-osmosdr.lwr
 $ sed -i '/- gr.\{7,\}/d' ~/.pybombs/recipes/gr-recipes/gr-osmosdr.lwr
+$ sed -i '/- gr.iqbal/d' ~/.pybombs/recipes/gr-recipes/gr-osmosdr.lwr
 </pre>
 
 Optionally to enable gr-video-sdl, try:
