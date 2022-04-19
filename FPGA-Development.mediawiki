@@ -85,7 +85,7 @@ Now lets build the FPGA bitstream. Instructions are the same as in the "Building
 
 <code>./build_bladerf.sh</code> to print an updated list of supported boards along with their supported revisions and sizes.
 
-<code>./build_bladerf.sh -r hosted -s <size></code>, where <nowiki><size></nowiki> is replaced with your bladeRF FPGA size (40, 115, A5, A9, etc.). 
+<code>./build_bladerf.sh -b <board> -r hosted -s <size></code>, where <nowiki><board></nowiki> and <nowiki><size></nowiki> are replaced with your bladeRF board model and FPGA size (40, 115, A5, A9, etc.). 
 
 This will take ~10 minutes to build. Once finished, <code>cd</code> into the newly created build folder which contains the <code>hostedx<size>.rbf</code> FPGA bitstream. From there you can plug in your bladeRF and use bladeRF-cli to load the FPGA with your bitstream:
 
