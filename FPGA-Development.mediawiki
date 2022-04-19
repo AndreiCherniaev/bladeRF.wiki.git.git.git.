@@ -83,7 +83,9 @@ This process involves a counter which counts clock cycles of the 38.4MHz c4_cloc
 Now lets build the FPGA bitstream. Instructions are the same as in the "Building FPGA image from source" section. Run <br>
 <code>[quartus install directory]/nios2eds/nios2_command_shell.sh</code> to get into the appropriate Quartus II environment. From the same terminal, go to the bladeRF/hdl/quartus directory and run build_bladerf.sh like so:
 
-<code>./build_bladerf.sh -r hosted -s <size></code>, where <nowiki><size></nowiki> is replaced with your bladeRF FPGA size (40, 115, A5, A9, etc.). Run <code>./build_bladerf.sh</code> to print an updated list of supported boards along with their supported revisions and sizes.
+<code>./build_bladerf.sh</code> to print an updated list of supported boards along with their supported revisions and sizes.
+
+<code>./build_bladerf.sh -r hosted -s <size></code>, where <nowiki><size></nowiki> is replaced with your bladeRF FPGA size (40, 115, A5, A9, etc.). 
 
 This will take ~10 minutes to build. Once finished, <code>cd</code> into the newly created build folder which contains the <code>hostedx<size>.rbf</code> FPGA bitstream. From there you can plug in your bladeRF and use bladeRF-cli to load the FPGA with your bitstream:
 
