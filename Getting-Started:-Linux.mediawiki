@@ -28,7 +28,7 @@ $ sed -i '/- gr.iqbal/d' ~/.pybombs/recipes/gr-recipes/gr-osmosdr.lwr
 
 Optionally to enable gr-video-sdl, try:
 <pre>
-$ sudo apt-get install libsdl1.2-dev libsdl2-dev
+$ sudo apt-get install libsdl1.2-dev
 $ sed -i 's/-DENABLE_VOLK=ON/-DENABLE_VOLK=ON -DENABLE_GR_VIDEO_SDL=ON/g' ~/.pybombs/recipes/gr-recipes/gnuradio.lwr ~/.pybombs/recipes/gr-recipes/gnuradio38.lwr
 </pre>
 
@@ -36,7 +36,7 @@ Now, let's create a prefix, or a directory in which to install all the GNU Radio
 
 <pre>
 $ mkdir ~/pybombs/
-$ pybombs config --package gnuradio gitrev v3.9.0.0
+$ pybombs config --package gnuradio gitrev maint-3.9
 $ pybombs config --package gr-osmosdr gitrev dev-gr-3.9
 $ pybombs prefix init ~/pybombs/bladeRF -a bladeRF -R gnuradio-default
 </pre>
