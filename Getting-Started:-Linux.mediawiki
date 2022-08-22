@@ -258,7 +258,7 @@ The following procedure uses build-gnuradio to fetch dependencies and checkout s
 
 See the [https://gnuradio.org/redmine/projects/gnuradio/wiki/InstallingGRFromSource GNU-Radio wiki for more information], including the use of [http://gnuradio.org/redmine/projects/pybombs/wiki PyBOMBS], which is now the installation method preferred by many users. 
 
-If you're not comfortable with the instructions presented below, please consider following the [http://gnuradio.org/redmine/projects/pybombs/wiki PyBOMBS] instructions on the GNU Radio wiki instead.
+If you're not comfortable with the instructions presented below, please consider following the [https://wiki.gnuradio.org/index.php/InstallingGR#Using_PyBOMBS PyBOMBS] instructions on the GNU Radio wiki instead.
 
 === GNU Radio >= 3.7.7 and VOLK ===
 As of GNU Radio v3.7.7, [http://libvolk.org/ VOLK] is now a separate project pulled in via a git submodule. This implies that one must use the <code>--recursive</code> flag when cloning the repository. (build-gnuradio and PyBOMBS do this for you.)  If you are manually cloning the GNU Radio and forget to use the <code>--recursive</code> flag, you'll need to run <code>git submodule init volk</code> followed by <code>git submodule update</code> to initialize the VOLK subrepo.
