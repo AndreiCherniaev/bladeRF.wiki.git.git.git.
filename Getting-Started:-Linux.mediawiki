@@ -36,8 +36,15 @@ Now, let's create a prefix, or a directory in which to install all the GNU Radio
 
 <pre>
 $ mkdir ~/pybombs/
-$ pybombs config --package gnuradio gitrev maint-3.9
+</pre>
+
+<b>Optionally</b>, to set GNURadio to dev branch 3.9 run the following two commands:
+<pre>$ pybombs config --package gnuradio gitrev maint-3.9
 $ pybombs config --package gr-osmosdr gitrev dev-gr-3.9
+</pre>
+
+Then continue compiling GNURadio.
+<pre>
 $ pybombs prefix init ~/pybombs/bladeRF -a bladeRF -R gnuradio-default
 </pre>
 
