@@ -6,7 +6,7 @@ This guide describes the process of building and installing the bladeRF host lib
 
 Before compiling on Ubuntu systems, ensure the following packages are installed.
 <pre>
-$ sudo apt-get install python3-six python-six python3-mako python3-lxml python3-lxml python3-numpy python3-numpy python3-pip git python3-pybind11 libsndfile1-dev
+$ sudo apt-get install python3-six python3-mako python3-lxml python3-lxml python3-numpy python3-numpy python3-pip git python3-pybind11 libsndfile1-dev
 </pre>
 
 NB: If the pybombs command is not found after pip install ensure that ~/.local/bin is part of your path. If it is not, run (and also add the following command to your .bashrc): <pre>export PATH=$PATH:$HOME/.local/bin</pre>
