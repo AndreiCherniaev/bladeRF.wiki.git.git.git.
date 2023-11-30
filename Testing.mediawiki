@@ -1,0 +1,36 @@
+This page is a collection of thoughts for required testing prior to cutting a release.
+
+= Library testing =
+Run the libbladeRF regression test.
+
+<source lang="bash">
+cmake .. -DTEST_REGRESSION=TRUE
+make -j`nproc` && sudo make install
+make test_libbladeRF
+</source>
+
+= FPGA testing =
+Run the HDL regression test. Please run the synthesis regression test if submitting PRs.
+
+<source lang="bash">
+cmake .. -DTEST_REGRESSION=TRUE
+make -j`nproc` && sudo make install
+make test_hdl
+make test_synthesis # Only necessary for submitting HDL related PRs
+</source>
+
+= Release Testing =
+Run the an all inclusive test. Note that this will take a while to run as it tests libbladeRF, HDL test benches, and HDL synthesis across bladeRF devices.
+
+<source lang="bash">
+cmake .. -DTEST_REGRESSION=TRUE
+make -j`nproc` && sudo make install
+make test_all
+</source>
+
+= FX3 firmware =
+* Verify flashing with bladeRF-flash works on Windows, Linux, and OS X on USB 2.0 and USB 3.0
+** Test both RAM-only path and flash paths.  This exercises recover, erase, reset, flash_firmware driver operations.
+* Run both USB20CV and USB30CV in compliance testing mode to ensure there are no regressions
+* Verify booting the FPGA via USB on Windows, Linux, and OS X on USB 2.0 and USB 3.0
+
