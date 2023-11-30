@@ -131,6 +131,7 @@ See the [https://github.com/Nuand/bladeRF/tree/master/doc doc/] and [https://git
 * [[Debugging]]
 
 == Project Maintenance ==
+* [[Testing]]
 * [[Linux Distribution Status]]
 * [[Static Analysis]]
 * [[Proposals and Requests]]
