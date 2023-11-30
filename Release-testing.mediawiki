@@ -7,12 +7,19 @@ This page is a collection of thoughts for required testing prior to cutting a re
 * Verify booting the FPGA via USB on Windows, Linux, and OS X on USB 2.0 and USB 3.0
 
 = Library testing =
-* Open and close device on USB 2.0 and USB 3.0
-* Set/print all the different functions available in the library
-* Loop over a peripheral access (eg: read all the LMS registers, then all the si5338 registers, repeat)
-* Full duplex async repeater test at max sample rate
+Run the libbladeRF regression test.
+
+<source lang="bash">
+cmake .. -DTEST_REGRESSION=TRUE
+make test_libbladeRF
+</source>
 
 = FPGA testing =
-* Self checking testbench for overflow/underflow conditions
-* Self checking testbench for starting/stopping streams
-* Self checking testbench for timed commands
+Run the HDL regression test.
+
+<source lang="bash">
+cmake .. -DTEST_REGRESSION=TRUE
+make test_hdl
+</source>
+
+
