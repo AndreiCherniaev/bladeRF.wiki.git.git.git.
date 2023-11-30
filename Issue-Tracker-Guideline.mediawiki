@@ -1,0 +1,3 @@
+Please only use this issue tracker to report software bugs in VHDL, FX3, libbladeRF, bladeRF-cli, and bladeRF-fsk issues.
+
+For general support with the bladeRF device or matters that likely are not software bug related, please email us directly at bladeRF@nuand.com for faster response times, or utilize the Nuand forums https://nuand.com/ for community help.
