@@ -10,7 +10,7 @@
 | transfers=\<count\>                     | Number of in-flight sample buffer transfers. Defaults to one half of the 'buffers' count. |
 | stream_timeout_ms=\<timeout\>           | Specifies the timeout for the underlying sample stream. Default=3000. |
 | loopback=\<mode\>                       | Configure the device for the specified loopback mode (disabled, baseband, or RF). See the libbladeRF documentation for descriptions of these available options: none, bb_txlpf_rxvga2, bb_txlpf_rxlpf, bb_txvga1_rxvga2, bb_txvga1_rxlpf, rf_lna1, rf_lna2, rf_lna3. The default mode is 'none'. |
-| verbosity=\<level\>                     | Controls the verbosity of output written to stderr from libbladeRF. The available options, from least to most verbose are: silent, critical, error, warning, info, debug, verbose. The default level is determined by libbladeRF. |
+| verbosity=\<level\>                     | Controls the verbosity of output written to stderr from libbladeRF. The available options, from least to most verbose are: `silent`, `critical`, `error`, `warning`, `info`, `debug`, `verbose`. The default level is determined by libbladeRF. |
 | xb200[=filter]                          | Automatic filter selection will be enabled if no value is given to the xb200 parameter. Otherwise, a specific filter may be selected per the list presented below. |
 | smb=\<frequency\>                       | Enable frequency output on SMB connector (named CLK) |
 | tamer=[internal,external,external_1pps] | Set one of the clock input modes |
