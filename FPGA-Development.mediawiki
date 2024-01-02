@@ -37,7 +37,7 @@ Software running on the Nios II soft processor handles all command/control. The 
 = Development =
 == Getting Started ==
 === Building FPGA image from source ===
-Once you have cloned the [https://github.com/Nuand/bladeRF bladeRF repository] to your local machine, instructions for installing the required Quartus II free software and building the FPGA image and Quartus project file can be found in the README of [https://github.com/Nuand/bladeRF/tree/master/hdl bladeRF/hdl].
+Once you have cloned the [https://github.com/Nuand/bladeRF bladeRF repository] to your local machine, instructions for installing the required Quartus II free software and building the FPGA image and Quartus project file can be found in the README of [https://github.com/Nuand/bladeRF/tree/master/hdl bladeRF/hdl]. Quartus Prime Standard Edition [https://www.intel.com/content/www/us/en/software-kit/795126/intel-quartus-prime-standard-edition-design-software-version-23-1-for-linux.html version 23.1] is recommended.
 === Tutorial: Blinking some LEDs ===
 This can be thought of as a "hello world" for the FPGA. We will simply modify the FPGA code to blink some LEDs. Quartus GUI does not need to be open for this tutorial.
 
