@@ -21,7 +21,7 @@ While the Nuand team and bladeRF community are generally willing to help answer 
 
 = Disclaimer =
 
-As with all SDR development, you are responsible for ensuring that you operate only within bands for which you are licensed. When performing laboratory experiments, an [http://ramseytest.com/product.php?pid=10 RF test enclosure] is <b>highly</b> recommended to ensure a system under test does not yield out-of-band emissions that might interfere with licensed network operators. 
+As with all SDR development, you are responsible for ensuring that you operate only within bands for which you are licensed. When performing laboratory experiments, an [https://ramseytest.com/bench-top-enclosures RF test enclosure] is <b>highly</b> recommended to ensure a system under test does not yield out-of-band emissions that might interfere with licensed network operators.
 
 = Prerequisites =
 
