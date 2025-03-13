@@ -6,15 +6,16 @@ This guide describes the process of building and installing the bladeRF host lib
 
 Before compiling on Ubuntu systems, ensure the following packages are installed.
 <pre>
-$ sudo apt-get install python3-six python3-mako python3-lxml python3-lxml python3-numpy python3-numpy python3-pip git python3-pybind11 libsndfile1-dev
+$ sudo apt-get install python3-pip python3-setuptools git
 </pre>
 
-NB: If the pybombs command is not found after pip install ensure that ~/.local/bin is part of your path. If it is not, run (and also add the following command to your .bashrc): <pre>export PATH=$PATH:$HOME/.local/bin</pre>
-
 Install PyBOMBS (using pip, but other methods are listed on the PyBOMBS README.md), apply the default configuration, and add the default recipes:
-
 <pre>
-$ pip3 install --upgrade git+https://github.com/gnuradio/pybombs.git
+$ pip3 install --break-system-packages --upgrade git+https://github.com/gnuradio/pybombs.git
+</pre>
+
+Next code will use `pybombs`. Probably you will get `pybombs: command not found` problem, so ensure that ~/.local/bin is part of your path. If it is not, run (and also add the following command to your .bashrc): <pre>export PATH=$PATH:$HOME/.local/bin</pre>
+<pre>
 $ pybombs auto-config
 $ pybombs recipes add-defaults
 </pre>
