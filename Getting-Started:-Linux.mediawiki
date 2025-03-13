@@ -6,7 +6,7 @@ This guide describes the process of building and installing the bladeRF host lib
 
 Before compiling on Ubuntu systems, ensure the following packages are installed.
 <pre>
-$ sudo apt-get install python3-pip python3-setuptools git
+$ sudo apt-get install libncurses5-dev python3-pip python3-setuptools git
 </pre>
 
 Install PyBOMBS (using pip, but other methods are listed on the PyBOMBS README.md), apply the default configuration, and add the default recipes:
